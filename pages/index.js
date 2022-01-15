@@ -1,6 +1,7 @@
 import Head from 'next/head'
-import Header from '@components/Header'
-import Footer from '@components/Footer'
+import Header from '@components/header/Header'
+import Footer from '@components/footer/Footer'
+import Content from '@components/content/Content'
 
 export default function Home() {
   return (
@@ -12,6 +13,7 @@ export default function Home() {
 
       <main>
         <Header title="<Matty.dev/>" />
+        <Content></Content>
         <p className="description">
           <code>Matty.dev</code>
         </p>
