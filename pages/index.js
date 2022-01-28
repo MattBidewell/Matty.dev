@@ -13,13 +13,13 @@ export default function Home() {
 
       <main>
         <Header title="<Matty.dev/>" />
-        <Content></Content>
         <p className="description">
-          <code>Matty.dev</code>
+          <code>Hello 👋</code>
         </p>
+        <Content></Content>
       </main>
 
       <Footer />
     </div>
-  )
+  );
 }
