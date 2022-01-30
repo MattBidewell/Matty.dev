@@ -1,7 +1,8 @@
-import Head from 'next/head'
-import Header from '@components/header/Header'
-import Footer from '@components/footer/Footer'
-import Content from '@components/content/Content'
+import Head from "next/head";
+import Header from "@components/header/Header";
+import Welcome from "@components/welcome/Welcome";
+import Footer from "@components/footer/Footer";
+import Content from "@components/content/Content";
 
 export default function Home() {
   return (
@@ -14,7 +15,7 @@ export default function Home() {
       <main>
         <Header title="<Matty.dev/>" />
         <p className="description">
-          <code>Hello 👋</code>
+          <Welcome />
         </p>
         <Content></Content>
       </main>
