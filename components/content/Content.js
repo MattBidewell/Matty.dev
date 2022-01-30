@@ -1,6 +1,5 @@
 import styles from "./Content.module.css";
 
-// TODO: rotate between random phrases.
 export default function Content() {
   return (
     <>
@@ -8,7 +7,7 @@ export default function Content() {
         <p>
           I'm Matthew Bidewell, I'm a Software engineer with 7 years of
           experience in creating well crafted SaaS solutions using AWS. I work
-          over at Government Digital Services where I help with Digital
+          over at Government Digital Services where I help build Digital
           Identification. 🧑‍💻
         </p>
         <p>
