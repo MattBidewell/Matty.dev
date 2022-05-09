@@ -5,7 +5,7 @@ export default function Footer() {
   return (
     <>
       <footer className={styles.footer}>
-          Don't hang me, I'm drunk 🍻
+      © 2022 Matt Bidewell
       </footer>
     </>
   )

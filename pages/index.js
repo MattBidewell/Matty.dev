@@ -1,5 +1,4 @@
 import Head from "next/head";
-import Header from "@components/header/Header";
 import Welcome from "@components/welcome/Welcome";
 import Footer from "@components/footer/Footer";
 import Content from "@components/content/Content";
@@ -12,8 +11,7 @@ export default function Home() {
         <link rel="icon" href="/favicon.ico" />
       </Head>
 
-      <main>
-        <Header title="<Matty.dev/>" />
+      <main class="content">
         <p className="description">
           <Welcome />
         </p>
