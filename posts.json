@@ -1,0 +1,22 @@
+[
+  {
+    "title": "AWS Lambda Function URLs",
+    "link": "https://levelup.gitconnected.com/aws-lambda-url-72d4a1c40c1f?source=rss-421b42f59b30------2",
+    "snippet": "AWS announced a new feature to Lambda, Lambda Function URLs. Here’s a quick rundown of what they are, how they work and two ways of creating them.\nWhat are Lambda Function URLs\nPreviously, if you want..."
+  },
+  {
+    "title": "Clicking a link — What happens next?",
+    "link": "https://levelup.gitconnected.com/clicking-a-link-what-happens-next-d3360553735a?source=rss-421b42f59b30------2",
+    "snippet": "Clicking a link — What happens next?\nHave you ever questioned what happens when you click a <a> tag on a website? How does your browser know what to get? Where to go? I hope to explain the core fundam..."
+  },
+  {
+    "title": "Rust and referencing",
+    "link": "https://levelup.gitconnected.com/rust-and-its-referencing-and-borrowing-b2e8aefc12d8?source=rss-421b42f59b30------2",
+    "snippet": "This is part two of an intro to Rust and its ownership, referencing and borrowing model. Read part one here. Part one showed us that when a variable falls out of scope it is freed from memory. We then..."
+  },
+  {
+    "title": "Rust and its ownership model",
+    "link": "https://levelup.gitconnected.com/rust-and-its-ownership-model-effc41e3951?source=rss-421b42f59b30------2",
+    "snippet": "Rust and ownership\n\nRust has grown a great amount in the past few years, so much that it was voted Stack overflow’s most loved language in 2020. Nearly 20% more than the runner up Typescript.\nScreensh..."
+  }
+]

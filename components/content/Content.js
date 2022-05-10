@@ -15,12 +15,7 @@ export default function Content() {
           <a href="https://www.github.com/mattbidewell">Github</a> or get in
           touch via <a href="">LinkedIn</a>.
         </p>
-        <h2 className={styles.title}>Blog posts</h2>
       </section>
     </>
   );
-}
-
-async function getBlogPosts() {
-
 }

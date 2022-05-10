@@ -2,11 +2,11 @@
 
 html,
 body {
-  background-color: #343535;
-  color: #fafafa;
+  background-color: #fff5e4;
+  color: #34568B;
   padding: 0;
   margin: 0;
-  font-family: 'Roboto Mono', monospace;
+  font-family: Segoe UI,Roboto,Helvetica,Arial,sans-serif,Apple Color Emoji,Segoe UI Emoji,Segoe UI Symbol;
 }
 
 * {
@@ -25,6 +25,7 @@ main {
   flex-direction: column;
   justify-content: top;
   align-items: center;
+  margin-left:50px;
 }
 .content>*:first-child {
   align-self: stretch;
@@ -45,7 +46,6 @@ h1 {
 }
 
 .container {
-  height: 100vh;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -53,5 +53,11 @@ h1 {
 }
 
 a {
-  color: #81E4FF;
+  color: #FF6F61;
+  font-weight: 700;
+  text-decoration: none;
+}
+
+a:hover {
+  text-decoration: line-through underline;
 }

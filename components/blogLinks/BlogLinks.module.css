@@ -1,0 +1,30 @@
+.title {
+  font-weight: 300;
+}
+
+.bloglinks_content {
+  width: 50%;
+  line-height: 1.75;
+  align-self: flex-start;
+  font-weight: 300;
+}
+
+.bloglinks_content div {
+  margin-bottom: 25px;
+  padding: 10px;
+  border: 1px solid transparent;
+}
+
+.bloglinks_content div:hover {
+  border-bottom: 0.1px solid black;
+  box-shadow: 0 1px 2px -2px gray;
+}
+
+.bloglinks_content a {
+  text-decoration: none;
+}
+
+.bloglinks_content p {
+  font-weight: 300;
+  color: #34568B
+}
