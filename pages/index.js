@@ -1,5 +1,5 @@
 import Head from "next/head";
-import Welcome from "@components/welcome/Welcome";
+import Header from "@components/Header/Header";
 import Footer from "@components/footer/Footer";
 import Content from "@components/content/Content";
 
@@ -13,7 +13,7 @@ export default function Home() {
 
       <main class="content">
         <p className="description">
-          <Welcome />
+          <Header />
         </p>
         <Content></Content>
       </main>
