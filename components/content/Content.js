@@ -11,9 +11,9 @@ export default function Content() {
           I help build the future of Digital Identification. 🧑‍💻
         </p>
         <p>
-          You can find me on <a href="">Twitter</a>, scrutinise my code at{" "}
+          You can find me on <a href="https://twitter.com/MattBidewell">Twitter</a>, scrutinise my code at{" "}
           <a href="https://www.github.com/mattbidewell">Github</a> or get in
-          touch via <a href="">LinkedIn</a>.
+          touch via <a href="https://www.linkedin.com/in/matt-bidewell-a4578790/">LinkedIn</a>.
         </p>
       </section>
     </>
