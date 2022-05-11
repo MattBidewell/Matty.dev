@@ -9,7 +9,7 @@ export default function Home() {
     <div className="container">
       <Head>
         <title>Matty.dev</title>
-        <link rel="icon" href="/favicon.ico" />
+        <link rel="icon" href="/avatar.png" />
       </Head>
       <main className="content">
         <p className="description">
