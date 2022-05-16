@@ -6,7 +6,7 @@ export default function Content() {
       <section className={styles.content}>
         <p>
           I'm Matt Bidewell, I'm a Software engineer with {`${new Date().getFullYear() - 2015}`}+ years of
-          experience in creating well crafted SaaS solutions on AWS. I work over
+          experience in creating well crafted SaaS solutions in the cloud ☁️. I work over
           at <a href="https://www.gov.uk/">Government Digital Services</a> where
           I help build the future of Digital Identification. 🧑‍💻
         </p>
