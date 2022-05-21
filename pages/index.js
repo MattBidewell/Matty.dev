@@ -10,6 +10,9 @@ export default function Home() {
       <Head>
         <title>Matty.dev</title>
         <link rel="icon" href="/avatar.png" />
+
+        <meta charset="utf-8"/>
+
       </Head>
       <main className="content">
         <p className="description">
