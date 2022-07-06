@@ -3,3 +3,15 @@
   font-weight: bolder;
   color: #34568b;
 }
+
+.flex_container {
+  display: flex
+}
+
+.flex_child {
+  flex: 1;
+}
+
+.flex_child:first-child {
+  flex: 1;
+}

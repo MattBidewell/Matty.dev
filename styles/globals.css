@@ -26,7 +26,6 @@ main {
   flex: 1;
   display: flex;
   flex-direction: column;
-  align-items: center;
 }
 .content>*:first-child {
   align-self: stretch;

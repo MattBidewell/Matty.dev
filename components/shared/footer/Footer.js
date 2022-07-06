@@ -1,6 +1,5 @@
 import styles from './Footer.module.css'
 
-// TODO: rotate between random phrases.
 export default function Footer() {
   return (
     <>
