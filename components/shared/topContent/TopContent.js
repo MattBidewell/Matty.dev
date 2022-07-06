@@ -1,7 +1,7 @@
 import styles from './main.module.css'
 import Nav from "@components/shared/nav/Nav";
 
-export default function MainContent() {
+export default function TopContent() {
   return (
     <>
       <div className={styles.flex_container}>

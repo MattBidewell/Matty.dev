@@ -1,6 +1,6 @@
 import Head from "next/head";
 import Footer from "@components/shared/footer/Footer";
-import MainContent from "@components/main/Main";
+import TopContent from "@components/shared/topContent/TopContent";
 import Content from "@components/about/content/Content";
 
 export default function About() {
@@ -14,7 +14,7 @@ export default function About() {
 
       </Head>
       <main className="content">
-        <MainContent />
+        <TopContent />
         <Content />
       </main>
 
