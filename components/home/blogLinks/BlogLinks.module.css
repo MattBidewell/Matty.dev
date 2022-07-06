@@ -19,9 +19,17 @@
   border: 1px solid transparent;
 }
 
-.bloglinks_content div:hover {
-  border-bottom: 0.1px solid black;
-  box-shadow: 0 1px 2px -2px gray;
+.bloglinks_content div h3 {
+  display: inline-block;
+}
+
+.bloglinks_content div:hover h3 {
+  background-color: #a1ffb5;
+}
+
+.bloglinks_content div:hover a {
+  background-color: #a1ffb5;
+  outline-width: 0px;
 }
 
 .bloglinks_content a {

@@ -1,21 +1,21 @@
 import Head from "next/head";
-import Main from "@components/main/Main";
 import Footer from "@components/shared/footer/Footer";
-import Content from "@components/home/content/Content";
-import BlogLinks from "@components/home/blogLinks/BlogLinks";
+import Main from "@components/main/Main";
+import Content from "@components/about/content/Content";
 
-export default function Home() {
+export default function About() {
   return (
     <div className="container">
       <Head>
         <title>Matty.dev</title>
         <link rel="icon" href="/avatar.png" />
+
         <meta charset="utf-8"/>
+
       </Head>
-      <main className="page-content">
+      <main className="content">
         <Main />
-        <Content></Content>
-        <BlogLinks></BlogLinks>
+        <Content />
       </main>
 
       <Footer />

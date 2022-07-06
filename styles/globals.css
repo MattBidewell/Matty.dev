@@ -1,5 +1,12 @@
 @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@100;300;400&display=swap');
 
+/*
+  colours:
+    text (blue): 34568B
+    back (orange): ffefe0
+    special (light green): a1ffb5
+
+*/
 html,
 body {
   background-color: #ffefe0;
@@ -26,6 +33,7 @@ main {
 .content {
   flex: 1;
   flex-direction: column;
+  padding-bottom: 10px;
 }
 
 code {
@@ -54,8 +62,23 @@ a {
 }
 
 a:hover {
-  text-decoration: line-through underline;
+  /* text-decoration: line-through underline; */
+  background-color: #a1ffb5;
+  outline-color: #a1ffb5;
+  outline-width: 5px;
+  outline-style: solid;
 }
+
+.content {
+  line-height: 1.75;
+  align-self: flex-start;
+  font-weight: 300;
+  margin-bottom: 40px;
+}
+
+/* ::selection {
+  background: #87fba0;
+} */
 
 @media only screen and (max-width: 800px) {
 
@@ -64,6 +87,8 @@ a:hover {
   }
 
   .content {
+    width: 90%;
+    margin: 10px;
     flex: 1;
     display: flex;
     flex-direction: column;
