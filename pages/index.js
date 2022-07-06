@@ -1,5 +1,5 @@
 import Head from "next/head";
-import Main from "@components/main/Main";
+import Main from "@components/main/main/Main";
 import Footer from "@components/shared/footer/Footer";
 import Content from "@components/home/content/Content";
 import BlogLinks from "@components/home/blogLinks/BlogLinks";
