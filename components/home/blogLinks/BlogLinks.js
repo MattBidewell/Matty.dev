@@ -1,5 +1,5 @@
 import styles from "./BlogLinks.module.css";
-import * as posts from "../../posts.json";
+import * as posts from "../../../posts.json";
 
 export default function BlogLinks() {
   return (

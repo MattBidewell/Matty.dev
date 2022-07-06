@@ -1,8 +1,8 @@
 import Head from "next/head";
-import Header from "@components/Header/Header";
-import Footer from "@components/footer/Footer";
-import Content from "@components/content/Content";
-import BlogLinks from "@components/blogLinks/BlogLinks";
+import Main from "@components/main/Main";
+import Footer from "@components/shared/footer/Footer";
+import Content from "@components/home/content/Content";
+import BlogLinks from "@components/home/blogLinks/BlogLinks";
 
 export default function Home() {
   return (
@@ -16,7 +16,7 @@ export default function Home() {
       </Head>
       <main className="content">
         <p className="description">
-          <Header />
+          <Main />
         </p>
         <Content></Content>
         <BlogLinks></BlogLinks>
