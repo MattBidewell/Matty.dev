@@ -15,9 +15,7 @@ export default function Home() {
 
       </Head>
       <main className="content">
-        <p className="description">
-          <Main />
-        </p>
+        <Main />
         <Content></Content>
         <BlogLinks></BlogLinks>
       </main>
