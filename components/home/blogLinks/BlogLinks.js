@@ -4,9 +4,11 @@ import * as posts from "../../../posts.json";
 export default function BlogLinks() {
   return (
     <>
-      <section className={styles.bloglinks_content}>
-        <h2 className={styles.title}>Blog posts</h2>
-        { createPosts() }
+      <section class="content">
+        <section className={styles.bloglinks_content}>
+          <h2 className={styles.title}>Blog posts</h2>
+          { createPosts() }
+        </section>
       </section>
     </>
   );

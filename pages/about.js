@@ -9,11 +9,9 @@ export default function About() {
       <Head>
         <title>Matty.dev</title>
         <link rel="icon" href="/avatar.png" />
-
         <meta charset="utf-8"/>
-
       </Head>
-      <main className="content">
+      <main className="page-content">
         <TopContent />
         <Content />
       </main>

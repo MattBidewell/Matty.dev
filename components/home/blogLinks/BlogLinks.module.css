@@ -1,13 +1,9 @@
-.title {
-  font-weight: 300;
-}
-
 .bloglinks_content section {
   width: 100%;
 }
 
 .bloglinks_content {
-  border-top: 5px solid;
+  /* border-top: 5px solid; */
   line-height: 1.75;
   align-self: flex-start;
   font-weight: 300;
@@ -16,7 +12,7 @@
 .bloglinks_content div {
   margin-bottom: 25px;
   padding: 10px;
-  border: 1px solid transparent;
+  border-bottom: 1px solid #f8dfc8;
 }
 
 .bloglinks_content div h3 {
