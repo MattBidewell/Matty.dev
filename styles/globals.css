@@ -84,6 +84,8 @@ a:hover {
 
   main {
     padding: 2.5rem 2.5rem;
+    min-width: 20rem;
+    max-width: 20rem;
   }
 
   .content {
