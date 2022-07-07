@@ -12,5 +12,6 @@
   .nav ul {
     /* padding-left: 10rem; */
     width: 12.5rem;
+    margin-left: auto;
   }
 }
