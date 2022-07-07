@@ -27,12 +27,12 @@ export default function Skills() {
 
 function generateSkills() {
   const skills = {
-    "Cloud": ["Amazon Web Services"],
+    "Cloud": ["AWS"],
     "IaC": ["Cloudformation", "Terraform"],
     "Backend": ["NodeJS", "Go", "Java", "Python", "Bash/sh"],
     "Frontend": ["HTML", "CSS", "Javascript", "ReactJS", "NextJS", "Nunjucks"],
     "CI/CD": ["Bitbucket Pipelines", "Github Actions", "CodeDeploy"],
-    "Miscellaneous":["Serverless", "TDD", "BDD"]
+    "Miscellaneous":["Serverless", "TDD", "BDD", "Unit Testing", "Browser Testing"]
   }
 
   const output = Object.keys(skills).map((key) => {
