@@ -8,6 +8,10 @@
   align-items: center;
 }
 
+.footer a {
+  margin: 0 15px;
+}
+
 .logo {
   height: 1em;
   margin: 5px;
