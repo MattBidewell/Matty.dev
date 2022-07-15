@@ -1,26 +1,27 @@
 import styles from "./BlogLinks.module.css";
-import * as posts from "../../../posts.json";
+import { getAllPosts } from "../../../lib/api";
 
-export default function BlogLinks() {
+
+export default function BlogLinks({ posts }) {
   return (
     <>
-      <section class="content">
+      <section className="content">
         <section className={styles.bloglinks_content}>
           <h2 className={styles.title}>Blog posts</h2>
-          { createPosts() }
+          { createPosts(posts) }
         </section>
       </section>
     </>
   );
 }
 
-function createPosts() {
-  return Array.from(posts).map((post) => {
+function createPosts(arrayOfPosts) {
+  return Array.from(arrayOfPosts).map((post) => {
     return (
-      <div key={post.link}>
-        <a href={post.link} target="_blank">
+      <div key={post.slug}>
+        <a href={post.linkSlug}>
           <h3>{post.title}</h3>
-          <p>{post.snippet}</p>
+          <p>{post.excerpt}</p>
         </a>
       </div>
     )
