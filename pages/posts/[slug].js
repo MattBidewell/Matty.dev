@@ -33,7 +33,7 @@ const r = new Remarkable({
   }
 });
 
-export default function Post({ post, morePosts, preview }) {
+export default function Post({ post }) {
   const router = useRouter()
   if (!router.isFallback && !post?.slug) {
     return <ErrorPage statusCode={404} />
