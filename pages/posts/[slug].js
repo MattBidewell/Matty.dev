@@ -7,6 +7,8 @@ import { getPostBySlug, getAllPosts } from "../../lib/api"
 import { Remarkable } from "remarkable";
 import PostBody from "../../components/blog/post-body";
 
+import styles from './Post.module.css'
+
 // import Container from "../../components/container"
 // import Header from "../../components/header"
 // import PostHeader from "../../components/post-header"
@@ -35,6 +37,7 @@ const r = new Remarkable({
 
 export default function Post({ post }) {
   const router = useRouter()
+
   if (!router.isFallback && !post?.slug) {
     return <ErrorPage statusCode={404} />
   }
@@ -47,10 +50,10 @@ export default function Post({ post }) {
       </Head>
       <main className="page-content">
         <TopContent />
-        <h1>
+        <h1 className={styles.title}>
           {post.title}
         </h1>
-        <p className="date">Publish date: {post.date}</p>
+        <p className={styles.date}>{post.date}</p>
         <PostBody content={post.content} />
       </main>
       <Footer />
