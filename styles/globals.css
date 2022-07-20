@@ -46,13 +46,11 @@ img {
   margin-bottom: 40px;
 }
 
-/* code {
-  background: #fafafa;
-  color: #343535;
-  border-radius: 5px;
-  padding: 0.75rem;
-  font-family: Menlo, Monaco, Lucida Console, Courier New, monospace;
-} */
+.date {
+  font-style: italic;
+  color: #5980c0;
+  font-weight:300;
+}
 
 pre {
   background: #2b2b2b;

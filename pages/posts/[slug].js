@@ -50,6 +50,7 @@ export default function Post({ post }) {
         <h1>
           {post.title}
         </h1>
+        <p className="date">Publish date: {post.date}</p>
         <PostBody content={post.content} />
       </main>
       <Footer />
