@@ -25,12 +25,10 @@ export default function Home({ posts }) {
 export const getStaticProps = async () => {
   const posts = getAllPosts([
     "title",
-    "date",
     "slug",
     "excerpt",
     "linkSlug"
   ])
-
   return {
     props: { posts },
   }

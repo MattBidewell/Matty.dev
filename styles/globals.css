@@ -64,6 +64,9 @@ code {
   background: #2b2b2b;
   color: #ffefe0;
   border-radius: 5px;
+}
+
+p code {
   padding: 5px;
 }
 
