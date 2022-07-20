@@ -1,6 +1,6 @@
 ---
 title: AWS Lambda Function URLs
-date: 2022-07-14
+date: 2022-04-08
 status: live
 excerpt: AWS announced a new feature to lambda. Lambda URLs, lets break them down and investigate.
 ---
