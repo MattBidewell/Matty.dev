@@ -20,7 +20,8 @@ function createPosts(arrayOfPosts) {
     return (
       <div key={post.slug}>
         <a href={post.linkSlug}>
-          <h3>{post.title}</h3>
+          <h3 className="post-link-title">{post.title}</h3>
+          <p className="date">{post.date}</p>
           <p>{post.excerpt}</p>
         </a>
       </div>

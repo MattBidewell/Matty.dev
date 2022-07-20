@@ -50,6 +50,11 @@ img {
   font-style: italic;
   color: #5980c0;
   font-weight:300;
+  margin-top:0;
+}
+
+.post-link-title {
+  margin-bottom:0;
 }
 
 pre {
