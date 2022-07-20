@@ -1,23 +1,15 @@
 import { useRouter } from "next/router"
-
 import Head from "next/head";
 import Footer from "@components/shared/footer/Footer";
 import TopContent from "@components/shared/topContent/TopContent";
 import { getPostBySlug, getAllPosts } from "../../lib/api"
 import { Remarkable } from "remarkable";
 import PostBody from "../../components/blog/post-body";
-
 import styles from './Post.module.css'
-
-// import Container from "../../components/container"
-// import Header from "../../components/header"
-// import PostHeader from "../../components/post-header"
-// import Layout from "../../components/layout"
-// import PostTitle from "../../components/post-title"
-
 import hljs from 'highlight.js';
 import 'highlight.js/styles/nord.css';
 
+// remarkable and highlight js setup
 const r = new Remarkable({
   highlight: function (str, lang) {
     if (lang && hljs.getLanguage(lang)) {

@@ -1,4 +1,6 @@
 import styles from './Footer.module.css'
+import Analytics from "../meta/Analytics"
+
 
 export default function Footer() {
   return (
@@ -27,6 +29,7 @@ export default function Footer() {
         </a>
         <p>© 2022 Matt Bidewell</p>
       </footer>
+      <Analytics />
     </>
   );
 }
