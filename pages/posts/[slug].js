@@ -8,6 +8,8 @@ import PostBody from "../../components/blog/post-body";
 import styles from './Post.module.css'
 import hljs from 'highlight.js';
 import 'highlight.js/styles/nord.css';
+import HeadBlock from "@components/shared/meta/Head";
+
 
 // remarkable and highlight js setup
 const r = new Remarkable({
@@ -35,11 +37,7 @@ export default function Post({ post }) {
   }
   return (
     <div className="container">
-      <Head>
-        <title>Matty.dev | {post.title}</title>
-        <link rel="icon" href="/avatar.png" />
-        <meta charSet="utf-8"/>
-      </Head>
+      <HeadBlock/>
       <main className="page-content">
         <TopContent />
         <h1 className={styles.title}>
