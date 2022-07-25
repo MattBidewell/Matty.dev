@@ -12,6 +12,7 @@ export default function Nav() {
             <a href="/about">about</a>
           </li>
         </ul>
+        <img src="../avatar.png"/>
       </nav>
     </>
   )
