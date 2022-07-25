@@ -6,7 +6,6 @@
   /* border-top: 5px solid; */
   line-height: 1.75;
   align-self: flex-start;
-  font-weight: 300;
 }
 
 .bloglinks_content div {
@@ -33,7 +32,6 @@
 }
 
 .bloglinks_content p {
-  font-weight: 300;
   color: #34568B
 }
 
