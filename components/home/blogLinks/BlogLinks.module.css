@@ -11,20 +11,11 @@
 .bloglinks_content div {
   margin-bottom: 25px;
   padding: 10px;
-  border-bottom: 1px solid #f8dfc8;
+  border-bottom: 5px solid #f8dfc8;
 }
 
 .bloglinks_content div h3 {
   display: inline-block;
-}
-
-.bloglinks_content div:hover h3 {
-  background-color: #a1ffb5;
-}
-
-.bloglinks_content div:hover a {
-  background-color: #a1ffb5;
-  outline-width: 0px;
 }
 
 .bloglinks_content a {

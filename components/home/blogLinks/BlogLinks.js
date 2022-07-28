@@ -19,11 +19,10 @@ function createPosts(arrayOfPosts) {
   return Array.from(arrayOfPosts).map((post) => {
     return (
       <div key={post.slug}>
-        <a href={post.linkSlug}>
-          <h3 className="post-link-title">{post.title}</h3>
-          <p className="date">{post.date}</p>
-          <p>{post.excerpt}</p>
-        </a>
+        <h3 className="post-link-title">{post.title}</h3>
+        <p className="date">{post.date}</p>
+        <p>{post.excerpt}</p>
+        <a href={post.linkSlug}>Read more...</a>
       </div>
     )
   });
