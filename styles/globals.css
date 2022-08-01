@@ -81,6 +81,11 @@ h2 {
   text-underline-offset: 5px;
 }
 
+.content h2::before, .content h3::before {
+  content: "# ";
+  color: #FF6F61;
+}
+
 .container {
   display: flex;
   flex-direction: column;
