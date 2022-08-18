@@ -4,15 +4,16 @@ import Footer from "@components/shared/footer/Footer";
 import BlogLinks from "@components/home/blogLinks/BlogLinks";
 import { getAllPosts } from "../lib/api";
 import HeadBlock from "@components/shared/meta/Head";
-
+import Content from "@components/home/content/Content";
 
 export default function Home({ posts }) {
   return (
     <div className="container">
-      <HeadBlock/>
+      <HeadBlock />
       <main className="page-content">
         <TopContent />
-        <BlogLinks posts={posts}/>
+        <Content />
+        <BlogLinks posts={posts} />
       </main>
 
       <Footer />
