@@ -40,6 +40,7 @@ img {
   flex: 1;
   flex-direction: column;
   padding: 25px;
+  padding-top: 10px;
   line-height: 1.75;
   align-self: flex-start;
   font-weight: 500;
