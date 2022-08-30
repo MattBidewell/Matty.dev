@@ -27,6 +27,11 @@ export default function Footer() {
         >
           Linkedin
         </a>
+        <a
+          target="_blank"
+          rel="noopener"
+          href="assets/resume/matt-bidewell-resume.pdf"
+        >Resume</a>
         <p>© 2022 Matt Bidewell</p>
       </footer>
       <Analytics />

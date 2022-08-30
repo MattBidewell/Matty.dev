@@ -44,6 +44,13 @@ export default function Content() {
           .
         </p>
         <Skills />
+        <p>
+          <a
+          target="_blank"
+          rel="noopener"
+          href="assets/resume/matt-bidewell-resume.pdf"
+        >Check out my full Resume here</a>
+        </p>
       </section>
     </>
   );

@@ -5,9 +5,18 @@ export default function Content() {
     <>
       <section className={styles["intro-content"]}>
         <h2>{randomEmoji()}</h2>
-        I’m a software engineer that is passionate about open source software
-        and software engineering, with 7+ years of experience in creating
-        well-crafted SaaS solutions in the cloud ☁️.
+        <p>
+          I’m a software engineer that is passionate about open source software
+          and software engineering, with 7+ years of experience in creating
+          well-crafted SaaS solutions in the cloud ☁️.
+        </p>
+        <p>
+          Find out more <a href="/about">here</a> or read my <a
+            target="_blank"
+            rel="noopener"
+            href="assets/resume/matt-bidewell-resume.pdf"
+          >Resume.</a>
+        </p>
       </section>
     </>
   );
