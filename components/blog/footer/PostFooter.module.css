@@ -3,6 +3,11 @@
     width: 217px !important
 }
 
+.coffee-link:hover {
+    background: none;
+    outline: none;
+}
+
 .post-footer {
     padding-top: 25px;
     border-top: 1px solid #eaeaea;
