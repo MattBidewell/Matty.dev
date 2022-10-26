@@ -5,7 +5,7 @@ status: live
 excerpt: Lets look at rust, referencing and variable ownership. Part 2
 ---
 
-This is part two of an intro to Rust and its ownership, referencing and borrowing model. [Read part one here](/posts/rust-and-ownership). Part one showed us that when a variable falls out of scope it is freed from memory. We then looked at who owns variables as they’re passed around int the code.
+This is part two of an intro to Rust and its ownership, referencing and borrowing model. [Read part one here](/posts/2021-01-10-rust-and-ownership). Part one showed us that when a variable falls out of scope it is freed from memory. We then looked at who owns variables as they’re passed around int the code.
 
 ## Referencing
 
@@ -43,7 +43,7 @@ fn calculate_length(s: &String) -> usize {
 
 The clear difference in the code is the use of “&” when passing the variable to the function and in the function definition. The ampersands are called references and they allow us to refer to a value without transferring the ownership of it.
 
-![Rust referencing visualised](../../assets/images/rust-and-referencing-pt-2/01-rust-and-referencing-pt-2.png)
+![Rust referencing visualised](../../assets/images/2021-01-17-rust-and-referencing/01-rust-and-referencing-pt-2.png)
 
 The “&name" syntax creates a reference of the value name but it does not own the value, this means when the scope is dropped in calculate_length Rust will not free the memory. In the calculate_length function, you’ll also note the &String type definition, this indicates the value is a reference.
 

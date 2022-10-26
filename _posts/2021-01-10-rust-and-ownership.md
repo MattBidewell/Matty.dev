@@ -7,7 +7,7 @@ excerpt: Lets look at rust, referencing and variable ownership. Part 1
 
 [Rust](https://www.rust-lang.org/) has grown a great amount in the past few years, so much that it was voted [Stack overflow’s most loved language](https://insights.stackoverflow.com/survey/2020#technology-most-loved-dreaded-and-wanted-languages-loved) in 2020. Nearly 20% more than the runner up Typescript.
 
-![Stackoverflow most loved language](../../assets/images/rust-and-referencing-pt-1/01-rust-and-referencing-pt-1.png)
+![Stackoverflow most loved language](../../assets/images/2021-01-10-rust-and-ownership/01-rust-and-referencing-pt-1.png)
 
 This two-part series will give a high-level overview of one of the main selling points of Rust; its lack of a garbage collector and its Ownership mechanism. We will cover the heap, the stack and variable ownership in part one. Part two will look at borrowing and referencing.
 
@@ -23,11 +23,11 @@ In most high-level languages you’re abstracted away from knowing about the hea
 
 The stack stores data in a stack-like datatype which obeys the rules of last in first out (LIFO). Adding data onto the stack is known as pushing onto the stack and removing is known as popping off the stack. The data stored on the stack must be of a fixed size and not subject to any mutations.
 
-![visualisation of the stack](../../assets/images/rust-and-referencing-pt-1/02-rust-and-referencing-pt-1.png)
+![visualisation of the stack](../../assets/images/2021-01-10-rust-and-ownership//02-rust-and-referencing-pt-1.png)
 
 Data of unknown size or that can be modified is stored inside the heap rather than a stack. Data is dynamically stored inside the heap, your rust process will request some space and the memory allocator allocates a spot in the heap for your data. The memory allocator will then return an address which is the location of that data.
 
-![visualisation of the heap](../../assets/images/rust-and-referencing-pt-1/03-rust-and-referencing-pt-1.png)
+![visualisation of the heap](../../assets/images/2021-01-10-rust-and-ownership//03-rust-and-referencing-pt-1.png)
 
 Pushing onto the Stack is much faster than dealing with the memory allocator as pushing onto the Stack doesn't require finding space for the data and then performing the necessary bookkeeping tasks to prepare for any subsequent allocations.
 
@@ -99,7 +99,7 @@ fn sayHello() {
 // free msg2 memory
 ```
 
-![Rust invalidating a pointer](../../assets/images/rust-and-referencing-pt-1/04-rust-and-referencing-pt-1.png)
+![Rust invalidating a pointer](../../assets/images/2021-01-10-rust-and-ownership//04-rust-and-referencing-pt-1.png)
 
 As you can see, msg and msg2 are never pointing to the same data at the same time. Instead, Rust will invalidate the old pointer and leave only the newest, this solves the issue where msg2 would throw a memory error.
 
@@ -112,7 +112,7 @@ let s2 = s1.clone();
 
 s2 will point to a different data value than s1.
 
-![A clone function](../../assets/images/rust-and-referencing-pt-1/05-rust-and-referencing-pt-1.png)
+![A clone function](../../assets/images/2021-01-10-rust-and-ownership//05-rust-and-referencing-pt-1.png)
 
 ## Ownership and functions
 The functionality of passing variables to a function is similar to those rules for assigning to a value. For example:
@@ -144,4 +144,4 @@ fn doSomething(myName: String) -> String {
 
 But this is a bit counter-intuitive and messy. Instead, Rust has a feature called References.
 
-[Part II will talk about Rusts Referencing and Borrowing!](/posts/rust-and-referencing)
+[Part II will talk about Rusts Referencing and Borrowing!](/posts/2021-01-17-rust-and-referencing)
