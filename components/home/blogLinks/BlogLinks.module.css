@@ -23,7 +23,8 @@
 }
 
 .bloglinks_content p {
-  color: #34568B
+  /* color: #34568B */
+  color: #fdfdfd;
 }
 
 @media only screen and (max-width: 800px) {

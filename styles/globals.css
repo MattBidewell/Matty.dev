@@ -9,8 +9,10 @@
 */
 html,
 body {
-  background-color: #fdfdfd;
-  color: #34568B;
+  /* background-color: #fdfdfd; */
+  /* color: #34568B; */
+  color: #fdfdfd;
+  background-color: #34568B;
   padding: 0;
   margin: 0;
   font-family: Segoe UI,Roboto,Helvetica,Arial,sans-serif,Apple Color Emoji,Segoe UI Emoji,Segoe UI Symbol;
@@ -104,13 +106,9 @@ a:hover {
   /* text-decoration: line-through underline; */
   background-color: #a1ffb5;
   outline-color: #a1ffb5;
-  outline-width: 5px;
+  outline-width: 2px;
   outline-style: solid;
 }
-
-/* ::selection {
-  background: #87fba0;
-} */
 
 @media only screen and (max-width: 800px) {
 

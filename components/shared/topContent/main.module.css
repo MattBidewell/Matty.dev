@@ -1,7 +1,8 @@
 .main {
   font-family: Segoe UI,Roboto,Helvetica,Arial,sans-serif,Apple Color Emoji,Segoe UI Emoji,Segoe UI Symbol;
   font-weight: 500;
-  color: #34568b;
+  /* color: #34568b; */
+  color: #fdfdfd;
   text-decoration-line: none;
 }
 
