@@ -1,0 +1,10 @@
+.coffee {
+    height: 60px !important;
+    width: 217px !important
+}
+
+.post-footer {
+    padding-top: 25px;
+    border-top: 1px solid #eaeaea;
+    text-align: center;
+}
