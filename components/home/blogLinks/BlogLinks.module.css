@@ -23,11 +23,15 @@
   color: var(--text-color)
 }
 
+
 .post-thumbnail {
-  width: 200px;
-  height: 200px;
   justify-content: center;
   align-self: center;
+}
+
+.post-thumbnail img {
+  width: 200px;
+  height: 200px;
 }
 
 .post-container {
@@ -42,6 +46,17 @@
 
 @media only screen and (max-width: 800px) {
   .bloglinks_content, .bloglinks_content div{
+    width: 100%;
+  }
+}
+
+@media only screen and (max-width: 600px) {
+
+  .post-container {
+    flex-direction: column;
+  }
+
+  .post-thumbnail img {
     width: 100%;
   }
 }
