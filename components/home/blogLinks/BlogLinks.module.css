@@ -52,11 +52,26 @@
 
 @media only screen and (max-width: 600px) {
 
-  .post-container {
-    flex-direction: column;
+  .bloglinks_content, .bloglinks_content div{
+    width: 100%;
   }
 
-  .post-thumbnail img {
+  .post-container {
+    flex-direction: column;
     width: 100%;
+  }
+
+  .post-thumbnail, .post-thumbnail img {
+    object-fit: cover;
+    width: 100%;
+  }
+
+  .bloglinks_content div{
+    padding: 0 0 10px 0;
+    margin: 0 0 10px 0;
+  }
+
+  .bloglinks_content p {
+    margin-top: 0.5rem;
   }
 }
