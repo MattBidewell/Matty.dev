@@ -3,7 +3,6 @@
 }
 
 .bloglinks_content {
-  /* border-top: 5px solid; */
   line-height: 1.75;
   align-self: flex-start;
 }
@@ -11,7 +10,7 @@
 .bloglinks_content div {
   margin-bottom: 25px;
   padding: 10px;
-  border-bottom: 5px solid #f8dfc8;
+  border-bottom: 5px solid var(--header-underline);
 }
 
 .bloglinks_content div h3 {
@@ -23,7 +22,7 @@
 }
 
 .bloglinks_content p {
-  color: #34568B
+  color: var(--text-color)
 }
 
 @media only screen and (max-width: 800px) {

@@ -11,7 +11,7 @@
 
 .table tr {
   padding-right:15px;
-  border-bottom: 1px solid #f8dfc8;
+  border-bottom: 1px solid var(--border);
 }
 
 .table ul {

@@ -1,14 +1,14 @@
 .main {
   font-family: Segoe UI,Roboto,Helvetica,Arial,sans-serif,Apple Color Emoji,Segoe UI Emoji,Segoe UI Symbol;
   font-weight: 500;
-  color: #34568b;
+  color: var(--text-color);
   text-decoration-line: none;
 }
 
 .flex_container {
   display: flex;
   padding: 25px;
-  border-bottom: 5px solid;
+  border-bottom: 5px solid var(--header-underline);
 }
 
 .flex_child {

@@ -1,6 +1,6 @@
 .date {
   font-style: italic;
-  color: #5980c0;
+  color: var(--text-color);
   font-weight:300;
   margin-top:0;
   text-align: center;
