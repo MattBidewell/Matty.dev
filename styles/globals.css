@@ -81,6 +81,7 @@ pre {
 code {
   background: var(--code-background);
   border-radius: 5px;
+  color: #fdfdfd;
   word-break: break-word;
   white-space: pre-wrap;
   padding: 0 3px;
