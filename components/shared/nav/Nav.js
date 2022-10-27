@@ -11,6 +11,9 @@ export default function Nav() {
           <li>
             <a href="/about">about</a>
           </li>
+          <li>
+            <a href="/blog">blog</a>
+          </li>
         </ul>
         <a href="/">
           <img src="../avatar.png"/>
