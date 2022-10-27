@@ -11,9 +11,9 @@
  .nav img {
   max-height: 150px;
   width: auto;
-  background: #f8f6f4;
+  background: var(--nav-img-bk);
   border-radius: 100px;
-  border: 1px solid #ffdcbc;
+  border: 1px solid var(--nav-img-border);
   margin-left: auto;
   margin-right: auto;
   display: block;
