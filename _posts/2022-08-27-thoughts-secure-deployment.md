@@ -3,6 +3,7 @@ title: Thoughts on secure deploying code
 date: 2022-08-27
 status: live
 excerpt: A collection of my thoughts on how to securely deploy applications in the cloud.
+alt: A rusty blue pipe with a grey end
 ---
 
 The deployment of code is increasingly becoming a target to threat actors as it is one of the most sensitive parts of the journey to production.

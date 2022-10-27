@@ -59,6 +59,7 @@ export async function getStaticProps({ params }) {
     "date",
     "slug",
     "content",
+    "alt"
   ])
   const content = r.render(post.content || "")
 
