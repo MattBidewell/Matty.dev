@@ -1,14 +1,14 @@
 import styles from "./BlogLinks.module.css";
-import { getAllPosts } from "../../../lib/api";
 
 
-export default function BlogLinks({ posts }) {
+export default function BlogLinks({ posts, hasLimit }) {
   return (
     <>
       <section className="content">
         <section className={styles.bloglinks_content}>
           <h2 className={styles.title}>Blog posts</h2>
-          { createPosts(posts) }
+          {createPosts(posts)}
+          {hasLimit && <a href="/blog">More...</a>}
         </section>
       </section>
     </>
