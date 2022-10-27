@@ -12,7 +12,7 @@ import PostFooter from "@components/blog/footer/PostFooter";
 import styles from "./Post.module.css";
 import hljs from "highlight.js";
 import "highlight.js/styles/nord.css";
-import { getPostBySlug, getAllPosts } from "../../lib/api";
+import { getPostBySlug, getPosts } from "../../lib/api";
 
 // remarkable and highlight js setup
 const r = new Remarkable({
@@ -73,7 +73,7 @@ export async function getStaticProps({ params }) {
 }
 
 export function getStaticPaths() {
-  const posts = getAllPosts(["slug"]);
+  const posts = getPosts(["slug"]);
   return {
     paths: posts.map((post) => {
       return {
