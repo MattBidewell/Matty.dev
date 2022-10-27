@@ -17,7 +17,6 @@ export default function BlogLinks({ posts, hasLimit }) {
 
 function createPosts(arrayOfPosts) {
   return Array.from(arrayOfPosts).map((post) => {
-    console.log(post)
     return (
       <div className={styles["post-container"]} key={post.slug}>
         <picture className={styles["post-thumbnail"]}>
