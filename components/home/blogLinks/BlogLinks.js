@@ -18,11 +18,14 @@ export default function BlogLinks({ posts, hasLimit }) {
 function createPosts(arrayOfPosts) {
   return Array.from(arrayOfPosts).map((post) => {
     return (
-      <div key={post.slug}>
-        <h3 className="post-link-title">{post.title}</h3>
-        <p className="date">{post.date}</p>
-        <p>{post.excerpt}</p>
-        <a href={post.linkSlug}>Read more...</a>
+      <div className={styles["post-container"]} key={post.slug}>
+        <img className={styles["post-thumbnail"]} src={`./assets/images/${post.image}`} />
+        <div className={styles["post-container-content"]}>
+          <h3 className="post-link-title">{post.title}</h3>
+          <p className="date">{post.date}</p>
+          <p>{post.excerpt}</p>
+          <a href={post.linkSlug}>Read more...</a>
+        </div>
       </div>
     )
   });
