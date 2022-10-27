@@ -3,6 +3,7 @@ title: Rust and Referencing pt2
 date: 2021-01-17
 status: live
 excerpt: Lets look at rust, referencing and variable ownership. Part 2
+alt: A crab on a beach
 ---
 
 This is part two of an intro to Rust and its ownership, referencing and borrowing model. [Read part one here](/posts/2021-01-10-rust-and-ownership). Part one showed us that when a variable falls out of scope it is freed from memory. We then looked at who owns variables as they’re passed around int the code.

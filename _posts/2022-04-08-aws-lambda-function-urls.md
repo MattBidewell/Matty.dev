@@ -3,6 +3,7 @@ title: AWS Lambda Function URLs
 date: 2022-04-08
 status: live
 excerpt: AWS announced a new feature to lambda. Lambda URLs, lets break them down and investigate.
+alt: The AWS Lambda logo
 ---
 
 AWS announced a new feature to Lambda, Lambda Function URLs. Here’s a quick rundown of what they are, how they work and two ways of creating them.

@@ -25,7 +25,8 @@ export const getStaticProps = async () => {
     "title",
     "slug",
     "excerpt",
-    "linkSlug"
+    "linkSlug",
+    "alt"
   ], 5)
   return {
     props: { posts },

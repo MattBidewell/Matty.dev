@@ -3,6 +3,7 @@ title: Rust and ownership
 date: 2021-01-10
 status: live
 excerpt: Lets look at rust, referencing and variable ownership. Part 1
+alt: A crab on a beach
 ---
 
 [Rust](https://www.rust-lang.org/) has grown a great amount in the past few years, so much that it was voted [Stack overflow’s most loved language](https://insights.stackoverflow.com/survey/2020#technology-most-loved-dreaded-and-wanted-languages-loved) in 2020. Nearly 20% more than the runner up Typescript.

@@ -8,9 +8,7 @@
 }
 
 .bloglinks_content div {
-  margin-bottom: 25px;
-  padding: 10px;
-  border-bottom: 5px solid var(--header-underline);
+  padding: 5px 15px;
 }
 
 .bloglinks_content div h3 {
@@ -25,8 +23,40 @@
   color: var(--text-color)
 }
 
+
+.post-thumbnail {
+  justify-content: center;
+  align-self: center;
+}
+
+.post-thumbnail img {
+  width: 200px;
+  height: 200px;
+}
+
+.post-container {
+  display: flex;
+  border-bottom: 5px solid var(--header-underline);
+}
+
+.post-container-content {
+  display: flex;
+  flex-direction: column;
+}
+
 @media only screen and (max-width: 800px) {
   .bloglinks_content, .bloglinks_content div{
+    width: 100%;
+  }
+}
+
+@media only screen and (max-width: 600px) {
+
+  .post-container {
+    flex-direction: column;
+  }
+
+  .post-thumbnail img {
     width: 100%;
   }
 }

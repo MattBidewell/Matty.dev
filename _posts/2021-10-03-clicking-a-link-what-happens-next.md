@@ -3,6 +3,7 @@ title: Clicking a link - what happens next?
 date: 2021-10-03
 status: live
 excerpt: Have you ever questioned what happens when you click a <a> tag on a website? How does your browser know what to get? Where to go? I hope to explain the core fundamentals by the end of this post.
+alt: An 8bit image of a 90's style computer
 ---
 
 ## TL;DR
