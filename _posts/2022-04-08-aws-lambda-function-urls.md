@@ -45,7 +45,7 @@ First select advance options and then select `Enable function URL`.
 
 This will bring up a new set of options where you can see the authentication settings and configure CORS options.
 
-![Lambda config panel](../../assets/images/2022-04-08-aws-lambda-function-urls/01-lambda-urls.png)
+![Lambda config panel](../../assets/images/2022-04-08-aws-lambda-function-urls/01-lambda-urls.webp)
 
 What you will see is a new Function URL parameter on the right-hand side of the function options. This is your function URL.
 
