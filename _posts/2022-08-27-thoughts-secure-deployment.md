@@ -22,7 +22,7 @@ The next idea is that you want your cloud provider to handle everything else, ma
 
 The CI action should then upload the artifact (the code) into a securely locked down bucket (S3 for AWS or Cloud Storage for GCP).
 
-![visualisation of a GitHub deployment process](../../assets/images/2022-08-27-thoughts-secure-deployment/github-action.png)
+![visualisation of a GitHub deployment process](../../assets/images/2022-08-27-thoughts-secure-deployment/github-action.webp)
 
 What do I mean by securely locked down? Ideally, you would have only two identities that have access.
 
@@ -33,10 +33,10 @@ The identity that can pull from the s3 bucket should pull get the artifact and t
 
 Finally, the artifact should be promoted to the next environment's bucket which will then trigger the next environment round of deployments. (for example production). Here you might have a slight variation of steps.
 
-![visualisation of the entire journey from GitHub to develop aws](../../assets/images/2022-08-27-thoughts-secure-deployment/github-aws-dev.png)
+![visualisation of the entire journey from GitHub to develop aws](../../assets/images/2022-08-27-thoughts-secure-deployment/github-aws-dev.webp)
 
 The step to promote the artifact to the production environment could be a manual step for additional security. If so, the step should be in the non-prod environment because you don't want developers to have to log in to production to deploy code.
 
-![visualisation of the entire journey from GitHub to production aws](../../assets/images/2022-08-27-thoughts-secure-deployment/github-aws-dev-aws-prod.png)
+![visualisation of the entire journey from GitHub to production aws](../../assets/images/2022-08-27-thoughts-secure-deployment/github-aws-dev-aws-prod.webp)
 
 The important thing is that each step that involves creating, modifying, and deploying code should be as locked down as much as possible. This may mean creating many IAM profiles that do a single job. If a threat actor ever gained access to the system, you could severally limit the ability to traverse across your environments by managing code signing and being diligent with your IAM roles.

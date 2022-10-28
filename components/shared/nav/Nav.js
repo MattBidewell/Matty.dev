@@ -16,9 +16,9 @@ export default function Nav() {
           </li>
         </ul>
         <a href="/">
-          <img src="../avatar.png"/>
+          <img src="../avatar.webp" />
         </a>
       </nav>
     </>
-  )
+  );
 }

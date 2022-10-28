@@ -3,9 +3,13 @@ import styles from "./PostFooter.module.css";
 export default function PostFooter() {
   return (
     <div className={styles["post-footer"]}>
-      <a className={styles["coffee-link"]} href="https://www.buymeacoffee.com/Mattbidewell" target="_blank">
+      <a
+        className={styles["coffee-link"]}
+        href="https://www.buymeacoffee.com/Mattbidewell"
+        target="_blank"
+      >
         <img
-          src="../assets/images/misc/buy-me-a-coffee.png"
+          src="../assets/images/misc/buy-me-a-coffee.webp"
           alt="Buy Me A Coffee"
           className={styles.coffee}
         />

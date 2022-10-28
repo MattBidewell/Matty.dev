@@ -25,7 +25,7 @@ So we’ve clicked the URL, now what? Now the browser needs to resolve the URL t
 
 But that's just an overview, to resolve the URL it will first check the **local browser cache** to see if it's resolved recently, then it will check the **Operating system cache** followed by your **Router cache**. If all these fail then the browser will make a request to the **Resolve server** (which is usually your ISP), to check their **ISP cache**, after which is the **root name server**. The Root server will know where you can get that data from and will direct your request to that location which will be a **Top Level Domain server** **(TLD)** and finally the request will be directed to an **Authoritative name server** which will know everything about the domain name.
 
-![The order in which a DNS lookup happens](../../assets/images/2021-10-03-clicking-a-link-what-happens-next/01-clicking-a-link.png)
+![The order in which a DNS lookup happens](../../assets/images/2021-10-03-clicking-a-link-what-happens-next/01-clicking-a-link.webp)
 
 And now we’ve done it. https://matty.dev has been resolved to be 127.0.0.1. Great, now we’ve got the IP address we can communicate with that address, here's where a protocol called **Transmission Control Protocol (TCP)** comes in.
 
@@ -33,7 +33,7 @@ And now we’ve done it. https://matty.dev has been resolved to be 127.0.0.1. Gr
 
 TCP is a protocol to ensure reliable transmission of packets between a sender and receiver, to do this the receiver has to acknowledge **(ACK)** every packet it receives and if it ever misses one, the sender will resend it. The TCP protocol starts with the **TCP three-way handshake** which establishes the connection between the sender and receiver. To do this the sender will send an SYN the receiver will send an **ACK** then **SYN**, finally the sender will reply with an **ACK**.
 
-![The TCP connection handshake visualised](../../assets/images/2021-10-03-clicking-a-link-what-happens-next/02-clicking-a-link.png)
+![The TCP connection handshake visualised](../../assets/images/2021-10-03-clicking-a-link-what-happens-next/02-clicking-a-link.webp)
 
 The connection has now been made and an HTTP request can be sent to the server and the server can respond with data.
 
