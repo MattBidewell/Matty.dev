@@ -49,7 +49,7 @@ This will bring up a new set of options where you can see the authentication set
 
 What you will see is a new Function URL parameter on the right-hand side of the function options. This is your function URL.
 
-![Lambda description panel](../../assets/images/2022-04-08-aws-lambda-function-urls/02-lambda-urls.jpeg)
+![Lambda description panel](../../assets/images/2022-04-08-aws-lambda-function-urls/02-lambda-urls.webp)
 
 Your code can now be invoked via a web request without the setup of APIGateway!
 

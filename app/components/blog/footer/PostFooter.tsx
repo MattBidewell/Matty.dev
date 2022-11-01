@@ -1,5 +1,7 @@
 import styles from "./PostFooter.module.css";
-import Link from 'next/link'
+import Link from "next/link"
+import Image from "next/image"
+import buyMeCoffeeIm from "../../../../public/assets/images/misc/buy-me-a-coffee.webp";
 
 export default function PostFooter() {
   return (
@@ -10,11 +12,12 @@ export default function PostFooter() {
         target="_blank"
         rel="noreferrer"
       >
-        <img
-          src="../assets/images/misc/buy-me-a-coffee.webp"
-          alt="Buy Me A Coffee"
+      <Image
+          src={buyMeCoffeeIm}
+          alt="'Buy Me A Coffee' logo"
           className={styles.coffee}
-        />
+          placeholder="blur"
+      />
       </Link>
       <p>
         Found my content useful and want to help support me? Consider&nbsp;

@@ -29,7 +29,9 @@
   align-self: center;
 }
 
-.post-thumbnail img {
+.post-thumbnail picture {
+  display: block;
+  position: relative;
   width: 200px;
   height: 200px;
 }

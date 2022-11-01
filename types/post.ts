@@ -4,7 +4,7 @@ export type Post = {
   slug?: string;
   linkSlug: string;
   content: string;
-  alt?: string;
+  alt: string;
   image?: string;
   status?: string;
   date: string;
