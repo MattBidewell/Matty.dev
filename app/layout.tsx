@@ -13,7 +13,9 @@ export default function RootLayout({
         <title>Matty.dev</title>
         <link rel="icon" href="/avatar.webp" />
         <meta charSet="utf-8" />
-        <meta name="description" />
+        <meta name="description" content="The personal site for Matt Bidewell, a software engineer in London,UK" />
+        <meta property="og:description" content="The personal site for Matt Bidewell, a software engineer in London,UK"/>
+        <meta name="twitter:creator" content="@mattbidewell" />
       </head>
       <body>
         <main className="page-content">
