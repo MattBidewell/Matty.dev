@@ -14,7 +14,7 @@ export default function Content() {
           well-crafted SaaS solutions in the cloud ☁️.
         </p>
         <p>
-          Find out more <Link href="/about">here</Link> or read my{" "}
+          Find out more <Link href="/about">about me</Link> or read my{" "}
           <Link
             target="_blank"
             rel="noopener"
