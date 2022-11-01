@@ -1,6 +1,7 @@
 import styles from "./Footer.module.css";
 import Analytics from "../meta/Analytics";
 import ThemeSwitch from "./ThemeSwitch";
+import Link from "next/link";
 
 export default function Footer() {
   return (
@@ -19,34 +20,34 @@ export default function Footer() {
           </p>
         </div>
         <div className={styles.links}>
-          <a
+          <Link
             target="_blank"
             rel="noopener noreferrer"
             href="https://github.com/MattBidewell"
           >
             Github
-          </a>
-          <a
+          </Link>
+          <Link
             target="_blank"
             rel="noopener noreferrer"
             href="https://twitter.com/MattBidewell"
           >
             Twitter
-          </a>
-          <a
+          </Link>
+          <Link
             target="_blank"
             rel="noopener noreferrer"
             href="https://www.linkedin.com/in/matt-bidewell-a4578790/"
           >
             Linkedin
-          </a>
-          <a
+          </Link>
+          <Link
             target="_blank"
             rel="noopener"
             href="assets/resume/matt-bidewell-resume.pdf"
           >
             Resume
-          </a>
+          </Link>
           <p>© 2022 Matt Bidewell</p>
         </div>
       </footer>

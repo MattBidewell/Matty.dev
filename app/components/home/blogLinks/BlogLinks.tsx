@@ -1,4 +1,5 @@
 import { Post } from "../../../../types/post";
+import Link from "next/link";
 import styles from "./BlogLinks.module.css";
 
 export default function BlogLinks({
@@ -14,7 +15,7 @@ export default function BlogLinks({
         <section className={styles.bloglinks_content}>
           <h2 className={styles.title}>Blog posts</h2>
           {createPosts(posts)}
-          {hasLimit && <a href="/blog">More...</a>}
+          {hasLimit && <Link href="/blog">More...</Link>}
         </section>
       </section>
     </>
@@ -32,7 +33,7 @@ function createPosts(arrayOfPosts: Post[]) {
           <h3 className="post-link-title">{post.title}</h3>
           <p className="date">{post.date}</p>
           <p>{post.excerpt}</p>
-          <a href={post.linkSlug}>Read more...</a>
+          <Link href={post.linkSlug}>Read more...</Link>
         </div>
       </div>
     );

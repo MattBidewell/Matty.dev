@@ -1,4 +1,5 @@
 import Skills from "./Skills";
+import Link from 'next/link'
 
 export default function Content() {
   return (
@@ -11,47 +12,47 @@ export default function Content() {
           open, with {`${new Date().getFullYear() - 2015}`}+ years of experience
           in creating well-crafted SaaS solutions in the cloud ☁️ for both the
           public and private sectors. I&apos;m currently working over at{" "}
-          <a target="_blank" rel="noreferrer" href="https://www.gov.uk/">
+          <Link target="_blank" rel="noreferrer" href="https://www.gov.uk/">
             Government Digital Services
-          </a>{" "}
+          </Link>{" "}
           where I&apos;m building the future of Digital Identification.🧑‍💻
         </p>
         <p>
           You can find me on{" "}
-          <a
+          <Link
             target="_blank"
             rel="noopener noreferrer"
             href="https://twitter.com/MattBidewell"
           >
             Twitter
-          </a>
+          </Link>
           , scrutinise my code at{" "}
-          <a
+          <Link
             target="_blank"
             rel="noopener noreferrer"
             href="https://www.github.com/mattbidewell"
           >
             Github
-          </a>{" "}
+          </Link>{" "}
           or get in touch via{" "}
-          <a
+          <Link
             target="_blank"
             rel="noopener noreferrer"
             href="https://www.linkedin.com/in/matt-bidewell-a4578790/"
           >
             LinkedIn
-          </a>
+          </Link>
           .
         </p>
         <Skills />
         <p>
-          <a
+          <Link
             target="_blank"
             rel="noopener"
             href="assets/resume/matt-bidewell-resume.pdf"
           >
             Check out my full Resume here
-          </a>
+          </Link>
         </p>
       </section>
     </>

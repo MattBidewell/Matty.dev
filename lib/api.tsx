@@ -25,6 +25,7 @@ export function getPostBySlug(slug: string, fields: string[] = []): Post {
     date: "1970-01-01",
     excerpt: "e",
     content: "c",
+    linkSlug: "l"
   };
 
   if (data.date) {

@@ -1,3 +1,4 @@
+import Link from "next/link";
 import styles from "./Content.module.css";
 
 export default function Content() {
@@ -13,14 +14,14 @@ export default function Content() {
           well-crafted SaaS solutions in the cloud ☁️.
         </p>
         <p>
-          Find out more <a href="/about">here</a> or read my{" "}
-          <a
+          Find out more <Link href="/about">here</Link> or read my{" "}
+          <Link
             target="_blank"
             rel="noopener"
             href="assets/resume/matt-bidewell-resume.pdf"
           >
             Resume.
-          </a>
+          </Link>
         </p>
       </section>
     </>
