@@ -1,5 +1,6 @@
 import { Post } from "../../../../types/post";
 import Link from "next/link";
+import Image from "next/image"
 import styles from "./BlogLinks.module.css";
 
 export default function BlogLinks({
@@ -26,9 +27,11 @@ function createPosts(arrayOfPosts: Post[]) {
   return Array.from(arrayOfPosts).map((post) => {
     return (
       <div className={styles["post-container"]} key={post.slug}>
-        <picture className={styles["post-thumbnail"]}>
-          <img src={`./assets/images/${post.image}`} alt={post.alt} />
-        </picture>
+        <div className={styles["post-thumbnail"]}>
+          <picture>
+            <Image src={`/assets/images/${post.image}`} alt={post.alt} fill  placeholder="blur" blurDataURL={`/assets/images/${post.image}`}/>
+          </picture>
+        </div>
         <div className={styles["post-container-content"]}>
           <h3 className="post-link-title">{post.title}</h3>
           <p className="date">{post.date}</p>
