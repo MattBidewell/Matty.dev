@@ -1,9 +1,10 @@
 import styles from "./PostFooter.module.css";
+import Link from 'next/link'
 
 export default function PostFooter() {
   return (
     <div className={styles["post-footer"]}>
-      <a
+      <Link
         className={styles["coffee-link"]}
         href="https://www.buymeacoffee.com/Mattbidewell"
         target="_blank"
@@ -14,12 +15,12 @@ export default function PostFooter() {
           alt="Buy Me A Coffee"
           className={styles.coffee}
         />
-      </a>
+      </Link>
       <p>
         Found my content useful and want to help support me? Consider&nbsp;
-        <a href="https://www.buymeacoffee.com/Mattbidewell">
+        <Link href="https://www.buymeacoffee.com/Mattbidewell">
           buying me a coffee.
-        </a>
+        </Link>
       </p>
     </div>
   );

@@ -1,4 +1,5 @@
 import styles from "./Nav.module.css";
+import Link from 'next/link'
 
 export default function Nav() {
   return (
@@ -6,18 +7,18 @@ export default function Nav() {
       <nav className={styles.nav}>
         <ul>
           <li>
-            <a href="/">home</a>
+            <Link href="/">home</Link>
           </li>
           <li>
-            <a href="/about">about</a>
+            <Link href="/about">about</Link>
           </li>
           <li>
-            <a href="/blog">blog</a>
+            <Link href="/blog">blog</Link>
           </li>
         </ul>
-        <a href="/">
+        <Link href="/">
           <img src="../avatar.webp" />
-        </a>
+        </Link>
       </nav>
     </>
   );
