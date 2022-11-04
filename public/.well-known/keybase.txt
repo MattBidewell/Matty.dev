@@ -1,0 +1,66 @@
+==================================================================
+https://keybase.io/mattbidewell
+--------------------------------------------------------------------
+
+I hereby claim:
+
+  * I am an admin of https://matty.dev
+  * I am mattbidewell (https://keybase.io/mattbidewell) on keybase.
+  * I have a public key with fingerprint FA2E FDAC 8D24 B634 48F8  448C B03E 70CB 3F59 226B
+
+To do so, I am signing this object:
+
+{
+  "body": {
+    "key": {
+      "eldest_kid": "01019ab4a446eaca550185e565ad5745a923e1189ffe3cf97d18923ef8203e0f93c20a",
+      "fingerprint": "fa2efdac8d24b63448f8448cb03e70cb3f59226b",
+      "host": "keybase.io",
+      "key_id": "b03e70cb3f59226b",
+      "kid": "01019ab4a446eaca550185e565ad5745a923e1189ffe3cf97d18923ef8203e0f93c20a",
+      "uid": "5fc7763f35ae15bbd8252810c15e5d19",
+      "username": "mattbidewell"
+    },
+    "service": {
+      "hostname": "matty.dev",
+      "protocol": "https:"
+    },
+    "type": "web_service_binding",
+    "version": 1
+  },
+  "ctime": 1667550465,
+  "expire_in": 157680000,
+  "prev": "a609f4cb987cf23d822aded1b2b00e1b2f30ef182ad9c1be357783998b1ae590",
+  "seqno": 18,
+  "tag": "signature"
+}
+
+which yields the signature:
+
+-----BEGIN PGP MESSAGE-----
+
+owGtUltsTEEY3qWlNnFpmlQEweFFsta53xIVt7oUSStNVMjuzJk522O3e7bnHMum
+WaQeaEriUiIiGiKRNitWXIsEiShaklpUkdBEXNoogqAUcxoSDx7Nw/wz33zf918y
+O0cO9eR5M0XxttkVVMTb9hp6NHR7WA0FTZSk1BoqggcDjiJsO8GIgSiVohmaUQDk
+Ac+LGGhAEGhGFrAgCgAJEi8AheUww8iKrmNO0xUJkTOBdJmlOUzrCqexNKD8lG7E
+wtiKW0bMIbY6YLGOgCYjlocix/OyLpNNg0Qk0RrkdEFhWRESYaVpuwpSHAQ2Dhgm
+wcglOFjeP/j/ue51g3aCrkmSyOmcADAjQIhkVmBlhtYY4okYxSXa2IqBKkzYVcBx
+oIHwehyNUik/RV4Shobd4brd/MVKBhBOEHHcMh1TM6MErnScuK26MicZd3nrMQz+
+dghCI4bIIIkigS3bMGOUyhCm5hiuJSOKEmmUFwU/hTfEDQsHDZchSKJMk+XmIelU
+Coi0ovOrNKjIkqazHGmHBQgjBrKQpjEJOkdjnZEJqmgMxJwgSTKnKDJkABYUmnKb
+qo6ZxFwmhYIwMbWNcAw46yxMpXx1Xi7H483zTCycktMfGEjvmHaWX/Rl/vY/vy93
+iPv1PL4RY/4gCXn4z8ijxQUv707uyb5t/tZVvjd9sUWZ07miY9qy6k1jb/R+yBbX
+9DRtK0iuKS9KH80eWrvbOvKwqm9lbWPngftvqjOZ/dfK64r7ioZf3pEbWj26flPZ
++wV14+v5vJlbniJ1X/pTWUlgVKr5wrzQpKtdqhl8B/zX06saLs54sv3wwvjHr/aV
++LEtSw/iH+nMj8JsWWljT0VLqHvjx2dzH7zvqDx9sy214ruvv3PzBGnrkl0NBaVv
+J287cwF9PkyV+HJrcXNv+6l7C3rvnLoWeByeujCUL85uvbV8lno8c2l0OL+ktrF1
+V30339+RM+pVU/vqEy/s5+lzStOyS2rxyZaB8+em7xmXbvgF
+=4JgY
+-----END PGP MESSAGE-----
+
+And finally, I am proving ownership of this host by posting or
+appending to this document.
+
+View my publicly-auditable identity here: https://keybase.io/mattbidewell
+
+==================================================================
