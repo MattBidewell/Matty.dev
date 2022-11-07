@@ -8,9 +8,9 @@ alt:
 
 ## Background
 
-I've been using the Sam CLI in anger now for the past 10 months. It's great at deploying multiple resources onto AWS and managing local deployments for cloud-based architecture.
+I've been using the Sam CLI for the past 10 months. It's great at deploying multiple resources onto AWS and managing local deployments for cloud-based architecture.
 
-I specifically use it in Monorepos where the source code for multiple Lambda functions exists. These Lambdas are written in different languages. Initially, the Mono repo started with Java but over time Lambda functions written in Typescript were added.
+I specifically use it in monorepos where the source code for multiple Lambda functions exists. These Lambdas are written in different languages. Initially, one monorepo started with Java and over time, Lambda functions written in Typescript were added.
 
 ## The problem
 
@@ -20,9 +20,9 @@ sam build -t infrastructure/lambda/template.yaml
 sam deploy -t infrastructure/lambda/template.yaml
 ```
 
-As our `template.yaml` file was stored in an appropriately named `infrastructure` directory we would need to use the `-t` flag to specify the template to build and deploy.
+As our `template.yaml` file was stored in the appropriately named `infrastructure` directory we would need to use the `-t` flag to specify the template to build and deploy.
 
-> The template.yaml file is the file that contains the Infrastructure as Code (IaC) that is created during deployment. In AWS Sam world, this is Cloudformation.
+> _The template.yaml file is the file that contains the Infrastructure as Code (IaC) that is created during deployment. In AWS Sam world, this is Cloudformation._
 
 The template file looked something akin to this
 
@@ -54,16 +54,18 @@ Globals:
         - src/app.ts
 ```
 
-When we added the initial Typescript lambda to the project, we found that deploying a simple `Hello World` application to Lambda would result in the non-compiled code being deployed. Strange, this made no sense. Was it ESBuild? Sam CLI? Cloudformation?
+When we added the initial Typescript lambda to the project, we found that deploying a simple `Hello World` application to Lambda would result in the non-compiled code being deployed. Strange, this made no sense as AWS Sam is supposed to build and deploy the compiled code. Was it ESBuild? Sam CLI? Cloudformation?
 
-I was able to reproduce it in a new repo and on other stacks, the result was always the same. It would deploy raw Typescript.
+I was able to reproduce it in a new repo and on other stacks, the result was always the same. It would deploy raw Typescript but also the compiled Java.
 
 ## The solution
 
 The problem was the `-t` flag in the deploy command. When `sam build ...` runs, it creates a directory called `.aws-sam` which then holds all the compiled code. Whats important is that `sam build` also creates a new `template.yaml` file in that directory with updated codeUri paths.
 
 ```
-├── ./aws-sam
+├── .aws-sam/ <This is created by AWS Sam>
+│     ├─ template.yaml <created by AWS Sam CLI>
+      └─<Compiled lambda code>
 ├── ...
 ├── infrastructure/
 │   ├── lambda/
