@@ -34,7 +34,7 @@ export default function Footer() {
           >
             Twitter
           </Link>
-          <Link rel="me" href="https://mastodon.social/@MattBidewell">
+          <Link rel="me" href="https://fosstodon.social/@MattBidewell">
             Mastodon
           </Link>
           <Link
