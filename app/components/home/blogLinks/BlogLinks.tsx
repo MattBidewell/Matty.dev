@@ -16,7 +16,11 @@ export default function BlogLinks({
         <section className={styles.bloglinks_content}>
           <h2 className={styles.title}>Blog posts</h2>
           {createPosts(posts)}
-          {hasLimit && <Link href="/blog">More...</Link>}
+          {hasLimit && (
+            <p className={styles["more-link"]}>
+              <Link href="/blog">More posts...</Link>
+            </p>
+          )}
         </section>
       </section>
     </>
@@ -29,14 +33,22 @@ function createPosts(arrayOfPosts: Post[]) {
       <div className={styles["post-container"]} key={post.slug}>
         <div className={styles["post-thumbnail"]}>
           <picture>
-            <Image src={`/assets/images/${post.image}`} alt={post.alt} fill  placeholder="blur" blurDataURL={`/assets/images/${post.image}`}/>
+            <Image
+              src={`/assets/images/${post.image}`}
+              alt={post.alt}
+              fill
+              placeholder="blur"
+              blurDataURL={`/assets/images/${post.image}`}
+            />
           </picture>
         </div>
         <div className={styles["post-container-content"]}>
           <h3 className="post-link-title">{post.title}</h3>
           <p className="date">{post.date}</p>
           <p>{post.excerpt}</p>
-          <Link href={post.linkSlug}>Read more...</Link>
+          <p>
+            <Link href={post.linkSlug}>Read more...</Link>
+          </p>
         </div>
       </div>
     );
