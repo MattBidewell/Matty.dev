@@ -20,9 +20,8 @@
 }
 
 .bloglinks_content p {
-  color: var(--text-color)
+  color: var(--text-color);
 }
-
 
 .post-thumbnail {
   justify-content: center;
@@ -44,6 +43,10 @@
 .post-container-content {
   display: flex;
   flex-direction: column;
+}
+
+.more-link {
+  text-align: center;
 }
 
 @media only screen and (max-width: 800px) {
