@@ -3,7 +3,7 @@ title: "Short: Using AWS Sam incorrectly."
 date: 2022-11-06
 status: live
 excerpt: A short tale of how using a tool incorrectly can lead you on a path of mistakes in your devops
-alt:
+alt: A conveyor belt of boxes with some open and some closed.
 ---
 
 ## Background
