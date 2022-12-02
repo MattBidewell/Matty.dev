@@ -1,7 +1,5 @@
-.timestamp {
+.meta_data {
   font-size: x-small;
-  margin-top: 0px;
-  margin-bottom: 0px;
   padding: 0;
   width: 100%;
   color: var(--meta-info);
