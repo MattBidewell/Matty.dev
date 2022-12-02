@@ -4,6 +4,7 @@ import ThemeSwitch from "./ThemeSwitch";
 import Link from "next/link";
 
 export default function Footer() {
+
   return (
     <>
       <footer className={styles.footer}>
@@ -51,7 +52,14 @@ export default function Footer() {
           >
             Resume
           </Link>
+        </div>
+        <div>
           <p>© 2022 Matt Bidewell</p>
+        </div>
+        <div className={styles.meta_data}>
+          <p style={{margin: 0}}>BUILD_TIME: {process.env.STAMP}</p>
+          <p style={{margin: 0}}>BUILD_ID: {process.env.BUILD_ID}</p>
+          <p style={{margin: 0}}>NODE_VERSION: {process.env.NODE_VERSION}</p>
         </div>
       </footer>
       <ThemeSwitch />
