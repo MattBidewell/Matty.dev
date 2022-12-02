@@ -5,6 +5,11 @@ import Link from "next/link";
 
 export default function Footer() {
 
+  const envs = process.env;
+  for(const env of Object.keys(envs)) {
+    console.log(envs[env]);
+  }
+
   return (
     <>
       <footer className={styles.footer}>
@@ -59,7 +64,6 @@ export default function Footer() {
         <div className={styles.timestamp}>
           <p>Build time: {process.env.STAMP}</p>
           <p>Build id: {process.env.BUILD_ID}</p>
-          <p>test: {process.env}</p>
         </div>
       </footer>
       <ThemeSwitch />
