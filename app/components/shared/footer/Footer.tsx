@@ -5,9 +5,6 @@ import Link from "next/link";
 
 export default function Footer() {
 
-  const envs = process.env;
-  console.log(envs);
-
   return (
     <>
       <footer className={styles.footer}>
