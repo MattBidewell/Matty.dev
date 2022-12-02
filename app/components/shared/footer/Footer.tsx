@@ -60,8 +60,9 @@ export default function Footer() {
           <p>© 2022 Matt Bidewell</p>
         </div>
         <div className={styles.timestamp}>
-          <p>Build time: {process.env.STAMP}</p>
-          <p>Build id: {process.env.BUILD_ID}</p>
+          <p>BUILD_TIME: {process.env.STAMP}</p>
+          <p>BUILD_ID: {process.env.BUILD_ID}</p>
+          <p>NODE_VERSION: {process.env.NODE_VERSION}</p>
         </div>
       </footer>
       <ThemeSwitch />
