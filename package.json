@@ -6,10 +6,10 @@
     "dev": "next dev",
     "compile": "tsc",
     "build": "next build",
-    "deploy": "npm run stamp && npm run build",
+    "deploy": "STAMP=$(npm run stamp) npm run build",
     "export": "next export",
     "lint": "next lint",
-    "stamp": "date -u > ./public/stamp.txt"
+    "stamp": "date -u > ./public/stamp.txt && echo ./public/stamp.txt"
   },
   "dependencies": {
     "gray-matter": "^4.0.3",
