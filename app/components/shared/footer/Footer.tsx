@@ -6,9 +6,7 @@ import Link from "next/link";
 export default function Footer() {
 
   const envs = process.env;
-  for(const env of Object.keys(envs)) {
-    console.log(envs[env]);
-  }
+  console.log(envs);
 
   return (
     <>
