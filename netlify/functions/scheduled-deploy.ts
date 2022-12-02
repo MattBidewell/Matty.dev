@@ -1,22 +1,33 @@
 import { schedule } from '@netlify/functions'
-
+import axios from "axios";
 
 // set to run 8am every Friday.
 // Hits a Post request to a build hook URL which triggers a rebuild of the primary website.
 
 // export const handler = schedule("0 8 * * 5" ,async () => {
 export const handler = schedule("5 * * * *" ,async () => {
-  // const buildHook = new URL(process.env.BUILD_HOOK as string);
-  console.log(process.env.BUILD_HOOK)
-  console.log("Testing");
-  // const res = await fetch(buildHook, {
-  //   method: "POST"
-  // });
+  try {
+    console.log("Starting... ")
+    const buildHook = process.env.BUILD_HOOK as string;
+    console.log("Hook: " + buildHook);
 
-  // const resJson = await res.json();
-  // console.log(resJson);
+    console.log("Sending req...")
+    const res = await axios({
+      url: buildHook,
+      method: "POST"
+    })
 
-  return {
-    statusCode: 200
+    console.log("status: " + res.status);
+    console.log("body: " + res.data);
+
+    return {
+      statusCode: 200
+    }
+  } catch(err) {
+    console.log("ERROR");
+    console.log(err);
+    return {
+      statusCode: 500
+    }
   }
 });
