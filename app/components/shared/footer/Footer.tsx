@@ -59,6 +59,7 @@ export default function Footer() {
         <div className={styles.timestamp}>
           <p>Build time: {process.env.STAMP}</p>
           <p>Build id: {process.env.BUILD_ID}</p>
+          <p>test: {process.env}</p>
         </div>
       </footer>
       <ThemeSwitch />
