@@ -3,13 +3,13 @@
   "version": "1.0.0",
   "private": true,
   "scripts": {
-    "dev": "next dev",
+    "dev": "STAMP=$(date -u) next dev",
     "compile": "tsc",
     "build": "next build",
-    "deploy": "STAMP=$(npm run stamp) npm run build",
+    "deploy": "npm run stamp && STAMP=$(date -u) npm run build",
     "export": "next export",
     "lint": "next lint",
-    "stamp": "date -u > ./public/stamp.txt && echo ./public/stamp.txt"
+    "stamp": "date -u > ./public/stamp.txt"
   },
   "dependencies": {
     "gray-matter": "^4.0.3",
