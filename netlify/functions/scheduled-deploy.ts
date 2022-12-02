@@ -5,7 +5,7 @@ import axios from "axios";
 // Hits a Post request to a build hook URL which triggers a rebuild of the primary website.
 
 // export const handler = schedule("0 8 * * 5" ,async () => {
-export const handler = schedule("5 * * * *" ,async () => {
+export const handler = schedule("20 * * * *" ,async () => {
   try {
     console.log("Starting... ")
     const buildHook = process.env.BUILD_HOOK as string;
