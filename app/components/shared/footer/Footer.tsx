@@ -58,8 +58,8 @@ export default function Footer() {
         </div>
         <div className={styles.meta_data}>
           <p style={{margin: 0}}>BUILD_TIME: {process.env.STAMP}</p>
-          <p style={{margin: 0}}>BUILD_ID: {process.env.BUILD_ID}</p>
-          <p style={{margin: 0}}>NODE_VERSION: {process.env.NODE_VERSION}</p>
+          {/* <p style={{margin: 0}}>BUILD_ID: {process.env.BUILD_ID}</p> */}
+          {/* <p style={{margin: 0}}>NODE_VERSION: {process.env.NODE_VERSION}</p> */}
         </div>
       </footer>
       <ThemeSwitch />
