@@ -14,6 +14,9 @@ export default function Content() {
           well-crafted SaaS solutions in the cloud ☁️.
         </p>
         <p>
+          In my spare time you'll find me doing recreational programming. Where I dissect codebase's by removing the magic and learning how they work and apply that to my own understanding.
+        </p>
+        <p>
           Find out more <Link href="/about">about me</Link> or read my{" "}
           <Link
             target="_blank"
