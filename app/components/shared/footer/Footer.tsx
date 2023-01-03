@@ -54,7 +54,7 @@ export default function Footer() {
           </Link>
         </div>
         <div>
-          <p>© 2022 Matt Bidewell</p>
+          <p>© {new Date().getFullYear()} Matt Bidewell</p>
         </div>
         <div className={styles.meta_data}>
           <p style={{margin: 0}}>BUILD_TIME: {process.env.STAMP}</p>
