@@ -1,6 +1,6 @@
 ---
-title: How this site was built
-date: 2023-01-02
+title: How this site was built - updated
+date: 2023-01-19
 status: live
 excerpt: A run down on how this site is built as of 2023.
 alt: A cartoon image of a fish with glasses in a fish bowl.
@@ -38,3 +38,11 @@ I use [Highlight.JS](https://www.npmjs.com/package/highlight.js) plugin for Rema
 ## General notes
 
 So that I can time posts to release on a specific day, I also rebuild my site automatically once a week. To do this I use a Netlify scheduled function and to ping my sites Netlify build url which will kick off a fresh build at 8am. You can find this code in the `netlify/functions/scheduled-deploy.ts`
+
+## Deployment
+
+As everything is handled by Netlify, there are no Github actions. Instead, Netlify watches the `main` branch for changes and deploys accordingly. A nice feature is Netlify will also look PR's and deploy them to a temporary site for manual review, good for [dependabot PR's](https://github.com/dependabot).
+Here's a diagram of how that looks.
+
+
+![A diagram detailing the deployment process of this site](../../assets/images/2023-01-02-how-i-built-this-site/deployment-overview.webp)
