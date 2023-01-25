@@ -38,6 +38,7 @@ Goals:
 
 - **Health Improvements**
   - Weight loss:
+    - Start 256lbs
     - Target of 210lbs
     - Bonus < 200lbs
   - Running:
