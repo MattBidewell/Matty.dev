@@ -1,8 +1,8 @@
 ---
 title: Best Logging practices
-date: 2023-02-18
+date: 2023-02-17
 status: live
-excerpt: A dive into some ideas around best practices for logging in your code. Why do you want logging? when you should and shouldnt.
+excerpt: A dive into some ideas around best practices for logging in your code. Why do you want logging? when you should and shouldn't.
 alt: A selection of logs on the ground in a gree field.
 ---
 
