@@ -22,7 +22,7 @@ Here are some examples of alternatives to the standard output of a language:
 
 ### 1. Test your logs
 
-I don't mean unit tests. What I mean is if you write logs then go into your service and take a look at the output. Anwser the following,  is it what you expected? Is anything missing? Are they understandable? Do you need more/less context?
+I don't mean unit tests. What I mean is if you write logs then go into your service and take a look at the output. Answer the following,  is it what you expected? Is anything missing? Are they understandable? Do you need more/less context?
 
 Share it with a teammate and ask do they understand the output?
 
