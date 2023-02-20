@@ -10,12 +10,10 @@ export default function Content() {
           I&apos;m Matt Bidewell, I’m a jack of all trades software engineer
           that is passionate about open source software and developing in the
           open, with {`${new Date().getFullYear() - 2015}`}+ years of experience
-          in creating well-crafted SaaS solutions in the cloud ☁️ for both the
-          public and private sectors. I&apos;m currently working over at{" "}
-          <Link target="_blank" rel="noreferrer" href="https://www.gov.uk/">
-            Government Digital Services
-          </Link>{" "}
-          where I&apos;m building the future of Digital Identification.🧑‍💻
+          in creating well-crafted SaaS solutions in the cloud ☁️. I&apos;m currently a Senior Software Engineer over at{" "}
+          <Link target="_blank" rel="noreferrer" href="https://beamery.com/">
+            Beamery
+          </Link>.
         </p>
         <p>
           You can find me on{" "}
