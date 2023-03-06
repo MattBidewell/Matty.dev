@@ -6,9 +6,17 @@ excerpt: Vibes catch up for 2023
 alt:
 ---
 
-Goal catchup
+## Life 👨🏻‍🦰
 
-- **Health Improvements**
+## TV and film 📺
+
+## What I've been reading 📚
+
+## What I've written.. ✍️
+
+## Goal catchup
+
+- **Health Improvements**a
   - Weight loss:
     - Current weight: **300lbs**
     - Target of 210lbs
