@@ -1,6 +1,39 @@
 import "./styles/globals.css";
 import TopContent from "./components/shared/topContent/TopContent";
 import Footer from "./components/shared/footer/Footer";
+import type { Metadata } from "next";
+
+const desc =
+  "A software engineer that is passionate about open source software and software engineering, with 7+ years of experience in creating well-crafted SaaS solutions in the cloud...";
+
+export const metadata: Metadata = {
+  title: "Matty.dev",
+  applicationName: "Matty.dev",
+  icons: {
+    icon: "/avatar.png",
+    shortcut: "/shortcut-icon.png",
+    apple: "/apple-icon.png",
+  },
+  description: desc,
+  referrer: "strict-origin-when-cross-origin",
+  keywords: ["Matthew Bidewell", "Matt Bidewell", "software Engineer"],
+  authors: [{ name: "Matthew Bidewell" }],
+  creator: "Matthew Bidewell",
+  publisher: "Matthew Bidewell",
+  formatDetection: {
+    email: false,
+    address: false,
+    telephone: false,
+  },
+  twitter: {
+    card: "summary",
+    title: "Matty.dev",
+    description: desc,
+    siteId: "@mattbidewell",
+    creator: "@mattbidewell",
+    creatorId: "mattbidewell"
+  },
+};
 
 export default function RootLayout({
   children,
@@ -9,15 +42,6 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
-      <head>
-        <title>Matty.dev</title>
-        <link rel="icon" href="/avatar.webp" />
-        <meta charSet="utf-8" />
-        <meta name="description" content="The personal site for Matt Bidewell, a software engineer in London,UK" />
-        <meta property="og:description" content="The personal site for Matt Bidewell, a software engineer in London,UK"/>
-        <meta name="twitter:creator" content="@mattbidewell" />
-        <meta name="viewport" content="width=device-width,initial-scale=1"/>
-      </head>
       <body>
         <main className="page-content">
           <TopContent />
