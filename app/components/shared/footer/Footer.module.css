@@ -30,3 +30,7 @@
   justify-content: right;
   align-items: center;
 }
+
+.theme-link {
+  cursor: pointer;
+}
