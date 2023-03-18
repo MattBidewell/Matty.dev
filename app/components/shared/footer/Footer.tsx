@@ -11,11 +11,11 @@ export default function Footer() {
         <div className="theme-container">
           <p>
             <strong>Theme | </strong>
-            <span className="theme" data-theme="light">
+            <span className={`${styles["theme-link"]} theme`} data-theme="light">
               Light
             </span>{" "}
             |&nbsp;
-            <span className="theme" data-theme="dark">
+            <span className={`${styles["theme-link"]} theme`} data-theme="dark">
               Dark
             </span>
           </p>
