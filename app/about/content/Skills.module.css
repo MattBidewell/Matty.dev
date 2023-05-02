@@ -1,19 +1,7 @@
-.table {
-  text-align: left;
-  width: 100%;
-  border-collapse: collapse;
+.container {
+  display: flex;
 }
 
-.table th {
-  padding-top: 12px;
-  padding-bottom: 12px;
-}
-
-.table tr {
-  padding-right:15px;
-  border-bottom: 1px solid var(--border);
-}
-
-.table ul {
-  list-style: none;
+.item {
+  flex-grow: 1;
 }
