@@ -4,7 +4,7 @@ export default function Skills() {
   return (
     <>
       <h3>Current Skills</h3>
-      <p>Skills that I'm currently actively using in my current job or in my personal projects.</p>
+      <p>Skills that I&apos;m currently actively using in my current job or in my personal projects.</p>
       {generateCurrentSkills()}
       <h3>Other skills</h3>
       <p>Skills tthat I might not be using day to day, but have a history of using.</p>
