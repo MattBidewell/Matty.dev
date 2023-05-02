@@ -3,63 +3,92 @@ import styles from "./Skills.module.css";
 export default function Skills() {
   return (
     <>
-      <h3>Skills</h3>
-      <table className={styles.table}>
-        <thead>
-          <tr>
-            <th>Category</th>
-            <th>Skill</th>
-          </tr>
-        </thead>
-        <tbody>{generateSkills()}</tbody>
-      </table>
+      <h3>Current Skills</h3>
+      <p>Skills that I'm currently actively using in my current job or in my personal projects.</p>
+      {generateCurrentSkills()}
+      <h3>Other skills</h3>
+      <p>Skills tthat I might not be using day to day, but have a history of using.</p>
+      {generateOtherSkills()}
     </>
   );
 }
 
-function generateSkills() {
-  const skills = {
-    Cloud: ["AWS"],
-    IaC: ["Cloudformation", "Terraform"],
-    Backend: ["NodeJS", "Go", "Java", "Python", "Bash/sh"],
-    Frontend: ["HTML", "CSS", "Javascript", "ReactJS", "NextJS", "Nunjucks"],
-    "CI/CD": ["Bitbucket Pipelines", "Github Actions", "CodeDeploy"],
-    Miscellaneous: [
-      "Serverless",
-      "TDD",
-      "BDD",
-      "Unit Testing",
-      "Browser Testing",
-    ],
-  };
+function generateCurrentSkills() {
+  const currentSkills = ["NodeJS", "GoLang", "AWS", "GCP", "Cloudformation", "Terraform", "Bitbucket Pipelines", "Github Actions", "CodeDeploy", "GitLab", "Serverless", "TDD", "BDD", "Unit Testing"]
 
-  const output = Object.keys(skills).map((keyStr) => {
-    const key = keyStr as keyof typeof skills;
+  const set1 = currentSkills.slice(0, Math.ceil(currentSkills.length / 2));
+  const set2 = currentSkills.slice(Math.ceil(currentSkills.length / 2), currentSkills.length);
 
-    const category = (
-      <>
-        <td>{key}</td>
-      </>
-    );
-
-    const skill = (
-      <td>
-        <ul>
-          {skills[key].map((skill) => {
-            return <li key={skill}> {skill} </li>;
-          })}
-        </ul>
-      </td>
-    );
-
+  const col1 = set1.map((skill) => {
     return (
       <>
-        <tr>
-          {category}
-          {skill}
-        </tr>
+        <li>{skill}</li>
       </>
-    );
-  });
-  return output;
+    )
+  })
+
+  const col2 = set2.map((skill) => {
+    return (
+      <>
+        <li>{skill}</li>
+      </>
+    )
+  })
+
+  return (
+    <>
+      <div className={styles.container}>
+        <div className={styles.item}>
+          <ul>
+            {col1}
+          </ul>
+        </div>
+        <div className={styles.item}>
+          <ul>
+            {col2}
+          </ul>
+        </div>
+      </div>
+      </>
+  )
+}
+
+function generateOtherSkills() {
+  const otherSkills = ["HTML", "CSS", "Javascript", "NextJS", "Nunjucks", "Java", "Python"];
+
+  const set1 = otherSkills.slice(0, Math.ceil(otherSkills.length / 2));
+  const set2 = otherSkills.slice(Math.ceil(otherSkills.length / 2), otherSkills.length);
+
+  const col1 = set1.map((skill) => {
+    return (
+      <>
+        <li>{skill}</li>
+      </>
+    )
+  })
+
+  const col2 = set2.map((skill) => {
+    return (
+      <>
+        <li>{skill}</li>
+      </>
+    )
+  })
+
+  return (
+    <>
+      <div className={styles.container}>
+        <div className={styles.item}>
+          <ul>
+            {col1}
+          </ul>
+        </div>
+        <div className={styles.item}>
+          <ul>
+            {col2}
+          </ul>
+        </div>
+      </div>
+      </>
+  )
 }
