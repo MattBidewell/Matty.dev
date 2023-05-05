@@ -4,10 +4,10 @@
 
 :root,[data-theme="light"] {
   --bg-color: #FDFDFD;
-  --text-color: #222;
-  --header-color: #FF6F61;
+  --text-color: #5d5d5d;
+  --header-color: #ef802b;
   --highlight-color: #a9d2f7;
-  --link-color: #FF6F61;
+  --link-color: #ef802b;
   --code-background: #313030;
   --code-background-sml: #eeeeee;
   --code-background-sml-outline: #e2e2e2;
@@ -42,6 +42,7 @@ body {
   padding: 0;
   margin: 0;
   font-family: Segoe UI,Roboto,Helvetica,Arial,sans-serif,Apple Color Emoji,Segoe UI Emoji,Segoe UI Symbol;
+  font-size: 18px;
   -webkit-font-smoothing: antialiased;
 }
 
@@ -105,13 +106,7 @@ p code {
   white-space: nowrap;
 }
 
-h1 {
-  font-family: Segoe UI,Roboto,Helvetica,Arial,sans-serif,Apple Color Emoji,Segoe UI Emoji,Segoe UI Symbol;
-  letter-spacing: 2.5px;
-  -webkit-font-smoothing: antialiased;
-}
-
-h2 {
+h1, h2 {
   text-decoration-line: underline;
   text-decoration-thickness: 3px;
   text-decoration-color: var(--header-underline);
