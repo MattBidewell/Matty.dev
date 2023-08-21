@@ -7,7 +7,7 @@ export default function Skills() {
       <p>Skills that I&apos;m currently actively using in my current job or in my personal projects.</p>
       {generateCurrentSkills()}
       <h3>Other skills</h3>
-      <p>Skills tthat I might not be using day to day, but have a history of using.</p>
+      <p>Skills that I might not be using day to day, but have a history of using.</p>
       {generateOtherSkills()}
     </>
   );
