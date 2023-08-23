@@ -9,12 +9,13 @@ export default function Skills() {
       <h3>Other skills</h3>
       <p>Skills that I might not be using day to day, but have a history of using.</p>
       {generateOtherSkills()}
+      <p>to name just a few</p>
     </>
   );
 }
 
 function generateCurrentSkills() {
-  const currentSkills = ["NodeJS", "GoLang", "AWS", "GCP", "Cloudformation", "Terraform", "Bitbucket Pipelines", "Github Actions", "CodeDeploy", "GitLab", "Serverless", "TDD", "BDD", "Unit Testing"]
+  const currentSkills = ["NodeJS", "GoLang", "AWS", "GCP", "Cloudformation", "Terraform", "Kubernetes", "Serverless", "TDD", "BDD", "Unit Testing"]
 
   const set1 = currentSkills.slice(0, Math.ceil(currentSkills.length / 2));
   const set2 = currentSkills.slice(Math.ceil(currentSkills.length / 2), currentSkills.length);
