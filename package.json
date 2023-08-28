@@ -19,7 +19,8 @@
     "next": "^13.4.12",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
-    "remarkable": "^2.0.1"
+    "remarkable": "^2.0.1",
+    "xml2js": "^0.6.2"
   },
   "devDependencies": {
     "@netlify/plugin-nextjs": "^4.37.0",
@@ -27,6 +28,7 @@
     "@types/react": "18.0.28",
     "@types/react-dom": "18.2.1",
     "@types/remarkable": "^2.0.3",
+    "@types/xml2js": "^0.4.12",
     "eslint": "8.46.0",
     "eslint-config-next": "^13.4.12",
     "typescript": "^5.0.4"
