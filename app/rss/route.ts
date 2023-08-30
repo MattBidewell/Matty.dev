@@ -2,13 +2,13 @@ import { NextResponse } from "next/server";
 import { getPosts } from "../../lib/api";
 import * as xml2js from "xml2js";
 
-export async function GET(request: Request) {
+export async function GET(_: Request) {
   const data = getPosts(["title", "excerpt", "linkSlug", "alt"]);
   const rssDataJSON = {
     rss: {
       $: {
         version: "2.0",
-        "xmlns:atom":"http://www.w3.org/2005/Atom"
+        "xmlns:atom": "http://www.w3.org/2005/Atom"
       },
       channel: {
         title: "The homepage of Matt Bidewell - Matty.dev",
@@ -36,8 +36,11 @@ export async function GET(request: Request) {
   const builder: any = new xml2js.Builder();
 
   const xml: string = builder.buildObject(rssDataJSON);
-  xml.replace("<root>", `<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">`);
-  xml.replace("</root>", `</rss>`);
-  console.log(xml)
-  return new NextResponse(xml)
+  const res = new NextResponse(xml, {
+    status: 200,
+    headers: {
+      "Content-Type": "application/rss+xml"
+    }
+  });
+  return res
 }
