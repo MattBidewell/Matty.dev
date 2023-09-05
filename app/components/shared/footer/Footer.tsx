@@ -54,6 +54,9 @@ export default function Footer() {
           </Link>
         </div>
         <div>
+          <p><i>`&quot;`Everyone you meet is fighting a battle you know nothing about. Be kind. Always`&quot;`</i> - Robin Williams</p>
+        </div>
+        <div>
           <p>© {new Date().getFullYear()} Matt Bidewell</p>
         </div>
         <div className={styles.meta_data}>
