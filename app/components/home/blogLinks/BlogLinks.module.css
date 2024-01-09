@@ -15,10 +15,6 @@
   display: inline-block;
 }
 
-.bloglinks_content a {
-  text-decoration: none;
-}
-
 .bloglinks_content p {
   color: var(--text-color);
 }
@@ -46,7 +42,18 @@
 }
 
 .more-link {
+  text-align: right;
+}
+
+.table-content p {
+  margin: 0;
+  margin-bottom: 15px;
+}
+
+.date-cell {
+  /* width: 100px; */
   text-align: center;
+  padding-right: 30px;
 }
 
 @media only screen and (max-width: 800px) {
