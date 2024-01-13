@@ -2,13 +2,14 @@
   display: flex;
   width: 13.5rem;
   list-style: none;
+  flex-direction: column;
 }
 
 .nav li {
   flex: 1;
 }
 
- .nav img {
+.nav img {
   max-height: 150px;
   width: auto;
   background: var(--nav-img-bk);
@@ -27,7 +28,7 @@
   .nav ul {
     width: 12.5rem;
     padding-left:0;
-    align-items: center;
+    flex-wrap: wrap;
   }
 
   .nav img {
@@ -38,5 +39,9 @@
 
   .nav {
     display: inherit;
+  }
+
+  .nav h1 {
+    padding: 0;
   }
 }

@@ -1,16 +1,20 @@
 import styles from "./main.module.css";
 import Nav from "../nav/Nav";
+import Link from "next/link";
+import Image from "next/image";
+import Avatar from "../../../../public/avatar.webp"
 
 export default function TopContent() {
   return (
     <>
       <div className={styles.flex_container}>
-        <div className={styles.flex_child}>
-          <h1 className={styles.main}>Hello 👋🏻</h1>
-          <h2 className={styles.main}>I&apos;m Matt Bidewell</h2>
-          <h2 className={styles.main}>A software engineer in London 👨‍💻</h2>
-        </div>
+        <Link href="/">
+          <Image alt="Illustration of a red haired man" src={Avatar} placeholder="blur" />
+        </Link>
         <Nav />
+        <div className={styles.flex_child}>
+          <h1 className={styles.main}>Matt Bidewell</h1>
+        </div>
       </div>
     </>
   );
