@@ -3,18 +3,18 @@
 /* https://colorhunt.co/palette/dddddd22283130475ef05454 */
 
 :root,[data-theme="light"] {
-  --bg-color: #FDFDFD;
-  --text-color: #5d5d5d;
-  --header-color: #ef802b;
-  --highlight-color: #a9d2f7;
-  --link-color: #ef802b;
+
+  --text-color: #3c3c3c;
+  --header-color: #262626;
+  --link-color: #242220;
+  --link-hover-color: #ffd700;
   --code-background: #313030;
   --code-background-sml: #eeeeee;
   --code-background-sml-outline: #e2e2e2;
-  --header-underline: #f8dfc8;
-  --border:#f8dfc8;
+  --header-underline: #ffd700;
+  /* --border:#f8dfc8; */
   --nav-img-bk: #f8f6f4;
-  --nav-img-border: #ffdcbc;
+  /* --nav-img-border: #ffdcbc; */
   --meta-info: #1f3348;
 }
 
@@ -22,7 +22,6 @@
   --bg-color: #222831;
   --text-color: #DDDDDD;
   --header-color: #fc9d41;
-  --highlight-color: #02475E;
   --link-color: #fc9d41;
   --code-background: #2b2b2b;
   --code-background-sml: #313943;
@@ -56,8 +55,8 @@ main {
   padding: 5rem 5rem;
   margin-left: auto;
   margin-right: auto;
-  max-width: 60rem;
-  min-width: 60rem;
+  max-width: 50rem;
+  min-width: 50rem;
 }
 
 img {
@@ -115,8 +114,8 @@ h1, h2 {
 }
 
 .content h2::before, .content h3::before {
-  content: "# ";
-  color: var(--link-color);
+  /* content: "# "; */
+  /* color: var(--link-color); */
 }
 
 .container {
@@ -125,17 +124,15 @@ h1, h2 {
 }
 
 a {
-  color: var(--link-color);;
-  font-weight: 700;
-  text-decoration: none;
+  color: var(--link-color);
+  text-decoration: underline;
+  font-weight: 500;
 }
 
 a:hover {
   /* text-decoration: line-through underline; */
-  background-color: var(--highlight-color);
-  outline-color: var(--highlight-color);
-  outline-width: 2px;
-  outline-style: solid;
+  color: var(--link-hover-color);
+  font-weight: 700;
 }
 
 blockquote {
