@@ -8,10 +8,13 @@ export default function TopContent() {
   return (
     <>
       <div className={styles.flex_container}>
-        <Link href="/">
+        <Link href="/" className={styles.desktop_avatar}>
           <Image alt="Illustration of a red haired man" src={Avatar} placeholder="blur" />
         </Link>
         <Nav />
+        <Link href="/" className={styles.mobile_avatar}>
+          <Image alt="Illustration of a red haired man" src={Avatar} placeholder="blur" />
+        </Link>
         <div className={styles.flex_child}>
           <h1 className={styles.main}>Matt Bidewell</h1>
         </div>

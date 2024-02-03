@@ -31,9 +31,23 @@
   display: block;
 }
 
+.mobile_avatar {
+  display: none;
+}
 
 @media only screen and (max-width: 800px) {
+
+  .desktop_avatar {
+    display: none;
+  }
+
   .flex_container {
     flex-direction: column-reverse;
+  }
+
+  .mobile_avatar {
+    display: flex;
+    margin-left: 0;
+    margin-right: 0;
   }
 }
