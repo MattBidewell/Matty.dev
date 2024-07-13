@@ -2,8 +2,8 @@
 title: Dotfile Management using Stow
 date: 2024-07-12
 status: live
-excerpt:
-alt:
+excerpt: Battling with DotFiles? I was too. Here's how I used Stow to manage my DotFiles across multiple machines.
+alt: A cartoon laptop with a stack of files on the keyboard
 ---
 
 # Dotfile Management using Stow
@@ -12,7 +12,7 @@ What do changing jobs, getting a new device, or resetting your devices have in c
 
 Recently I was in a similar boat. I turned on my MacBook Pro to find I never updated all my aliases, my ZSH config was just _wrong_. I'd been so tied up on my full-time job laptop that my personal machine had been severely neglected. It was stuck in the 1920s whilst my work machine was in 2020.
 
-I initially, had the idea of writing a shell script to take DotFiles from a Github repo and simply 'cp' them into the relative directories. Well, that was a pretty crap idea. How would I effectively manage version control? I'd have to copy any changes back to the source repo. Scrap that. I want it easy. I want it centralised.
+I initially, had the idea of writing a bash script to take DotFiles from a Github repo and simply 'cp' them into the relative directories. Well, that was a pretty crap idea. How would I effectively manage version control? I'd have to copy any changes back to the source repo. Scrap that. I want it easy. I want it centralised.
 
 Then I had the smart idea of using symbolic links. A symbolic link for those who don't know is:
 
@@ -23,7 +23,7 @@ Yes, that's a ChatGPT definition, don't shoot me.
 Symbolic links allow you to point to another file in a separate part of the file system. This allows you to appear to have the file in one directory when it is in fact in another. This would be great for DotFiles. I could keep them in a Git repo and then write a cheeky little script to create symbolic links in the directory where I want them!
 
 
-```shell
+```bash
 $ tree -a ../
 └── dotFiles
     └── .zshrc
@@ -50,7 +50,7 @@ This means it will take the shape of the directory at the source and replicate i
 
 Looking at the use, this looks like it would work
 
-```shell
+```bash
 $ tree -a ../
 └── dotFiles
     └── .zshrc
@@ -67,7 +67,7 @@ In this example, we ran `stow dotFiles` in the directory above `dotFiles`. This 
 
 But, as know with DotFiles and life in general, they're a mess and never always stored in the same place. We might also want to expand it even further and deal with generic config files. Can we do that with Stow? yes. Why yes you can.
 
-``` shell
+``` bash
 $ tree
 └── vscode
     └── settings.json
@@ -81,7 +81,7 @@ In this example above we're using stow to create a symbolic link in the `~/Libra
 
 So I have control of my target and source, I can create symbolic links at mass and it maintains the source directory shape. From this I can end up with a source directory looking like this:
 
-```shell
+```bash
 .
 ├── .git
 │   └── ... git repo config
@@ -107,10 +107,12 @@ Note how I've decided to use separate directories for each collection of configu
 
 However, I probably still need to maintain an install.sh script. This is fine tho, its fairly simple and just does some basic stow commands.
 
-```shell
+```bash
+
 $ stow git
 $ stow -t ~/Library/Application\ Support/Code/User vscode
 $ stow zsh
+
 ```
 This will create the symbolic links in the correct directories and maintain the source directory shape. This is perfect for me, I can now manage all my DotFiles in a single Git repo and have them easily installed on any machine I want.
 
@@ -118,7 +120,7 @@ But what if I'm on a new laptop and Stow isn't installed? I could run `brew inst
 
 You can see the can of worms here.. Let's automate it...
 
-```shell
+```bash
 if ! command -v brew &> /dev/null; then
   echo "[Homebrew] Homebrew not found, installing..."
   # run brew install but mute the output
@@ -134,7 +136,7 @@ Here the script checks that Brew is installed, if it's not then it installs it. 
 
 The Brewfile looks like this:
 
-```shell
+```bash
 brew "stow"
 # other brew installs
 ```
