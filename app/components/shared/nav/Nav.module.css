@@ -3,6 +3,7 @@
   width: 13.5rem;
   list-style: none;
   flex-direction: column;
+  font-family: Merriweather,Georgia,serif;
 }
 
 .nav li {
