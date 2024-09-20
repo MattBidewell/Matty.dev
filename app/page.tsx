@@ -14,6 +14,6 @@ export default function Home() {
 }
 
 function getData(): Post[] {
-  const posts = getPosts(["title", "slug", "excerpt", "linkSlug", "alt"], 5);
+  const posts = getPosts(["title", "slug", "excerpt", "linkSlug", "alt"], 10);
   return posts;
 }
