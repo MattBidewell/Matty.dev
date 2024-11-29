@@ -20,9 +20,9 @@ export default function Content() {
           <Link
             target="_blank"
             rel="noopener noreferrer"
-            href="https://twitter.com/MattBidewell"
+            href="https://bsky.app/profile/mattbidewell.bsky.social"
           >
-            Twitter
+            Bluesky
           </Link>
           , scrutinise my code at{" "}
           <Link
