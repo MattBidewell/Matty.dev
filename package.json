@@ -18,7 +18,7 @@
     "highlight.js": "^11.8.0",
     "next": "^14.2.10",
     "react": "^18.2.0",
-    "react-dom": "^18.2.0",
+    "react-dom": "^18.3.1",
     "remarkable": "^2.0.1",
     "xml2js": "^0.6.2"
   },
@@ -26,7 +26,7 @@
     "@netlify/plugin-nextjs": "^4.41.3",
     "@types/node": "20.5.9",
     "@types/react": "18.2.47",
-    "@types/react-dom": "18.2.1",
+    "@types/react-dom": "18.3.1",
     "@types/remarkable": "^2.0.3",
     "@types/xml2js": "^0.4.12",
     "eslint": "8.46.0",
