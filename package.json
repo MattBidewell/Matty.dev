@@ -12,7 +12,7 @@
     "stamp": "date -u > ./public/stamp.txt"
   },
   "dependencies": {
-    "@netlify/functions": "^1.4.0",
+    "@netlify/functions": "^2.8.2",
     "axios": "^1.4.0",
     "gray-matter": "^4.0.3",
     "highlight.js": "^11.8.0",
