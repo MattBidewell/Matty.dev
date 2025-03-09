@@ -15,6 +15,12 @@ export default function Nav() {
           <li>
             <Link href="/blog">blog</Link>
           </li>
+          {/* <li>
+            <Link href="/projects">projects</Link>
+          </li> */}
+          <li>
+            <Link href="/bookshelf">bookshelf</Link>
+          </li>
         </ul>
       </nav>
     </>
