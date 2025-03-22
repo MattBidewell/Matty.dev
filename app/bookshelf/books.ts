@@ -11,6 +11,15 @@ export interface Book {
 
 export const books: Book[] = [
   {
+    title: "Outlive",
+    subtitle: " The Science and Art of Longevity",
+    url: "https://www.amazon.co.uk/Audible-Outlive-Science-Art-Longevity/dp/B0BTHVPHLJ",
+    image: "outlive.jpg",
+    audiobook: true,
+    date: new Date("2025-03-22"),
+    rating: 4,
+  },
+  {
     title: "A Court Of Thorns And Roses",
     url: "https://www.amazon.co.uk/Court-Thorns-Roses/dp/B07955KZ1V",
     image: "a-court-of-thorns-and-roses.jpg",
