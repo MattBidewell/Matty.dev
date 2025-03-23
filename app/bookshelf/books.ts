@@ -11,6 +11,15 @@ export interface Book {
 
 export const books: Book[] = [
   {
+    title: "The DOSE Effect",
+    subtitle: "Small habits to boost brain chemistry",
+    url: "https://www.amazon.co.uk/DOSE-Effect-Boosting-Habits-Better/dp/0008667330",
+    image: "the-dose-effect.jpg",
+    audiobook: false,
+    date: new Date('2025-03-23'),
+    rating: 3,
+  },
+  {
     title: "Outlive",
     subtitle: " The Science and Art of Longevity",
     url: "https://www.amazon.co.uk/Audible-Outlive-Science-Art-Longevity/dp/B0BTHVPHLJ",
