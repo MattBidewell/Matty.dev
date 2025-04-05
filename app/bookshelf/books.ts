@@ -11,9 +11,18 @@ export interface Book {
 
 export const books: Book[] = [
   {
-    title: "The Murder Bot Diaries",
+    title: "The Murder Bot Diaries: Vol 1",
+    subtitle: "Artificial Condition",
+    url: "https://www.amazon.co.uk/Artificial-Condition-Murderbot-Martha-Wells-ebook/dp/B075DGHHQL",
+    image: "murderbot-artificial-condition.webp",
+    audiobook: true,
+    date: new Date('2025-04-03'),
+    rating: 4,
+  },
+  {
+    title: "The Murder Bot Diaries: Vol 1",
     subtitle: "All Systems Red",
-    url: "https://www.amazon.co.uk/Murderbot-Diaries-Vol-Artificial-Condition/dp/1250389828",
+    url: "https://www.amazon.co.uk/All-Systems-Red/dp/B076X8K7GX",
     image: "murderbot-all-systems-red.webp",
     audiobook: true,
     date: new Date('2025-03-26'),
