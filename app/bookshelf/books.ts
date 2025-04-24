@@ -11,12 +11,20 @@ export interface Book {
 
 export const books: Book[] = [
   {
+    title: "Understanding Distributed Systems",
+    subtitle: "2nd Edition",
+    url: "https://understandingdistributed.systems/",
+    image: "understanding-distributed-systems.webp",
+    date: new Date("2025-04-24"),
+    rating: 5,
+  },
+  {
     title: "The Murder Bot Diaries: Vol 1",
     subtitle: "Artificial Condition",
     url: "https://www.amazon.co.uk/Artificial-Condition-Murderbot-Martha-Wells-ebook/dp/B075DGHHQL",
     image: "murderbot-artificial-condition.webp",
     audiobook: true,
-    date: new Date('2025-04-03'),
+    date: new Date("2025-04-03"),
     rating: 4,
   },
   {
@@ -25,7 +33,7 @@ export const books: Book[] = [
     url: "https://www.amazon.co.uk/All-Systems-Red/dp/B076X8K7GX",
     image: "murderbot-all-systems-red.webp",
     audiobook: true,
-    date: new Date('2025-03-26'),
+    date: new Date("2025-03-26"),
     rating: 4,
   },
   {
@@ -34,7 +42,7 @@ export const books: Book[] = [
     url: "https://www.amazon.co.uk/DOSE-Effect-Boosting-Habits-Better/dp/0008667330",
     image: "the-dose-effect.webp",
     audiobook: false,
-    date: new Date('2025-03-23'),
+    date: new Date("2025-03-23"),
     rating: 3,
   },
   {
