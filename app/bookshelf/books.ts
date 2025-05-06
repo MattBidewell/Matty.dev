@@ -11,6 +11,15 @@ export interface Book {
 
 export const books: Book[] = [
   {
+    title: "The Murder Bot Diaries: Vol 2",
+    subtitle: "Rogue Protocol",
+    url: "https://www.amazon.co.uk/Murderbot-Diaries-Vol-Protocol-Strategy/dp/1250389836/261-8914524-1372339",
+    image: "murderbot-rogue-protocol.webp",
+    audiobook: true,
+    date: new Date('2025-05-04'),
+    rating: 3,
+  },
+  {
     title: "The Murder Bot Diaries: Vol 1",
     subtitle: "Artificial Condition",
     url: "https://www.amazon.co.uk/Artificial-Condition-Murderbot-Martha-Wells-ebook/dp/B075DGHHQL",
