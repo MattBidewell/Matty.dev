@@ -14,7 +14,7 @@ export const books: Book[] = [
     title: "Deep Work",
     subtitle: "Rules for Focused Success in a Distracted World",
     url: "https://www.amazon.co.uk/Deep-Work-Focused-Success-Distracted/dp/1455586692",
-    image: "deep-work.webp",
+    image: "deepwork.webp",
     rating: 5,
     date: new Date("2025-05-26"),
   },
