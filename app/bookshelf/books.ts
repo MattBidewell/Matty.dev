@@ -11,6 +11,14 @@ export interface Book {
 
 export const books: Book[] = [
   {
+    title: "Deep Work",
+    subtitle: "Rules for Focused Success in a Distracted World",
+    url: "https://www.amazon.co.uk/Deep-Work-Focused-Success-Distracted/dp/1455586692",
+    image: "deep-work.webp",
+    rating: 5,
+    date: new Date("2025-05-26"),
+  },
+  {
     title: "The Murder Bot Diaries: Vol 2",
     subtitle: "Rogue Protocol",
     url: "https://www.amazon.co.uk/Murderbot-Diaries-Vol-Protocol-Strategy/dp/1250389836/261-8914524-1372339",
