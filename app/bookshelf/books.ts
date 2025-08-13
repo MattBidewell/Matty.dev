@@ -18,7 +18,7 @@ export const books: Book[] = [
     rating: 4,
     audiobook: true,
     date: new Date("2025-08-10"),
-},{
+}, {
     title: "The Murder Bot Diaries: Vol 2",
     subtitle: "Exit Strategy",
     url: "https://www.amazon.co.uk/Strategy-Murderbot-Diaries-Martha-Wells/dp/1250191858",
