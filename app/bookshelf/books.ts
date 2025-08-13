@@ -11,6 +11,23 @@ export interface Book {
 
 export const books: Book[] = [
   {
+    title: "The Murder Bot Diaries: Novel",
+    subtitle: "Network Effect",
+    url: "https://www.amazon.co.uk/Network-Effect-Murderbot-Novel-Diaries/dp/1250229863",
+    image: "murderbot-network-effect.webp",
+    rating: 4,
+    audiobook: true,
+    date: new Date("2025-08-10"),
+}, {
+    title: "The Murder Bot Diaries: Vol 2",
+    subtitle: "Exit Strategy",
+    url: "https://www.amazon.co.uk/Strategy-Murderbot-Diaries-Martha-Wells/dp/1250191858",
+    image: "murderbot-exit-strategy.webp",
+    rating: 4,
+    audiobook: true,
+    date: new Date("2025-06-16"),
+},
+  {
     title: "Deep Work",
     subtitle: "Rules for Focused Success in a Distracted World",
     url: "https://www.amazon.co.uk/Deep-Work-Focused-Success-Distracted/dp/1455586692",
