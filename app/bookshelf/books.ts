@@ -11,6 +11,31 @@ export interface Book {
 
 export const books: Book[] = [
   {
+    title: "The Murder Bot Diaries: Vol 3",
+    subtitle: "Fugitive Telemetry",
+    url: "https://www.amazon.co.uk/Fugitive-Telemetry-Murderbot-Diaries-Book-ebook/dp/B088H926KF",
+    image: "murderbot-fugitive-telemetry.webp",
+    audiobook: true,
+    date: new Date("2025-08-24"),
+    rating: 4,
+  },
+  {
+    title: "Learning the vi and Vim Editors",
+    subtitle: "Power and Agility",
+    url: "https://www.amazon.co.uk/Learning-Vim-Editors-Agility-Editing/dp/1492078808",
+    date: new Date("2025-08-20"),
+    image: "learning-the-vi-and-vim-editors.webp",
+    rating: 3,
+  },
+  {
+    title: "tmux 2",
+    subtitle: "Productive Mouse-Free Development",
+    url: "https://www.amazon.co.uk/Memory-Police-Murderbot-Diaries-Book-ebook/dp/B088H926KF",
+    image: "tmux-2.webp",
+    date: new Date("2025-08-14"),
+    rating: 2,
+  },
+  {
     title: "The Murder Bot Diaries: Novel",
     subtitle: "Network Effect",
     url: "https://www.amazon.co.uk/Network-Effect-Murderbot-Novel-Diaries/dp/1250229863",
@@ -18,7 +43,8 @@ export const books: Book[] = [
     rating: 4,
     audiobook: true,
     date: new Date("2025-08-10"),
-}, {
+  },
+  {
     title: "The Murder Bot Diaries: Vol 2",
     subtitle: "Exit Strategy",
     url: "https://www.amazon.co.uk/Strategy-Murderbot-Diaries-Martha-Wells/dp/1250191858",
@@ -26,7 +52,7 @@ export const books: Book[] = [
     rating: 4,
     audiobook: true,
     date: new Date("2025-06-16"),
-},
+  },
   {
     title: "Deep Work",
     subtitle: "Rules for Focused Success in a Distracted World",
@@ -41,7 +67,7 @@ export const books: Book[] = [
     url: "https://www.amazon.co.uk/Murderbot-Diaries-Vol-Protocol-Strategy/dp/1250389836/261-8914524-1372339",
     image: "murderbot-rogue-protocol.webp",
     audiobook: true,
-    date: new Date('2025-05-04'),
+    date: new Date("2025-05-04"),
     rating: 3,
   },
   {
@@ -50,7 +76,7 @@ export const books: Book[] = [
     url: "https://www.amazon.co.uk/Artificial-Condition-Murderbot-Martha-Wells-ebook/dp/B075DGHHQL",
     image: "murderbot-artificial-condition.webp",
     audiobook: true,
-    date: new Date('2025-04-03'),
+    date: new Date("2025-04-03"),
     rating: 4,
   },
   {
@@ -59,7 +85,7 @@ export const books: Book[] = [
     url: "https://www.amazon.co.uk/All-Systems-Red/dp/B076X8K7GX",
     image: "murderbot-all-systems-red.webp",
     audiobook: true,
-    date: new Date('2025-03-26'),
+    date: new Date("2025-03-26"),
     rating: 4,
   },
   {
@@ -68,7 +94,7 @@ export const books: Book[] = [
     url: "https://www.amazon.co.uk/DOSE-Effect-Boosting-Habits-Better/dp/0008667330",
     image: "the-dose-effect.webp",
     audiobook: false,
-    date: new Date('2025-03-23'),
+    date: new Date("2025-03-23"),
     rating: 3,
   },
   {
