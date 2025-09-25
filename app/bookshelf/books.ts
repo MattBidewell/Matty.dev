@@ -12,6 +12,23 @@ export interface Book {
 export const books: Book[] = [
   {
     title: "The Murder Bot Diaries: Vol 3",
+    subtitle: "System collapse",
+    url: "https://www.amazon.co.uk/System-Collapse-Murderbot-Diaries-Book-ebook/dp/B0BQGJHG3Q",
+    image: "murderbot-system-collapse.webp",
+    audiobook: true,
+    date: new Date("2025-09-20"),
+    rating: 3,
+  },
+  {
+    title: "The Horus Heresy",
+    subtitle: "Horus Rising",
+    url: "https://www.amazon.co.uk/Horus-Rising-Heresy-Dan-Abnett/dp/184970743X",
+    image: "horus-heresy-horus-rising.webp",
+    date: new Date("2025-09-18"),
+    rating: 5,
+  },
+  {
+    title: "The Murder Bot Diaries: Vol 3",
     subtitle: "Fugitive Telemetry",
     url: "https://www.amazon.co.uk/Fugitive-Telemetry-Murderbot-Diaries-Book-ebook/dp/B088H926KF",
     image: "murderbot-fugitive-telemetry.webp",
