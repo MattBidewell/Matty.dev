@@ -11,6 +11,14 @@ export interface Book {
 
 export const books: Book[] = [
   {
+    title: "What the Most Successful People Do Before Breakfast",
+    subtitle: "How to Achieve More at Work and at Home",
+    url: "https://www.amazon.co.uk/gp/product/B00E54VDYY",
+    image: "what-the-most-successful-people-do-before-breakfast.webp",
+    date: new Date("2025-10-01"),
+    rating: 3,
+  },
+  {
     title: "The Murder Bot Diaries: Vol 3",
     subtitle: "System collapse",
     url: "https://www.amazon.co.uk/System-Collapse-Murderbot-Diaries-Book-ebook/dp/B0BQGJHG3Q",
