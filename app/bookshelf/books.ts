@@ -11,6 +11,14 @@ export interface Book {
 
 export const books: Book[] = [
   {
+    title: "Project Hail Mary",
+    url: "https://www.amazon.co.uk/Project-Hail-Mary-Andy-Weir/dp/0593135202",
+    image: "project-hail-mary.webp",
+    date: new Date("2025-10-28"),
+    audiobook: true,
+    rating: 5,
+  },
+  {
     title: "What the Most Successful People Do Before Breakfast",
     subtitle: "How to Achieve More at Work and at Home",
     url: "https://www.amazon.co.uk/gp/product/B00E54VDYY",
