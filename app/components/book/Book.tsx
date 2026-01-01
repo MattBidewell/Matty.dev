@@ -1,14 +1,14 @@
 import Image from 'next/image';
 import Link from 'next/link';
-import { Book } from '../../bookshelf/books';
+import { IBook } from "../../bookshelf/books";
 import styles from '../../bookshelf/books.module.css';
 
-export default function Book({ book }: { book: Book }) {
+export default function Book({ book }: { book: IBook }) {
   const formatDate = (date: Date) => {
-    return new Intl.DateTimeFormat('en-GB', {
-      day: 'numeric',
-      month: 'short',
-      year: 'numeric'
+    return new Intl.DateTimeFormat("en-GB", {
+      day: "numeric",
+      month: "short",
+      year: "numeric",
     }).format(date);
   };
 
@@ -20,7 +20,7 @@ export default function Book({ book }: { book: Book }) {
     for (let i = 1; i <= 5; i++) {
       stars.push(
         <span key={i} className={styles.star}>
-          {i <= rating ? '★' : '☆'}
+          {i <= rating ? "★" : "☆"}
         </span>
       );
     }
@@ -28,7 +28,12 @@ export default function Book({ book }: { book: Book }) {
   };
 
   return (
-    <Link href={book.url} target="_blank" rel="noopener noreferrer" className={styles["book-item"]}>
+    <Link
+      href={book.url}
+      target="_blank"
+      rel="noopener noreferrer"
+      className={styles["book-item"]}
+    >
       <div className={styles["book-image-container"]}>
         <Image
           src={`/assets/images/books/${book.image}`}
@@ -37,9 +42,7 @@ export default function Book({ book }: { book: Book }) {
           height={200}
           className={styles["book-image"]}
         />
-        {book.audiobook && (
-          <span className={styles["book-badge"]}>Audio</span>
-        )}
+        {book.audiobook && <span className={styles["book-badge"]}>Audio</span>}
       </div>
 
       <div className={styles["book-info"]}>
