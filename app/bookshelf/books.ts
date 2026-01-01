@@ -1,4 +1,4 @@
-export interface Book {
+export interface IBook {
   title: string;
   subtitle?: string;
   url: string;
@@ -9,7 +9,7 @@ export interface Book {
   audiobook?: boolean;
 }
 
-export const books: Book[] = [
+export const books: IBook[] = [
   {
     title: "Project Hail Mary",
     url: "https://www.amazon.co.uk/Project-Hail-Mary-Andy-Weir/dp/0593135202",
