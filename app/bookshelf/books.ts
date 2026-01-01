@@ -11,6 +11,22 @@ export interface IBook {
 
 export const books: IBook[] = [
   {
+    title: "Mistborn",
+    subtitle: "The Final Empire",
+    url: "https://www.amazon.co.uk/Final-Empire-Mistborn-Book-One/dp/0575089911",
+    image: "mistborn.webp",
+    date: new Date("2026-01-01"),
+    rating: 5,
+  },
+  {
+    title: "The Phoenix Project",
+    subtitle: "A Novel About IT, DevOps, and Helping Your Business Win",
+    url: "https://www.amazon.co.uk/Phoenix-Project-DevOps-Helping-Business/dp/0988262592",
+    image: "phoenix_project.webp",
+    date: new Date("2025-11-25"),
+    rating: 3,
+  },
+  {
     title: "Project Hail Mary",
     url: "https://www.amazon.co.uk/Project-Hail-Mary-Andy-Weir/dp/0593135202",
     image: "project-hail-mary.webp",
