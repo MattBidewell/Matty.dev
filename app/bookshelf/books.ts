@@ -11,6 +11,14 @@ export interface IBook {
 
 export const books: IBook[] = [
   {
+    title: "Dungeon Crawler Carl 1",
+    url: "https://www.amazon.co.uk/Dungeon-Crawler-Carl-Gamelit-Adventure-ebook/dp/B08BKGYQXW",
+    image: "dungeon_crawler_carl_1.webp",
+    date: new Date("2026-01-04"),
+    rating: 4,
+    audiobook: true,
+  },
+  {
     title: "Mistborn",
     subtitle: "The Final Empire",
     url: "https://www.amazon.co.uk/Final-Empire-Mistborn-Book-One/dp/0575089911",
