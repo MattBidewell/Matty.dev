@@ -1,49 +1,61 @@
-@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@100;300;400;700&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=Merriweather:ital,wght@0,300;0,400;0,700;0,900;1,300;1,400;1,700;1,900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@1,500;1,600;1,700&family=JetBrains+Mono:wght@400;500&display=swap');
 
-/* https://colorhunt.co/palette/dddddd22283130475ef05454 */
+/* IC Orange PPL inspired palette - from your Ghostty terminal */
+:root {
+  /* Base backgrounds */
+  --bg-color: #262626;
+  --bg-surface: #1a1a1a;
+  --bg-elevated: #2f2f2f;
 
-:root,[data-theme="light"] {
+  /* Text hierarchy */
+  --text-primary: #ffcb83;
+  --text-secondary: #c69752;
+  --text-heading: #ffc88a;
 
-  --text-color: #3c3c3c;
-  --header-color: #262626;
-  --link-color: #242220;
-  --link-hover-color: #ffd700;
-  --code-background: #313030;
-  --code-background-sml: #eeeeee;
-  --code-background-sml-outline: #e2e2e2;
-  --header-underline: #ffd700;
-  /* --border:#f8dfc8; */
-  --nav-img-bk: #f8f6f4;
-  /* --nav-img-border: #ffdcbc; */
-  --meta-info: #1f3348;
+  /* Accents */
+  --accent-primary: #fc531d;
+  --accent-secondary: #f79500;
+  --accent-hover: #ff8c68;
+
+  /* Borders & subtle elements */
+  --border-color: #6a4f2a;
+  --selection-bg: #c14020;
+
+  /* Code */
+  --code-bg: #1a1a1a;
+  --code-text: #ffe36e;
+  --code-inline-bg: #2f2f2f;
+  --code-inline-border: #6a4f2a;
+
+  /* Legacy mappings for compatibility */
+  --header-color: var(--text-heading);
+  --link-color: var(--accent-secondary);
+  --link-hover-color: var(--accent-hover);
+  --header-underline: var(--accent-secondary);
+  --code-background: var(--code-bg);
+  --code-background-sml: var(--code-inline-bg);
+  --code-background-sml-outline: var(--code-inline-border);
+  --nav-img-bk: var(--bg-elevated);
+  --meta-info: var(--text-secondary);
 }
 
-[data-theme="dark"] {
-  --bg-color: #1d1f21;
-  --text-color: #c9cacc;
-  --header-color: #2bbc8a;
-  --link-color: #2bbc8a;
-  --code-background: #2b2b2b;
-  --code-background-sml: #313943;
-  --code-background-sml-outline: #414a56;
-  --header-underline: #30475E;
-  --border:#f8dfc8;
-  --nav-img-bk: #30475E;
-  --nav-img-border: #02475E;
-  --meta-info: #dddddd;
-  --bg-color-2: #2b3646;
+/* Selection styling */
+::selection {
+  background-color: var(--selection-bg);
+  color: var(--text-primary);
 }
 
 html,
 body {
   background-color: var(--bg-color);
-  color: var(--text-color);
+  color: var(--text-primary);
   padding: 0;
   margin: 0;
-  font-family: Segoe UI,Roboto,Helvetica,Arial,sans-serif,Apple Color Emoji,Segoe UI Emoji,Segoe UI Symbol;
-  font-size: 18px;
+  font-family: 'JetBrains Mono', Consolas, Monaco, 'Lucida Console', monospace;
+  font-size: 16px;
+  font-weight: 400;
   -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
 }
 
 * {
@@ -51,13 +63,13 @@ body {
 }
 
 main {
-  letter-spacing: 1px;
-  line-height: 1.5;
-  padding: 5rem 5rem;
+  letter-spacing: 0.5px;
+  line-height: 1.7;
+  padding: 4rem 2rem;
   margin-left: auto;
   margin-right: auto;
   max-width: 50rem;
-  min-width: 50rem;
+  min-width: auto;
 }
 
 img {
@@ -68,56 +80,102 @@ img {
 .content {
   flex: 1;
   flex-direction: column;
-  padding: 25px;
-  padding-top: 10px;
-  line-height: 1.75;
+  padding: 1.5rem;
+  padding-top: 0.5rem;
+  line-height: 1.8;
   align-self: flex-start;
-  font-weight: 500;
-  margin-bottom: 40px;
+  font-weight: 400;
+  margin-bottom: 1rem;
 }
 
 .post-link-title {
-  margin-bottom:0;
+  margin-bottom: 0;
 }
 
+/* Code blocks with terminal window effect */
 pre {
-  background: var(--code-background);
-  border-radius: 5px;
-  padding: 15px;
+  background: var(--code-bg);
+  border-radius: 8px;
+  padding: 20px;
+  padding-top: 35px;
+  position: relative;
+  border: 1px solid var(--border-color);
+  margin: 1.5rem 0;
+}
+
+pre::before {
+  content: "● ● ●";
+  position: absolute;
+  top: 10px;
+  left: 15px;
+  font-size: 10px;
+  letter-spacing: 4px;
+  color: var(--text-secondary);
+  opacity: 0.6;
 }
 
 pre code {
-  background: var(--code-background);
-  border-radius: 2.5px;
-  color: #fdfdfd;
+  background: transparent;
+  border-radius: 0;
+  color: var(--code-text);
   word-break: break-word;
   white-space: pre-wrap;
-  font-size: small;
-  font-family:Consolas,Monaco,Lucida Console,Liberation Mono,DejaVu Sans Mono,Bitstream Vera Sans Mono,Courier New;
-  padding: 5px;
+  font-size: 14px;
+  font-family: 'JetBrains Mono', Consolas, Monaco, 'Lucida Console', monospace;
+  padding: 0;
+  line-height: 1.6;
 }
 
-p code {
-  padding: 2.5px;
-  font-family: Inconsolata,courier,monospace;
-  font-size: smaller;
-  background-color: var(--code-background-sml);
-  outline: 1px solid var(--code-background-sml-outline);
-  white-space: nowrap;
+p code,
+li code {
+  padding: 2px 6px;
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.9em;
+  background-color: var(--code-inline-bg);
+  border: 1px solid var(--code-inline-border);
+  border-radius: 4px;
+  color: var(--code-text);
 }
 
+/* Headings - elegant italic serif */
 h1, h2 {
-  text-decoration-line: underline;
-  text-decoration-thickness: 3px;
-  text-decoration-color: var(--header-underline);
-  text-underline-offset: 5px;
-  color: var(--header-color);
-  font-family: Merriweather,Georgia,serif;
+  font-family: 'Cormorant Garamond', Georgia, serif;
+  font-style: italic;
+  font-weight: 600;
+  color: var(--text-heading);
+  text-decoration: none;
+  letter-spacing: 0.5px;
 }
 
-.content h2::before, .content h3::before {
-  /* content: "# "; */
-  /* color: var(--link-color); */
+h1 {
+  font-size: 2.5rem;
+  margin-bottom: 0.5rem;
+}
+
+h2 {
+  font-size: 1.75rem;
+  margin-top: 2.5rem;
+  margin-bottom: 1rem;
+  padding-bottom: 0.5rem;
+  border-bottom: 2px solid var(--border-color);
+}
+
+h3 {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 1.1rem;
+  font-weight: 500;
+  color: var(--text-heading);
+  margin-top: 2rem;
+}
+
+/* Terminal-style prefix for content headings */
+.content h2::before,
+.content h3::before {
+  content: "# ";
+  color: var(--accent-secondary);
+  font-family: 'JetBrains Mono', monospace;
+  font-style: normal;
+  font-weight: 400;
 }
 
 .container {
@@ -125,41 +183,125 @@ h1, h2 {
   flex-direction: column;
 }
 
+/* Links */
 a {
   color: var(--link-color);
-  text-decoration: underline;
+  text-decoration: none;
   font-weight: 500;
+  transition: color 0.2s ease;
 }
 
 a:hover {
-  /* text-decoration: line-through underline; */
   color: var(--link-hover-color);
-  font-weight: 700;
+  text-decoration: underline;
+  text-underline-offset: 3px;
 }
 
+/* Blockquotes */
 blockquote {
   font-style: italic;
-  background-color: var(--code-background-sml);
-  border-radius: 5px;
-  outline: 1px solid var(--code-background-sml-outline);
-  padding: 2.5px 10px;
+  background-color: var(--bg-elevated);
+  border-left: 3px solid var(--accent-secondary);
+  border-radius: 0 8px 8px 0;
+  padding: 1rem 1.5rem;
+  margin: 1.5rem 0;
+  color: var(--text-secondary);
 }
 
-@media only screen and (max-width: 800px) {
+blockquote p {
+  margin: 0;
+}
 
+/* Blinking cursor animation */
+@keyframes blink {
+  0%, 50% { opacity: 1; }
+  51%, 100% { opacity: 0; }
+}
+
+.cursor {
+  display: inline-block;
+  animation: blink 1s infinite;
+  color: var(--accent-primary);
+  margin-left: 2px;
+}
+
+/* Tables */
+table {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 1.5rem 0;
+}
+
+th, td {
+  padding: 0.75rem;
+  text-align: left;
+  border-bottom: 1px solid var(--border-color);
+}
+
+th {
+  color: var(--text-heading);
+  font-weight: 500;
+}
+
+/* Lists */
+ul, ol {
+  padding-left: 1.5rem;
+}
+
+li {
+  margin-bottom: 0.5rem;
+}
+
+li::marker {
+  color: var(--accent-secondary);
+}
+
+/* Horizontal rule */
+hr {
+  border: none;
+  border-top: 1px solid var(--border-color);
+  margin: 2rem 0;
+}
+
+/* Responsive */
+@media only screen and (max-width: 800px) {
   main {
-    padding: 1rem 0.5rem;
-    min-width: 20rem;
-    max-width: 50rem;
+    padding: 1.5rem 1rem;
+    min-width: auto;
+    max-width: 100%;
+  }
+
+  h1 {
+    font-size: 2rem;
+  }
+
+  h2 {
+    font-size: 1.5rem;
   }
 
   .content {
-    width: 90%;
-    margin: 10px;
-    flex: 1;
-    display: flex;
-    flex-direction: column;
-    justify-content: top;
-    margin-left:0px;
+    width: 100%;
+    margin: 10px 0;
+    padding: 15px;
+  }
+
+  pre {
+    padding: 15px;
+    padding-top: 30px;
+    font-size: 13px;
+  }
+}
+
+@media only screen and (max-width: 480px) {
+  html, body {
+    font-size: 15px;
+  }
+
+  h1 {
+    font-size: 1.75rem;
+  }
+
+  main {
+    padding: 1rem 0.75rem;
   }
 }

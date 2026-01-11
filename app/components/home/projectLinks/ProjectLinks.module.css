@@ -5,10 +5,11 @@
 .projectlinks_content {
   line-height: 1.75;
   align-self: flex-start;
+  padding: 0 1.5rem;
 }
 
 .projectlinks_content div {
-  padding: 5px 15px;
+  padding: 5px 0;
 }
 
 .projectlinks_content div h3 {
@@ -16,11 +17,25 @@
 }
 
 .projectlinks_content p {
-  color: var(--text-color);
+  color: var(--text-primary);
 }
 
 .more-link {
   text-align: right;
+  margin-top: 1rem;
+}
+
+.more-link a {
+  color: var(--text-secondary);
+  font-size: 0.9rem;
+}
+
+.more-link a:hover {
+  color: var(--accent-hover);
+}
+
+.table-content {
+  width: 100%;
 }
 
 .table-content p {
@@ -28,10 +43,31 @@
   margin-bottom: 15px;
 }
 
+.table-content table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.table-content tr {
+  border-bottom: 1px solid var(--border-color);
+  transition: background-color 0.2s ease;
+}
+
+.table-content tr:hover {
+  background-color: var(--bg-elevated);
+}
+
+.table-content td {
+  padding: 0.75rem 0.5rem;
+  vertical-align: middle;
+}
+
 .date-cell {
-  width: 200px;
-  text-align: center;
-  padding-right: 30px;
+  width: 120px;
+  text-align: left;
+  color: var(--text-secondary);
+  font-size: 0.85rem;
+  font-family: 'JetBrains Mono', monospace;
 }
 
 .links-cell {
@@ -42,11 +78,11 @@
 .links-cell a {
   margin-left: 10px;
   font-size: 0.85em;
-  opacity: 0.8;
+  color: var(--text-secondary);
 }
 
 .links-cell a:hover {
-  opacity: 1;
+  color: var(--accent-hover);
 }
 
 .tech-stack {
@@ -55,16 +91,22 @@
 
 .tech-tag {
   display: inline-block;
-  font-size: 0.75em;
-  padding: 2px 6px;
+  font-size: 0.7rem;
+  padding: 2px 8px;
   margin-left: 5px;
-  background-color: var(--header-underline);
-  border-radius: 3px;
-  opacity: 0.8;
+  background-color: var(--bg-elevated);
+  border: 1px solid var(--border-color);
+  border-radius: 4px;
+  color: var(--accent-secondary);
+  font-family: 'JetBrains Mono', monospace;
 }
 
 @media only screen and (max-width: 800px) {
-  .projectlinks_content, .projectlinks_content div{
+  .projectlinks_content {
+    padding: 0 1rem;
+  }
+
+  .projectlinks_content div {
     width: 100%;
   }
 
@@ -73,14 +115,21 @@
     margin-left: 0;
     margin-top: 5px;
   }
+
+  .tech-tag {
+    margin-left: 0;
+    margin-right: 5px;
+    margin-top: 5px;
+  }
 }
 
 @media only screen and (max-width: 600px) {
-  .projectlinks_content, .projectlinks_content div{
-    width: 100%;
+  .projectlinks_content {
+    padding: 0 0.5rem;
   }
 
-  .projectlinks_content div{
+  .projectlinks_content div {
+    width: 100%;
     padding: 0 0 10px 0;
     margin: 0 0 10px 0;
   }
@@ -91,5 +140,10 @@
 
   .links-cell {
     display: none;
+  }
+
+  .date-cell {
+    width: 100px;
+    font-size: 0.8rem;
   }
 }

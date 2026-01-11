@@ -1,14 +1,18 @@
 .date {
-  font-style: italic;
-  color: var(--text-color);
-  font-weight: 300;
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.85rem;
+  color: var(--text-secondary);
+  font-weight: 400;
   margin-top: 0;
   text-align: center;
 }
 
 .title {
   text-align: center;
-  color: var(--header-color);
+  color: var(--text-heading);
+  font-family: 'Cormorant Garamond', Georgia, serif;
+  font-style: italic;
+  margin-bottom: 0.5rem;
 }
 
 .meta {
@@ -28,11 +32,13 @@
 
 .techTag {
   display: inline-block;
-  font-size: 0.85em;
+  font-size: 0.75rem;
   padding: 4px 10px;
-  background-color: var(--header-underline);
+  background-color: var(--bg-elevated);
+  border: 1px solid var(--border-color);
   border-radius: 4px;
-  color: var(--text-color);
+  color: var(--accent-secondary);
+  font-family: 'JetBrains Mono', monospace;
 }
 
 .links {
@@ -42,11 +48,16 @@
 
 .link {
   padding: 8px 16px;
-  border: 1px solid var(--header-underline);
+  border: 1px solid var(--border-color);
   border-radius: 4px;
-  transition: background-color 0.2s ease;
+  transition: all 0.2s ease;
+  color: var(--text-secondary);
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.85rem;
 }
 
 .link:hover {
-  background-color: var(--header-underline);
+  background-color: var(--bg-elevated);
+  border-color: var(--accent-secondary);
+  color: var(--accent-hover);
 }
