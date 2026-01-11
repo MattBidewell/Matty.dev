@@ -5,10 +5,11 @@
 .bloglinks_content {
   line-height: 1.75;
   align-self: flex-start;
+  padding: 0 1.5rem;
 }
 
 .bloglinks_content div {
-  padding: 5px 15px;
+  padding: 5px 0;
 }
 
 .bloglinks_content div h3 {
@@ -16,7 +17,7 @@
 }
 
 .bloglinks_content p {
-  color: var(--text-color);
+  color: var(--text-primary);
 }
 
 .post-thumbnail {
@@ -33,7 +34,9 @@
 
 .post-container {
   display: flex;
-  border-bottom: 5px solid var(--header-underline);
+  border-bottom: 1px solid var(--border-color);
+  padding-bottom: 1rem;
+  margin-bottom: 1rem;
 }
 
 .post-container-content {
@@ -43,6 +46,20 @@
 
 .more-link {
   text-align: right;
+  margin-top: 1rem;
+}
+
+.more-link a {
+  color: var(--text-secondary);
+  font-size: 0.9rem;
+}
+
+.more-link a:hover {
+  color: var(--accent-hover);
+}
+
+.table-content {
+  width: 100%;
 }
 
 .table-content p {
@@ -50,22 +67,56 @@
   margin-bottom: 15px;
 }
 
+.table-content table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.table-content tr {
+  border-bottom: 1px solid var(--border-color);
+  transition: background-color 0.2s ease;
+}
+
+.table-content tr:hover {
+  background-color: var(--bg-elevated);
+}
+
+.table-content td {
+  padding: 0.75rem 0.5rem;
+  vertical-align: middle;
+}
+
 .date-cell {
-  width: 200px;
-  text-align: center;
-  padding-right: 30px;
+  width: 120px;
+  text-align: left;
+  color: var(--text-secondary);
+  font-size: 0.85rem;
+  font-family: 'JetBrains Mono', monospace;
 }
 
 @media only screen and (max-width: 800px) {
-  .bloglinks_content, .bloglinks_content div{
+  .bloglinks_content {
+    padding: 0 1rem;
+  }
+
+  .bloglinks_content div {
     width: 100%;
   }
 }
 
 @media only screen and (max-width: 600px) {
+  .bloglinks_content {
+    padding: 0 0.5rem;
+  }
 
-  .bloglinks_content, .bloglinks_content div{
+  .bloglinks_content div {
     width: 100%;
+    padding: 0 0 10px 0;
+    margin: 0 0 10px 0;
+  }
+
+  .bloglinks_content p {
+    margin-top: 0.5rem;
   }
 
   .post-container {
@@ -73,17 +124,14 @@
     width: 100%;
   }
 
-  .post-thumbnail, .post-thumbnail img {
+  .post-thumbnail,
+  .post-thumbnail img {
     object-fit: cover;
     width: 100%;
   }
 
-  .bloglinks_content div{
-    padding: 0 0 10px 0;
-    margin: 0 0 10px 0;
-  }
-
-  .bloglinks_content p {
-    margin-top: 0.5rem;
+  .date-cell {
+    width: 100px;
+    font-size: 0.8rem;
   }
 }

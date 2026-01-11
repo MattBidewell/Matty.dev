@@ -1,7 +1,31 @@
 .container {
   display: flex;
+  gap: 2rem;
+  flex-wrap: wrap;
 }
 
 .item {
   flex-grow: 1;
+  min-width: 200px;
+}
+
+.item h3 {
+  color: var(--text-heading);
+  margin-bottom: 0.75rem;
+}
+
+.item ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.item li {
+  padding: 0.25rem 0;
+  color: var(--text-primary);
+}
+
+.item li::before {
+  content: "→ ";
+  color: var(--accent-secondary);
 }

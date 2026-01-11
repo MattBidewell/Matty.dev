@@ -1,53 +1,38 @@
-.main {
-  font-weight: 700;
-  text-decoration-line: none;
-  text-align: right;
-}
-
-.flex_container {
+.header {
   display: flex;
-  padding: 25px;
-  border-bottom: 5px solid var(--header-underline);
+  flex-direction: column;
   align-items: center;
+  padding: 2rem 1.5rem;
+  border-bottom: 1px solid var(--border-color);
+  margin-bottom: 2rem;
 }
 
-.flex_child {
-  flex: 1;
+.name {
+  font-family: 'Cormorant Garamond', Georgia, serif;
+  font-style: italic;
+  font-weight: 600;
+  font-size: 2.5rem;
+  color: var(--text-heading);
+  margin: 0;
+  margin-bottom: 1.5rem;
+  text-decoration: none;
+  letter-spacing: 1px;
 }
 
-.flex_child:first-child {
-  flex: 1;
-}
-
-.flex_container img {
-  max-height: 100px;
-  width: auto;
-  background: var(--nav-img-bk);
-  border-radius: 100px;
-  margin-top: auto;
-  margin-bottom: auto ;
-  margin-left: auto;
-  margin-right: auto;
-  display: block;
-}
-
-.mobile_avatar {
-  display: none;
-}
-
+/* Mobile */
 @media only screen and (max-width: 800px) {
-
-  .desktop_avatar {
-    display: none;
+  .header {
+    padding: 1.5rem 1rem;
   }
 
-  .flex_container {
-    flex-direction: column-reverse;
+  .name {
+    font-size: 2rem;
+    text-align: center;
   }
+}
 
-  .mobile_avatar {
-    display: flex;
-    margin-left: 0;
-    margin-right: 0;
+@media only screen and (max-width: 480px) {
+  .name {
+    font-size: 1.75rem;
   }
 }

@@ -1,15 +1,21 @@
 .coffee {
-    height: 60px !important;
-    width: 217px !important
+  height: 60px !important;
+  width: 217px !important;
 }
 
 .coffee-link:hover {
-    background: none;
-    outline: none;
+  background: none;
+  outline: none;
 }
 
 .post-footer {
-    padding-top: 25px;
-    border-top: 1px solid var(--border);
-    text-align: center;
+  padding-top: 2rem;
+  margin-top: 2rem;
+  border-top: 1px solid var(--border-color);
+  text-align: center;
+}
+
+.post-footer p {
+  color: var(--text-secondary);
+  font-size: 0.9rem;
 }

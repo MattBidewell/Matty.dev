@@ -3,7 +3,7 @@
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
   gap: 2rem;
-  padding: 2rem;
+  padding: 2rem 1.5rem;
   width: 100%;
 }
 
@@ -12,25 +12,25 @@
   flex-direction: column;
   align-items: center;
   text-align: center;
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease;
   border-radius: 8px;
   padding: 0.75rem;
-  background-color: var(--nav-img-bk, #f8f6f4);
+  background-color: var(--bg-elevated);
+  border: 1px solid var(--border-color);
   text-decoration: none !important;
-  /* Fixed dimensions */
   width: 100%;
-  height: 380px; /* Increased height to fit all metadata */
+  height: 380px;
   justify-content: space-between;
 }
 
-/* Remove underline from links */
 .book-item a {
   text-decoration: none !important;
 }
 
 .book-item:hover {
   transform: translateY(-5px);
-  box-shadow: 0 10px 15px rgba(0, 0, 0, 0.3);
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.4);
+  border-color: var(--accent-secondary);
 }
 
 .book-image-container {
@@ -41,27 +41,27 @@
 
 .book-image {
   width: 100%;
-  height: 160px; /* Fixed height for all images */
-  object-fit: contain; /* Changed to contain to prevent image distortion */
+  height: 160px;
+  object-fit: contain;
   border-radius: 4px;
-  /* Book-like styling */
-  box-shadow: 2px 5px 10px rgba(0, 0, 0, 0.2);
-  background-color: #f8f8f8;
+  box-shadow: 2px 5px 10px rgba(0, 0, 0, 0.3);
+  background-color: var(--bg-surface);
   transition: transform 0.2s ease;
-  border: 1px solid rgba(0, 0, 0, 0.05);
+  border: 1px solid var(--border-color);
 }
 
 .book-badge {
   position: absolute;
   top: 0;
   right: 0;
-  background-color: var(--header-color, #2bbc8a);
-  color: white;
-  font-size: 0.7rem;
+  background-color: var(--accent-primary);
+  color: var(--bg-color);
+  font-size: 0.65rem;
   padding: 0.2rem 0.5rem;
   border-radius: 0 4px 0 4px;
-  font-weight: bold;
+  font-weight: 500;
   text-transform: uppercase;
+  font-family: 'JetBrains Mono', monospace;
 }
 
 .book-info {
@@ -76,12 +76,13 @@
   margin: 0.5rem 0 0.25rem 0;
   font-size: 0.95rem;
   line-height: 1.4;
-  color: var(--text-color, #ffffff); /* Light color for dark theme */
-  font-family: Merriweather, Georgia, serif;
-  height: 2.8em; /* Fixed height for approximately 2 lines of text */
-  overflow: hidden; /* Hide text that exceeds the height */
+  color: var(--text-heading);
+  font-family: 'Cormorant Garamond', Georgia, serif;
+  font-style: italic;
+  height: 2.8em;
+  overflow: hidden;
   display: -webkit-box;
-  -webkit-line-clamp: 2; /* Limit to 2 lines */
+  -webkit-line-clamp: 2;
   -webkit-box-orient: vertical;
   text-align: center;
   width: 100%;
@@ -91,8 +92,7 @@
   font-size: 0.8rem;
   font-style: italic;
   margin: 0 0 0.5rem 0;
-  color: var(--text-color, #c9cacc);
-  opacity: 0.85;
+  color: var(--text-secondary);
   height: 2.8em;
   overflow: hidden;
   display: -webkit-box;
@@ -116,20 +116,39 @@
 }
 
 .star {
-  color: #f8d448;
+  color: var(--accent-secondary);
 }
 
 .book-date {
-  font-size: 0.75rem;
-  color: var(--text-color, #c9cacc);
-  opacity: 0.8;
+  font-size: 0.7rem;
+  color: var(--text-secondary);
   margin-top: 0.25rem;
+  font-family: 'JetBrains Mono', monospace;
 }
 
-/* Subtle background pattern */
 .bookshelf-container {
-  background-color: var(--bg-color, white);
+  background-color: var(--bg-color);
   position: relative;
+  padding: 0 1rem;
+}
+
+.year-section {
+  margin-bottom: 2rem;
+}
+
+.year-heading {
+  font-family: 'JetBrains Mono', monospace;
+  font-style: normal;
+  font-size: 1.25rem;
+  color: var(--text-secondary);
+  margin: 1.5rem 0 1rem 0.5rem;
+  padding-bottom: 0.5rem;
+  border-bottom: 1px solid var(--border-color);
+}
+
+.year-heading::before {
+  content: "# ";
+  color: var(--accent-secondary);
 }
 
 /* Responsive adjustments */
@@ -137,11 +156,11 @@
   .book-shelf {
     grid-template-columns: repeat(auto-fill, minmax(120px, 1fr));
     gap: 1.5rem;
-    padding: 1.5rem;
+    padding: 1.5rem 1rem;
   }
 
   .book-item {
-    height: 350px; /* Slightly smaller on tablet */
+    height: 350px;
   }
 }
 
@@ -153,7 +172,7 @@
   }
 
   .book-item {
-    height: 330px; /* Even smaller on mobile */
+    height: 330px;
   }
 
   .book-image {
@@ -169,6 +188,6 @@
   }
 
   .book-date {
-    font-size: 0.7rem;
+    font-size: 0.65rem;
   }
 }

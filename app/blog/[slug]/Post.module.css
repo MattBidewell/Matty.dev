@@ -1,12 +1,25 @@
 .date {
-  font-style: italic;
-  color: var(--text-color);
-  font-weight:300;
-  margin-top:0;
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.85rem;
+  color: var(--text-secondary);
+  font-weight: 400;
+  margin-top: 0;
   text-align: center;
 }
 
 .title {
   text-align: center;
-  color: var(--header-color);
+  color: var(--text-heading);
+  font-family: 'Cormorant Garamond', Georgia, serif;
+  font-style: italic;
+  margin-bottom: 0.5rem;
+}
+
+.meta {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-bottom: 2rem;
+  padding-bottom: 2rem;
+  border-bottom: 1px solid var(--border-color);
 }
