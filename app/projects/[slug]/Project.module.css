@@ -1,0 +1,52 @@
+.date {
+  font-style: italic;
+  color: var(--text-color);
+  font-weight: 300;
+  margin-top: 0;
+  text-align: center;
+}
+
+.title {
+  text-align: center;
+  color: var(--header-color);
+}
+
+.meta {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-bottom: 2rem;
+  gap: 1rem;
+}
+
+.techStack {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 8px;
+}
+
+.techTag {
+  display: inline-block;
+  font-size: 0.85em;
+  padding: 4px 10px;
+  background-color: var(--header-underline);
+  border-radius: 4px;
+  color: var(--text-color);
+}
+
+.links {
+  display: flex;
+  gap: 1rem;
+}
+
+.link {
+  padding: 8px 16px;
+  border: 1px solid var(--header-underline);
+  border-radius: 4px;
+  transition: background-color 0.2s ease;
+}
+
+.link:hover {
+  background-color: var(--header-underline);
+}

@@ -1,7 +1,7 @@
 import matter from "gray-matter";
 import fs from "fs";
 import { join } from "path";
-import { Post } from "../types/post";
+import { Post, PostCategory } from "../types/post";
 
 const postsDirectory = join(process.cwd(), "_posts");
 
@@ -21,12 +21,16 @@ export function getPostBySlug(slug: string, fields: string[] = []): Post {
   const { data, content }: { data: any; content: string } =
     matter(fileContents);
 
+  // Default category to "blog" for backwards compatibility
+  const category: PostCategory = data.category || "blog";
+
   const items: Post = {
     date: "1970-01-01",
     excerpt: "",
     content: "",
     linkSlug: "",
-    alt: ""
+    alt: "",
+    category,
   };
 
   if (data.date) {
@@ -36,8 +40,14 @@ export function getPostBySlug(slug: string, fields: string[] = []): Post {
   items.status = data.status ? data.status : "draft";
   items.image = `${rawSlug}/thumbnail.webp`;
 
+  // Handle project-specific fields
+  if (data.github_url) items.github_url = data.github_url;
+  if (data.demo_url) items.demo_url = data.demo_url;
+  if (data.tech_stack) items.tech_stack = data.tech_stack;
+  if (typeof data.featured !== "undefined") items.featured = data.featured;
+
   fields.forEach((field: string) => {
-    if (field === "status" || field === "date") {
+    if (field === "status" || field === "date" || field === "category") {
       return;
     }
     if (field === "slug") {
@@ -49,11 +59,18 @@ export function getPostBySlug(slug: string, fields: string[] = []): Post {
       return;
     }
     if (field === "linkSlug") {
-      items.linkSlug = `/blog/${rawSlug}`;
+      // Dynamic linkSlug based on category
+      const prefix = category === "project" ? "/projects" : "/blog";
+      items.linkSlug = `${prefix}/${rawSlug}`;
+      return;
     }
     if (typeof data[field] !== "undefined") {
-      const ObjKey = field as keyof typeof items;
-      items[ObjKey] = data[field];
+      const ObjKey = field as keyof Post;
+      // Skip fields already handled
+      if (ObjKey === "github_url" || ObjKey === "demo_url" || ObjKey === "tech_stack" || ObjKey === "featured") {
+        return;
+      }
+      (items as any)[ObjKey] = data[field];
       return;
     }
   });
@@ -61,8 +78,12 @@ export function getPostBySlug(slug: string, fields: string[] = []): Post {
   return items;
 }
 
-export function getPosts(fields: string[] = [], limit?: number): Post[] {
-  const slugs = getPostSlugs(limit);
+export function getPosts(
+  fields: string[] = [],
+  limit?: number,
+  category?: PostCategory
+): Post[] {
+  const slugs = getPostSlugs(undefined); // Get all slugs, apply limit after filtering
 
   const posts = slugs
     .map((slug) => getPostBySlug(slug, fields))
@@ -74,7 +95,14 @@ export function getPosts(fields: string[] = [], limit?: number): Post[] {
         const date = new Date().getTime();
         const postDate = new Date(post.date).getTime();
         // if the postdate EPOC time is greater than the current date. Post date is in the future.
-        return postDate < date;
+        if (postDate >= date) {
+          return false;
+        }
+        // Filter by category if specified
+        if (category && post.category !== category) {
+          return false;
+        }
+        return true;
       } catch (err) {
         console.log(err);
         return false;
@@ -82,5 +110,10 @@ export function getPosts(fields: string[] = [], limit?: number): Post[] {
     })
     // sort posts by date in descending order
     .sort((post1, post2) => (post1.date > post2.date ? -1 : 1));
+
+  // Apply limit after filtering and sorting
+  if (limit) {
+    return posts.slice(0, limit);
+  }
   return posts;
 }

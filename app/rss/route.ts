@@ -25,10 +25,10 @@ export async function GET(_: Request) {
         },
         item: data.map((post) => ({
           title: post.title,
-          link: `https://matty.dev/blog/${post.linkSlug}`,
-          description: "123",
+          link: `https://matty.dev${post.linkSlug}`,
+          description: post.excerpt || "",
           pubDate: new Date(post.date).toUTCString(),
-          guid: `https://matty.dev/blog/${post.linkSlug}`,
+          guid: `https://matty.dev${post.linkSlug}`,
         })),
       }
     }
