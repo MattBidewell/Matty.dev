@@ -11,6 +11,31 @@ export interface IBook {
 
 export const books: IBook[] = [
   {
+    title: "Writing an Interpreter in Go",
+    url: "https://www.amazon.co.uk/Writing-Interpreter-Go-Thorsten-Ball/dp/3982016118",
+    image: "writing-an-interpreter-in-go.webp",
+    date: new Date("2026-01-30"),
+    rating: 5,
+  },
+  {
+    title: "The Clean Coder",
+    subtitle: "A Code of Conduct for Professional Programmers",
+    url: "https://www.amazon.co.uk/Clean-Coder-Conduct-Professional-Programmers/dp/0137081073",
+    date: new Date("2026-01-30"),
+    rating: 3,
+    audiobook: true,
+    image: "the-clean-coder.webp",
+  },
+  {
+    title: "Ultra Processed People",
+    subtitle: "Why do eat stuff that isn't food... and why can't we stop?",
+    url: "https://www.amazon.co.uk/Ultra-Processed-People-Stuff-That-Isnt/dp/1529900050",
+    image: "ultra-processed-people.webp",
+    date: new Date("2026-01-24"),
+    audiobook: true,
+    rating: 5,
+  },
+  {
     title: "Dungeon Crawler Carl 1",
     url: "https://www.amazon.co.uk/Dungeon-Crawler-Carl-Gamelit-Adventure-ebook/dp/B08BKGYQXW",
     image: "dungeon_crawler_carl_1.webp",
@@ -25,6 +50,14 @@ export const books: IBook[] = [
     image: "mistborn.webp",
     date: new Date("2026-01-01"),
     rating: 5,
+  },
+  {
+    title: "AI engineering",
+    subtitle: "Building Applications with Foundation Models",
+    url: "https://www.amazon.co.uk/AI-Engineering-Building-Applications-Foundation/dp/1098166302",
+    image: "ai_engineering.webp",
+    date: new Date("2025-12-15"),
+    rating: 4,
   },
   {
     title: "The Phoenix Project",
@@ -216,6 +249,16 @@ export const books: IBook[] = [
     audiobook: false,
   },
   {
+    title: "Designing Data-Intensive Applications",
+    subtitle:
+      "The Big Ideas Behind Reliable, Scalable, and Maintainable Systems",
+    url: "https://www.amazon.co.uk/gp/product/1449373321",
+    image: "designing-data-intensive-applications.webp",
+    rating: 5,
+    date: new Date("2025-03-02"),
+    audiobook: false,
+  },
+  {
     title: "System Design Inteview",
     subtitle: "An Insider's Guide: Vol 2",
     url: "https://www.amazon.co.uk/gp/product/B0CR977BQH",
@@ -232,6 +275,14 @@ export const books: IBook[] = [
     rating: 5,
     date: new Date("2025-02-27"),
     audiobook: false,
+  },
+  {
+    title: "Distributed Systems with Node.js",
+    subtitle: "Building Enterprise-Ready Scalable Software",
+    url: "https://www.amazon.co.uk/Distributed-Systems-Node-js-Building-Enterprise-Ready/dp/1492077291",
+    image: "distributed_systems_with_nodejs.webp",
+    rating: 4,
+    date: new Date("2024-12-29"),
   },
   {
     title: "The hobbit",
