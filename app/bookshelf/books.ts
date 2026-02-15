@@ -11,6 +11,15 @@ export interface IBook {
 
 export const books: IBook[] = [
   {
+    title: "Dungeon Crawler Carl 2",
+    subtitle: "Carl's Doomsday Scenario",
+    image: "dungeon_crawler_carl_2.webp",
+    url: "https://www.amazon.co.uk/Carls-Doomsday-Scenario-Dungeon-Crawler-ebook/dp/B08PBCD9Y7",
+    rating: 3,
+    audiobook: true,
+    date: new Date("2026-02-12"),
+  },
+  {
     title: "Writing an Interpreter in Go",
     url: "https://www.amazon.co.uk/Writing-Interpreter-Go-Thorsten-Ball/dp/3982016118",
     image: "writing-an-interpreter-in-go.webp",
