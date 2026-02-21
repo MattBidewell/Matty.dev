@@ -5,9 +5,8 @@ export default function Content() {
   return (
     <section className={styles["intro-content"]}>
       <p>
-        I&apos;m a software engineer passionate about open source software
-        and software engineering, with 7+ years of experience crafting
-        SaaS solutions in the cloud.
+        I&apos;m Matt, a software engineer passionate about software engineering
+        and open source software
       </p>
       <p>
         Find out more <Link href="/about">about me</Link> or read my{" "}
@@ -17,7 +16,8 @@ export default function Content() {
           href="assets/resume/matt-bidewell-resume.pdf"
         >
           resume
-        </Link>.
+        </Link>
+        .
       </p>
     </section>
   );
