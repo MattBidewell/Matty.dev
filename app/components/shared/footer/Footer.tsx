@@ -18,21 +18,9 @@ export default function Footer() {
           <Link
             target="_blank"
             rel="noopener noreferrer"
-            href="https://bsky.app/profile/mattbidewell.bsky.social"
+            href="https://x.com/MattBidewell"
           >
-            bluesky
-          </Link>
-          <span className={styles.separator}>·</span>
-          <Link
-            target="_blank"
-            rel="noopener noreferrer"
-            href="https://twitter.com/MattBidewell"
-          >
-            twitter
-          </Link>
-          <span className={styles.separator}>·</span>
-          <Link rel="me" href="https://fosstodon.org/@MattBidewell">
-            mastodon
+            x
           </Link>
           <span className={styles.separator}>·</span>
           <Link
