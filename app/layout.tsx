@@ -7,6 +7,7 @@ const desc =
   "A software engineer that is passionate about open source software and software engineering, with 7+ years of experience in creating well-crafted SaaS solutions in the cloud...";
 
 export const metadata: Metadata = {
+  metadataBase: new URL("https://matty.dev"),
   title: "Matty.dev",
   applicationName: "Matty.dev",
   icons: {

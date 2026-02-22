@@ -1,4 +1,5 @@
 import { Remarkable } from "remarkable";
+import type { Metadata } from "next";
 
 // components
 import PostBody from "../../components/blog/body/PostBody";
@@ -34,6 +35,33 @@ function getPost(slug: string) {
   const post = getPostBySlug(slug, ["title", "date", "slug", "content", "alt"]);
   const content = r.render(post.content || "p");
   return { ...post, content };
+}
+
+export async function generateMetadata({
+  params,
+}: {
+  params: { slug: string };
+}): Promise<Metadata> {
+  const post = getPostBySlug(params.slug, ["title", "excerpt", "slug"]);
+  const title = post.title ?? "Matty.dev";
+  const description = post.excerpt || "";
+
+  return {
+    title: `${title} | Matty.dev`,
+    description,
+    openGraph: {
+      title,
+      description,
+      type: "article",
+      url: `https://matty.dev/blog/${params.slug}`,
+    },
+    twitter: {
+      card: "summary_large_image",
+      title,
+      description,
+      creator: "@mattbidewell",
+    },
+  };
 }
 
 export default function BlogPost({ params }: { params: { slug: string } }) {
