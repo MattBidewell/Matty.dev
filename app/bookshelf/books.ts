@@ -11,6 +11,14 @@ export interface IBook {
 
 export const books: IBook[] = [
   {
+    title: "An Elegant Puzzle",
+    subtitle: "Systems of Engineering Management",
+    url: "https://www.amazon.co.uk/dp/B07QYCHJ7V",
+    image: "an_elegant_puzzle.webp",
+    rating: 4,
+    date: new Date("2026-02-19"),
+  },
+  {
     title: "Dungeon Crawler Carl 2",
     subtitle: "Carl's Doomsday Scenario",
     image: "dungeon_crawler_carl_2.webp",
