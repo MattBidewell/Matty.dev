@@ -1,4 +1,3 @@
-import Footer from "@components/shared/footer/Footer";
 import Content from "./content/Content";
 
 export default function About() {

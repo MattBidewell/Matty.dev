@@ -18,11 +18,11 @@
 }
 
 .intro-content a {
-  color: var(--accent-secondary);
+  color: var(--link-color);
 }
 
 .intro-content a:hover {
-  color: var(--accent-hover);
+  color: var(--link-hover-color);
 }
 
 @media only screen and (max-width: 800px) {

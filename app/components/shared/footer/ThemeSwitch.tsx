@@ -5,27 +5,48 @@ export default function ThemeSwitch() {
     <>
       <Script strategy="afterInteractive" id="theme-switch">
         {`(() => {
+          const defaultTheme = "graphite-cyan";
+          const validThemes = new Set([
+            "graphite-cyan",
+            "carbon-lime",
+            "night-ops",
+            "slate-blue",
+            "obsidian-paper"
+          ]);
+
+          function setActiveThemeButton(theme) {
+            const themes = document.querySelectorAll(".theme");
+            for (const themeButton of themes) {
+              const isActive = themeButton.getAttribute("data-theme") === theme;
+              themeButton.classList.toggle("is-active", isActive);
+              themeButton.setAttribute("aria-pressed", isActive ? "true" : "false");
+            }
+          }
+
+          function applyTheme(theme) {
+            const resolvedTheme = validThemes.has(theme) ? theme : defaultTheme;
+            document.documentElement.setAttribute("data-theme", resolvedTheme);
+            localStorage.setItem("theme", resolvedTheme);
+            setActiveThemeButton(resolvedTheme);
+          }
+
           function setThemeFromStorage() {
               if (!localStorage) return;
 
-              const setTheme = localStorage.getItem("theme");
-
-              if(setTheme) {
-                document.documentElement.setAttribute("data-theme", setTheme);
-              }
+              const setTheme = localStorage.getItem("theme") || defaultTheme;
+              applyTheme(setTheme);
           }
 
           function setThemeListeners() {
             const themes = document.querySelectorAll(".theme");
 
-            for (const theme of themes) {
-              theme.addEventListener("click", function (e) {
-                if (!e || !e.target) return;
+            for (const themeButton of themes) {
+              themeButton.addEventListener("click", function (e) {
+                if (!e || !e.currentTarget) return;
 
-                const themeValue = e.target.getAttribute("data-theme");
-
-                document.documentElement.setAttribute("data-theme", themeValue);
-                localStorage.setItem("theme", themeValue)
+                const themeValue = e.currentTarget.getAttribute("data-theme");
+                if (!themeValue) return;
+                applyTheme(themeValue);
               });
             }
           }

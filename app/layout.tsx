@@ -42,7 +42,16 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="en">
+    <html lang="en" data-theme="graphite-cyan">
+      <head>
+        <link
+          rel="preload"
+          href="/assets/fonts/ia-writer-quattro/iAWriterQuattroS-Regular.woff2"
+          as="font"
+          type="font/woff2"
+          crossOrigin="anonymous"
+        />
+      </head>
       <body>
         <main className="page-content">
           <TopContent />
