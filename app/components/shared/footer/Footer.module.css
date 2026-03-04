@@ -130,6 +130,24 @@
   border-color: var(--accent-secondary);
 }
 
+@media only screen and (max-width: 900px) {
+  .footer {
+    width: 100%;
+    padding: 1.75rem 1.5rem;
+    grid-template-columns: minmax(0, 1fr);
+    row-gap: 1rem;
+  }
+
+  .rightColumn {
+    justify-content: flex-start;
+  }
+
+  .metaPanel {
+    min-width: 0;
+    width: 100%;
+  }
+}
+
 @media only screen and (max-width: 600px) {
   .footer {
     width: 100%;
@@ -150,6 +168,10 @@
   .links {
     gap: 0.15rem;
     justify-content: center;
+  }
+
+  .separator {
+    display: none;
   }
 
   .footer a {

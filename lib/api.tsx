@@ -21,8 +21,11 @@ export function getPostBySlug(slug: string, fields: string[] = []): Post {
   const { data, content }: { data: any; content: string } =
     matter(fileContents);
 
-  // Default category to "blog" for backwards compatibility
-  const category: PostCategory = data.category || "blog";
+  const inferredCategory: PostCategory = rawSlug.includes("mumblings")
+    ? "mumbling"
+    : "blog";
+  // Default category to inferred value for backwards compatibility
+  const category: PostCategory = data.category || inferredCategory;
 
   const items: Post = {
     date: "1970-01-01",

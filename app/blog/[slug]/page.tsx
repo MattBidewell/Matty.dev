@@ -77,7 +77,10 @@ export default function BlogPost({ params }: { params: { slug: string } }) {
 }
 
 export async function generateStaticParams() {
-  const posts = getPosts(["slug"]);
+  const posts = [
+    ...getPosts(["slug"], undefined, "blog"),
+    ...getPosts(["slug"], undefined, "mumbling"),
+  ];
   const mappedPosts = posts.map((post) => {
     return {
       slug: post.slug,
