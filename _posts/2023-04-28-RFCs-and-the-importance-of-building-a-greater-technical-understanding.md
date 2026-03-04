@@ -1,7 +1,7 @@
 ---
 title: RFCs and the importance of building a greater technical understanding
 date: 2023-04-29
-status: live
+status: draft
 excerpt: RFCs are a great way to build a greater technical understanding of a system. Let's explore why and provide some examples.
 alt: A stern looking own dressed like a liberian, holding some books.
 ---

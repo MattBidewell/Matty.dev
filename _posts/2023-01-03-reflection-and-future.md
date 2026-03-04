@@ -1,7 +1,7 @@
 ---
 title: Goodbye, 2022
 date: 2023-01-03
-status: live
+status: draft
 excerpt: A end of year catch up and reflection
 alt: A happy purple furry monster waving at the camera with a firework going off in the background
 ---
