@@ -1,5 +1,5 @@
 import styles from "./PostFooter.module.css";
-import Link from "next/link"
+import { Link } from "next-view-transitions";
 import Image from "next/image"
 import buyMeCoffeeIm from "../../../../public/assets/images/misc/buy-me-a-coffee.webp";
 

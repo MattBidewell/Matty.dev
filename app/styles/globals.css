@@ -188,6 +188,57 @@ body::before {
   z-index: 0;
 }
 
+@media (prefers-reduced-motion: no-preference) {
+  ::view-transition {
+    background: transparent;
+  }
+
+  ::view-transition-old(root),
+  ::view-transition-new(root) {
+    animation: none;
+  }
+
+  ::view-transition-group(route-content) {
+    animation-duration: 160ms;
+    animation-timing-function: linear;
+  }
+
+  ::view-transition-old(route-content),
+  ::view-transition-new(route-content) {
+    animation-duration: 160ms;
+    animation-timing-function: linear;
+    backface-visibility: hidden;
+  }
+
+  ::view-transition-old(route-content) {
+    animation-name: content-fade-out;
+  }
+
+  ::view-transition-new(route-content) {
+    animation-name: content-fade-in;
+  }
+
+  @keyframes content-fade-out {
+    from {
+      opacity: 1;
+    }
+
+    to {
+      opacity: 0;
+    }
+  }
+
+  @keyframes content-fade-in {
+    from {
+      opacity: 0;
+    }
+
+    to {
+      opacity: 1;
+    }
+  }
+}
+
 main,
 footer {
   position: relative;
@@ -218,6 +269,10 @@ main.page-content {
 
 main.page-content > * {
   grid-column: 2;
+}
+
+.route-content {
+  view-transition-name: route-content;
 }
 
 main.page-content > header {

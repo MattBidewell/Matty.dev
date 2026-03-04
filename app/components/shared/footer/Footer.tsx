@@ -1,6 +1,6 @@
 import styles from "./Footer.module.css";
 import Analytics from "../meta/Analytics";
-import Link from "next/link";
+import { Link } from "next-view-transitions";
 import ThemeSwitch from "./ThemeSwitch";
 
 export default function Footer() {

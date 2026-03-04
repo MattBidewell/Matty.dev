@@ -1,5 +1,5 @@
 import { Post } from "../../../../types/post";
-import Link from "next/link";
+import { Link } from "next-view-transitions";
 import styles from "./BlogLinks.module.css";
 
 export default function BlogLinks({

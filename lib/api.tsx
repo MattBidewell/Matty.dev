@@ -63,7 +63,12 @@ export function getPostBySlug(slug: string, fields: string[] = []): Post {
     }
     if (field === "linkSlug") {
       // Dynamic linkSlug based on category
-      const prefix = category === "project" ? "/projects" : "/blog";
+      const prefix =
+        category === "project"
+          ? "/projects"
+          : category === "mumbling"
+            ? "/mumblings"
+            : "/blog";
       items.linkSlug = `${prefix}/${rawSlug}`;
       return;
     }

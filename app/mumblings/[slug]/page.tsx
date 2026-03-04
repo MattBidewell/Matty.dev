@@ -1,18 +1,13 @@
 import { Remarkable } from "remarkable";
 import type { Metadata } from "next";
-
-// components
-import PostBody from "../../components/blog/body/PostBody";
-import PostFooter from "../../components/blog/footer/PostFooter";
-
-import styles from "./Post.module.css";
 import hljs from "highlight.js";
-// import "highlight.js/styles/monokai.css";
 import "highlight.js/styles/tokyo-night-dark.css";
 
+import PostBody from "../../components/blog/body/PostBody";
+import PostFooter from "../../components/blog/footer/PostFooter";
+import styles from "../../blog/[slug]/Post.module.css";
 import { getPostBySlug, getPosts } from "../../../lib/api";
 
-// remarkable and highlight js setup
 const r = new Remarkable({
   highlight: function (str: string, lang: string) {
     if (lang && hljs.getLanguage(lang)) {
@@ -27,11 +22,11 @@ const r = new Remarkable({
     try {
       return hljs.highlightAuto(str).value;
     } catch (err) {}
-    return "t"; // use external default escaping
+    return "t";
   },
 });
 
-function getPost(slug: string) {
+function getMumbling(slug: string) {
   const post = getPostBySlug(slug, ["title", "date", "slug", "content", "alt"]);
   const content = r.render(post.content || "p");
   return { ...post, content };
@@ -53,7 +48,7 @@ export async function generateMetadata({
       title,
       description,
       type: "article",
-      url: `https://matty.dev/blog/${params.slug}`,
+      url: `https://matty.dev/mumblings/${params.slug}`,
     },
     twitter: {
       card: "summary_large_image",
@@ -64,8 +59,8 @@ export async function generateMetadata({
   };
 }
 
-export default function BlogPost({ params }: { params: { slug: string } }) {
-  const post = getPost(params.slug);
+export default function MumblingPost({ params }: { params: { slug: string } }) {
+  const post = getMumbling(params.slug);
   return (
     <div className="container">
       <h1 className={styles.title}>{post.title}</h1>
@@ -77,7 +72,7 @@ export default function BlogPost({ params }: { params: { slug: string } }) {
 }
 
 export async function generateStaticParams() {
-  const posts = getPosts(["slug"], undefined, "blog");
+  const posts = getPosts(["slug"], undefined, "mumbling");
   const mappedPosts = posts.map((post) => {
     return {
       slug: post.slug,
