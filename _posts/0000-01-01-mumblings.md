@@ -2,6 +2,7 @@
 title: Mumblings №
 date: 2023-01-25
 status: draft
+category: mumbling
 excerpt: Speaking, promotions and some cool tech
 alt:
 ---

@@ -10,8 +10,8 @@
 .title {
   text-align: center;
   color: var(--text-heading);
-  font-family: 'Cormorant Garamond', Georgia, serif;
-  font-style: italic;
+  font-family: 'iA Writer Quattro', 'Iowan Old Style', 'Palatino Linotype', 'Book Antiqua', Palatino, 'Times New Roman', serif;
+  font-style: normal;
   margin-bottom: 0.5rem;
 }
 
@@ -37,8 +37,8 @@
   background-color: var(--bg-elevated);
   border: 1px solid var(--border-color);
   border-radius: 4px;
-  color: var(--accent-secondary);
-  font-family: 'JetBrains Mono', monospace;
+  color: var(--text-secondary);
+  font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, 'Liberation Mono', 'Courier New', monospace;
 }
 
 .links {
@@ -58,6 +58,6 @@
 
 .link:hover {
   background-color: var(--bg-elevated);
-  border-color: var(--accent-secondary);
-  color: var(--accent-hover);
+  border-color: var(--border-color);
+  color: var(--text-heading);
 }

@@ -1,4 +1,4 @@
-export type PostCategory = "blog" | "project";
+export type PostCategory = "blog" | "project" | "mumbling";
 
 export type Post = {
   excerpt: string;

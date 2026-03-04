@@ -1,19 +1,27 @@
 import { Post } from "../../../../types/post";
-import Link from "next/link";
+import { Link } from "next-view-transitions";
 import styles from "./BlogLinks.module.css";
 
 export default function BlogLinks({
   posts,
   hasLimit,
+  title = "Blog posts",
+  moreLinkLabel = "More posts...",
+  moreLinkHref = "/blog",
+  sectionId,
 }: {
   posts: Post[];
   hasLimit: Boolean;
+  title?: string;
+  moreLinkLabel?: string;
+  moreLinkHref?: string;
+  sectionId?: string;
 }) {
   return (
     <>
       <section className="content">
         <section className={styles.bloglinks_content}>
-          <h2 className={styles.title}>Blog posts</h2>
+          <h2 id={sectionId} className={styles.title}>{title}</h2>
           <table className={styles["table-content"]}>
             <tbody>
               {createPosts(posts)}
@@ -21,7 +29,7 @@ export default function BlogLinks({
           </table>
           {hasLimit && (
             <p className={styles["more-link"]}>
-              <Link href="/blog">More posts...</Link>
+              <Link href={moreLinkHref}>{moreLinkLabel}</Link>
             </p>
           )}
         </section>

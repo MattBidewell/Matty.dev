@@ -1,4 +1,4 @@
-import Link from "next/link";
+import { Link } from "next-view-transitions";
 import styles from "./Content.module.css";
 
 export default function Content() {

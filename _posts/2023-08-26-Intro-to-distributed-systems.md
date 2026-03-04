@@ -1,7 +1,7 @@
 ---
 title: An Intro to Distributed Systems - Part 1
 date: 2023-08-26
-status: live
+status: draft
 excerpt: A introduction to distributed systems, the algorithms that power them and the problems they solve. - Part 1
 alt: The world surrounded by docker containers connected by lines, in the style of a Van Gough painting.
 ---

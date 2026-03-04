@@ -1,5 +1,5 @@
 import { Post } from "../../../../types/post";
-import Link from "next/link";
+import { Link } from "next-view-transitions";
 import styles from "./ProjectLinks.module.css";
 
 export default function ProjectLinks({

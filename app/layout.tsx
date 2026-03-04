@@ -2,6 +2,7 @@ import "./styles/globals.css";
 import TopContent from "./components/shared/topContent/TopContent";
 import Footer from "./components/shared/footer/Footer";
 import type { Metadata } from "next";
+import { ViewTransitions } from "next-view-transitions";
 
 const desc =
   "A software engineer that is passionate about open source software and software engineering, with 7+ years of experience in creating well-crafted SaaS solutions in the cloud...";
@@ -42,13 +43,24 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="en">
+    <html lang="en" data-theme="graphite-cyan">
+      <head>
+        <link
+          rel="preload"
+          href="/assets/fonts/ia-writer-quattro/iAWriterQuattroS-Regular.woff2"
+          as="font"
+          type="font/woff2"
+          crossOrigin="anonymous"
+        />
+      </head>
       <body>
-        <main className="page-content">
-          <TopContent />
-          {children}
-        </main>
-        <Footer />
+        <ViewTransitions>
+          <main className="page-content">
+            <TopContent />
+            <div className="route-content">{children}</div>
+          </main>
+          <Footer />
+        </ViewTransitions>
       </body>
     </html>
   );

@@ -1,28 +1,39 @@
+"use client";
+
 import styles from "./Nav.module.css";
-import Link from "next/link"
+import { Link } from "next-view-transitions";
+import { usePathname } from "next/navigation";
 
 export default function Nav() {
+  const pathname = usePathname();
+  const links = [
+    { href: "/", label: "home" },
+    { href: "/about", label: "about" },
+    { href: "/projects", label: "projects" },
+    { href: "/blog", label: "blog" },
+    { href: "/mumblings", label: "mumblings" },
+    { href: "/bookshelf", label: "bookshelf" },
+  ];
+
+  const isActive = (href: string) => {
+    if (href === "/") return pathname === "/";
+    return pathname === href || pathname.startsWith(`${href}/`);
+  };
+
   return (
-    <>
-      <nav className={styles.nav}>
-        <ul>
-          <li>
-            <Link href="/">home</Link>
+    <nav className={styles.nav}>
+      <ul>
+        {links.map((link) => (
+          <li key={link.href}>
+            <Link
+              href={link.href}
+              className={`${styles.link} ${isActive(link.href) ? styles.active : ""}`.trim()}
+            >
+              {link.label}
+            </Link>
           </li>
-          <li>
-            <Link href="/about">about</Link>
-          </li>
-          <li>
-            <Link href="/blog">blog</Link>
-          </li>
-          <li>
-            <Link href="/projects">projects</Link>
-          </li>
-          <li>
-            <Link href="/bookshelf">bookshelf</Link>
-          </li>
-        </ul>
-      </nav>
-    </>
+        ))}
+      </ul>
+    </nav>
   );
 }

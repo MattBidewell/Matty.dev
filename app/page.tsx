@@ -10,7 +10,7 @@ export default function Home() {
     <>
       <Content />
       <ProjectLinks projects={projects} hasLimit={true} />
-      <BlogLinks posts={posts} hasLimit={true} />
+      <BlogLinks posts={posts} hasLimit={true} title="Blog posts" />
     </>
   );
 }

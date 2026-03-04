@@ -1,7 +1,7 @@
 ---
 title: "Short: why you should use IaC over click ops"
 date: 2022-12-07
-status: live
+status: draft
 excerpt: Infrastructure as Code (IaC) should be your go to for building systems in the cloud. Here are six reasons why.
 alt: A photo of a robot holding a red balloon.
 ---
@@ -33,4 +33,3 @@ IaC allows you to scale your infrastructure quickly and easily, as you can use a
 IaC makes it easy to document your infrastructure configuration, as the code itself serves as documentation. This can help you understand how your infrastructure is configured and make it easier to troubleshoot issues.
 
 Overall, using IaC offers many advantages over clickops, including better version control, collaboration, automation, and scalability. By adopting IaC, you can improve the efficiency and reliability of your infrastructure management processes.
-

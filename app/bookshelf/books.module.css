@@ -12,8 +12,8 @@
   flex-direction: column;
   align-items: center;
   text-align: center;
-  transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease;
-  border-radius: 8px;
+  transition: background-color 0.2s ease, border-color 0.2s ease;
+  border-radius: 4px;
   padding: 0.75rem;
   background-color: var(--bg-elevated);
   border: 1px solid var(--border-color);
@@ -28,9 +28,8 @@
 }
 
 .book-item:hover {
-  transform: translateY(-5px);
-  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.4);
-  border-color: var(--accent-secondary);
+  background-color: var(--bg-surface);
+  border-color: var(--text-secondary);
 }
 
 .book-image-container {
@@ -44,7 +43,7 @@
   height: 160px;
   object-fit: contain;
   border-radius: 4px;
-  box-shadow: 2px 5px 10px rgba(0, 0, 0, 0.3);
+  box-shadow: none;
   background-color: var(--bg-surface);
   transition: transform 0.2s ease;
   border: 1px solid var(--border-color);
@@ -54,14 +53,15 @@
   position: absolute;
   top: 0;
   right: 0;
-  background-color: var(--accent-primary);
-  color: var(--bg-color);
+  background-color: var(--bg-surface);
+  color: var(--text-heading);
   font-size: 0.65rem;
   padding: 0.2rem 0.5rem;
   border-radius: 0 4px 0 4px;
   font-weight: 500;
   text-transform: uppercase;
-  font-family: 'JetBrains Mono', monospace;
+  border: 1px solid var(--border-color);
+  font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, 'Liberation Mono', 'Courier New', monospace;
 }
 
 .book-info {
@@ -77,8 +77,8 @@
   font-size: 0.95rem;
   line-height: 1.4;
   color: var(--text-heading);
-  font-family: 'Cormorant Garamond', Georgia, serif;
-  font-style: italic;
+  font-family: 'iA Writer Quattro', 'Iowan Old Style', 'Palatino Linotype', 'Book Antiqua', Palatino, 'Times New Roman', serif;
+  font-style: normal;
   height: 2.8em;
   overflow: hidden;
   display: -webkit-box;
@@ -116,7 +116,7 @@
 }
 
 .star {
-  color: var(--accent-secondary);
+  color: var(--text-secondary);
 }
 
 .book-date {
@@ -137,18 +137,13 @@
 }
 
 .year-heading {
-  font-family: 'JetBrains Mono', monospace;
+  font-family: 'iA Writer Quattro', 'Iowan Old Style', 'Palatino Linotype', 'Book Antiqua', Palatino, 'Times New Roman', serif;
   font-style: normal;
   font-size: 1.25rem;
   color: var(--text-secondary);
   margin: 1.5rem 0 1rem 0.5rem;
   padding-bottom: 0.5rem;
   border-bottom: 1px solid var(--border-color);
-}
-
-.year-heading::before {
-  content: "# ";
-  color: var(--accent-secondary);
 }
 
 /* Responsive adjustments */

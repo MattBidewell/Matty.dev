@@ -1,7 +1,7 @@
 ---
 title: How this site was built - updated
 date: 2023-01-19
-status: live
+status: draft
 excerpt: A run down on how this site is built as of 2023.
 alt: A cartoon image of a fish with glasses in a fish bowl.
 ---

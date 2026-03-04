@@ -1,5 +1,5 @@
 import Image from 'next/image';
-import Link from 'next/link';
+import { Link } from "next-view-transitions";
 import { IBook } from "../../bookshelf/books";
 import styles from '../../bookshelf/books.module.css';
 
