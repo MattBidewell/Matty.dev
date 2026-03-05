@@ -22,17 +22,19 @@ export default async function Bookshelf() {
   const booksByYear = groupBooksByYear(books);
 
   return (
-    <div className={styles["bookshelf-container"]}>
-      {Array.from(booksByYear.entries()).map(([year, yearBooks]) => (
-        <section key={year} className={styles["year-section"]}>
-          <h2 className={styles["year-heading"]}>{year}</h2>
-          <div className={styles["book-shelf"]}>
-            {yearBooks.map((book) => (
-              <Book key={book.title + book.date.getTime()} book={book} />
-            ))}
-          </div>
-        </section>
-      ))}
+    <div className="container">
+      <section className={`content ${styles["bookshelf-container"]}`}>
+        {Array.from(booksByYear.entries()).map(([year, yearBooks]) => (
+          <section key={year} className={styles["year-section"]}>
+            <h2 className={styles["year-heading"]}>{year}</h2>
+            <div className={styles["book-shelf"]}>
+              {yearBooks.map((book) => (
+                <Book key={book.title + book.date.getTime()} book={book} />
+              ))}
+            </div>
+          </section>
+        ))}
+      </section>
     </div>
   );
 }

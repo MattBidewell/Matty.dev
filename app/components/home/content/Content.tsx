@@ -4,9 +4,10 @@ import styles from "./Content.module.css";
 export default function Content() {
   return (
     <section className={styles["intro-content"]}>
+      <h2>Hi, I&apos;m Matt 👋</h2>
       <p>
-        I&apos;m Matt, a software engineer passionate about software engineering
-        and open source software
+        a software engineer passionate about software engineering and open
+        source software
       </p>
       <p>
         Find out more <Link href="/about">about me</Link> or read my{" "}

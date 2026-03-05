@@ -1,20 +1,8 @@
 ---
-title: Mumblings №
-date: 2023-01-25
-status: draft
+title: Mumblings №11
+date: 2026-03-05
+status: live
 category: mumbling
-excerpt: Speaking, promotions and some cool tech
+excerpt: A collection of thoughts from the start of the year
 alt:
 ---
-
-## Life 👨🏻‍🦰
-
-## What I've written.. ✍️
-
-## What I've read.. 📚
-
-## What I've watched.. 📺
-
-## What I've listened to.. 🎧
-
-## What I've learned.. 🤓

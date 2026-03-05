@@ -55,11 +55,13 @@ export default function RootLayout({
       </head>
       <body>
         <ViewTransitions>
-          <main className="page-content">
-            <TopContent />
-            <div className="route-content">{children}</div>
-          </main>
-          <Footer />
+          <div className="site-shell">
+            <main className="page-content">
+              <TopContent />
+              <div className="route-content">{children}</div>
+            </main>
+            <Footer />
+          </div>
         </ViewTransitions>
       </body>
     </html>

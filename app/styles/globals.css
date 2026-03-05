@@ -68,6 +68,7 @@
   --layout-nav-col: 12rem;
   --layout-gap: 6rem;
   --layout-pad-x: 4rem;
+  --content-inline-pad: 1.5rem;
 }
 
 :root[data-theme='carbon-lime'] {
@@ -245,6 +246,12 @@ footer {
   z-index: 1;
 }
 
+.site-shell {
+  min-height: 100svh;
+  display: flex;
+  flex-direction: column;
+}
+
 * {
   box-sizing: border-box;
 }
@@ -265,6 +272,7 @@ main.page-content {
   column-gap: var(--layout-gap);
   justify-content: center;
   max-width: var(--layout-shell-max);
+  flex: 1 0 auto;
 }
 
 main.page-content > * {
@@ -273,6 +281,27 @@ main.page-content > * {
 
 .route-content {
   view-transition-name: route-content;
+  display: flow-root;
+}
+
+.route-content > .container {
+  width: 100%;
+  max-width: var(--layout-content-max);
+}
+
+.route-content > .container > h1,
+.route-content > .container > p,
+.route-content > .container > .meta {
+  padding-left: var(--content-inline-pad);
+  padding-right: var(--content-inline-pad);
+}
+
+.route-content > .container > :first-child {
+  margin-top: 0;
+}
+
+.route-content > .container > :first-child > :first-child {
+  margin-top: 0;
 }
 
 main.page-content > header {
@@ -449,6 +478,13 @@ hr {
 
   main.page-content {
     display: block;
+  }
+
+  .route-content > .container > h1,
+  .route-content > .container > p,
+  .route-content > .container > .meta {
+    padding-left: 1rem;
+    padding-right: 1rem;
   }
 
   main.page-content > header {

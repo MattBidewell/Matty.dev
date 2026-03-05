@@ -129,7 +129,7 @@
 .bookshelf-container {
   background-color: var(--bg-color);
   position: relative;
-  padding: 0 1rem;
+  padding: 0;
 }
 
 .year-section {
@@ -141,7 +141,7 @@
   font-style: normal;
   font-size: 1.25rem;
   color: var(--text-secondary);
-  margin: 1.5rem 0 1rem 0.5rem;
+  margin: 0 0 1rem;
   padding-bottom: 0.5rem;
   border-bottom: 1px solid var(--border-color);
 }
