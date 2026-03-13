@@ -15,6 +15,27 @@
   text-align: center;
 }
 
+.share-links {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.4rem;
+  margin-bottom: 1rem;
+  font-size: 0.8rem;
+}
+
+.share-label {
+  color: var(--text-secondary);
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, 'Liberation Mono', 'Courier New', monospace;
+}
+
+.separator {
+  color: var(--text-secondary);
+  opacity: 0.55;
+}
+
 .post-footer p {
   color: var(--text-secondary);
   font-size: 0.9rem;
