@@ -13,7 +13,7 @@ export const size = {
 export const contentType = "image/png";
 
 export async function generateStaticParams() {
-  const posts = getPosts(["slug"], undefined, "blog");
+  const posts = getPosts(["slug"], undefined, "mumbling");
   return posts.map((post) => ({ slug: post.slug }));
 }
 
@@ -31,7 +31,7 @@ export default async function OGImage({
   const title = post.title ?? "";
   const excerpt = post.excerpt
     ? post.excerpt.length > 130
-      ? post.excerpt.slice(0, 130) + "..."
+      ? `${post.excerpt.slice(0, 130)}...`
       : post.excerpt
     : "";
 
@@ -49,14 +49,24 @@ export default async function OGImage({
           boxSizing: "border-box",
         }}
       >
-        {/* Site brand — top right */}
         <div
           style={{
             display: "flex",
-            justifyContent: "flex-end",
+            justifyContent: "space-between",
             marginBottom: "52px",
           }}
         >
+          <span
+            style={{
+              color: "#c69752",
+              fontSize: "20px",
+              fontWeight: 500,
+              letterSpacing: "0.4px",
+              textTransform: "uppercase",
+            }}
+          >
+            mumblings
+          </span>
           <span
             style={{
               color: "#fc531d",
@@ -69,7 +79,6 @@ export default async function OGImage({
           </span>
         </div>
 
-        {/* Orange accent bar */}
         <div
           style={{
             display: "flex",
@@ -81,7 +90,6 @@ export default async function OGImage({
           }}
         />
 
-        {/* Post title */}
         <div
           style={{
             display: "flex",
@@ -97,7 +105,6 @@ export default async function OGImage({
           {title}
         </div>
 
-        {/* Excerpt */}
         {excerpt && (
           <div
             style={{
@@ -113,7 +120,6 @@ export default async function OGImage({
           </div>
         )}
 
-        {/* Bottom row: date + author */}
         <div
           style={{
             display: "flex",
@@ -122,9 +128,7 @@ export default async function OGImage({
             flexShrink: 0,
           }}
         >
-          <span style={{ color: "#666666", fontSize: "20px" }}>
-            {post.date}
-          </span>
+          <span style={{ color: "#666666", fontSize: "20px" }}>{post.date}</span>
           <span
             style={{ color: "#fc531d", fontSize: "20px", fontWeight: 500 }}
           >

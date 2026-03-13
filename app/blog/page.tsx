@@ -3,12 +3,11 @@ import { getPosts } from "../../lib/api";
 import { Post } from "../../types/post";
 
 export default async function Blog() {
-  const { posts, mumblings } = getData();
+  const { posts } = getData();
 
   return (
     <div className="container">
       <BlogLinks posts={posts} hasLimit={false} title="Blog posts" sectionId="posts" />
-      <BlogLinks posts={mumblings} hasLimit={false} title="Mumblings" sectionId="mumblings" />
     </div>
   );
 }

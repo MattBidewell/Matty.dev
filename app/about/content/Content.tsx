@@ -10,8 +10,8 @@ export default function Content() {
       </p>
       <p>
         I currently work as a Senior Software Engineer at{" "}
-        <Link target="_blank" rel="noreferrer" href="https://beamery.com/">
-          Beamery
+        <Link target="_blank" rel="noreferrer" href="https://www.contentful.com/">
+          Contentful
         </Link>
         , and I enjoy shipping reliable systems, writing clearly, and working in
         the open.
@@ -21,9 +21,9 @@ export default function Content() {
         <Link
           target="_blank"
           rel="noopener noreferrer"
-          href="https://bsky.app/profile/mattbidewell.bsky.social"
+          href="https://x.com/MattBidewell"
         >
-          Bluesky
+          X (formerly Twitter)
         </Link>
         , browse my work on{" "}
         <Link
