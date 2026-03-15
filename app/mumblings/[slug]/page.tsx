@@ -1,34 +1,15 @@
-import { Remarkable } from "remarkable";
 import type { Metadata } from "next";
-import hljs from "highlight.js";
 import "highlight.js/styles/tokyo-night-dark.css";
 
 import PostBody from "../../components/blog/body/PostBody";
 import PostFooter from "../../components/blog/footer/PostFooter";
 import styles from "../../blog/[slug]/Post.module.css";
 import { getPostBySlug, getPosts } from "../../../lib/api";
-
-const r = new Remarkable({
-  highlight: function (str: string, lang: string) {
-    if (lang && hljs.getLanguage(lang)) {
-      try {
-        return hljs.highlight(lang, str).value;
-      } catch (err: unknown) {
-        if (err instanceof Error)
-          console.log("error rendering code block" + err.message);
-      }
-    }
-
-    try {
-      return hljs.highlightAuto(str).value;
-    } catch (err) {}
-    return "t";
-  },
-});
+import { renderMarkdown } from "../../../lib/markdown";
 
 function getMumbling(slug: string) {
   const post = getPostBySlug(slug, ["title", "date", "slug", "content", "alt"]);
-  const content = r.render(post.content || "p");
+  const content = renderMarkdown(post.content || "p");
   return { ...post, content };
 }
 

@@ -1,31 +1,121 @@
 import matter from "gray-matter";
 import fs from "fs";
 import { join } from "path";
-import { Post, PostCategory } from "../types/post";
+import { Post, PostCategory, PostFormat } from "../types/post";
+import { getMdxPostMeta, getMdxPostSlugs } from "../content/posts";
 
-const postsDirectory = join(process.cwd(), "_posts");
+const legacyPostsDirectory = join(process.cwd(), "_posts");
+const interactivePostsDirectory = join(process.cwd(), "content", "posts");
+
+type ResolvedPostSource = {
+  slug: string;
+  fullPath: string;
+  format: PostFormat;
+};
+
+function pathExists(path: string) {
+  return fs.existsSync(path);
+}
+
+function stripPostExtension(slug: string) {
+  return slug.replace(/\.(md|mdx)$/, "");
+}
+
+function normalizeDate(value: unknown) {
+  if (value instanceof Date && !Number.isNaN(value.getTime())) {
+    return value.toISOString().split("T")[0];
+  }
+
+  if (typeof value === "string" && value.length > 0) {
+    const parsedDate = new Date(value);
+
+    if (!Number.isNaN(parsedDate.getTime())) {
+      return parsedDate.toISOString().split("T")[0];
+    }
+
+    return value;
+  }
+
+  return "1970-01-01";
+}
+
+function getLegacyPostSlugs() {
+  if (!pathExists(legacyPostsDirectory)) {
+    return [];
+  }
+
+  return fs
+    .readdirSync(legacyPostsDirectory)
+    .filter((file) => file.endsWith(".md") || file.endsWith(".mdx"))
+    .map(stripPostExtension);
+}
+
+function getInteractivePostSlugs() {
+  return getMdxPostSlugs().filter((slug) => {
+    return pathExists(join(interactivePostsDirectory, slug, "index.mdx"));
+  });
+}
+
+function resolvePostSourceBySlug(slug: string): ResolvedPostSource {
+  const rawSlug = stripPostExtension(slug);
+  const legacyMarkdownPath = join(legacyPostsDirectory, `${rawSlug}.md`);
+
+  if (pathExists(legacyMarkdownPath)) {
+    return {
+      slug: rawSlug,
+      fullPath: legacyMarkdownPath,
+      format: "md",
+    };
+  }
+
+  const legacyMdxPath = join(legacyPostsDirectory, `${rawSlug}.mdx`);
+
+  if (pathExists(legacyMdxPath)) {
+    return {
+      slug: rawSlug,
+      fullPath: legacyMdxPath,
+      format: "mdx",
+    };
+  }
+
+  const interactiveMdxPath = join(interactivePostsDirectory, rawSlug, "index.mdx");
+
+  if (pathExists(interactiveMdxPath)) {
+    return {
+      slug: rawSlug,
+      fullPath: interactiveMdxPath,
+      format: "mdx",
+    };
+  }
+
+  throw new Error(`Could not find a post for slug: ${rawSlug}`);
+}
 
 export function getPostSlugs(limit: number | undefined) {
-  const files = fs.readdirSync(postsDirectory);
+  const slugs = Array.from(
+    new Set([...getLegacyPostSlugs(), ...getInteractivePostSlugs()])
+  );
+
   if (limit) {
-    // only take X number from the end. (most recent)
-    return files.slice(files.length - limit);
+    return slugs.slice(slugs.length - limit);
   }
-  return files;
+
+  return slugs;
 }
 
 export function getPostBySlug(slug: string, fields: string[] = []): Post {
-  const rawSlug = slug.replace(/\.md$/, "");
-  const fullPath = join(postsDirectory, `${rawSlug}.md`);
+  const { slug: rawSlug, fullPath, format } = resolvePostSourceBySlug(slug);
   const fileContents = fs.readFileSync(fullPath, "utf8");
   const { data, content }: { data: any; content: string } =
     matter(fileContents);
+  const mdxMeta = format === "mdx" ? getMdxPostMeta(rawSlug) : null;
+  const metadata = mdxMeta ? { ...data, ...mdxMeta } : data;
 
   const inferredCategory: PostCategory = rawSlug.includes("mumblings")
     ? "mumbling"
     : "blog";
   // Default category to inferred value for backwards compatibility
-  const category: PostCategory = data.category || inferredCategory;
+  const category: PostCategory = metadata.category || inferredCategory;
 
   const items: Post = {
     date: "1970-01-01",
@@ -33,24 +123,32 @@ export function getPostBySlug(slug: string, fields: string[] = []): Post {
     content: "",
     linkSlug: "",
     alt: "",
+    format,
+    sourcePath: fullPath,
     category,
   };
 
-  if (data.date) {
-    items.date = data.date.toISOString().split("T")[0];
+  if (metadata.date) {
+    items.date = normalizeDate(metadata.date);
   }
 
-  items.status = data.status ? data.status : "draft";
-  items.image = `${rawSlug}/thumbnail.webp`;
+  items.status = metadata.status ? metadata.status : "draft";
+  items.image = metadata.image ? metadata.image : `${rawSlug}/thumbnail.webp`;
 
   // Handle project-specific fields
-  if (data.github_url) items.github_url = data.github_url;
-  if (data.demo_url) items.demo_url = data.demo_url;
-  if (data.tech_stack) items.tech_stack = data.tech_stack;
-  if (typeof data.featured !== "undefined") items.featured = data.featured;
+  if (metadata.github_url) items.github_url = metadata.github_url;
+  if (metadata.demo_url) items.demo_url = metadata.demo_url;
+  if (metadata.tech_stack) items.tech_stack = metadata.tech_stack;
+  if (typeof metadata.featured !== "undefined") items.featured = metadata.featured;
 
   fields.forEach((field: string) => {
-    if (field === "status" || field === "date" || field === "category") {
+    if (
+      field === "status" ||
+      field === "date" ||
+      field === "category" ||
+      field === "format" ||
+      field === "sourcePath"
+    ) {
       return;
     }
     if (field === "slug") {
@@ -72,13 +170,13 @@ export function getPostBySlug(slug: string, fields: string[] = []): Post {
       items.linkSlug = `${prefix}/${rawSlug}`;
       return;
     }
-    if (typeof data[field] !== "undefined") {
+    if (typeof metadata[field] !== "undefined") {
       const ObjKey = field as keyof Post;
       // Skip fields already handled
       if (ObjKey === "github_url" || ObjKey === "demo_url" || ObjKey === "tech_stack" || ObjKey === "featured") {
         return;
       }
-      (items as any)[ObjKey] = data[field];
+      (items as any)[ObjKey] = metadata[field];
       return;
     }
   });

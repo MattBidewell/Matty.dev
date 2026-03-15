@@ -1,33 +1,12 @@
-import { Remarkable } from "remarkable";
-
 // components
 import PostBody from "../../components/blog/body/PostBody";
 import PostFooter from "../../components/blog/footer/PostFooter";
 
 import styles from "./Project.module.css";
-import hljs from "highlight.js";
 import "highlight.js/styles/tokyo-night-dark.css";
 
 import { getPostBySlug, getPosts } from "../../../lib/api";
-
-// remarkable and highlight js setup
-const r = new Remarkable({
-  highlight: function (str: string, lang: string) {
-    if (lang && hljs.getLanguage(lang)) {
-      try {
-        return hljs.highlight(lang, str).value;
-      } catch (err: unknown) {
-        if (err instanceof Error)
-          console.log("error rendering code block" + err.message);
-      }
-    }
-
-    try {
-      return hljs.highlightAuto(str).value;
-    } catch (err) {}
-    return "t"; // use external default escaping
-  },
-});
+import { renderMarkdown } from "../../../lib/markdown";
 
 function getProject(slug: string) {
   const project = getPostBySlug(slug, [
@@ -40,7 +19,7 @@ function getProject(slug: string) {
     "github_url",
     "demo_url",
   ]);
-  const content = r.render(project.content || "p");
+  const content = renderMarkdown(project.content || "p");
   return { ...project, content };
 }
 

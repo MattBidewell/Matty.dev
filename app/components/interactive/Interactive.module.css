@@ -1,0 +1,221 @@
+.frame {
+  --demo-accent: var(--accent-secondary);
+  margin: 2rem 0;
+  border: 1px solid color-mix(in srgb, var(--demo-accent) 24%, var(--border-color));
+  border-radius: 18px;
+  overflow: hidden;
+  background:
+    radial-gradient(circle at top right, color-mix(in srgb, var(--demo-accent) 12%, transparent), transparent 30%),
+    linear-gradient(180deg, color-mix(in srgb, var(--bg-elevated) 82%, black), var(--bg-surface));
+  box-shadow: 0 18px 40px rgba(0, 0, 0, 0.18);
+}
+
+.header {
+  padding: 1.1rem 1.1rem 0;
+}
+
+.title {
+  margin: 0;
+  font-size: 1.1rem;
+  font-weight: 700;
+  color: var(--text-heading);
+}
+
+.lead {
+  margin: 0.45rem 0 0;
+  color: var(--text-secondary);
+}
+
+.body {
+  padding: 1rem 1.1rem;
+}
+
+.controls {
+  display: grid;
+  gap: 1rem;
+  padding: 0 1.1rem 1rem;
+}
+
+.caption {
+  margin: 0;
+  padding: 1rem 1.1rem 1.1rem;
+  border-top: 1px solid color-mix(in srgb, var(--demo-accent) 14%, var(--border-color));
+  color: var(--text-secondary);
+  font-size: 0.95rem;
+}
+
+.controlGrid {
+  display: grid;
+  gap: 0.85rem;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+}
+
+.rangeControl {
+  display: grid;
+  gap: 0.55rem;
+}
+
+.rangeHeader {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 0.75rem;
+}
+
+.rangeLabel {
+  color: var(--text-heading);
+  font-weight: 700;
+}
+
+.rangeValue {
+  color: var(--text-secondary);
+  font-size: 0.95rem;
+}
+
+.rangeInput {
+  accent-color: var(--demo-accent);
+  width: 100%;
+}
+
+.playback {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+.playbackButtons {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+}
+
+.button {
+  border: 1px solid color-mix(in srgb, var(--demo-accent) 24%, var(--border-color));
+  border-radius: 999px;
+  background: color-mix(in srgb, var(--bg-elevated) 84%, black);
+  color: var(--text-heading);
+  cursor: pointer;
+  min-height: 44px;
+  min-width: 44px;
+  padding: 0.6rem 0.9rem;
+  font: inherit;
+}
+
+.button:hover {
+  border-color: color-mix(in srgb, var(--demo-accent) 48%, var(--border-color));
+}
+
+.button:disabled {
+  cursor: not-allowed;
+  opacity: 0.45;
+}
+
+.status {
+  color: var(--text-secondary);
+  font-size: 0.95rem;
+}
+
+.statsGrid {
+  display: grid;
+  gap: 0.75rem;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+}
+
+.statCard {
+  border: 1px solid color-mix(in srgb, var(--demo-accent) 24%, var(--border-color));
+  border-radius: 14px;
+  padding: 1rem;
+  background: color-mix(in srgb, var(--bg-surface) 85%, black);
+}
+
+.statLabel {
+  margin: 0;
+  font-weight: 700;
+  color: var(--text-heading);
+}
+
+.statValue {
+  margin: 0.3rem 0 0;
+  font-size: 2rem;
+  line-height: 1.1;
+  color: var(--text-heading);
+}
+
+.statMeta {
+  margin: 0.25rem 0 0.7rem;
+  color: var(--text-secondary);
+}
+
+.meter {
+  height: 0.7rem;
+  overflow: hidden;
+  border-radius: 999px;
+  background: color-mix(in srgb, var(--bg-elevated) 90%, black);
+}
+
+.meterFill {
+  height: 100%;
+  border-radius: inherit;
+  background: var(--demo-accent);
+}
+
+.demoCanvas {
+  display: block;
+  width: 100%;
+  max-width: 100%;
+  border-radius: 14px;
+  background: linear-gradient(180deg, rgba(8, 11, 16, 0.8), rgba(10, 13, 17, 0.98));
+  border: 1px solid rgba(255, 255, 255, 0.04);
+}
+
+.legend {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem 1rem;
+  margin-top: 0.85rem;
+  color: var(--text-secondary);
+  font-size: 0.92rem;
+}
+
+.legendItem {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.45rem;
+}
+
+.legendSwatch {
+  width: 0.75rem;
+  height: 0.75rem;
+  border-radius: 999px;
+  flex: 0 0 auto;
+}
+
+.notes {
+  display: grid;
+  gap: 0.6rem;
+  margin-top: 1rem;
+}
+
+.note {
+  margin: 0;
+  padding: 0.85rem 0.95rem;
+  border-left: 2px solid color-mix(in srgb, var(--demo-accent) 50%, var(--border-color));
+  background: color-mix(in srgb, var(--bg-surface) 90%, black);
+  color: var(--text-secondary);
+}
+
+@media only screen and (max-width: 800px) {
+  .header,
+  .body,
+  .controls,
+  .caption {
+    padding-left: 0.9rem;
+    padding-right: 0.9rem;
+  }
+
+  .statsGrid,
+  .controlGrid {
+    grid-template-columns: 1fr;
+  }
+}

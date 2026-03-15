@@ -1,8 +1,19 @@
+const createMDX = require("@next/mdx");
+const rehypeHighlight = require("rehype-highlight").default;
+const remarkFrontmatter = require("remark-frontmatter").default;
+const remarkGfm = require("remark-gfm").default;
+
+const withMDX = createMDX({
+  extension: /\.(md|mdx)$/,
+  options: {
+    remarkPlugins: [remarkGfm, remarkFrontmatter],
+    rehypePlugins: [rehypeHighlight],
+  },
+});
+
 /** @type {import('next').NextConfig} */
 const nextConfig = {
-  experimental: {
-    appDir: true,
-  },
+  pageExtensions: ["js", "jsx", "md", "mdx", "ts", "tsx"],
   async redirects() {
     return [
       {
@@ -14,4 +25,4 @@ const nextConfig = {
   },
 };
 
-module.exports = nextConfig;
+module.exports = withMDX(nextConfig);

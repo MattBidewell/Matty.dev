@@ -1,41 +1,16 @@
-import { Remarkable } from "remarkable";
 import type { Metadata } from "next";
+import { notFound } from "next/navigation";
 
 // components
 import PostBody from "../../components/blog/body/PostBody";
 import PostFooter from "../../components/blog/footer/PostFooter";
 
 import styles from "./Post.module.css";
-import hljs from "highlight.js";
-// import "highlight.js/styles/monokai.css";
 import "highlight.js/styles/tokyo-night-dark.css";
 
 import { getPostBySlug, getPosts } from "../../../lib/api";
-
-// remarkable and highlight js setup
-const r = new Remarkable({
-  highlight: function (str: string, lang: string) {
-    if (lang && hljs.getLanguage(lang)) {
-      try {
-        return hljs.highlight(lang, str).value;
-      } catch (err: unknown) {
-        if (err instanceof Error)
-          console.log("error rendering code block" + err.message);
-      }
-    }
-
-    try {
-      return hljs.highlightAuto(str).value;
-    } catch (err) {}
-    return "t"; // use external default escaping
-  },
-});
-
-function getPost(slug: string) {
-  const post = getPostBySlug(slug, ["title", "date", "slug", "content", "alt"]);
-  const content = r.render(post.content || "p");
-  return { ...post, content };
-}
+import { renderMarkdown } from "../../../lib/markdown";
+import { getMdxPostComponent } from "../../../content/posts";
 
 export async function generateMetadata({
   params,
@@ -67,14 +42,43 @@ export async function generateMetadata({
   };
 }
 
-export default function BlogPost({ params }: { params: { slug: string } }) {
-  const post = getPost(params.slug);
+export default async function BlogPost({ params }: { params: { slug: string } }) {
+  const post = getPostBySlug(params.slug, [
+    "title",
+    "date",
+    "slug",
+    "content",
+    "alt",
+    "format",
+  ]);
   const shareUrl = `https://matty.dev/blog/${params.slug}`;
+
+  if (post.format === "mdx") {
+    const MdxPost = await getMdxPostComponent(params.slug);
+
+    if (!MdxPost) {
+      notFound();
+    }
+
+    return (
+      <div className="container">
+        <h1 className={styles.title}>{post.title}</h1>
+        <p className={styles.date}>{post.date}</p>
+        <PostBody>
+          <MdxPost />
+        </PostBody>
+        <PostFooter shareUrl={shareUrl} shareTitle={post.title} />
+      </div>
+    );
+  }
+
+  const content = renderMarkdown(post.content || "p");
+
   return (
     <div className="container">
       <h1 className={styles.title}>{post.title}</h1>
       <p className={styles.date}>{post.date}</p>
-      <PostBody content={post.content} />
+      <PostBody content={content} />
       <PostFooter shareUrl={shareUrl} shareTitle={post.title} />
     </div>
   );
