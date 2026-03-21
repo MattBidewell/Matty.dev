@@ -11,6 +11,15 @@ export interface IBook {
 
 export const books: IBook[] = [
   {
+    title: "Dungeon Crawler Carl 3",
+    subtitle: "The Dungeon Anarchist's Cookbook",
+    image: "dungeon_crawler_carl_3.webp",
+    url: "https://www.amazon.co.uk/Dungeon-Anarchists-Cookbook-Dinnimans-deadliest/dp/0241816246",
+    rating: 4,
+    audiobook: true,
+    date: new Date("2026-03-14"),
+  },
+  {
     title: "An Elegant Puzzle",
     subtitle: "Systems of Engineering Management",
     url: "https://www.amazon.co.uk/dp/B07QYCHJ7V",
