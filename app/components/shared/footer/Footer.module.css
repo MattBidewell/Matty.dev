@@ -3,10 +3,6 @@
   margin: 0 auto;
   padding: 2.25rem var(--layout-pad-x) 2.5rem calc(var(--layout-pad-x) + var(--layout-nav-col) + var(--layout-gap));
   border-top: 1px solid var(--border-color);
-  display: grid;
-  grid-template-columns: minmax(0, 1fr) auto;
-  column-gap: 2rem;
-  align-items: start;
   font-family: 'iA Writer Quattro', 'Iowan Old Style', 'Palatino Linotype', 'Book Antiqua', Palatino, 'Times New Roman', serif;
   font-size: 0.85rem;
 }
@@ -16,11 +12,6 @@
   flex-direction: column;
   align-items: flex-start;
   gap: 1rem;
-}
-
-.rightColumn {
-  display: flex;
-  justify-content: flex-end;
 }
 
 .links {
@@ -54,135 +45,10 @@
   font-size: 0.8rem;
 }
 
-.metaPanel {
-  min-width: 18rem;
-  display: grid;
-  gap: 0.35rem;
-}
-
-.metaRow {
-  display: grid;
-  grid-template-columns: auto 1fr;
-  gap: 0.85rem;
-  justify-content: end;
-  align-items: baseline;
-}
-
-.metaKey {
-  color: var(--text-secondary);
-  opacity: 0.75;
-  font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, 'Liberation Mono', 'Courier New', monospace;
-  font-size: 0.68rem;
-  letter-spacing: 0.06em;
-  text-transform: uppercase;
-}
-
-.metaValue {
-  color: var(--text-secondary);
-  text-align: right;
-  font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, 'Liberation Mono', 'Courier New', monospace;
-  font-size: 0.72rem;
-  letter-spacing: 0.03em;
-}
-
-.themeContainer {
-  display: flex;
-  align-items: baseline;
-  gap: 0.75rem;
-  margin-top: 0.25rem;
-}
-
-.themeLabel {
-  color: var(--text-secondary);
-  font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, 'Liberation Mono', 'Courier New', monospace;
-  font-size: 0.7rem;
-  letter-spacing: 0.03em;
-  text-transform: lowercase;
-}
-
-.themeLabel::before {
-  content: "$ ";
-  color: var(--accent-secondary);
-}
-
-.themeButtons {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 0.35rem;
-  align-items: center;
-}
-
-.themeButton {
-  border: 1px solid transparent;
-  background-color: transparent;
-  color: var(--text-secondary);
-  font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, 'Liberation Mono', 'Courier New', monospace;
-  font-size: 0.68rem;
-  padding: 0.18rem 0.4rem;
-  border-radius: 2px;
-  cursor: pointer;
-  text-transform: lowercase;
-  letter-spacing: 0.02em;
-  transition: color 0.12s ease, border-color 0.12s ease, background-color 0.12s ease, transform 0.12s ease;
-}
-
-.themeButton::before {
-  content: "[";
-  color: var(--border-color);
-}
-
-.themeButton::after {
-  content: "]";
-  color: var(--border-color);
-}
-
-.themeButton:hover {
-  color: var(--text-heading);
-  border-color: var(--accent-secondary);
-  transform: translateY(-1px);
-}
-
-.themeButton:hover::before,
-.themeButton:hover::after {
-  color: var(--accent-secondary);
-}
-
-.themeButton:global(.is-active) {
-  color: var(--text-heading);
-  background-color: var(--bg-elevated);
-  border-color: var(--accent-secondary);
-  box-shadow: inset 0 0 0 1px color-mix(in srgb, var(--accent-secondary) 30%, transparent);
-}
-
-.themeButton:global(.is-active)::before {
-  content: ">";
-  color: var(--accent-secondary);
-}
-
-.themeButton:global(.is-active)::after {
-  color: var(--accent-secondary);
-}
-
-.themeButton:focus-visible {
-  outline: 1px dashed var(--accent-secondary);
-  outline-offset: 2px;
-}
-
 @media only screen and (max-width: 900px) {
   .footer {
     width: 100%;
     padding: 1.75rem 1.5rem;
-    grid-template-columns: minmax(0, 1fr);
-    row-gap: 1rem;
-  }
-
-  .rightColumn {
-    justify-content: flex-start;
-  }
-
-  .metaPanel {
-    min-width: 0;
-    width: 100%;
   }
 }
 
@@ -196,8 +62,7 @@
     gap: 1rem;
   }
 
-  .leftColumn,
-  .rightColumn {
+  .leftColumn {
     width: 100%;
     align-items: center;
     justify-content: center;
@@ -217,29 +82,4 @@
     font-size: 0.8rem;
   }
 
-  .themeContainer {
-    justify-content: center;
-    flex-direction: column;
-    gap: 0.5rem;
-  }
-
-  .themeButtons {
-    justify-content: center;
-  }
-
-  .metaPanel {
-    width: 100%;
-    min-width: 0;
-  }
-
-  .metaRow {
-    justify-content: center;
-    grid-template-columns: auto;
-    gap: 0.1rem;
-  }
-
-  .metaKey,
-  .metaValue {
-    text-align: center;
-  }
 }

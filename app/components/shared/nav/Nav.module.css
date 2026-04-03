@@ -37,8 +37,9 @@
 
 .active {
   color: var(--text-heading);
-  background-color: var(--bg-elevated);
-  border: 1px solid var(--border-color);
+  text-decoration-color: var(--accent-secondary);
+  text-decoration-thickness: 2px;
+  text-underline-offset: 3px;
 }
 
 @media only screen and (max-width: 800px) {

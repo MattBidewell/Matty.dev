@@ -172,23 +172,6 @@ body {
   position: relative;
 }
 
-body::before {
-  content: "";
-  position: fixed;
-  inset: 0;
-  pointer-events: none;
-  background:
-    radial-gradient(circle at 50% -20%, var(--page-vignette), transparent 50%),
-    repeating-linear-gradient(
-      0deg,
-      transparent,
-      transparent 3px,
-      var(--paper-grain) 3px,
-      var(--paper-grain) 4px
-    );
-  z-index: 0;
-}
-
 @media (prefers-reduced-motion: no-preference) {
   ::view-transition {
     background: transparent;

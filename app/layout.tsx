@@ -43,7 +43,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="en" data-theme="graphite-cyan">
+    <html lang="en" data-theme="night-ops">
       <head>
         <link
           rel="preload"
