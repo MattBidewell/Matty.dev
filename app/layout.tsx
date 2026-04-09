@@ -1,11 +1,28 @@
 import "./styles/globals.css";
 import TopContent from "./components/shared/topContent/TopContent";
 import Footer from "./components/shared/footer/Footer";
-import type { Metadata } from "next";
+import type { Metadata, Viewport } from "next";
 import { ViewTransitions } from "next-view-transitions";
+import { Inter, Newsreader } from "next/font/google";
 
 const desc =
   "A software engineer that is passionate about open source software and software engineering, with 7+ years of experience in creating well-crafted SaaS solutions in the cloud...";
+
+const inter = Inter({
+  subsets: ["latin"],
+  display: "swap",
+  variable: "--font-sans",
+  weight: ["400", "500", "600", "700"],
+});
+
+const newsreader = Newsreader({
+  subsets: ["latin"],
+  display: "swap",
+  variable: "--font-serif",
+  adjustFontFallback: false,
+  weight: ["400", "500", "600", "700"],
+  style: ["normal", "italic"],
+});
 
 export const metadata: Metadata = {
   metadataBase: new URL("https://matty.dev"),
@@ -37,20 +54,22 @@ export const metadata: Metadata = {
   },
 };
 
+export const viewport: Viewport = {
+  colorScheme: "light dark",
+};
+
 export default function RootLayout({
   children,
 }: {
   children: React.ReactNode;
 }) {
   return (
-    <html lang="en" data-theme="night-ops">
+    <html lang="en" className={`${inter.variable} ${newsreader.variable}`}>
       <head>
-        <link
-          rel="preload"
-          href="/assets/fonts/ia-writer-quattro/iAWriterQuattroS-Regular.woff2"
-          as="font"
-          type="font/woff2"
-          crossOrigin="anonymous"
+        <script
+          dangerouslySetInnerHTML={{
+            __html: `(function(){try{var theme=localStorage.getItem('theme-preference');if(theme==='light'||theme==='dark'){document.documentElement.dataset.theme=theme;}}catch(e){}})();`,
+          }}
         />
       </head>
       <body>

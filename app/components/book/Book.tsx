@@ -6,25 +6,31 @@ import styles from '../../bookshelf/books.module.css';
 export default function Book({ book }: { book: IBook }) {
   const formatDate = (date: Date) => {
     return new Intl.DateTimeFormat("en-GB", {
-      day: "numeric",
       month: "short",
       year: "numeric",
     }).format(date);
   };
 
-  // Generate star rating display
   const renderRating = (rating: number | undefined) => {
     if (rating === undefined) return null;
 
-    const stars = [];
-    for (let i = 1; i <= 5; i++) {
-      stars.push(
-        <span key={i} className={styles.star}>
-          {i <= rating ? "★" : "☆"}
-        </span>
-      );
-    }
-    return <div className={styles["book-rating"]}>{stars}</div>;
+    return (
+      <div className={styles["book-rating"]} aria-label={`${rating} out of 5 stars`}>
+        {Array.from({ length: 5 }, (_, index) => {
+          const filled = index < rating;
+
+          return (
+            <span
+              key={index}
+              aria-hidden="true"
+              className={filled ? styles["star-filled"] : styles["star-empty"]}
+            >
+              ★
+            </span>
+          );
+        })}
+      </div>
+    );
   };
 
   return (
@@ -41,6 +47,7 @@ export default function Book({ book }: { book: IBook }) {
           width={160}
           height={200}
           className={styles["book-image"]}
+          sizes="(max-width: 480px) 40vw, (max-width: 900px) 25vw, 180px"
         />
         {book.audiobook && <span className={styles["book-badge"]}>Audio</span>}
       </div>

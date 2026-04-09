@@ -1,16 +1,18 @@
 .date {
-  font-family: 'JetBrains Mono', monospace;
+  font-family: var(--font-body);
   font-size: 0.85rem;
   color: var(--text-secondary);
   font-weight: 400;
   margin: 0 0 2rem;
   text-align: center;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
 }
 
 .title {
   text-align: center;
   color: var(--text-heading);
-  font-family: 'iA Writer Quattro', 'Iowan Old Style', 'Palatino Linotype', 'Book Antiqua', Palatino, 'Times New Roman', serif;
+  font-family: var(--font-display);
   font-style: normal;
   margin: 0 0 0.5rem;
 }

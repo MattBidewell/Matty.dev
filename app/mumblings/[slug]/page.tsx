@@ -1,7 +1,6 @@
 import { Remarkable } from "remarkable";
 import type { Metadata } from "next";
 import hljs from "highlight.js";
-import "highlight.js/styles/tokyo-night-dark.css";
 
 import PostBody from "../../components/blog/body/PostBody";
 import PostFooter from "../../components/blog/footer/PostFooter";
