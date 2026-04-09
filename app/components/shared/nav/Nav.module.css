@@ -10,10 +10,10 @@
   list-style: none;
   padding: 0;
   margin: 0;
-  font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, 'Liberation Mono', 'Courier New', monospace;
-  font-size: 0.8rem;
-  letter-spacing: 0.04em;
-  text-transform: lowercase;
+  font-family: var(--font-body);
+  font-size: 0.76rem;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
 }
 
 .nav li {
@@ -21,25 +21,20 @@
 }
 
 .link {
-  text-decoration: underline;
-  text-decoration-thickness: 1px;
-  text-underline-offset: 2px;
+  text-decoration: none;
   color: var(--text-secondary);
   transition: color 0.2s ease;
-  padding: 0.3rem 0.5rem;
-  border-radius: 4px;
+  padding: 0.35rem 0.55rem;
+  border-radius: 2px;
 }
 
 .link:hover {
-  color: var(--text-heading);
-  background-color: var(--bg-elevated);
+  color: var(--accent-secondary);
 }
 
 .active {
-  color: var(--text-heading);
-  text-decoration-color: var(--accent-secondary);
-  text-decoration-thickness: 2px;
-  text-underline-offset: 3px;
+  color: var(--accent-secondary);
+  box-shadow: inset 0 -1px 0 var(--accent-secondary);
 }
 
 @media only screen and (max-width: 800px) {

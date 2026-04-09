@@ -2,16 +2,17 @@ import styles from "./books.module.css";
 import { books, IBook } from "./books";
 import Book from "../components/book/Book";
 
-// Group books by year
 function groupBooksByYear(books: IBook[]): Map<number, IBook[]> {
   const sorted = [...books].sort((a, b) => b.date.getTime() - a.date.getTime());
   const grouped = new Map<number, IBook[]>();
 
   for (const book of sorted) {
     const year = book.date.getFullYear();
+
     if (!grouped.has(year)) {
       grouped.set(year, []);
     }
+
     grouped.get(year)!.push(book);
   }
 
@@ -19,12 +20,18 @@ function groupBooksByYear(books: IBook[]): Map<number, IBook[]> {
 }
 
 export default async function Bookshelf() {
-  const booksByYear = groupBooksByYear(books);
+  const yearGroups = Array.from(groupBooksByYear(books).entries());
 
   return (
-    <div className="container">
-      <section className={`content ${styles["bookshelf-container"]}`}>
-        {Array.from(booksByYear.entries()).map(([year, yearBooks]) => (
+    <div className={`container ${styles.container}`}>
+      <h1>Bookshelf</h1>
+      <p className={styles.intro}>
+        A running log of the books that stuck with me, from engineering and systems work to
+        sci-fi, fantasy, and the odd health rabbit hole.
+      </p>
+
+      <div className={styles["year-list"]}>
+        {yearGroups.map(([year, yearBooks]) => (
           <section key={year} className={styles["year-section"]}>
             <h2 className={styles["year-heading"]}>{year}</h2>
             <div className={styles["book-shelf"]}>
@@ -34,7 +41,7 @@ export default async function Bookshelf() {
             </div>
           </section>
         ))}
-      </section>
+      </div>
     </div>
   );
 }

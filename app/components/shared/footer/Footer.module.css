@@ -3,7 +3,7 @@
   margin: 0 auto;
   padding: 2.25rem var(--layout-pad-x) 2.5rem calc(var(--layout-pad-x) + var(--layout-nav-col) + var(--layout-gap));
   border-top: 1px solid var(--border-color);
-  font-family: 'iA Writer Quattro', 'Iowan Old Style', 'Palatino Linotype', 'Book Antiqua', Palatino, 'Times New Roman', serif;
+  font-family: var(--font-body);
   font-size: 0.85rem;
 }
 
@@ -14,12 +14,26 @@
   gap: 1rem;
 }
 
+.topRow {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+}
+
 .links {
   display: flex;
   justify-content: flex-start;
   align-items: center;
   flex-wrap: wrap;
   gap: 0.25rem;
+}
+
+.themeWrap {
+  display: flex;
+  justify-content: flex-end;
+  flex-shrink: 0;
 }
 
 .footer a {
@@ -33,6 +47,35 @@
 
 .footer a:hover {
   color: var(--text-heading);
+}
+
+.themeToggle {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.25rem;
+}
+
+.themeButton {
+  appearance: none;
+  border: 0;
+  background: transparent;
+  color: var(--text-secondary);
+  text-decoration: underline;
+  text-decoration-thickness: 1px;
+  text-underline-offset: 2px;
+  transition: color 0.2s ease;
+  padding: 0.25rem 0.5rem;
+  font: inherit;
+  cursor: pointer;
+}
+
+.themeButton:hover {
+  color: var(--text-heading);
+}
+
+.themeButtonActive {
+  color: var(--accent-secondary);
+  text-decoration-thickness: 2px;
 }
 
 .separator {
@@ -68,8 +111,17 @@
     justify-content: center;
   }
 
+  .topRow {
+    flex-direction: column;
+    align-items: center;
+  }
+
   .links {
     gap: 0.15rem;
+    justify-content: center;
+  }
+
+  .themeWrap {
     justify-content: center;
   }
 
@@ -78,6 +130,11 @@
   }
 
   .footer a {
+    padding: 0.25rem 0.35rem;
+    font-size: 0.8rem;
+  }
+
+  .themeButton {
     padding: 0.25rem 0.35rem;
     font-size: 0.8rem;
   }

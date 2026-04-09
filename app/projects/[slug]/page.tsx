@@ -6,7 +6,6 @@ import PostFooter from "../../components/blog/footer/PostFooter";
 
 import styles from "./Project.module.css";
 import hljs from "highlight.js";
-import "highlight.js/styles/tokyo-night-dark.css";
 
 import { getPostBySlug, getPosts } from "../../../lib/api";
 
