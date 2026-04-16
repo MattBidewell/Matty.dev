@@ -1,5 +1,17 @@
 # Matty.dev
 
-[![Netlify Status](https://api.netlify.com/api/v1/badges/d80ff0cf-7b7d-4cc2-a118-a4bde3c26d07/deploy-status)](https://app.netlify.com/sites/relaxed-engelbart-91d11c/deploys)
+Source code for [matty.dev](https://matty.dev) — a personal website and blog, built with [Astro](https://astro.build) and deployed on Cloudflare Pages.
 
-Personal website of Matthew Bidewell. Hosted on Netflify.
+## Getting started
+
+```bash
+npm install
+npm run dev
+```
+
+## Commands
+
+| Command | Description |
+| --- | --- |
+| `npm run dev` | Start local dev server at `localhost:4321` |
+| `npm run build` | Build for production |
