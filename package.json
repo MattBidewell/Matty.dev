@@ -6,10 +6,13 @@
   "scripts": {
     "dev": "astro dev",
     "build": "astro build",
-    "preview": "astro preview",
-    "astro": "astro"
+    "preview": "npm run build && wrangler dev",
+    "astro": "astro",
+    "deploy": "npm run build && wrangler deploy",
+    "cf-typegen": "wrangler types"
   },
   "dependencies": {
+    "@astrojs/cloudflare": "12",
     "@astrojs/rss": "^4.0.7",
     "@astrojs/sitemap": "^3.2.1",
     "@fontsource/inter": "^5.1.0",
@@ -23,6 +26,7 @@
     "@types/mdast": "^4.0.4",
     "@types/node": "^20.5.9",
     "typescript": "^5.0.4",
-    "unist-util-visit": "^5.1.0"
+    "unist-util-visit": "^5.1.0",
+    "wrangler": "^4.83.0"
   }
 }
