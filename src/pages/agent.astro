@@ -1,16 +1,8 @@
 ---
-import BaseLayout from "../layouts/BaseLayout.astro";
+import AgentLayout from "../layouts/AgentLayout.astro";
 import AskMatt from "../components/agent/AskMatt.astro";
 ---
 
-<BaseLayout
-  title="Ask Matt"
-  description="Ask a guardrailed AI agent questions about Matt's work, writing, and projects."
->
-  <div class="container">
-    <section class="content">
-      <h2>Ask Matt</h2>
-      <AskMatt />
-    </section>
-  </div>
-</BaseLayout>
+<AgentLayout>
+  <AskMatt />
+</AgentLayout>
