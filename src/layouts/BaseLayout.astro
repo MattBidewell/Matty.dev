@@ -85,12 +85,18 @@ const ogImageUrl = ogImage ?? new URL("/avatar.webp", Astro.site).toString();
 
     <script is:inline>
       (function () {
-        try {
-          var theme = localStorage.getItem("theme-preference");
-          if (theme === "light" || theme === "dark") {
-            document.documentElement.dataset.theme = theme;
-          }
-        } catch (e) {}
+        function apply() {
+          try {
+            var theme = localStorage.getItem("theme-preference");
+            if (theme === "light" || theme === "dark") {
+              document.documentElement.dataset.theme = theme;
+            } else {
+              delete document.documentElement.dataset.theme;
+            }
+          } catch (e) {}
+        }
+        apply();
+        document.addEventListener("astro:after-swap", apply);
       })();
     </script>
   </head>
