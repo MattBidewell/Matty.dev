@@ -102,9 +102,21 @@
 
 .emptyCopy {
   max-width: 28rem;
-  margin: 0 0 1.25rem;
+  margin: 0;
   color: var(--text-secondary);
   line-height: 1.55;
+}
+
+.emptyDisclaimer {
+  max-width: 30rem;
+  margin: 0.75rem 0 1.25rem;
+  padding: 0.65rem 0.9rem;
+  font-size: 0.8rem;
+  line-height: 1.5;
+  color: var(--text-secondary);
+  background-color: var(--bg-surface);
+  border: 1px solid var(--border-color);
+  border-radius: 10px;
 }
 
 .suggestions {
