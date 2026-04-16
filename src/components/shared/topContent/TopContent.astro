@@ -1,0 +1,16 @@
+---
+import styles from "./main.module.css";
+import Nav from "../nav/Nav.astro";
+---
+
+<header class={styles.header}>
+  <aside class={styles.navRail}>
+    <Nav />
+  </aside>
+  <div class={styles.identity}>
+    <h1 class={styles.name}>
+      Matt Bidewell<span class={styles.cursor}>_</span>
+    </h1>
+    <p class={styles.subtitle}>Software Engineer</p>
+  </div>
+</header>

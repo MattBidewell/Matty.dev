@@ -1,0 +1,41 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+
+const yearsExp = new Date().getFullYear() - 2015;
+---
+
+<BaseLayout title="About">
+  <div class="container">
+    <section class="content">
+      <h2>About</h2>
+      <p>
+        I&apos;m Matt Bidewell, a software engineer with {yearsExp}+ years of
+        experience building products on the web.
+      </p>
+      <p>
+        I currently work as a Senior Software Engineer at{" "}
+        <a target="_blank" rel="noreferrer" href="https://www.contentful.com/">
+          Contentful
+        </a>, and I enjoy shipping reliable systems, writing clearly, and working
+        in the open.
+      </p>
+      <p>
+        You can find me on{" "}
+        <a target="_blank" rel="noopener noreferrer" href="https://x.com/MattBidewell">
+          X (formerly Twitter)
+        </a>, browse my work on{" "}
+        <a target="_blank" rel="noopener noreferrer" href="https://www.github.com/mattbidewell">
+          GitHub
+        </a>, or connect via{" "}
+        <a target="_blank" rel="noopener noreferrer" href="https://www.linkedin.com/in/matt-bidewell-a4578790/">
+          LinkedIn
+        </a>.
+      </p>
+      <p>
+        <a target="_blank" rel="noopener" href="/assets/resume/Matt-Bidewell-Resume.pdf">
+          View resume
+        </a>
+      </p>
+    </section>
+  </div>
+</BaseLayout>

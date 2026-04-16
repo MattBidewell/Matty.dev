@@ -1,0 +1,39 @@
+---
+import type { GetStaticPaths } from "astro";
+import BaseLayout from "../../layouts/BaseLayout.astro";
+import PostBody from "../../components/blog/body/PostBody.astro";
+import PostFooter from "../../components/blog/footer/PostFooter.astro";
+import styles from "../../components/blog/Post.module.css";
+import { getLivePosts, rawSlug, formatDate } from "../../lib/posts";
+
+export const getStaticPaths: GetStaticPaths = async () => {
+  const posts = await getLivePosts("blog");
+  return posts.map((post) => ({
+    params: { slug: rawSlug(post) },
+    props: { post },
+  }));
+};
+
+const { post } = Astro.props;
+const { Content } = await post.render();
+const slug = rawSlug(post);
+const shareUrl = `https://matty.dev/blog/${slug}`;
+const ogImage = `https://matty.dev/blog/${slug}/opengraph-image.png`;
+---
+
+<BaseLayout
+  title={post.data.title}
+  description={post.data.excerpt ?? ""}
+  ogType="article"
+  ogImage={ogImage}
+  canonical={shareUrl}
+>
+  <div class="container">
+    <h1 class={styles.title}>{post.data.title}</h1>
+    <p class={styles.date}>{formatDate(post.data.date)}</p>
+    <PostBody>
+      <Content />
+    </PostBody>
+    <PostFooter shareUrl={shareUrl} shareTitle={post.data.title} />
+  </div>
+</BaseLayout>

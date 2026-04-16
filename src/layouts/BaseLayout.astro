@@ -1,0 +1,108 @@
+---
+import "@fontsource/inter/400.css";
+import "@fontsource/inter/500.css";
+import "@fontsource/inter/600.css";
+import "@fontsource/inter/700.css";
+import "@fontsource/newsreader/400.css";
+import "@fontsource/newsreader/500.css";
+import "@fontsource/newsreader/600.css";
+import "@fontsource/newsreader/700.css";
+import "@fontsource/newsreader/400-italic.css";
+import "@fontsource/newsreader/500-italic.css";
+import "../styles/globals.css";
+import { ClientRouter } from "astro:transitions";
+
+import TopContent from "../components/shared/topContent/TopContent.astro";
+import Footer from "../components/shared/footer/Footer.astro";
+
+interface Props {
+  title?: string;
+  description?: string;
+  ogImage?: string;
+  ogType?: "website" | "article";
+  canonical?: string;
+}
+
+const desc =
+  "A software engineer that is passionate about open source software and software engineering, with 7+ years of experience in creating well-crafted SaaS solutions in the cloud...";
+
+const {
+  title = "Matty.dev",
+  description = desc,
+  ogImage,
+  ogType = "website",
+  canonical,
+} = Astro.props;
+
+const fullTitle = title === "Matty.dev" ? title : `${title} | Matty.dev`;
+const url = canonical ?? new URL(Astro.url.pathname, Astro.site).toString();
+const ogImageUrl = ogImage ?? new URL("/avatar.webp", Astro.site).toString();
+---
+
+<html
+  lang="en"
+  style="--font-sans: 'Inter'; --font-serif: 'Newsreader';"
+>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="color-scheme" content="light dark" />
+    <meta name="referrer" content="strict-origin-when-cross-origin" />
+    <meta name="format-detection" content="telephone=no, email=no, address=no" />
+
+    <title>{fullTitle}</title>
+    <meta name="description" content={description} />
+    <meta name="application-name" content="Matty.dev" />
+    <meta name="author" content="Matthew Bidewell" />
+    <meta name="creator" content="Matthew Bidewell" />
+    <meta name="publisher" content="Matthew Bidewell" />
+    <meta
+      name="keywords"
+      content="Matthew Bidewell, Matt Bidewell, software Engineer"
+    />
+
+    <link rel="canonical" href={url} />
+    <link rel="icon" type="image/webp" href="/avatar.webp" />
+    <link rel="apple-touch-icon" href="/avatar.webp" />
+
+    <meta property="og:type" content={ogType} />
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    <meta property="og:url" content={url} />
+    <meta property="og:image" content={ogImageUrl} />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content={title} />
+    <meta name="twitter:description" content={description} />
+    <meta name="twitter:creator" content="@mattbidewell" />
+    <meta name="twitter:image" content={ogImageUrl} />
+
+    <link rel="alternate" type="application/rss+xml" title="Matty.dev RSS" href="/rss.xml" />
+
+    <ClientRouter />
+
+    <script is:inline>
+      (function () {
+        try {
+          var theme = localStorage.getItem("theme-preference");
+          if (theme === "light" || theme === "dark") {
+            document.documentElement.dataset.theme = theme;
+          }
+        } catch (e) {}
+      })();
+    </script>
+  </head>
+  <body>
+    <div class="site-shell">
+      <main class="page-content">
+        <TopContent />
+        <div class="route-content">
+          <slot />
+        </div>
+      </main>
+      <Footer />
+    </div>
+  </body>
+</html>

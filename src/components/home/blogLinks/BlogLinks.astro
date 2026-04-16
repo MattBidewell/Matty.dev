@@ -1,0 +1,56 @@
+---
+import styles from "./BlogLinks.module.css";
+import { formatDate, linkSlugFor, type PostEntry } from "../../../lib/posts";
+
+interface Props {
+  posts: PostEntry[];
+  hasLimit: boolean;
+  title?: string;
+  moreLinkLabel?: string;
+  moreLinkHref?: string;
+  sectionId?: string;
+}
+
+const {
+  posts,
+  hasLimit,
+  title = "Blog posts",
+  moreLinkLabel = "More posts...",
+  moreLinkHref = "/blog",
+  sectionId,
+} = Astro.props;
+---
+
+<section class="content">
+  <section class={styles.bloglinks_content}>
+    <h2 id={sectionId} class={styles.title}>{title}</h2>
+    <table class={styles["table-content"]}>
+      <tbody>
+        {
+          posts.map((post) => {
+            const href = linkSlugFor(post);
+            return (
+              <tr>
+                <td class={styles["date-cell"]}>
+                  <p>{formatDate(post.data.date)}</p>
+                </td>
+                <td>
+                  <p>
+                    <a href={href}>{post.data.title}</a>
+                  </p>
+                </td>
+              </tr>
+            );
+          })
+        }
+      </tbody>
+    </table>
+    {
+      hasLimit && (
+        <p class={styles["more-link"]}>
+          <a href={moreLinkHref}>{moreLinkLabel}</a>
+        </p>
+      )
+    }
+  </section>
+</section>
