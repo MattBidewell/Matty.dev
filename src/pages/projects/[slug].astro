@@ -1,0 +1,74 @@
+---
+import type { GetStaticPaths } from "astro";
+import BaseLayout from "../../layouts/BaseLayout.astro";
+import PostBody from "../../components/blog/body/PostBody.astro";
+import PostFooter from "../../components/blog/footer/PostFooter.astro";
+import styles from "../../components/blog/Project.module.css";
+import { getLivePosts, rawSlug, formatDate } from "../../lib/posts";
+
+export const getStaticPaths: GetStaticPaths = async () => {
+  const projects = await getLivePosts("project");
+  return projects.map((project) => ({
+    params: { slug: rawSlug(project) },
+    props: { project },
+  }));
+};
+
+const { project } = Astro.props;
+const { Content } = await project.render();
+const techStack = project.data.tech_stack ?? [];
+---
+
+<BaseLayout
+  title={project.data.title}
+  description={project.data.excerpt ?? ""}
+  ogType="article"
+>
+  <div class="container">
+    <h1 class={styles.title}>{project.data.title}</h1>
+    <p class={styles.date}>{formatDate(project.data.date)}</p>
+
+    <div class={styles.meta}>
+      {
+        techStack.length > 0 && (
+          <div class={styles.techStack}>
+            {techStack.map((tech) => (
+              <span class={styles.techTag}>{tech}</span>
+            ))}
+          </div>
+        )
+      }
+      <div class={styles.links}>
+        {
+          project.data.github_url && (
+            <a
+              href={project.data.github_url}
+              target="_blank"
+              rel="noopener noreferrer"
+              class={styles.link}
+            >
+              GitHub
+            </a>
+          )
+        }
+        {
+          project.data.demo_url && (
+            <a
+              href={project.data.demo_url}
+              target="_blank"
+              rel="noopener noreferrer"
+              class={styles.link}
+            >
+              Live Demo
+            </a>
+          )
+        }
+      </div>
+    </div>
+
+    <PostBody>
+      <Content />
+    </PostBody>
+    <PostFooter />
+  </div>
+</BaseLayout>

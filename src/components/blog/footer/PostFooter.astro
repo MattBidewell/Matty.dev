@@ -1,0 +1,55 @@
+---
+import styles from "./PostFooter.module.css";
+
+interface Props {
+  shareUrl?: string;
+  shareTitle?: string;
+}
+
+const { shareUrl, shareTitle } = Astro.props;
+
+const encodedUrl = shareUrl ? encodeURIComponent(shareUrl) : "";
+const encodedTitle = shareTitle ? encodeURIComponent(shareTitle) : "";
+---
+
+<div class={styles["post-footer"]}>
+  {
+    shareUrl && shareTitle && (
+      <div class={styles["share-links"]}>
+        <span class={styles["share-label"]}>share</span>
+        <a
+          href={`https://twitter.com/intent/tweet?url=${encodedUrl}&text=${encodedTitle}`}
+          target="_blank"
+          rel="noreferrer"
+        >
+          x
+        </a>
+        <span class={styles.separator}>·</span>
+        <a
+          href={`https://www.linkedin.com/sharing/share-offsite/?url=${encodedUrl}`}
+          target="_blank"
+          rel="noreferrer"
+        >
+          linkedin
+        </a>
+      </div>
+    )
+  }
+  <a
+    class={styles["coffee-link"]}
+    href="https://www.buymeacoffee.com/Mattbidewell"
+    target="_blank"
+    rel="noreferrer"
+  >
+    <img
+      src="/assets/images/misc/buy-me-a-coffee.webp"
+      alt="'Buy Me A Coffee' logo"
+      class={styles.coffee}
+      loading="lazy"
+    />
+  </a>
+  <p>
+    Found my content useful and want to help support me? Consider&nbsp;
+    <a href="https://www.buymeacoffee.com/Mattbidewell">buying me a coffee.</a>
+  </p>
+</div>

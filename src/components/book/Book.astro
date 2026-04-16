@@ -1,0 +1,61 @@
+---
+import styles from "./books.module.css";
+import type { IBook } from "../../data/books";
+
+interface Props {
+  book: IBook;
+}
+
+const { book } = Astro.props;
+
+const formatDate = (date: Date) =>
+  new Intl.DateTimeFormat("en-GB", { month: "short", year: "numeric" }).format(date);
+---
+
+<a
+  href={book.url}
+  target="_blank"
+  rel="noopener noreferrer"
+  class={styles["book-item"]}
+>
+  <div class={styles["book-image-container"]}>
+    <img
+      src={`/assets/images/books/${book.image}`}
+      alt={`Cover of ${book.title}`}
+      width="160"
+      height="200"
+      class={styles["book-image"]}
+      loading="lazy"
+    />
+    {book.audiobook && <span class={styles["book-badge"]}>Audio</span>}
+  </div>
+
+  <div class={styles["book-info"]}>
+    <h3 class={styles["book-title"]}>{book.title}</h3>
+    {book.subtitle && <p class={styles["book-subtitle"]}>{book.subtitle}</p>}
+  </div>
+
+  <div class={styles["book-meta"]}>
+    {
+      book.rating !== undefined && (
+        <div
+          class={styles["book-rating"]}
+          aria-label={`${book.rating} out of 5 stars`}
+        >
+          {Array.from({ length: 5 }, (_, index) => {
+            const filled = index < (book.rating ?? 0);
+            return (
+              <span
+                aria-hidden="true"
+                class={filled ? styles["star-filled"] : styles["star-empty"]}
+              >
+                ★
+              </span>
+            );
+          })}
+        </div>
+      )
+    }
+    <div class={styles["book-date"]}>{formatDate(book.date)}</div>
+  </div>
+</a>

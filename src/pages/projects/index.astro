@@ -1,0 +1,13 @@
+---
+import BaseLayout from "../../layouts/BaseLayout.astro";
+import ProjectLinks from "../../components/home/projectLinks/ProjectLinks.astro";
+import { getLivePosts } from "../../lib/posts";
+
+const projects = await getLivePosts("project");
+---
+
+<BaseLayout title="Projects">
+  <div class="container">
+    <ProjectLinks projects={projects} hasLimit={false} />
+  </div>
+</BaseLayout>

@@ -1,0 +1,13 @@
+---
+import BaseLayout from "../../layouts/BaseLayout.astro";
+import BlogLinks from "../../components/home/blogLinks/BlogLinks.astro";
+import { getLivePosts } from "../../lib/posts";
+
+const posts = await getLivePosts("blog");
+---
+
+<BaseLayout title="Blog">
+  <div class="container">
+    <BlogLinks posts={posts} hasLimit={false} title="Blog posts" sectionId="posts" />
+  </div>
+</BaseLayout>

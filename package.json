@@ -1,37 +1,28 @@
 {
   "name": "matty.dev",
-  "version": "1.0.0",
+  "version": "2.0.0",
   "private": true,
+  "type": "module",
   "scripts": {
-    "dev": "STAMP=$(date -u) next dev",
-    "compile": "tsc",
-    "build": "next build",
-    "deploy": "npm run stamp && STAMP=$(date -u) npm run build",
-    "export": "next export",
-    "lint": "next lint",
-    "stamp": "date -u > ./public/stamp.txt"
+    "dev": "astro dev",
+    "build": "astro build",
+    "preview": "astro preview",
+    "astro": "astro"
   },
   "dependencies": {
-    "@netlify/functions": "^3.0.0",
-    "axios": "^1.4.0",
-    "gray-matter": "^4.0.3",
-    "highlight.js": "^11.8.0",
-    "next": "^14.2.35",
-    "next-view-transitions": "^0.3.5",
-    "react": "^18.2.0",
-    "react-dom": "^18.2.0",
-    "remarkable": "^2.0.1",
-    "xml2js": "^0.6.2"
+    "@astrojs/rss": "^4.0.7",
+    "@astrojs/sitemap": "^3.2.1",
+    "@fontsource/inter": "^5.1.0",
+    "@fontsource/newsreader": "^5.1.0",
+    "@resvg/resvg-js": "^2.6.2",
+    "astro": "^5.0.0",
+    "satori": "^0.12.0",
+    "satori-html": "^0.3.2"
   },
   "devDependencies": {
-    "@netlify/plugin-nextjs": "^5.15.3",
-    "@types/node": "20.5.9",
-    "@types/react": "18.2.47",
-    "@types/react-dom": "18.2.1",
-    "@types/remarkable": "^2.0.3",
-    "@types/xml2js": "^0.4.12",
-    "eslint": "8.46.0",
-    "eslint-config-next": "^13.4.12",
-    "typescript": "^5.0.4"
+    "@types/mdast": "^4.0.4",
+    "@types/node": "^20.5.9",
+    "typescript": "^5.0.4",
+    "unist-util-visit": "^5.1.0"
   }
 }

@@ -1,0 +1,45 @@
+---
+import styles from "./ProjectLinks.module.css";
+import { formatDate, linkSlugFor, type PostEntry } from "../../../lib/posts";
+
+interface Props {
+  projects: PostEntry[];
+  hasLimit: boolean;
+}
+
+const { projects, hasLimit } = Astro.props;
+---
+
+<section class="content">
+  <section class={styles.projectlinks_content}>
+    <h2 class={styles.title}>Projects</h2>
+    <table class={styles["table-content"]}>
+      <tbody>
+        {
+          projects.map((project) => {
+            const href = linkSlugFor(project);
+            return (
+              <tr>
+                <td class={styles["date-cell"]}>
+                  <p>{formatDate(project.data.date)}</p>
+                </td>
+                <td>
+                  <p>
+                    <a href={href}>{project.data.title}</a>
+                  </p>
+                </td>
+              </tr>
+            );
+          })
+        }
+      </tbody>
+    </table>
+    {
+      hasLimit && (
+        <p class={styles["more-link"]}>
+          <a href="/projects">More projects...</a>
+        </p>
+      )
+    }
+  </section>
+</section>
