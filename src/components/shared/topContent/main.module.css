@@ -19,6 +19,14 @@
   margin-bottom: 2.5rem;
 }
 
+.identityRow {
+  display: block;
+}
+
+.menuToggle {
+  display: none;
+}
+
 .name {
   font-family: var(--font-display);
   font-style: normal;
@@ -63,24 +71,33 @@
 /* Mobile */
 @media only screen and (max-width: 800px) {
   .header {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 1rem;
+    display: block;
+    position: sticky;
+    top: 0;
+    z-index: 10;
+    background: var(--bg-color);
     border-bottom: 1px solid var(--border-color);
-    padding: 1.25rem 0 1.5rem;
+    padding: 0.875rem 0;
     margin-bottom: 1.25rem;
-  }
-
-  .name {
-    font-size: 2rem;
-    text-align: center;
   }
 
   .navRail {
     position: static;
     grid-column: auto;
     grid-row: auto;
+    padding-top: 0;
+    display: grid;
+    grid-template-rows: 0fr;
+    transition: grid-template-rows 0.25s ease;
+  }
+
+  /* Inner <nav> must have overflow:hidden for grid-template-rows animation */
+  .navRail > nav {
+    overflow: hidden;
+  }
+
+  .navRail[data-open] {
+    grid-template-rows: 1fr;
   }
 
   .identity {
@@ -91,13 +108,75 @@
     margin-bottom: 0;
   }
 
+  .identityRow {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+
+  .name {
+    font-size: 1.5rem;
+    text-align: left;
+    margin-bottom: 0.15rem;
+  }
+
   .subtitle {
-    text-align: center;
+    text-align: left;
+  }
+
+  .menuToggle {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    width: 1.25rem;
+    height: 0.9375rem;
+    padding: 0;
+    background: none;
+    border: none;
+    cursor: pointer;
+    color: var(--text-secondary);
+    flex-shrink: 0;
+    -webkit-tap-highlight-color: transparent;
+  }
+
+  .menuToggle span {
+    display: block;
+    width: 100%;
+    height: 1.5px;
+    background: currentColor;
+    border-radius: 2px;
+    transition: transform 0.22s ease, opacity 0.22s ease;
+    transform-origin: center;
+  }
+
+  /* Animate to X: bars at 0.75px, 7.5px, 14.25px center — gap to middle = 6.75px ≈ 0.42rem */
+  .menuToggle[aria-expanded="true"] span:nth-child(1) {
+    transform: translateY(0.42rem) rotate(45deg);
+  }
+
+  .menuToggle[aria-expanded="true"] span:nth-child(2) {
+    opacity: 0;
+    transform: scaleX(0);
+  }
+
+  .menuToggle[aria-expanded="true"] span:nth-child(3) {
+    transform: translateY(-0.42rem) rotate(-45deg);
   }
 }
 
 @media only screen and (max-width: 480px) {
   .name {
-    font-size: 1.75rem;
+    font-size: 1.35rem;
+  }
+
+  .header {
+    padding: 0.75rem 0;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .navRail,
+  .menuToggle span {
+    transition: none;
   }
 }
