@@ -526,6 +526,9 @@ hr {
 
   main.page-content {
     display: block;
+    width: 100%;
+    margin-left: 0;
+    margin-right: 0;
   }
 
   .route-content > .container > h1,
