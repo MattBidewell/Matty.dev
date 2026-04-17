@@ -4,13 +4,78 @@ import Nav from "../nav/Nav.astro";
 ---
 
 <header class={styles.header}>
-  <aside class={styles.navRail}>
-    <Nav />
-  </aside>
   <div class={styles.identity}>
-    <h1 class={styles.name}>
-      Matt Bidewell<span class={styles.cursor}>_</span>
-    </h1>
+    <div class={styles.identityRow}>
+      <h1 class={styles.name}>
+        Matt Bidewell<span class={styles.cursor}>_</span>
+      </h1>
+      <button
+        class={styles.menuToggle}
+        id="menuToggle"
+        aria-label="Open navigation menu"
+        aria-expanded="false"
+        aria-controls="navRail"
+      >
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+    </div>
     <p class={styles.subtitle}>Software Engineer</p>
   </div>
+  <aside class={styles.navRail} id="navRail">
+    <Nav />
+  </aside>
 </header>
+
+<script>
+  let controller: AbortController | null = null;
+
+  function setup() {
+    controller?.abort();
+    controller = new AbortController();
+    const { signal } = controller;
+
+    const toggle = document.getElementById("menuToggle") as HTMLButtonElement | null;
+    const rail = document.getElementById("navRail") as HTMLElement | null;
+    if (!toggle || !rail) return;
+
+    function close() {
+      toggle!.setAttribute("aria-expanded", "false");
+      delete rail!.dataset.open;
+    }
+
+    function open() {
+      toggle!.setAttribute("aria-expanded", "true");
+      rail!.dataset.open = "";
+    }
+
+    toggle.addEventListener(
+      "click",
+      () => {
+        toggle.getAttribute("aria-expanded") === "true" ? close() : open();
+      },
+      { signal }
+    );
+
+    rail.querySelectorAll("a").forEach((link) => {
+      link.addEventListener("click", close, { signal });
+    });
+
+    document.addEventListener(
+      "click",
+      (e) => {
+        if (
+          !toggle.contains(e.target as Node) &&
+          !rail.contains(e.target as Node)
+        ) {
+          close();
+        }
+      },
+      { signal }
+    );
+  }
+
+  setup();
+  document.addEventListener("astro:after-swap", setup);
+</script>

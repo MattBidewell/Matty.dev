@@ -100,20 +100,12 @@
 }
 
 @media only screen and (max-width: 800px) {
-  .bloglinks_content {
-    padding: 0 1rem;
-  }
-
   .bloglinks_content div {
     width: 100%;
   }
 }
 
 @media only screen and (max-width: 600px) {
-  .bloglinks_content {
-    padding: 0 0.5rem;
-  }
-
   .bloglinks_content div {
     width: 100%;
     padding: 0 0 10px 0;

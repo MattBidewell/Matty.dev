@@ -39,15 +39,18 @@
 
 @media only screen and (max-width: 800px) {
   .nav ul {
-    flex-direction: row;
-    flex-wrap: wrap;
-    gap: 0.35rem 0.4rem;
-    justify-content: center;
-    align-items: center;
+    gap: 0.15rem;
+    padding: 0.5rem 0 0.75rem;
+  }
+
+  .nav li {
+    width: 100%;
   }
 
   .link {
-    padding: 0.3rem 0.45rem;
+    display: block;
+    width: 100%;
+    padding: 0.55rem 0.5rem;
   }
 }
 

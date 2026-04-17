@@ -519,13 +519,16 @@ hr {
 /* Responsive */
 @media only screen and (max-width: 800px) {
   main {
-    padding: 1.5rem 1rem;
+    padding: 0 1rem 1.5rem;
     min-width: auto;
     max-width: 100%;
   }
 
   main.page-content {
     display: block;
+    width: 100%;
+    margin-left: 0;
+    margin-right: 0;
   }
 
   .route-content > .container > h1,
@@ -537,6 +540,10 @@ hr {
 
   main.page-content > header {
     display: block;
+  }
+
+  .route-content > .container {
+    max-width: 100%;
   }
 
   h1 {
@@ -568,6 +575,6 @@ hr {
   }
 
   main {
-    padding: 1rem 0.75rem;
+    padding: 0 0.75rem 1rem;
   }
 }
