@@ -519,7 +519,7 @@ hr {
 /* Responsive */
 @media only screen and (max-width: 800px) {
   main {
-    padding: 1.5rem 1rem;
+    padding: 0 1rem 1.5rem;
     min-width: auto;
     max-width: 100%;
   }
@@ -575,6 +575,6 @@ hr {
   }
 
   main {
-    padding: 1rem 0.75rem;
+    padding: 0 0.75rem 1rem;
   }
 }
