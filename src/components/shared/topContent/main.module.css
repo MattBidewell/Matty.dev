@@ -102,6 +102,12 @@
 
   .navRail[data-open] {
     grid-template-rows: 1fr;
+    border-bottom: 1px solid color-mix(in srgb, var(--border-color) 55%, transparent);
+  }
+
+  /* Remove the header's own border while the menu is expanded */
+  .header:has([data-open]) {
+    border-bottom-color: transparent;
   }
 
   .identity {
