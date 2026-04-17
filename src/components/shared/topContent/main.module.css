@@ -75,8 +75,10 @@
     position: sticky;
     top: 0;
     z-index: 10;
-    background: var(--bg-color);
-    border-bottom: 1px solid var(--border-color);
+    background: color-mix(in srgb, var(--bg-color) 82%, transparent);
+    backdrop-filter: blur(14px);
+    -webkit-backdrop-filter: blur(14px);
+    border-bottom: 1px solid color-mix(in srgb, var(--border-color) 55%, transparent);
     padding: 0.875rem 1rem;
     margin-left: -1rem;
     margin-right: -1rem;
