@@ -1,0 +1,222 @@
+/* ── Terminal colour palette ──────────────────────────────── */
+:root {
+  --t-bg: #0c0f0c;
+  --t-surface: #141814;
+  --t-border: rgba(57, 255, 20, 0.18);
+  --t-green: #39ff14;
+  --t-green-dim: #22c55e;
+  --t-green-soft: #a8d8a8;
+  --t-cyan: #64ffda;
+  --t-white: #e8f0e8;
+  --t-muted: #5a7a5a;
+  --t-glow: 0 0 8px rgba(57, 255, 20, 0.6), 0 0 20px rgba(57, 255, 20, 0.2);
+  --t-glow-sm: 0 0 6px rgba(57, 255, 20, 0.4);
+}
+
+/* ── Keyframes ────────────────────────────────────────────── */
+@keyframes appear {
+  from {
+    opacity: 0;
+    transform: translateY(3px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes blink {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0; }
+}
+
+@keyframes ascii-glow {
+  0%, 100% { text-shadow: var(--t-glow); }
+  50% { text-shadow: 0 0 12px rgba(57, 255, 20, 0.8), 0 0 30px rgba(57, 255, 20, 0.4); }
+}
+
+@keyframes scanline {
+  from { background-position: 0 0; }
+  to { background-position: 0 100%; }
+}
+
+/* ── Terminal window ──────────────────────────────────────── */
+.terminal {
+  font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas,
+    'Liberation Mono', 'Courier New', monospace;
+  background: var(--t-bg);
+  border: 1px solid var(--t-border);
+  border-radius: 10px;
+  overflow: hidden;
+  box-shadow:
+    0 0 0 1px rgba(57, 255, 20, 0.06),
+    0 8px 32px rgba(0, 0, 0, 0.6),
+    0 0 60px rgba(57, 255, 20, 0.04);
+  position: relative;
+  max-width: 64ch;
+}
+
+/* subtle scanline texture */
+.terminal::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: repeating-linear-gradient(
+    0deg,
+    transparent,
+    transparent 2px,
+    rgba(0, 0, 0, 0.08) 2px,
+    rgba(0, 0, 0, 0.08) 4px
+  );
+  pointer-events: none;
+  z-index: 1;
+  border-radius: inherit;
+}
+
+/* ── Title bar ────────────────────────────────────────────── */
+.titlebar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background: var(--t-surface);
+  border-bottom: 1px solid var(--t-border);
+  padding: 0.6rem 1rem;
+  user-select: none;
+}
+
+.dots {
+  display: flex;
+  gap: 6px;
+  align-items: center;
+}
+
+.dot {
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+}
+
+.dotRed    { background: #ff5f57; }
+.dotYellow { background: #febc2e; }
+.dotGreen  { background: #28c840; }
+
+.tabTitle {
+  font-size: 0.75rem;
+  color: var(--t-muted);
+  letter-spacing: 0.04em;
+}
+
+.dotsPlaceholder {
+  width: 54px; /* mirrors .dots width to keep title centred */
+}
+
+/* ── Body ─────────────────────────────────────────────────── */
+.body {
+  padding: 1.5rem 1.75rem 1.75rem;
+  position: relative;
+  z-index: 2;
+}
+
+/* ── ASCII art ────────────────────────────────────────────── */
+.ascii {
+  font-family: inherit;
+  font-size: clamp(0.35rem, 1.6vw, 0.58rem);
+  line-height: 1.15;
+  color: var(--t-green);
+  text-shadow: var(--t-glow);
+  animation: ascii-glow 3s ease-in-out infinite;
+  margin: 0 0 1.75rem;
+  white-space: pre;
+  overflow-x: auto;
+}
+
+/* ── Session lines ────────────────────────────────────────── */
+.session {
+  display: flex;
+  flex-direction: column;
+  gap: 0.1rem;
+  font-size: 0.82rem;
+  line-height: 1.7;
+}
+
+.cmdLine,
+.output,
+.links {
+  opacity: 0;
+  animation: appear 0.25s ease-out var(--d, 0s) forwards;
+}
+
+.cmdLine {
+  display: flex;
+  align-items: baseline;
+  gap: 0;
+  margin-top: 0.5rem;
+}
+
+.cmdLine:first-child {
+  margin-top: 0;
+}
+
+/* ── Prompt & command ─────────────────────────────────────── */
+.prompt {
+  color: var(--t-green);
+  text-shadow: var(--t-glow-sm);
+  white-space: nowrap;
+  flex-shrink: 0;
+}
+
+.cmd {
+  color: var(--t-white);
+}
+
+/* ── Output ───────────────────────────────────────────────── */
+.output {
+  color: var(--t-green-soft);
+  padding-left: 1ch;
+}
+
+/* ── Link row ─────────────────────────────────────────────── */
+.links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem 1.5rem;
+  padding-left: 1ch;
+}
+
+.link {
+  color: var(--t-cyan);
+  text-decoration: none;
+  text-shadow: 0 0 6px rgba(100, 255, 218, 0.4);
+  transition: text-shadow 0.15s ease, color 0.15s ease;
+}
+
+.link:hover {
+  color: #ffffff;
+  text-shadow: 0 0 10px rgba(100, 255, 218, 0.8);
+}
+
+/* ── Blinking cursor ──────────────────────────────────────── */
+.cursor {
+  color: var(--t-green);
+  text-shadow: var(--t-glow-sm);
+  opacity: 0;
+  animation:
+    appear 0.01s linear var(--d, 0s) forwards,
+    blink 1s step-end calc(var(--d, 0s) + 0.1s) infinite;
+}
+
+/* ── Responsive ───────────────────────────────────────────── */
+@media (max-width: 600px) {
+  .body {
+    padding: 1rem 1.1rem 1.25rem;
+  }
+
+  .session {
+    font-size: 0.78rem;
+  }
+
+  .ascii {
+    font-size: clamp(0.28rem, 2.8vw, 0.48rem);
+    margin-bottom: 1.25rem;
+  }
+}

@@ -1,0 +1,71 @@
+---
+import styles from "./TerminalHome.module.css";
+
+const ascii = `███╗   ███╗  █████╗  ████████╗ ████████╗ ██╗   ██╗
+████╗ ████║ ██╔══██╗ ╚══██╔══╝ ╚══██╔══╝ ╚██╗ ██╔╝
+██╔████╔██║ ███████║    ██║       ██║     ╚████╔╝
+██║╚██╔╝██║ ██╔══██║    ██║       ██║      ╚██╔╝
+██║ ╚═╝ ██║ ██║  ██║    ██║       ██║       ██║
+╚═╝     ╚═╝ ╚═╝  ╚═╝    ╚═╝       ╚═╝       ╚═╝`;
+---
+
+<div class={styles.terminal}>
+  <div class={styles.titlebar}>
+    <div class={styles.dots}>
+      <span class={`${styles.dot} ${styles.dotRed}`}></span>
+      <span class={`${styles.dot} ${styles.dotYellow}`}></span>
+      <span class={`${styles.dot} ${styles.dotGreen}`}></span>
+    </div>
+    <span class={styles.tabTitle}>matty@dev: ~</span>
+    <div class={styles.dotsPlaceholder}></div>
+  </div>
+
+  <div class={styles.body}>
+    <pre class={styles.ascii}>{ascii}</pre>
+
+    <div class={styles.session}>
+      <div class={styles.cmdLine} style="--d: 0.4s">
+        <span class={styles.prompt}>matty@dev:~$</span>
+        <span class={styles.cmd}> whoami</span>
+      </div>
+      <div class={styles.output} style="--d: 0.9s">
+        Matt Bidewell — software engineer &amp; open source enthusiast
+      </div>
+
+      <div class={styles.cmdLine} style="--d: 1.5s">
+        <span class={styles.prompt}>matty@dev:~$</span>
+        <span class={styles.cmd}> cat about.txt</span>
+      </div>
+      <div class={styles.output} style="--d: 2.0s">
+        Passionate about building tools that developers love.
+      </div>
+      <div class={styles.output} style="--d: 2.2s">
+        Writing about software, systems, and the open source world.
+      </div>
+      <div class={styles.output} style="--d: 2.4s">
+        7+ years shipping production software across cloud & SaaS platforms.
+      </div>
+
+      <div class={styles.cmdLine} style="--d: 3.0s">
+        <span class={styles.prompt}>matty@dev:~$</span>
+        <span class={styles.cmd}> ls ./links/</span>
+      </div>
+      <div class={styles.links} style="--d: 3.5s">
+        <a class={styles.link} href="/about">about/</a>
+        <a class={styles.link} href="/blog">blog/</a>
+        <a class={styles.link} href="/projects">projects/</a>
+        <a
+          class={styles.link}
+          href="/assets/resume/Matt-Bidewell-Resume.pdf"
+          target="_blank"
+          rel="noopener"
+        >resume.pdf</a>
+      </div>
+
+      <div class={styles.cmdLine} style="--d: 4.1s">
+        <span class={styles.prompt}>matty@dev:~$</span>
+        <span class={styles.cursor} style="--d: 4.1s">▋</span>
+      </div>
+    </div>
+  </div>
+</div>
