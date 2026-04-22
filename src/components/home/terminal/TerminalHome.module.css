@@ -1,0 +1,293 @@
+/* ── Terminal colour palette ──────────────────────────────── */
+:root {
+  --t-bg: #0c0f0c;
+  --t-surface: #141814;
+  --t-border: rgba(57, 255, 20, 0.18);
+  --t-green: #39ff14;
+  --t-green-dim: #22c55e;
+  --t-green-soft: #a8d8a8;
+  --t-cyan: #64ffda;
+  --t-white: #e8f0e8;
+  --t-muted: #5a7a5a;
+  --t-glow: 0 0 8px rgba(57, 255, 20, 0.6), 0 0 20px rgba(57, 255, 20, 0.2);
+  --t-glow-sm: 0 0 6px rgba(57, 255, 20, 0.4);
+}
+
+/* ── Keyframes ────────────────────────────────────────────── */
+@keyframes appear {
+  from { opacity: 0; transform: translateY(3px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes blink {
+  0%, 100% { opacity: 1; }
+  50%      { opacity: 0; }
+}
+
+@keyframes ascii-glow {
+  0%, 100% { text-shadow: var(--t-glow); }
+  50%      { text-shadow: 0 0 12px rgba(57, 255, 20, 0.8), 0 0 30px rgba(57, 255, 20, 0.4); }
+}
+
+/* ── Full-viewport terminal ───────────────────────────────── */
+.terminal {
+  font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas,
+    'Liberation Mono', 'Courier New', monospace;
+  background: var(--t-bg);
+  min-height: 100vh;
+  min-height: 100dvh;
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  overflow: hidden;
+  color: var(--t-green-soft);
+}
+
+/* CRT scanlines */
+.terminal::before {
+  content: '';
+  position: fixed;
+  inset: 0;
+  background: repeating-linear-gradient(
+    0deg,
+    transparent,
+    transparent 2px,
+    rgba(0, 0, 0, 0.12) 2px,
+    rgba(0, 0, 0, 0.12) 4px
+  );
+  pointer-events: none;
+  z-index: 10;
+}
+
+/* subtle vignette */
+.terminal::after {
+  content: '';
+  position: fixed;
+  inset: 0;
+  background: radial-gradient(
+    ellipse at center,
+    transparent 40%,
+    rgba(0, 0, 0, 0.55) 100%
+  );
+  pointer-events: none;
+  z-index: 9;
+}
+
+/* ── Title bar ────────────────────────────────────────────── */
+.titlebar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background: var(--t-surface);
+  border-bottom: 1px solid var(--t-border);
+  padding: 0.55rem 1rem;
+  user-select: none;
+  position: sticky;
+  top: 0;
+  z-index: 5;
+  backdrop-filter: blur(4px);
+}
+
+.dots {
+  display: flex;
+  gap: 6px;
+  align-items: center;
+}
+
+.dot {
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+}
+
+.dotRed    { background: #ff5f57; }
+.dotYellow { background: #febc2e; }
+.dotGreen  { background: #28c840; }
+
+.tabTitle {
+  font-size: 0.75rem;
+  color: var(--t-muted);
+  letter-spacing: 0.04em;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  padding: 0 1rem;
+}
+
+.dotsPlaceholder {
+  width: 54px;
+  flex-shrink: 0;
+}
+
+/* ── Body (scrolling region) ──────────────────────────────── */
+.body {
+  flex: 1;
+  overflow-y: auto;
+  padding: 2.5rem clamp(1rem, 4vw, 3rem) 3rem;
+  position: relative;
+  z-index: 2;
+}
+
+.inner {
+  max-width: 80ch;
+  margin: 0 auto;
+}
+
+/* ── ASCII art ────────────────────────────────────────────── */
+.ascii {
+  font-family: inherit;
+  font-size: clamp(0.45rem, 1.3vw, 0.95rem);
+  line-height: 1.15;
+  color: var(--t-green);
+  text-shadow: var(--t-glow);
+  animation: ascii-glow 3s ease-in-out infinite;
+  margin: 0 0 2rem;
+  white-space: pre;
+  overflow-x: auto;
+  letter-spacing: 0;
+}
+
+/* ── MOTD ─────────────────────────────────────────────────── */
+.motd {
+  color: var(--t-muted);
+  font-size: 0.82rem;
+  margin-bottom: 1.25rem;
+  opacity: 0;
+  animation: appear 0.3s ease-out var(--d, 0s) forwards;
+}
+
+.motd span {
+  color: var(--t-green-soft);
+}
+
+/* ── Session lines ────────────────────────────────────────── */
+.session {
+  display: flex;
+  flex-direction: column;
+  gap: 0.1rem;
+  font-size: 0.92rem;
+  line-height: 1.75;
+}
+
+.cmdLine,
+.output,
+.links {
+  opacity: 0;
+  animation: appear 0.25s ease-out var(--d, 0s) forwards;
+}
+
+.cmdLine {
+  display: flex;
+  align-items: baseline;
+  margin-top: 0.5rem;
+}
+.cmdLine:first-child { margin-top: 0; }
+
+/* ── Prompt & command ─────────────────────────────────────── */
+.prompt {
+  color: var(--t-green);
+  text-shadow: var(--t-glow-sm);
+  white-space: nowrap;
+  flex-shrink: 0;
+}
+
+.cmd {
+  color: var(--t-white);
+}
+
+/* ── Output ───────────────────────────────────────────────── */
+.output {
+  color: var(--t-green-soft);
+  padding-left: 1ch;
+}
+
+/* ── Link row ─────────────────────────────────────────────── */
+.links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem 1.75rem;
+  padding-left: 1ch;
+}
+
+.link {
+  color: var(--t-cyan);
+  text-decoration: none;
+  text-shadow: 0 0 6px rgba(100, 255, 218, 0.4);
+  transition: text-shadow 0.15s ease, color 0.15s ease;
+  position: relative;
+}
+
+.link:hover {
+  color: #ffffff;
+  text-shadow: 0 0 10px rgba(100, 255, 218, 0.8);
+}
+
+.link:hover::before {
+  content: '▸ ';
+  position: absolute;
+  left: -1.2ch;
+  color: var(--t-green);
+}
+
+/* ── Blinking cursor ──────────────────────────────────────── */
+.cursor {
+  color: var(--t-green);
+  text-shadow: var(--t-glow-sm);
+  opacity: 0;
+  animation:
+    appear 0.01s linear var(--d, 0s) forwards,
+    blink 1s step-end calc(var(--d, 0s) + 0.1s) infinite;
+}
+
+/* ── Bottom hint ──────────────────────────────────────────── */
+.hint {
+  margin-top: 2.5rem;
+  padding-top: 1.25rem;
+  border-top: 1px dashed rgba(57, 255, 20, 0.15);
+  color: var(--t-muted);
+  font-size: 0.78rem;
+  font-style: italic;
+  opacity: 0;
+  animation: appear 0.4s ease-out var(--d, 0s) forwards;
+}
+
+.hintLink {
+  color: var(--t-cyan);
+  text-decoration: underline;
+  text-decoration-style: dotted;
+  text-underline-offset: 3px;
+}
+
+.hintLink:hover {
+  color: #ffffff;
+}
+
+/* ── Motion-reduced ───────────────────────────────────────── */
+@media (prefers-reduced-motion: reduce) {
+  .ascii { animation: none; }
+  .cmdLine, .output, .links, .motd, .hint {
+    opacity: 1;
+    animation: none;
+  }
+  .cursor { animation: blink 1.2s step-end infinite; opacity: 1; }
+}
+
+/* ── Mobile ───────────────────────────────────────────────── */
+@media (max-width: 600px) {
+  .body {
+    padding: 1.5rem 1rem 2rem;
+  }
+  .session {
+    font-size: 0.82rem;
+  }
+  .ascii {
+    font-size: clamp(0.32rem, 2.7vw, 0.6rem);
+    margin-bottom: 1.5rem;
+  }
+  .tabTitle {
+    font-size: 0.68rem;
+  }
+  .links {
+    gap: 0.5rem 1.25rem;
+  }
+}
