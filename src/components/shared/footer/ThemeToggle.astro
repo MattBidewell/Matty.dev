@@ -2,76 +2,69 @@
 import styles from "./Footer.module.css";
 
 const activeClass = styles.themeButtonActive;
+
+const themes = [
+  { id: "system", label: "system" },
+  { id: "gruvbox-light", label: "gruvbox-light" },
+  { id: "gruvbox-dark", label: "gruvbox-dark" },
+  { id: "tokyo-night", label: "tokyo-night" },
+];
 ---
 
 <div class={styles.themeToggle} role="group" aria-label="Theme switcher" data-theme-toggle>
-  <button
-    type="button"
-    class={styles.themeButton}
-    data-theme-button="light"
-    aria-pressed="false"
+  <span class={styles.themePrompt} aria-hidden="true">:set theme=</span>
+  <select
+    class={styles.themeSelect}
+    data-theme-select
+    aria-label="Select theme"
   >
-    light
-  </button>
-  <span class={styles.separator}>/</span>
-  <button
-    type="button"
-    class={styles.themeButton}
-    data-theme-button="dark"
-    aria-pressed="false"
-  >
-    dark
-  </button>
+    {themes.map((t) => (
+      <option value={t.id}>{t.label}</option>
+    ))}
+  </select>
 </div>
 
 <script is:inline define:vars={{ activeClass }}>
   (function () {
     const STORAGE_KEY = "theme-preference";
     const TRANSITION_CLASS = "theme-changing";
+    const VALID = ["gruvbox-light", "gruvbox-dark", "tokyo-night"];
 
-    function resolveTheme() {
-      const explicit = document.documentElement.dataset.theme;
-      if (explicit === "light" || explicit === "dark") return explicit;
-      return window.matchMedia("(prefers-color-scheme: dark)").matches
-        ? "dark"
-        : "light";
-    }
-
-    function syncButtons(theme) {
-      document
-        .querySelectorAll("[data-theme-button]")
-        .forEach(function (btn) {
-          const isActive = btn.dataset.themeButton === theme;
-          btn.classList.toggle(activeClass, isActive);
-          btn.setAttribute("aria-pressed", String(isActive));
-        });
-    }
-
-    function setTheme(next) {
-      document.documentElement.classList.add(TRANSITION_CLASS);
-      document.documentElement.dataset.theme = next;
+    function currentPref() {
       try {
-        localStorage.setItem(STORAGE_KEY, next);
+        const v = localStorage.getItem(STORAGE_KEY);
+        if (v && VALID.indexOf(v) !== -1) return v;
       } catch (e) {}
-      syncButtons(next);
+      return "system";
+    }
+
+    function applyTheme(pref) {
+      document.documentElement.classList.add(TRANSITION_CLASS);
+      if (pref === "system") {
+        delete document.documentElement.dataset.theme;
+        try { localStorage.removeItem(STORAGE_KEY); } catch (e) {}
+      } else if (VALID.indexOf(pref) !== -1) {
+        document.documentElement.dataset.theme = pref;
+        try { localStorage.setItem(STORAGE_KEY, pref); } catch (e) {}
+      }
       window.setTimeout(function () {
         document.documentElement.classList.remove(TRANSITION_CLASS);
-      }, 250);
+      }, 240);
+    }
+
+    function syncSelect() {
+      const pref = currentPref();
+      document.querySelectorAll("[data-theme-select]").forEach(function (el) {
+        if (el.value !== pref) el.value = pref;
+      });
     }
 
     function init() {
-      syncButtons(resolveTheme());
-      document
-        .querySelectorAll("[data-theme-button]")
-        .forEach(function (btn) {
-          btn.addEventListener("click", function () {
-            const next = btn.dataset.themeButton;
-            if (next === "light" || next === "dark") setTheme(next);
-          });
+      syncSelect();
+      document.querySelectorAll("[data-theme-select]").forEach(function (el) {
+        el.addEventListener("change", function (e) {
+          applyTheme(e.target.value);
         });
-      const mq = window.matchMedia("(prefers-color-scheme: dark)");
-      mq.addEventListener("change", function () {
-        syncButtons(resolveTheme());
       });
     }
 
