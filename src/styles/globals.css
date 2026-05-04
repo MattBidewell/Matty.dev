@@ -1,12 +1,9 @@
 /* ------------------------------------------------------------------ *
- *  Theme system
- *  - default: follow OS (prefers-color-scheme)
- *  - explicit: html[data-theme="gruvbox-light" | "gruvbox-dark" | "tokyo-night"]
- *  - persisted in localStorage("theme-preference"); "system" clears it
+ *  Theme: Gruvbox Dark (medium) — single, fixed.
  * ------------------------------------------------------------------ */
 
 :root {
-  color-scheme: light;
+  color-scheme: dark;
 
   --font-body: 'iA Writer Quattro', ui-sans-serif, system-ui, -apple-system,
                'Segoe UI', sans-serif;
@@ -22,88 +19,6 @@
   --layout-pad-x: 4rem;
   --content-inline-pad: 1.5rem;
 
-  /* Default = Gruvbox Light Hard */
-  --bg-color: #f9f5d7;
-  --bg-surface: #f2e5bc;
-  --bg-elevated: #fbf1c7;
-
-  --text-primary: #3c3836;
-  --text-secondary: #665c54;
-  --text-heading: #1d2021;
-  --text-muted: #928374;
-
-  --accent-primary: #af3a03;     /* burnt orange */
-  --accent-secondary: #076678;   /* deep teal */
-  --accent-hover: #9d0006;       /* faded red */
-
-  --border-color: #d5c4a1;
-  --border-soft: #ebdbb2;
-  --selection-bg: #fabd2f;
-  --selection-fg: #1d2021;
-
-  --code-bg: #f2e5bc;
-  --code-text: #3c3836;
-  --code-inline-bg: #ebdbb2;
-  --code-inline-border: #d5c4a1;
-
-  --syntax-comment: #928374;
-  --syntax-keyword: #9d0006;
-  --syntax-string: #79740e;
-  --syntax-title: #b57614;
-  --syntax-number: #8f3f71;
-  --syntax-attribute: #af3a03;
-  --syntax-punct: #3c3836;
-
-  --paper-grain: rgba(60, 56, 54, 0.025);
-  --page-vignette: rgba(175, 58, 3, 0.05);
-}
-
-html[data-theme='gruvbox-light'] {
-  color-scheme: light;
-  /* Defaults above already match — kept for explicitness */
-}
-
-@media (prefers-color-scheme: dark) {
-  html:not([data-theme]) {
-    color-scheme: dark;
-    --bg-color: #282828;
-    --bg-surface: #32302f;
-    --bg-elevated: #3c3836;
-
-    --text-primary: #ebdbb2;
-    --text-secondary: #bdae93;
-    --text-heading: #fbf1c7;
-    --text-muted: #928374;
-
-    --accent-primary: #fe8019;
-    --accent-secondary: #83a598;
-    --accent-hover: #fabd2f;
-
-    --border-color: #504945;
-    --border-soft: #3c3836;
-    --selection-bg: #fabd2f;
-    --selection-fg: #1d2021;
-
-    --code-bg: #1d2021;
-    --code-text: #ebdbb2;
-    --code-inline-bg: #32302f;
-    --code-inline-border: #504945;
-
-    --syntax-comment: #928374;
-    --syntax-keyword: #fb4934;
-    --syntax-string: #b8bb26;
-    --syntax-title: #fabd2f;
-    --syntax-number: #d3869b;
-    --syntax-attribute: #fe8019;
-    --syntax-punct: #ebdbb2;
-
-    --paper-grain: rgba(235, 219, 178, 0.02);
-    --page-vignette: rgba(254, 128, 25, 0.06);
-  }
-}
-
-html[data-theme='gruvbox-dark'] {
-  color-scheme: dark;
   --bg-color: #282828;
   --bg-surface: #32302f;
   --bg-elevated: #3c3836;
@@ -135,50 +50,9 @@ html[data-theme='gruvbox-dark'] {
   --syntax-attribute: #fe8019;
   --syntax-punct: #ebdbb2;
 
-  --paper-grain: rgba(235, 219, 178, 0.02);
   --page-vignette: rgba(254, 128, 25, 0.06);
-}
 
-html[data-theme='tokyo-night'] {
-  color-scheme: dark;
-  --bg-color: #1a1b26;
-  --bg-surface: #1f2335;
-  --bg-elevated: #24283b;
-
-  --text-primary: #c0caf5;
-  --text-secondary: #a9b1d6;
-  --text-heading: #c0caf5;
-  --text-muted: #565f89;
-
-  --accent-primary: #7aa2f7;
-  --accent-secondary: #bb9af7;
-  --accent-hover: #7dcfff;
-
-  --border-color: #2a2e42;
-  --border-soft: #1f2335;
-  --selection-bg: #364a82;
-  --selection-fg: #c0caf5;
-
-  --code-bg: #16161e;
-  --code-text: #c0caf5;
-  --code-inline-bg: #1f2335;
-  --code-inline-border: #2a2e42;
-
-  --syntax-comment: #565f89;
-  --syntax-keyword: #bb9af7;
-  --syntax-string: #9ece6a;
-  --syntax-title: #7aa2f7;
-  --syntax-number: #ff9e64;
-  --syntax-attribute: #e0af68;
-  --syntax-punct: #c0caf5;
-
-  --paper-grain: rgba(192, 202, 245, 0.02);
-  --page-vignette: rgba(122, 162, 247, 0.07);
-}
-
-/* Legacy mappings */
-:root,
-html[data-theme] {
+  /* Legacy mappings */
   --header-color: var(--text-heading);
   --link-color: var(--accent-secondary);
   --link-hover-color: var(--accent-hover);
@@ -188,22 +62,6 @@ html[data-theme] {
   --code-background-sml-outline: var(--code-inline-border);
   --nav-img-bk: var(--bg-elevated);
   --meta-info: var(--text-secondary);
-}
-
-@media (prefers-reduced-motion: no-preference) {
-  html.theme-changing,
-  html.theme-changing *,
-  html.theme-changing *::before,
-  html.theme-changing *::after {
-    transition:
-      background-color 200ms ease,
-      border-color 200ms ease,
-      color 200ms ease,
-      fill 200ms ease,
-      stroke 200ms ease,
-      box-shadow 200ms ease,
-      text-decoration-color 200ms ease;
-  }
 }
 
 ::selection {
@@ -344,8 +202,7 @@ li code {
   color: var(--code-text);
 }
 
-:root,
-html[data-theme] {
+:root {
   --astro-code-color-text: var(--code-text);
   --astro-code-color-background: transparent;
   --astro-code-token-constant: var(--syntax-number);
