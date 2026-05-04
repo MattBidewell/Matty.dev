@@ -16,35 +16,12 @@
   letter-spacing: -0.01em;
 }
 
-.intro-content p {
+.intro-content p,
+.line {
   color: var(--text-primary);
-  line-height: 1.65;
-  margin-bottom: 0.9rem;
-}
-
-.lede {
   font-size: 1.05rem;
-}
-
-.verbs {
-  font-family: var(--font-mono);
-  color: var(--text-secondary);
-  font-size: 0.92rem;
-  display: flex;
-  flex-wrap: wrap;
-  gap: 0.4rem 0.85rem;
-  border-left: 2px solid var(--accent-primary);
-  padding-left: 0.85rem;
-  margin: 1.25rem 0 !important;
-}
-
-.verbs span {
-  white-space: nowrap;
-}
-
-.cta {
-  color: var(--text-secondary);
-  font-size: 0.95rem;
+  line-height: 1.65;
+  margin-bottom: 1rem;
 }
 
 .intro-content a {
