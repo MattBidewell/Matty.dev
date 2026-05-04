@@ -32,38 +32,52 @@
   gap: 8px;
 }
 
+.techStack::before {
+  content: "stack:";
+  color: var(--text-muted);
+  font-family: var(--font-mono);
+  font-size: 0.78rem;
+  letter-spacing: 0;
+  text-transform: lowercase;
+  margin-right: 0.25rem;
+}
+
 .techTag {
   display: inline-block;
-  font-size: 0.75rem;
-  padding: 4px 10px;
-  background-color: var(--bg-elevated);
-  border: 1px solid var(--border-color);
-  border-radius: 4px;
+  font-size: 0.78rem;
+  padding: 0;
+  background-color: transparent;
+  border: 0;
   color: var(--text-secondary);
-  font-family: var(--font-body);
-  letter-spacing: 0.08em;
-  text-transform: uppercase;
+  font-family: var(--font-mono);
+  letter-spacing: 0;
+  text-transform: lowercase;
+}
+
+.techTag:not(:last-child)::after {
+  content: ", ";
+  color: var(--text-muted);
 }
 
 .links {
   display: flex;
-  gap: 1rem;
+  gap: 1.25rem;
 }
 
 .link {
-  padding: 8px 16px;
-  border: 1px solid var(--border-color);
-  border-radius: 4px;
-  transition: all 0.2s ease;
-  color: var(--text-secondary);
-  font-family: var(--font-body);
+  padding: 0;
+  border: 0;
+  background-image: none;
+  border-radius: 0;
+  color: var(--accent-secondary);
+  font-family: var(--font-mono);
   font-size: 0.85rem;
-  letter-spacing: 0.14em;
-  text-transform: uppercase;
+  letter-spacing: 0;
+  text-transform: lowercase;
+  transition: color 0.18s ease;
 }
 
 .link:hover {
-  background-color: var(--bg-elevated);
-  border-color: var(--border-color);
-  color: var(--text-heading);
+  background: none;
+  color: var(--accent-hover);
 }
