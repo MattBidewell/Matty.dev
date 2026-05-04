@@ -3,17 +3,24 @@
   padding-bottom: 0.5rem;
 }
 
-.intro-content h2 {
-  font-size: 2rem;
+.intro-content h2,
+.greet {
+  font-family: var(--font-mono);
+  font-weight: 700;
+  font-size: 1.6rem;
   margin-top: 0;
-  margin-bottom: 1rem;
+  margin-bottom: 0.85rem;
   border-bottom: none;
   padding-bottom: 0;
+  color: var(--text-heading);
+  letter-spacing: -0.01em;
 }
 
-.intro-content p {
+.intro-content p,
+.line {
   color: var(--text-primary);
-  line-height: 1.8;
+  font-size: 1.05rem;
+  line-height: 1.65;
   margin-bottom: 1rem;
 }
 
@@ -28,5 +35,10 @@
 @media only screen and (max-width: 800px) {
   .intro-content {
     padding: 1rem;
+  }
+
+  .intro-content h2,
+  .greet {
+    font-size: 1.4rem;
   }
 }

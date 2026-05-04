@@ -7,7 +7,7 @@ import Nav from "../nav/Nav.astro";
   <div class={styles.identity}>
     <div class={styles.identityRow}>
       <h1 class={styles.name}>
-        Matt Bidewell<span class={styles.cursor}>_</span>
+        <span class={styles.prompt} aria-hidden="true">$&nbsp;</span>Hi, I&apos;m Matt<span class={styles.cursor}>▋</span>
       </h1>
       <button
         class={styles.menuToggle}
@@ -21,7 +21,7 @@ import Nav from "../nav/Nav.astro";
         <span></span>
       </button>
     </div>
-    <p class={styles.subtitle}>Software Engineer</p>
+    <p class={styles.subtitle}>matt bidewell &mdash; software engineer</p>
   </div>
   <aside class={styles.navRail} id="navRail">
     <Nav />
