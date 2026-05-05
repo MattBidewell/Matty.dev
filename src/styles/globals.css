@@ -5,10 +5,8 @@
 :root {
   color-scheme: dark;
 
-  --font-body: 'iA Writer Quattro', ui-sans-serif, system-ui, -apple-system,
-               'Segoe UI', sans-serif;
-  --font-mono: 'iA Writer Mono', ui-monospace, SFMono-Regular, Menlo, Monaco,
-               Consolas, 'Liberation Mono', 'Courier New', monospace;
+  --font-body: Hack, 'DejaVu Sans Mono', Monaco, Consolas, 'Ubuntu Mono', monospace;
+  --font-mono: Hack, 'DejaVu Sans Mono', Monaco, Consolas, 'Ubuntu Mono', monospace;
   --font-display: var(--font-body);
 
   /* Layout */
