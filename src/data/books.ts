@@ -11,6 +11,14 @@ export interface IBook {
 
 export const books: IBook[] = [
   {
+    title: "The Hero Of Ages",
+    subtitle: "Mistborn Book 3",
+    image: "mistborn-3.webp",
+    url: "https://www.amazon.com/Hero-Ages-Mistborn-Book-Three-ebook/dp/B005PM3YII",
+    rating: 5,
+    date: new Date("2026-05-12"),
+  },
+  {
     title: "Dungeon Crawler Carl 3",
     subtitle: "The Dungeon Anarchist's Cookbook",
     image: "dungeon_crawler_carl_3.webp",
@@ -18,6 +26,14 @@ export const books: IBook[] = [
     rating: 4,
     audiobook: true,
     date: new Date("2026-03-14"),
+  },
+  {
+    title: "The Well of Ascension",
+    subtitle: "Mistborn Book 2",
+    image: "mistborn-2.webp",
+    url: "https://www.amazon.co.uk/dp/B003XNTTYY",
+    rating: 5,
+    date: new Date("2026-02-20"),
   },
   {
     title: "An Elegant Puzzle",
