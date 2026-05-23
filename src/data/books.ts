@@ -11,6 +11,15 @@ export interface IBook {
 
 export const books: IBook[] = [
   {
+    title: "The Gate of the Feral Gods",
+    subtitle: "Dungeon Crawler Carl Book 4",
+    image: "dungeon_crawler_carl_4.webp",
+    url: "https://www.amazon.co.uk/Gate-Feral-Gods-Dungeon-Crawler-ebook/dp/B093DJ7F3C",
+    rating: 3,
+    date: new Date("2026-05-13"),
+    audiobook: true,
+  },
+  {
     title: "The Hero Of Ages",
     subtitle: "Mistborn Book 3",
     image: "mistborn-3.webp",
@@ -19,8 +28,8 @@ export const books: IBook[] = [
     date: new Date("2026-05-12"),
   },
   {
-    title: "Dungeon Crawler Carl 3",
-    subtitle: "The Dungeon Anarchist's Cookbook",
+    title: "The Dungeon Anarchist's Cookbook",
+    subtitle: "Dungeon Crawler Carl Book 3",
     image: "dungeon_crawler_carl_3.webp",
     url: "https://www.amazon.co.uk/Dungeon-Anarchists-Cookbook-Dinnimans-deadliest/dp/0241816246",
     rating: 4,
@@ -44,8 +53,8 @@ export const books: IBook[] = [
     date: new Date("2026-02-19"),
   },
   {
-    title: "Dungeon Crawler Carl 2",
-    subtitle: "Carl's Doomsday Scenario",
+    title: "Carl's Doomsday Scenario",
+    subtitle: "Dungeon Crawler Carl Book 2",
     image: "dungeon_crawler_carl_2.webp",
     url: "https://www.amazon.co.uk/Carls-Doomsday-Scenario-Dungeon-Crawler-ebook/dp/B08PBCD9Y7",
     rating: 3,
@@ -78,7 +87,7 @@ export const books: IBook[] = [
     rating: 5,
   },
   {
-    title: "Dungeon Crawler Carl 1",
+    title: "Dungeon Crawler Carl",
     url: "https://www.amazon.co.uk/Dungeon-Crawler-Carl-Gamelit-Adventure-ebook/dp/B08BKGYQXW",
     image: "dungeon_crawler_carl_1.webp",
     date: new Date("2026-01-04"),
