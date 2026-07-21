@@ -11,6 +11,30 @@ export interface IBook {
 
 export const books: IBook[] = [
   {
+    title: "The Bookutcher's Masquerade",
+    subtitle: "Dungeon_Crawler_Carl Book 5",
+    image: "dungeon_crawler_carl_5.webp",
+    url: "https://www.amazon.co.uk/Butchers-Masquerade-Dinnimans-selling-deadliest/dp/0241829828",
+    rating: 5,
+    date: new Date("2026-07-03"),
+    audiobook: true,
+  },
+  {
+    title: "Neuromancer",
+    image: "neuromancer.webp",
+    url: "https://www.amazon.co.uk/Neuromancer-S-F-MASTERWORKS-William-Gibson-ebook/dp/B01BKS2X0K",
+    rating: 3,
+    date: new Date("2026-06-15"),
+  },
+  {
+    title: "User Story Mapping",
+    subtitle: "Discover the Whole Story, Build the Right Product",
+    image: "user_story_mapping.webp",
+    url: "https://www.amazon.co.uk/User-Story-Mapping-Discover-Product/dp/14919049092300",
+    rating: 3,
+    date: new Date("2026-05-24"),
+  },
+  {
     title: "The Gate of the Feral Gods",
     subtitle: "Dungeon Crawler Carl Book 4",
     image: "dungeon_crawler_carl_4.webp",
