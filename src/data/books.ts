@@ -11,7 +11,16 @@ export interface IBook {
 
 export const books: IBook[] = [
   {
-    title: "The Bookutcher's Masquerade",
+    title: "The Eye of the Bedlam Bride",
+    subtitle: "Dungeon Crawler Carl Book 6",
+    image: "dungeon_crawler_carl_6.webp",
+    url: "https://www.amazon.co.uk/Eye-Bedlam-Bride-Dungeon-Crawler-ebook/dp/B0C1R52V2J",
+    rating: 5,
+    date: new Date("2026-07-22"),
+    audiobook: true,
+  },
+  {
+    title: "The Butcher's Masquerade",
     subtitle: "Dungeon_Crawler_Carl Book 5",
     image: "dungeon_crawler_carl_5.webp",
     url: "https://www.amazon.co.uk/Butchers-Masquerade-Dinnimans-selling-deadliest/dp/0241829828",
