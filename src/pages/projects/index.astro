@@ -6,7 +6,7 @@ import { getLivePosts } from "../../lib/posts";
 const projects = await getLivePosts("project");
 ---
 
-<BaseLayout title="Projects">
+<BaseLayout title="Projects" ogImage="https://matty.dev/og/projects.png">
   <div class="container">
     <ProjectLinks projects={projects} hasLimit={false} />
   </div>

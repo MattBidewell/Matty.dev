@@ -18,7 +18,7 @@ function groupBooksByYear(items: IBook[]): Map<number, IBook[]> {
 const yearGroups = Array.from(groupBooksByYear(books).entries());
 ---
 
-<BaseLayout title="Bookshelf">
+<BaseLayout title="Bookshelf" ogImage="https://matty.dev/og/bookshelf.png">
   <div class:list={["container", styles.container]}>
     <h1>Bookshelf</h1>
     <p class={styles.intro}>

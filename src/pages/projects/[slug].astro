@@ -17,12 +17,17 @@ export const getStaticPaths: GetStaticPaths = async () => {
 const { project } = Astro.props;
 const { Content } = await project.render();
 const techStack = project.data.tech_stack ?? [];
+const slug = rawSlug(project);
+const shareUrl = `https://matty.dev/projects/${slug}`;
+const ogImage = `https://matty.dev/projects/${slug}/opengraph-image.png`;
 ---
 
 <BaseLayout
   title={project.data.title}
   description={project.data.excerpt ?? ""}
   ogType="article"
+  ogImage={ogImage}
+  canonical={shareUrl}
 >
   <div class="container">
     <h1 class={styles.title}>{project.data.title}</h1>

@@ -4,66 +4,50 @@ import { join } from "node:path";
 interface OgInput {
   title: string;
   excerpt: string;
-  date: string;
-  category: "blog" | "mumbling";
+  date?: string;
+  category: "blog" | "mumbling" | "page";
+  eyebrow?: string;
 }
 
 function truncate(text: string, max: number) {
   return text.length > max ? `${text.slice(0, max)}...` : text;
 }
 
+function eyebrowLabel(post: OgInput): string | null {
+  if (post.eyebrow) return post.eyebrow;
+  if (post.category === "mumbling") return "mumblings";
+  return null;
+}
+
 function buildTree(post: OgInput) {
   const titleSize = post.title.length > 55 ? 48 : 64;
   const excerpt = truncate(post.excerpt, 130);
+  const label = eyebrowLabel(post);
 
-  const eyebrow =
-    post.category === "mumbling"
-      ? {
-          type: "div",
-          props: {
-            style: {
-              display: "flex",
-              justifyContent: "space-between",
-              marginBottom: "52px",
-            },
-            children: [
-              {
-                type: "span",
-                props: {
-                  style: {
-                    color: "#c69752",
-                    fontSize: 20,
-                    fontWeight: 500,
-                    letterSpacing: "0.4px",
-                    textTransform: "uppercase",
-                  },
-                  children: "mumblings",
-                },
-              },
-              {
-                type: "span",
-                props: {
-                  style: {
-                    color: "#fc531d",
-                    fontSize: 24,
-                    fontWeight: 500,
-                    letterSpacing: "-0.3px",
-                  },
-                  children: "matty.dev",
-                },
-              },
-            ],
+  const eyebrow = label
+    ? {
+        type: "div",
+        props: {
+          style: {
+            display: "flex",
+            justifyContent: "space-between",
+            marginBottom: "52px",
           },
-        }
-      : {
-          type: "div",
-          props: {
-            style: {
-              display: "flex",
-              justifyContent: "flex-end",
-              marginBottom: "52px",
+          children: [
+            {
+              type: "span",
+              props: {
+                style: {
+                  color: "#c69752",
+                  fontSize: 20,
+                  fontWeight: 500,
+                  letterSpacing: "0.4px",
+                  textTransform: "uppercase",
+                },
+                children: label,
+              },
             },
-            children: {
+            {
               type: "span",
               props: {
                 style: {
@@ -75,8 +59,31 @@ function buildTree(post: OgInput) {
                 children: "matty.dev",
               },
             },
+          ],
+        },
+      }
+    : {
+        type: "div",
+        props: {
+          style: {
+            display: "flex",
+            justifyContent: "flex-end",
+            marginBottom: "52px",
           },
-        };
+          children: {
+            type: "span",
+            props: {
+              style: {
+                color: "#fc531d",
+                fontSize: 24,
+                fontWeight: 500,
+                letterSpacing: "-0.3px",
+              },
+              children: "matty.dev",
+            },
+          },
+        },
+      };
 
   return {
     type: "div",
@@ -142,18 +149,20 @@ function buildTree(post: OgInput) {
           props: {
             style: {
               display: "flex",
-              justifyContent: "space-between",
+              justifyContent: post.date ? "space-between" : "flex-end",
               alignItems: "center",
               flexShrink: 0,
             },
             children: [
-              {
-                type: "span",
-                props: {
-                  style: { color: "#666666", fontSize: 20 },
-                  children: post.date,
-                },
-              },
+              post.date
+                ? {
+                    type: "span",
+                    props: {
+                      style: { color: "#666666", fontSize: 20 },
+                      children: post.date,
+                    },
+                  }
+                : null,
               {
                 type: "span",
                 props: {
@@ -161,7 +170,7 @@ function buildTree(post: OgInput) {
                   children: "@mattbidewell",
                 },
               },
-            ],
+            ].filter(Boolean),
           },
         },
       ].filter(Boolean),
