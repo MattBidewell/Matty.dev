@@ -396,7 +396,7 @@ export const books: IBook[] = [
     subtitle:
       "A New Era of Cyberwar and the Hunt for the Kremlin's Most Dangerous Hackers",
     url: "https://www.amazon.co.uk/gp/product/B0B9R1BG72",
-    image: "sandworm.webp",
+    image: "Sandworm.webp",
     rating: 4,
     date: new Date("2022-11-04"),
   },
