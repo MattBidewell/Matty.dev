@@ -11,6 +11,39 @@ export interface IBook {
 
 export const books: IBook[] = [
   {
+    title: "The Eye of the Bedlam Bride",
+    subtitle: "Dungeon Crawler Carl Book 6",
+    image: "dungeon_crawler_carl_6.webp",
+    url: "https://www.amazon.co.uk/Eye-Bedlam-Bride-Dungeon-Crawler-ebook/dp/B0C1R52V2J",
+    rating: 5,
+    date: new Date("2026-07-22"),
+    audiobook: true,
+  },
+  {
+    title: "The Butcher's Masquerade",
+    subtitle: "Dungeon_Crawler_Carl Book 5",
+    image: "dungeon_crawler_carl_5.webp",
+    url: "https://www.amazon.co.uk/Butchers-Masquerade-Dinnimans-selling-deadliest/dp/0241829828",
+    rating: 5,
+    date: new Date("2026-07-03"),
+    audiobook: true,
+  },
+  {
+    title: "Neuromancer",
+    image: "neuromancer.webp",
+    url: "https://www.amazon.co.uk/Neuromancer-S-F-MASTERWORKS-William-Gibson-ebook/dp/B01BKS2X0K",
+    rating: 3,
+    date: new Date("2026-06-15"),
+  },
+  {
+    title: "User Story Mapping",
+    subtitle: "Discover the Whole Story, Build the Right Product",
+    image: "user_story_mapping.webp",
+    url: "https://www.amazon.co.uk/User-Story-Mapping-Discover-Product/dp/14919049092300",
+    rating: 3,
+    date: new Date("2026-05-24"),
+  },
+  {
     title: "The Gate of the Feral Gods",
     subtitle: "Dungeon Crawler Carl Book 4",
     image: "dungeon_crawler_carl_4.webp",
@@ -363,7 +396,7 @@ export const books: IBook[] = [
     subtitle:
       "A New Era of Cyberwar and the Hunt for the Kremlin's Most Dangerous Hackers",
     url: "https://www.amazon.co.uk/gp/product/B0B9R1BG72",
-    image: "sandworm.webp",
+    image: "Sandworm.webp",
     rating: 4,
     date: new Date("2022-11-04"),
   },
