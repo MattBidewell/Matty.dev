@@ -28,7 +28,7 @@ For the rendering of each post I use a library called [Remarkable](https://githu
 
 To get code blocks like this:
 
-```Javascript
+```javascript
 const myVar = "Hello world!";
 console.log(myVar);
 ```

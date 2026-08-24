@@ -1,4 +1,5 @@
 import { defineConfig } from "astro/config";
+import { unified } from "@astrojs/markdown-remark";
 import sitemap from "@astrojs/sitemap";
 import remarkRewriteImages from "./src/lib/remark-rewrite-images.ts";
 
@@ -16,7 +17,9 @@ export default defineConfig({
       theme: "css-variables",
       wrap: false,
     },
-    remarkPlugins: [remarkRewriteImages],
+    processor: unified({
+      remarkPlugins: [remarkRewriteImages],
+    }),
   },
 
   vite: {
@@ -26,5 +29,7 @@ export default defineConfig({
     },
   },
 
-  adapter: cloudflare()
+  adapter: cloudflare({
+    prerenderEnvironment: "node",
+  }),
 });

@@ -1,5 +1,6 @@
 ---
 import type { GetStaticPaths } from "astro";
+import { render } from "astro:content";
 import BaseLayout from "../../layouts/BaseLayout.astro";
 import PostBody from "../../components/blog/body/PostBody.astro";
 import PostFooter from "../../components/blog/footer/PostFooter.astro";
@@ -15,7 +16,7 @@ export const getStaticPaths: GetStaticPaths = async () => {
 };
 
 const { project } = Astro.props;
-const { Content } = await project.render();
+const { Content } = await render(project);
 const techStack = project.data.tech_stack ?? [];
 ---
 
