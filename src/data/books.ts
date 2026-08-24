@@ -11,6 +11,23 @@ export interface IBook {
 
 export const books: IBook[] = [
   {
+    title: "The Inevitable Ruin",
+    subtitle: "Dungeon Crawler Carl Book 7",
+    image: "dungeon_crawler_carl_7.webp",
+    url: "https://www.amazon.co.uk/This-Inevitable-Ruin-Dungeon-Crawler/dp/B0F74CH248",
+    rating: 5,
+    audiobook: true,
+    date: new Date("2026-08-20"),
+  },
+  {
+    title: "Where Good Ideas Come From",
+    subtitle: "The Natural History of Innovation",
+    image: "where_good_ideas_come_from.webp",
+    url: "https://www.amazon.co.uk/Where-Good-Ideas-Come-Innovation-ebook/dp/B0046ZRZ30",
+    rating: 4,
+    date: new Date("2026-08-05"),
+  },
+  {
     title: "The Eye of the Bedlam Bride",
     subtitle: "Dungeon Crawler Carl Book 6",
     image: "dungeon_crawler_carl_6.webp",
