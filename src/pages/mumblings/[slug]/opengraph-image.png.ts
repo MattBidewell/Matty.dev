@@ -18,7 +18,7 @@ export const GET: APIRoute = async ({ props }) => {
     date: formatDate(post.data.date),
     category: "mumbling",
   });
-  return new Response(png, {
+  return new Response(png.slice().buffer as ArrayBuffer, {
     headers: { "Content-Type": "image/png" },
   });
 };

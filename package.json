@@ -12,22 +12,23 @@
     "cf-typegen": "wrangler types"
   },
   "dependencies": {
-    "@astrojs/cloudflare": "12",
-    "@astrojs/rss": "^4.0.7",
-    "@astrojs/sitemap": "^3.2.1",
-    "@fontsource/ia-writer-mono": "^5.2.5",
-    "@fontsource/ia-writer-quattro": "^5.2.5",
+    "@astrojs/cloudflare": "^14.2.4",
+    "@astrojs/markdown-remark": "^7.2.4",
+    "@astrojs/rss": "^4.0.19",
+    "@astrojs/sitemap": "^3.7.3",
+    "@fontsource/ia-writer-mono": "^5.3.0",
+    "@fontsource/ia-writer-quattro": "^5.3.0",
     "@resvg/resvg-js": "^2.6.2",
-    "astro": "^5.0.0",
-    "satori": "^0.12.0",
+    "astro": "^7.2.6",
+    "satori": "^0.33.4",
     "satori-html": "^0.3.2"
   },
   "devDependencies": {
     "@types/mdast": "^4.0.4",
-    "@types/node": "^20.5.9",
-    "typescript": "^5.0.4",
+    "@types/node": "^26.3.0",
+    "typescript": "^7.0.2",
     "unist-util-visit": "^5.1.0",
-    "wrangler": "^4.83.0"
+    "wrangler": "^4.125.0"
   },
   "packageManager": "pnpm@10.32.1+sha512.a706938f0e89ac1456b6563eab4edf1d1faf3368d1191fc5c59790e96dc918e4456ab2e67d613de1043d2e8c81f87303e6b40d4ffeca9df15ef1ad567348f2be"
 }

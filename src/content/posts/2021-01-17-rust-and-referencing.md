@@ -12,7 +12,7 @@ This is part two of an intro to Rust and its ownership, referencing and borrowin
 
 With our knowledge of ownership and passing ownership to subroutines, we come across a new type of problem. What about when we want the parent function to retain the ownership of a variable? One simple solution is we return the initial variable but this gets messy and nasty. For example, the following code example is counter-intuitive.
 
-```Rust
+```rust
 fn main() {
    let s1 = String::from("hello");
    let (s2, len) = calculate_length(s1);
@@ -101,4 +101,3 @@ One final rule to remember, you cannot have a mutable reference and an immutable
 ## Summary
 
 Referencing is a way to pass a variable to another function without having to change the scope of the variable. The compiler is also really good at catching memory-related errors and is ultimately there to help stop you writing bugs. We also need to remember that at any given time in scope you can have ONE mutable reference of a variable OR an unlimited number of immutable ones.
-

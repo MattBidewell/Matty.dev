@@ -12,7 +12,7 @@ Javascript can suck, but Typescript makes life better. I love Typescript. And Ty
 
 The new Satisfies operator is used to solve the issue when we have an expression that matches one type but could also match another type. An example might be when we have an object of the same data but represented in different ways.
 
-```Typescript
+```typescript
 type RGB = [number, number, number];
 
 const palette: Record<"red"|"blue"|"green", string | RGB> = {

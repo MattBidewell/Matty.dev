@@ -15,7 +15,7 @@ I specifically use it in monorepos where the source code for multiple Lambda fun
 ## The problem
 
 We would use the following commands to deploy to AWS:
-```Shell
+```shell
 sam build -t infrastructure/lambda/template.yaml
 sam deploy -t infrastructure/lambda/template.yaml
 ```

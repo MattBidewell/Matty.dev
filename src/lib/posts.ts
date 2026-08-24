@@ -9,7 +9,7 @@ function inferCategory(id: string): Category {
 }
 
 export function rawSlug(entry: PostEntry): string {
-  return entry.id.replace(/\.md$/, "");
+  return entry.id;
 }
 
 export function categoryOf(entry: PostEntry): Category {
