@@ -5,10 +5,8 @@
 :root {
   color-scheme: dark;
 
-  --font-body: 'iA Writer Quattro', ui-sans-serif, system-ui, -apple-system,
-               'Segoe UI', sans-serif;
-  --font-mono: 'iA Writer Mono', ui-monospace, SFMono-Regular, Menlo, Monaco,
-               Consolas, 'Liberation Mono', 'Courier New', monospace;
+  --font-body: Hack, 'DejaVu Sans Mono', Monaco, Consolas, 'Ubuntu Mono', monospace;
+  --font-mono: Hack, 'DejaVu Sans Mono', Monaco, Consolas, 'Ubuntu Mono', monospace;
   --font-display: var(--font-body);
 
   /* Layout */
@@ -76,7 +74,7 @@ body {
   padding: 0;
   margin: 0;
   font-family: var(--font-body);
-  font-size: 16.5px;
+  font-size: 15px;
   font-weight: 400;
   line-height: 1.65;
   -webkit-font-smoothing: antialiased;
@@ -374,7 +372,7 @@ hr {
 }
 
 @media only screen and (max-width: 480px) {
-  html, body { font-size: 15.5px; }
+  html, body { font-size: 14px; }
   h1 { font-size: 1.55rem; }
   main { padding: 0 0.75rem 1rem; }
 }
