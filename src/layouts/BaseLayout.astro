@@ -16,6 +16,7 @@ interface Props {
   ogImage?: string;
   ogType?: "website" | "article";
   canonical?: string;
+  fullscreen?: boolean;
 }
 
 const desc =
@@ -27,6 +28,7 @@ const {
   ogImage,
   ogType = "website",
   canonical,
+  fullscreen = false,
 } = Astro.props;
 
 const fullTitle = title === "Matty.dev" ? title : `${title} | Matty.dev`;
@@ -75,15 +77,19 @@ const ogImageUrl = ogImage ?? new URL("/avatar.webp", Astro.site).toString();
 
     <ClientRouter />
   </head>
-  <body>
-    <div class="site-shell">
-      <main class="page-content">
-        <TopContent />
-        <div class="route-content">
-          <slot />
-        </div>
-      </main>
-      <Footer />
-    </div>
+  <body class:list={[{ "is-fullscreen": fullscreen }]}>
+    {fullscreen ? (
+      <slot />
+    ) : (
+      <div class="site-shell">
+        <main class="page-content">
+          <TopContent />
+          <div class="route-content">
+            <slot />
+          </div>
+        </main>
+        <Footer />
+      </div>
+    )}
   </body>
 </html>
