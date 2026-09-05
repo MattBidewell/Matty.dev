@@ -6,15 +6,12 @@
   --layout-shell-max: 1120px;
   --layout-content-max: 720px;
   --layout-pad-x: 2rem;
-  --content-inline-pad: 0;
 
   --brand-primary: #36705d;
   --brand-soft: #d5e7dc;
-  --on-brand: #e1e5dc;
   --on-brand-soft: #254c3d;
   --bg-color: light-dark(#e1e5dc, #1e1c20);
   --bg-surface: light-dark(#d6ddce, #28252a);
-  --bg-elevated: light-dark(#ccd4c5, #353037);
   --text-primary: light-dark(#332d33, #e4dde2);
   --text-heading: light-dark(#252126, #f5f0f3);
   --text-secondary: light-dark(#665c65, #b8abb4);
@@ -35,18 +32,10 @@
   --syntax-string: light-dark(#3f6653, #aacbb8);
   --syntax-title: light-dark(#345a85, #a5c4ed);
   --syntax-number: light-dark(#884b72, #efb7d3);
-  --syntax-attribute: var(--accent-primary);
   --syntax-punct: var(--text-primary);
 
-  --header-color: var(--text-heading);
   --link-color: var(--accent-secondary);
   --link-hover-color: var(--accent-hover);
-  --header-underline: var(--accent-secondary);
-  --code-background: var(--code-bg);
-  --code-background-sml: var(--code-inline-bg);
-  --code-background-sml-outline: var(--code-inline-border);
-  --nav-img-bk: var(--bg-elevated);
-  --meta-info: var(--text-secondary);
   --astro-code-color-text: var(--code-text);
   --astro-code-color-background: transparent;
   --astro-code-token-constant: var(--syntax-number);
@@ -122,10 +111,6 @@ main.page-content {
   width: 100%;
   min-width: 0;
 }
-.content {
-  width: 100%;
-  overflow-wrap: anywhere;
-}
 .skip-link {
   position: absolute;
   left: 1rem;
@@ -187,23 +172,6 @@ a {
 a:hover {
   color: var(--link-hover-color);
 }
-.eyebrow {
-  font: 0.6875rem/1.5 var(--font-mono);
-  letter-spacing: 0.09em;
-  text-transform: uppercase;
-}
-.section-heading {
-  display: flex;
-  align-items: baseline;
-  justify-content: space-between;
-  gap: 1rem;
-  border-top: 1px solid var(--border-color);
-  padding-top: 1rem;
-  margin-bottom: 1.75rem;
-}
-.section-heading h2 {
-  margin: 0;
-}
 
 pre {
   background: var(--code-bg);
@@ -231,50 +199,6 @@ td code {
 .astro-code,
 .astro-code span {
   background-color: transparent !important;
-}
-.hljs {
-  color: var(--code-text);
-  background: transparent;
-}
-.hljs-comment,
-.hljs-quote {
-  color: var(--syntax-comment);
-  font-style: italic;
-}
-.hljs-keyword,
-.hljs-selector-tag,
-.hljs-literal,
-.hljs-name,
-.hljs-type {
-  color: var(--syntax-keyword);
-}
-.hljs-string,
-.hljs-doctag,
-.hljs-regexp,
-.hljs-meta .hljs-string {
-  color: var(--syntax-string);
-}
-.hljs-title,
-.hljs-title.class_,
-.hljs-title.function_ {
-  color: var(--syntax-title);
-}
-.hljs-number,
-.hljs-symbol,
-.hljs-bullet,
-.hljs-variable,
-.hljs-template-variable {
-  color: var(--syntax-number);
-}
-.hljs-attr,
-.hljs-attribute,
-.hljs-meta,
-.hljs-built_in {
-  color: var(--syntax-attribute);
-}
-.hljs-subst,
-.hljs-punctuation {
-  color: var(--syntax-punct);
 }
 blockquote {
   border-left: 3px solid var(--accent-primary);
@@ -340,9 +264,6 @@ hr {
   }
   main.page-content {
     padding: 2rem 0 3.5rem;
-  }
-  .section-heading {
-    align-items: flex-start;
   }
   pre {
     padding: 1rem;
