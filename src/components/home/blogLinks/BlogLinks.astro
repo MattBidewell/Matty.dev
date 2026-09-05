@@ -9,6 +9,7 @@ interface Props {
   moreLinkLabel?: string;
   moreLinkHref?: string;
   sectionId?: string;
+  intro?: string;
 }
 
 const {
@@ -18,39 +19,47 @@ const {
   moreLinkLabel = "More posts...",
   moreLinkHref = "/blog",
   sectionId,
+  intro,
 } = Astro.props;
+const Heading = hasLimit ? "h2" : "h1";
+const EntryHeading = hasLimit ? "h3" : "h2";
 ---
 
-<section class="content">
-  <section class={styles.bloglinks_content}>
-    <h2 id={sectionId} class={styles.title}>{title}</h2>
-    <table class={styles["table-content"]}>
-      <tbody>
-        {
-          posts.map((post) => {
-            const href = linkSlugFor(post);
-            return (
-              <tr>
-                <td class={styles["date-cell"]}>
-                  <p>{formatDate(post.data.date)}</p>
-                </td>
-                <td>
-                  <p>
-                    <a href={href}>{post.data.title}</a>
-                  </p>
-                </td>
-              </tr>
-            );
-          })
-        }
-      </tbody>
-    </table>
+<section class={styles.bloglinks_content}>
+  <header class={styles.header}>
+    <Heading
+      id={sectionId}
+      class:list={[styles.title, !hasLimit && styles["page-title"]]}
+    >
+      {title}
+    </Heading>
+    {intro && <p class={styles.intro}>{intro}</p>}
+  </header>
+  <ul class={styles.entries} role="list">
     {
-      hasLimit && (
-        <p class={styles["more-link"]}>
-          <a href={moreLinkHref}>{moreLinkLabel}</a>
-        </p>
-      )
+      posts.map((post) => {
+        const href = linkSlugFor(post);
+        return (
+          <li class={styles.entry}>
+            <article>
+              <EntryHeading class={styles["entry-title"]}>
+                <a href={href}>{post.data.title}</a>
+              </EntryHeading>
+              {post.data.excerpt && <p class={styles.excerpt}>{post.data.excerpt}</p>}
+              <time class={styles.date} datetime={post.data.date.toISOString()}>
+                {formatDate(post.data.date)}
+              </time>
+            </article>
+          </li>
+        );
+      })
     }
-  </section>
+  </ul>
+  {
+    hasLimit && (
+      <p class={styles["more-link"]}>
+        <a href={moreLinkHref}>{moreLinkLabel}</a>
+      </p>
+    )
+  }
 </section>

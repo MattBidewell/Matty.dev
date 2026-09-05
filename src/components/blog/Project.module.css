@@ -1,35 +1,49 @@
+.project {
+  width: 100%;
+  min-width: 0;
+}
+
+.header {
+  margin-bottom: 2.5rem;
+  padding-bottom: 2rem;
+  border-bottom: 1px solid var(--border-color);
+}
+
+.back {
+  color: var(--accent-primary);
+}
+
 .date {
-  font-family: var(--font-body);
-  font-size: 0.85rem;
-  color: var(--text-secondary);
-  font-weight: 400;
-  margin: 0 0 2rem;
-  text-align: center;
-  letter-spacing: 0.14em;
-  text-transform: uppercase;
+  display: block;
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  color: var(--text-muted);
 }
 
 .title {
-  text-align: center;
+  text-align: left;
   color: var(--text-heading);
   font-family: var(--font-display);
-  font-style: normal;
-  margin: 0 0 0.5rem;
+  font-size: clamp(2.5rem, 6vw, 4rem);
+  font-weight: 400;
+  line-height: 1.05;
+  letter-spacing: -0.04em;
+  overflow-wrap: anywhere;
+  margin: 1.5rem 0;
 }
 
 .meta {
   display: flex;
   flex-direction: column;
-  align-items: center;
-  margin-bottom: 2rem;
+  align-items: flex-start;
+  margin-top: 1.5rem;
   gap: 1rem;
 }
 
 .techStack {
   display: flex;
   flex-wrap: wrap;
-  justify-content: center;
-  gap: 8px;
+  gap: 0.5rem;
 }
 
 .techStack::before {
@@ -61,6 +75,7 @@
 
 .links {
   display: flex;
+  flex-wrap: wrap;
   gap: 1.25rem;
 }
 
@@ -70,10 +85,7 @@
   background-image: none;
   border-radius: 0;
   color: var(--accent-secondary);
-  font-family: var(--font-mono);
-  font-size: 0.85rem;
   letter-spacing: 0;
-  text-transform: lowercase;
   transition: color 0.18s ease;
 }
 

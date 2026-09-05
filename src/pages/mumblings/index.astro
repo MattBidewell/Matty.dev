@@ -8,6 +8,12 @@ const mumblings = await getLivePosts("mumbling");
 
 <BaseLayout title="Mumblings">
   <div class="container">
-    <BlogLinks posts={mumblings} hasLimit={false} title="Mumblings" sectionId="mumblings" />
+    <BlogLinks
+      posts={mumblings}
+      hasLimit={false}
+      title="Mumblings"
+      sectionId="mumblings"
+      intro="Personal notes, life updates, and thoughts along the way."
+    />
   </div>
 </BaseLayout>

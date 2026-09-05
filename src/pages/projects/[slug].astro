@@ -24,51 +24,56 @@ const techStack = project.data.tech_stack ?? [];
   description={project.data.excerpt ?? ""}
   ogType="article"
 >
-  <div class="container">
-    <h1 class={styles.title}>{project.data.title}</h1>
-    <p class={styles.date}>{formatDate(project.data.date)}</p>
+  <article class={styles.project}>
+    <header class={styles.header}>
+      <a class={styles.back} href="/projects">Projects</a>
+      <h1 class={styles.title}>{project.data.title}</h1>
+      <time class={styles.date} datetime={project.data.date.toISOString()}>
+        {formatDate(project.data.date)}
+      </time>
 
-    <div class={styles.meta}>
-      {
-        techStack.length > 0 && (
-          <div class={styles.techStack}>
-            {techStack.map((tech) => (
-              <span class={styles.techTag}>{tech}</span>
-            ))}
-          </div>
-        )
-      }
-      <div class={styles.links}>
+      <div class={styles.meta}>
         {
-          project.data.github_url && (
-            <a
-              href={project.data.github_url}
-              target="_blank"
-              rel="noopener noreferrer"
-              class={styles.link}
-            >
-              GitHub
-            </a>
+          techStack.length > 0 && (
+            <div class={styles.techStack}>
+              {techStack.map((tech) => (
+                <span class={styles.techTag}>{tech}</span>
+              ))}
+            </div>
           )
         }
-        {
-          project.data.demo_url && (
-            <a
-              href={project.data.demo_url}
-              target="_blank"
-              rel="noopener noreferrer"
-              class={styles.link}
-            >
-              Live Demo
-            </a>
-          )
-        }
+        <div class={styles.links}>
+          {
+            project.data.github_url && (
+              <a
+                href={project.data.github_url}
+                target="_blank"
+                rel="noopener noreferrer"
+                class={styles.link}
+              >
+                GitHub
+              </a>
+            )
+          }
+          {
+            project.data.demo_url && (
+              <a
+                href={project.data.demo_url}
+                target="_blank"
+                rel="noopener noreferrer"
+                class={styles.link}
+              >
+                Live Demo
+              </a>
+            )
+          }
+        </div>
       </div>
-    </div>
+    </header>
 
     <PostBody>
       <Content />
     </PostBody>
     <PostFooter />
-  </div>
+  </article>
 </BaseLayout>

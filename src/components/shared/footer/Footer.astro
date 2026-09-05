@@ -1,34 +1,16 @@
 ---
-import styles from "./Footer.module.css";
-import Analytics from "../meta/Analytics.astro";
-
+import styles from './Footer.module.css';
+import Analytics from '../meta/Analytics.astro';
 const year = new Date().getFullYear();
 ---
-
 <footer class={styles.footer}>
-  <div class={styles.leftColumn}>
-    <div class={styles.topRow}>
-      <div class={styles.links}>
-        <a target="_blank" rel="noopener noreferrer" href="https://github.com/MattBidewell">
-          github
-        </a>
-        <span class={styles.separator}>·</span>
-        <a target="_blank" rel="noopener noreferrer" href="https://x.com/MattBidewell">
-          x
-        </a>
-        <span class={styles.separator}>·</span>
-        <a target="_blank" rel="noopener noreferrer" href="https://www.linkedin.com/in/matt-bidewell-a4578790/">
-          linkedin
-        </a>
-        <span class={styles.separator}>·</span>
-        <a target="_blank" rel="noopener" href="/assets/resume/Matt-Bidewell-Resume.pdf">
-          resume
-        </a>
-      </div>
-    </div>
-    <div class={styles.copyright}>
-      <span>© {year} Matt Bidewell</span>
-    </div>
-  </div>
+  <p class={styles.copyright}>&copy; {year} Matt Bidewell</p>
+  <ul class={styles.links} role="list">
+    <li><a href="/rss.xml">RSS</a></li>
+    <li><a target="_blank" rel="noopener noreferrer" href="https://github.com/MattBidewell">GitHub</a></li>
+    <li><a target="_blank" rel="noopener noreferrer" href="https://x.com/MattBidewell">X</a></li>
+    <li><a target="_blank" rel="noopener noreferrer" href="https://www.linkedin.com/in/matt-bidewell-a4578790/">LinkedIn</a></li>
+    <li><a target="_blank" rel="noopener" href="/assets/resume/Matt-Bidewell-Resume.pdf">Resume</a></li>
+  </ul>
 </footer>
 <Analytics />

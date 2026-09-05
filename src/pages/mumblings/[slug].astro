@@ -28,12 +28,15 @@ const ogImage = `https://matty.dev/mumblings/${slug}/opengraph-image.png`;
   ogImage={ogImage}
   canonical={shareUrl}
 >
-  <div class="container">
-    <h1 class={styles.title}>{post.data.title}</h1>
-    <p class={styles.date}>{formatDate(post.data.date)}</p>
+  <article class={styles.post}>
+    <header class={styles.header}>
+      <a class={styles.back} href="/mumblings">Mumblings</a>
+      <h1 class={styles.title}>{post.data.title}</h1>
+      <time class={styles.date} datetime={post.data.date.toISOString()}>{formatDate(post.data.date)}</time>
+    </header>
     <PostBody>
       <Content />
     </PostBody>
     <PostFooter shareUrl={shareUrl} shareTitle={post.data.title} />
-  </div>
+  </article>
 </BaseLayout>

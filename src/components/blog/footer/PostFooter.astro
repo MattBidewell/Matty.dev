@@ -12,25 +12,27 @@ const encodedUrl = shareUrl ? encodeURIComponent(shareUrl) : "";
 const encodedTitle = shareTitle ? encodeURIComponent(shareTitle) : "";
 ---
 
-<div class={styles["post-footer"]}>
+<footer class={styles["post-footer"]}>
   {
     shareUrl && shareTitle && (
       <div class={styles["share-links"]}>
-        <span class={styles["share-label"]}>share</span>
+        <span class={styles["share-label"]}>Share</span>
         <a
           href={`https://twitter.com/intent/tweet?url=${encodedUrl}&text=${encodedTitle}`}
           target="_blank"
           rel="noreferrer"
+          aria-label="Share on X"
         >
-          x
+          X
         </a>
         <span class={styles.separator}>·</span>
         <a
           href={`https://www.linkedin.com/sharing/share-offsite/?url=${encodedUrl}`}
           target="_blank"
           rel="noreferrer"
+          aria-label="Share on LinkedIn"
         >
-          linkedin
+          LinkedIn
         </a>
       </div>
     )
@@ -52,4 +54,4 @@ const encodedTitle = shareTitle ? encodeURIComponent(shareTitle) : "";
     Found my content useful and want to help support me? Consider&nbsp;
     <a href="https://www.buymeacoffee.com/Mattbidewell">buying me a coffee.</a>
   </p>
-</div>
+</footer>
