@@ -18,13 +18,11 @@ function groupBooksByYear(items: IBook[]): Map<number, IBook[]> {
 const yearGroups = Array.from(groupBooksByYear(books).entries());
 ---
 
-<BaseLayout title="Bookshelf">
-  <div class:list={["container", styles.container]}>
-    <h1>Bookshelf</h1>
-    <p class={styles.intro}>
-      A running log of the books that stuck with me, from engineering and
-      systems work to sci-fi, fantasy, and the odd health rabbit hole.
-    </p>
+<BaseLayout title="Bookshelf" wide>
+  <div class={styles.container}>
+    <header class={styles.header}>
+      <h1 class={styles.title}>Bookshelf</h1>
+    </header>
 
     <div class={styles["year-list"]}>
       {

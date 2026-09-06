@@ -56,6 +56,6 @@ const formatDate = (date: Date) =>
         </div>
       )
     }
-    <div class={styles["book-date"]}>{formatDate(book.date)}</div>
+    <time class={styles["book-date"]} datetime={book.date.toISOString()}>{formatDate(book.date)}</time>
   </div>
 </a>

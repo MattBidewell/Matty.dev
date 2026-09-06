@@ -8,38 +8,39 @@ interface Props {
 }
 
 const { projects, hasLimit } = Astro.props;
+const Heading = hasLimit ? "h2" : "h1";
+const EntryHeading = hasLimit ? "h3" : "h2";
 ---
 
-<section class="content">
-  <section class={styles.projectlinks_content}>
-    <h2 class={styles.title}>Projects</h2>
-    <table class={styles["table-content"]}>
-      <tbody>
-        {
-          projects.map((project) => {
-            const href = linkSlugFor(project);
-            return (
-              <tr>
-                <td class={styles["date-cell"]}>
-                  <p>{formatDate(project.data.date)}</p>
-                </td>
-                <td>
-                  <p>
-                    <a href={href}>{project.data.title}</a>
-                  </p>
-                </td>
-              </tr>
-            );
-          })
-        }
-      </tbody>
-    </table>
+<section class={styles.projectlinks_content}>
+  <Heading class:list={[styles.title, !hasLimit && styles["page-title"]]}>
+    Projects
+  </Heading>
+  <ul class={styles.entries} role="list">
     {
-      hasLimit && (
-        <p class={styles["more-link"]}>
-          <a href="/projects">More projects...</a>
-        </p>
-      )
+      projects.map((project) => {
+        const href = linkSlugFor(project);
+        return (
+          <li class={styles.entry}>
+            <article>
+              <EntryHeading class={styles["entry-title"]}>
+                <a href={href}>{project.data.title}</a>
+              </EntryHeading>
+              {project.data.excerpt && <p class={styles.excerpt}>{project.data.excerpt}</p>}
+              <time class={styles.date} datetime={project.data.date.toISOString()}>
+                {formatDate(project.data.date)}
+              </time>
+            </article>
+          </li>
+        );
+      })
     }
-  </section>
+  </ul>
+  {
+    hasLimit && (
+      <p class={styles["more-link"]}>
+        <a href="/projects">More projects...</a>
+      </p>
+    )
+  }
 </section>

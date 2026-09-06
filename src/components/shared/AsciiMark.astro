@@ -1,0 +1,58 @@
+---
+const rows = [
+  '##     ##',
+  '###   ###',
+  '#### ####',
+  '## ### ##',
+  '##  #  ##',
+  '##     ##',
+  '##     ##',
+];
+---
+
+<span class="ascii-mark" data-ascii-mark aria-hidden="true">
+  {rows.map((row, index) => <span class="row" style={{ '--row': index }}>{row}</span>)}
+</span>
+
+<style>
+  .ascii-mark {
+    display: block;
+    flex-shrink: 0;
+    overflow: hidden;
+    color: var(--accent-primary);
+    font: 400 0.625rem/0.5rem var(--font-mono);
+    letter-spacing: 0;
+    user-select: none;
+  }
+
+  .row {
+    display: block;
+    white-space: pre;
+    --offset: -0.75ch;
+  }
+
+  .row:nth-child(even) {
+    --offset: 0.75ch;
+  }
+
+  @media (prefers-reduced-motion: no-preference) {
+    :global(a:focus-visible) .row {
+      animation: assemble 420ms steps(4, end) calc(var(--row) * 25ms) 1 backwards;
+    }
+
+    @media (hover: hover) {
+      :global(a:hover) .row {
+        animation: assemble 420ms steps(4, end) calc(var(--row) * 25ms) 1 backwards;
+      }
+    }
+  }
+
+  @keyframes assemble {
+    from { opacity: 0.2; transform: translateX(var(--offset)); }
+    to { opacity: 1; transform: translateX(0); }
+  }
+
+  @media (max-width: 600px) {
+    .ascii-mark { font-size: 0.5rem; line-height: 0.375rem; }
+  }
+</style>

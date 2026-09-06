@@ -1,42 +1,42 @@
 .coffee {
-  height: 60px !important;
-  width: 217px !important;
+  display: block;
+  width: 180px;
+  max-width: 100%;
+  height: auto;
 }
 
-.coffee-link:hover {
+.coffee-link {
+  display: inline-block;
   background: none;
-  outline: none;
 }
 
 .post-footer {
   padding-top: 2rem;
-  margin-top: 2rem;
+  margin-top: 3.5rem;
   border-top: 1px solid var(--border-color);
-  text-align: center;
+  text-align: left;
 }
 
 .share-links {
   display: flex;
   align-items: center;
-  justify-content: center;
-  gap: 0.4rem;
-  margin-bottom: 1rem;
-  font-size: 0.8rem;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+  margin-bottom: 1.5rem;
 }
 
 .share-label {
   color: var(--text-secondary);
-  text-transform: uppercase;
-  letter-spacing: 0.14em;
-  font-family: var(--font-body);
 }
 
 .separator {
   color: var(--text-secondary);
-  opacity: 0.55;
 }
 
 .post-footer p {
   color: var(--text-secondary);
-  font-size: 0.9rem;
+  font-family: var(--font-body);
+  font-size: 1.125rem;
+  line-height: 1.5;
+  margin: 1rem 0 0;
 }

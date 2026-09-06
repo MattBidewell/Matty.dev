@@ -5,13 +5,16 @@ const yearsExp = new Date().getFullYear() - 2015;
 ---
 
 <BaseLayout title="About">
-  <div class="container">
-    <section class="content">
-      <h2>About</h2>
-      <p>
+  <article class="about">
+    <header>
+      <h1>About</h1>
+      <p class="intro">
         I&apos;m Matt Bidewell, a software engineer with {yearsExp}+ years of
         experience building products on the web.
       </p>
+    </header>
+    <section aria-labelledby="work">
+      <h2 id="work">Work</h2>
       <p>
         I currently work as a Senior Software Engineer at{" "}
         <a target="_blank" rel="noreferrer" href="https://www.contentful.com/">
@@ -19,6 +22,14 @@ const yearsExp = new Date().getFullYear() - 2015;
         </a>, and I enjoy shipping reliable systems, writing clearly, and working
         in the open.
       </p>
+      <p class="resume">
+        <a target="_blank" rel="noopener" href="/assets/resume/Matt-Bidewell-Resume.pdf">
+          View resume
+        </a>
+      </p>
+    </section>
+    <section aria-labelledby="elsewhere">
+      <h2 id="elsewhere">Elsewhere</h2>
       <p>
         You can find me on{" "}
         <a target="_blank" rel="noopener noreferrer" href="https://x.com/MattBidewell">
@@ -31,11 +42,53 @@ const yearsExp = new Date().getFullYear() - 2015;
           LinkedIn
         </a>.
       </p>
-      <p>
-        <a target="_blank" rel="noopener" href="/assets/resume/Matt-Bidewell-Resume.pdf">
-          View resume
-        </a>
-      </p>
     </section>
-  </div>
+  </article>
 </BaseLayout>
+
+<style>
+  .about {
+    font-family: var(--font-body);
+    font-size: 1.25rem;
+    line-height: 1.65;
+  }
+
+  h1 {
+    margin: 0 0 1.5rem;
+    color: var(--text-heading);
+    font-family: var(--font-display);
+    font-size: clamp(3rem, 8vw, 5rem);
+    font-weight: 400;
+    line-height: 1;
+    letter-spacing: -0.04em;
+  }
+
+  .intro {
+    margin: 0;
+    font-size: clamp(1.5rem, 4vw, 2rem);
+    line-height: 1.4;
+  }
+
+  section {
+    margin-top: 2.5rem;
+    padding-top: 1.5rem;
+    border-top: 1px solid var(--border-color);
+  }
+
+  h2 {
+    margin: 0 0 1rem;
+    color: var(--accent-primary);
+    font-family: var(--font-mono);
+    font-size: 0.8rem;
+    font-weight: 400;
+    letter-spacing: 0;
+  }
+
+  p {
+    margin: 0 0 1.5rem;
+  }
+
+  .resume {
+    margin-bottom: 0;
+  }
+</style>

@@ -1,81 +1,54 @@
 ---
-import styles from "./main.module.css";
-import Nav from "../nav/Nav.astro";
+import styles from './main.module.css';
+import Nav from '../nav/Nav.astro';
+import AsciiMark from '../AsciiMark.astro';
 ---
 
 <header class={styles.header}>
-  <div class={styles.identity}>
-    <div class={styles.identityRow}>
-      <h1 class={styles.name}>
-        <span class={styles.prompt} aria-hidden="true">$&nbsp;</span>Hi, I&apos;m Matt<span class={styles.cursor}>▋</span>
-      </h1>
-      <button
-        class={styles.menuToggle}
-        id="menuToggle"
-        aria-label="Open navigation menu"
-        aria-expanded="false"
-        aria-controls="navRail"
-      >
-        <span></span>
-        <span></span>
-        <span></span>
-      </button>
-    </div>
-    <p class={styles.subtitle}>matt bidewell &mdash; software engineer</p>
+  <a class={styles.brand} href="/" aria-label="matty.dev">
+    <AsciiMark />
+    <span>matty<span class={styles.dot}>.</span>dev</span>
+  </a>
+  <div class={styles.controls}>
+    <button class={styles.menuToggle} id="menuToggle" aria-label="Open navigation menu" aria-expanded="false" aria-controls="navRail" type="button">Menu <span aria-hidden="true">+</span></button>
   </div>
-  <aside class={styles.navRail} id="navRail">
-    <Nav />
-  </aside>
+  <div class={styles.navigation} id="navRail"><Nav /></div>
 </header>
 
 <script>
-  let controller: AbortController | null = null;
-
+  let controller: AbortController | undefined;
   function setup() {
     controller?.abort();
     controller = new AbortController();
     const { signal } = controller;
-
-    const toggle = document.getElementById("menuToggle") as HTMLButtonElement | null;
-    const rail = document.getElementById("navRail") as HTMLElement | null;
+    const toggle = document.getElementById('menuToggle');
+    const rail = document.getElementById('navRail');
     if (!toggle || !rail) return;
-
     function close() {
-      toggle!.setAttribute("aria-expanded", "false");
+      toggle!.setAttribute('aria-expanded', 'false');
+      toggle!.setAttribute('aria-label', 'Open navigation menu');
       delete rail!.dataset.open;
     }
-
-    function open() {
-      toggle!.setAttribute("aria-expanded", "true");
-      rail!.dataset.open = "";
-    }
-
-    toggle.addEventListener(
-      "click",
-      () => {
-        toggle.getAttribute("aria-expanded") === "true" ? close() : open();
-      },
-      { signal }
-    );
-
-    rail.querySelectorAll("a").forEach((link) => {
-      link.addEventListener("click", close, { signal });
-    });
-
-    document.addEventListener(
-      "click",
-      (e) => {
-        if (
-          !toggle.contains(e.target as Node) &&
-          !rail.contains(e.target as Node)
-        ) {
-          close();
-        }
-      },
-      { signal }
-    );
+    toggle.addEventListener('click', () => {
+      if (toggle.getAttribute('aria-expanded') === 'true') return close();
+      toggle.setAttribute('aria-expanded', 'true');
+      toggle.setAttribute('aria-label', 'Close navigation menu');
+      rail.dataset.open = '';
+    }, { signal });
+    rail.addEventListener('click', event => {
+      if (event.target instanceof Element && event.target.closest('a')) close();
+    }, { signal });
+    document.addEventListener('click', event => {
+      if (event.target instanceof Node && !toggle.contains(event.target) && !rail.contains(event.target)) close();
+    }, { signal });
+    document.addEventListener('keydown', event => {
+      if (event.key === 'Escape' && toggle.getAttribute('aria-expanded') === 'true') {
+        close();
+        toggle.focus();
+      }
+    }, { signal });
+    matchMedia('(min-width: 901px)').addEventListener('change', close, { signal });
   }
-
   setup();
-  document.addEventListener("astro:after-swap", setup);
+  document.addEventListener('astro:after-swap', setup);
 </script>

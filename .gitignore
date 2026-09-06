@@ -34,3 +34,5 @@ pages_old/
 .dev.vars*
 !.dev.vars.example
 !.env.example
+test-results/
+playwright-report/
