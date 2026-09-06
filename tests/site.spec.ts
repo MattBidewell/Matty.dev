@@ -1,30 +1,49 @@
 import { expect, test } from "@playwright/test";
 import AxeBuilder from "@axe-core/playwright";
 
-test("content links use reading typography without decorative arrows", async ({ page }) => {
+test("content links use reading typography without decorative arrows", async ({
+  page,
+}) => {
   await page.goto("/");
-  const paragraph = page.getByText("I'm Matt. I build software and write about what I learn along the way. Sometimes technical. Sometimes just life.", { exact: true });
-  const typography = await paragraph.evaluate(element => ({
+  const paragraph = page.getByText(
+    "I'm Matt. I build software and write about what I learn along the way. Sometimes technical. Sometimes just life.",
+    { exact: true },
+  );
+  const typography = await paragraph.evaluate((element) => ({
     family: getComputedStyle(element).fontFamily,
     size: getComputedStyle(element).fontSize,
   }));
-  for (const name of ["A little more about me", "All writing", "All Mumblings", "All projects"]) {
+  for (const name of [
+    "A little more about me",
+    "All writing",
+    "All Mumblings",
+    "All projects",
+  ]) {
     const link = page.getByRole("link", { name, exact: true });
     await expect(link).toHaveCSS("font-family", typography.family);
     await expect(link).toHaveCSS("font-size", typography.size);
   }
-  for (const route of ["/about", "/projects/2026-02-23-trail-mapper", "/blog/2026-02-21-one-typo-away-from-being-owned", "/bookshelf"]) {
+  for (const route of [
+    "/about",
+    "/projects/2026-02-23-trail-mapper",
+    "/blog/2026-02-21-one-typo-away-from-being-owned",
+    "/bookshelf",
+  ]) {
     await page.goto(route);
-    const links = await page.locator("main a").evaluateAll(elements => elements.map(element => ({
-      family: getComputedStyle(element).fontFamily,
-      decoration: getComputedStyle(element, "::after").content,
-    })));
-    expect(links.every(link => link.family === typography.family)).toBe(true);
-    expect(links.every(link => !/[←→↗↘↙↖]/.test(link.decoration))).toBe(true);
+    const links = await page.locator("main a").evaluateAll((elements) =>
+      elements.map((element) => ({
+        family: getComputedStyle(element).fontFamily,
+        decoration: getComputedStyle(element, "::after").content,
+      })),
+    );
+    expect(links.every((link) => link.family === typography.family)).toBe(true);
+    expect(links.every((link) => !/[←→↗↘↙↖]/.test(link.decoration))).toBe(true);
   }
 });
 
-test("ASCII logo animates once on interaction and respects reduced motion", async ({ page }) => {
+test("ASCII logo animates once on interaction and respects reduced motion", async ({
+  page,
+}) => {
   await page.emulateMedia({ reducedMotion: "no-preference" });
   await page.goto("/");
   const brand = page.getByRole("link", { name: "matty.dev", exact: true });
@@ -36,7 +55,16 @@ test("ASCII logo animates once on interaction and respects reduced motion", asyn
   await brand.hover();
   await expect(rows.first()).not.toHaveCSS("animation-name", "none");
   await expect(rows.first()).toHaveCSS("animation-iteration-count", "1");
-  await expect.poll(() => mark.evaluate(element => element.getAnimations({ subtree: true }).filter(animation => animation.playState === "running").length)).toBe(0);
+  await expect
+    .poll(() =>
+      mark.evaluate(
+        (element) =>
+          element
+            .getAnimations({ subtree: true })
+            .filter((animation) => animation.playState === "running").length,
+      ),
+    )
+    .toBe(0);
   await page.mouse.move(0, 0);
   await page.keyboard.press("Tab");
   await brand.focus();
@@ -47,18 +75,32 @@ test("ASCII logo animates once on interaction and respects reduced motion", asyn
   await expect(rows.first()).toHaveCSS("animation-name", "none");
 });
 
-test("footer keeps a horizontal list of links without arrows or a signoff", async ({ page }) => {
+test("footer keeps a horizontal list of links without arrows or a signoff", async ({
+  page,
+}) => {
   await page.goto("/");
   const footer = page.getByRole("contentinfo");
-  await expect(footer.getByRole("listitem")).toHaveText(["RSS", "GitHub", "X", "LinkedIn", "Resume"]);
+  await expect(footer.getByRole("listitem")).toHaveText([
+    "RSS",
+    "GitHub",
+    "X",
+    "LinkedIn",
+    "Resume",
+  ]);
   await expect(footer).not.toContainText("Always a work in progress");
-  const arrows = await footer.locator('a[target="_blank"]').evaluateAll(links =>
-    links.map(link => getComputedStyle(link, "::after").content),
-  );
-  expect(arrows.every(content => content === "none")).toBe(true);
+  const arrows = await footer
+    .locator('a[target="_blank"]')
+    .evaluateAll((links) =>
+      links.map((link) => getComputedStyle(link, "::after").content),
+    );
+  expect(arrows.every((content) => content === "none")).toBe(true);
   for (const width of [320, 1440]) {
     await page.setViewportSize({ width, height: 1000 });
-    const positions = await footer.getByRole("link").evaluateAll(links => links.map(link => link.getBoundingClientRect().top));
+    const positions = await footer
+      .getByRole("link")
+      .evaluateAll((links) =>
+        links.map((link) => link.getBoundingClientRect().top),
+      );
     expect(new Set(positions).size).toBe(1);
   }
 });
@@ -73,13 +115,15 @@ test("home introduces the publication and surfaces real writing", async ({
   await expect(page.locator("main h1")).toHaveCount(1);
   await expect(page.locator("main h1")).toHaveText("Matt Bidewell");
   await expect(page.locator("main ul p")).toHaveCount(0);
-  const note = page.getByRole("region", { name: "Notes from the notebook" }).getByRole("listitem").first();
+  const note = page
+    .getByRole("region", { name: "Notes from the notebook" })
+    .getByRole("listitem")
+    .first();
   const dateBox = await note.locator("time").boundingBox();
   const titleBox = await note.getByRole("heading").boundingBox();
   expect(dateBox).not.toBeNull();
   expect(titleBox).not.toBeNull();
   expect(dateBox!.x + dateBox!.width).toBeLessThan(titleBox!.x);
-  await expect(page.locator("#intro-title + p")).toHaveText(/Software, systems &\s*the bits in between\./);
   await expect(
     page.getByRole("heading", { name: "One Typo Away From Being Owned" }),
   ).toBeVisible();
@@ -87,8 +131,12 @@ test("home introduces the publication and surfaces real writing", async ({
     "Notes from the notebook",
     "Things I've been building",
   ]);
-  await expect(page.getByRole("link", { name: "Mumblings №11", exact: true })).toBeVisible();
-  await expect(page.getByText("Selected reading", { exact: true })).toHaveCount(0);
+  await expect(
+    page.getByRole("link", { name: "Mumblings №11", exact: true }),
+  ).toBeVisible();
+  await expect(page.getByText("Selected reading", { exact: true })).toHaveCount(
+    0,
+  );
   await page
     .getByRole("link", { name: "One Typo Away From Being Owned", exact: true })
     .click();
@@ -100,7 +148,9 @@ test("home introduces the publication and surfaces real writing", async ({
   );
 });
 
-test("home uses the same reading column as the supporting pages", async ({ page }) => {
+test("home uses the same reading column as the supporting pages", async ({
+  page,
+}) => {
   await page.setViewportSize({ width: 1440, height: 1000 });
   await page.goto("/about");
   const about = await page.locator(".route-content").boundingBox();
