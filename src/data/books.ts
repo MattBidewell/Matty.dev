@@ -11,6 +11,15 @@ export interface IBook {
 
 export const books: IBook[] = [
   {
+    title: "A Parade of Horribles",
+    subtitle: "Dungeon Crawler Carl Book 8",
+    image: "dungeon_crawler_carl_8.webp",
+    url: "https://www.amazon.co.uk/Parade-Horribles-Dungeon-Crawler-Carl/dp/B0FY26HLTD",
+    rating: 4,
+    audiobook: true,
+    date: new Date("2026-09-17"),
+  },
+  {
     title: "The Inevitable Ruin",
     subtitle: "Dungeon Crawler Carl Book 7",
     image: "dungeon_crawler_carl_7.webp",
