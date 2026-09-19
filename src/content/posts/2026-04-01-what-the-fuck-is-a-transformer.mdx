@@ -1,0 +1,21 @@
+---
+title: "What the Fuck is a Transformer?"
+status: draft
+excerpt: "A worked example of an interactive post — tokens, attention, and the paper that started it."
+category: blog
+date: 2026-04-01
+---
+
+import TokenVisualizer from "../../components/interactive/TokenVisualizer.astro";
+
+Before a transformer can do anything with a sentence, it has to break that
+sentence into pieces it can actually work with. Those pieces are called
+**tokens** — not quite words, not quite characters, just whatever chunks the
+model's vocabulary happens to carve the text into.
+
+Watch what happens when the sentence below gets tokenized:
+
+<TokenVisualizer text="the cat sat on the mat" />
+
+Each of those chunks becomes a vector, and the rest of the paper is really
+just describing what happens to those vectors next.

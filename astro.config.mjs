@@ -1,6 +1,7 @@
 import { defineConfig } from "astro/config";
 import sitemap from "@astrojs/sitemap";
 import { unified } from "@astrojs/markdown-remark";
+import mdx from "@astrojs/mdx";
 import remarkRewriteImages from "./src/lib/remark-rewrite-images.ts";
 
 import cloudflare from "@astrojs/cloudflare";
@@ -11,7 +12,7 @@ export default defineConfig({
   session: false,
   trailingSlash: "ignore",
   compressHTML: true,
-  integrations: [sitemap()],
+  integrations: [sitemap(), mdx()],
 
   markdown: {
     processor: unified({ remarkPlugins: [remarkRewriteImages] }),

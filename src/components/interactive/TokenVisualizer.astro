@@ -1,0 +1,107 @@
+---
+// Splits a sentence into rough "tokens" and steps through them on scroll-into-view.
+// Reference widget for embedding interactive components in .mdx posts — no UI
+// framework required, just an Astro component with its own script/style.
+import Breakout from "./Breakout.astro";
+
+interface Props {
+  text: string;
+}
+
+const { text } = Astro.props;
+
+// Crude whitespace/punctuation split, good enough for illustration purposes.
+const tokens = text.match(/\w+|[^\w\s]/g) ?? [text];
+---
+
+<Breakout dark>
+  <div class="token-visualizer" data-component="token-visualizer">
+    <p class="prompt">tokenizing: <span class="source">"{text}"</span></p>
+    <div class="tokens">
+      {
+        tokens.map((token, i) => (
+          <span class="token" style={`--i:${i}`} data-token>
+            {token}
+          </span>
+        ))
+      }
+    </div>
+  </div>
+</Breakout>
+
+<style>
+  .token-visualizer {
+    font-family: var(--font-mono);
+  }
+
+  .prompt {
+    margin: 0 0 1.5rem;
+    font-size: 0.85rem;
+    color: #a99db0;
+  }
+
+  .source {
+    color: #e4dde2;
+  }
+
+  .tokens {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+  }
+
+  .token {
+    padding: 0.35rem 0.6rem;
+    border: 1px solid #433a42;
+    border-radius: 4px;
+    background: #241f28;
+    opacity: 0.25;
+    transform: translateY(4px);
+    transition: opacity 0.3s ease, transform 0.3s ease, background 0.3s ease, border-color 0.3s ease;
+  }
+
+  .token[data-active] {
+    opacity: 1;
+    transform: translateY(0);
+    background: #2d4a3c;
+    border-color: #91c7ad;
+  }
+</style>
+
+<script>
+  function initTokenVisualizers() {
+    document.querySelectorAll<HTMLElement>('[data-component="token-visualizer"]').forEach((root) => {
+      if (root.dataset.initialized) return;
+      root.dataset.initialized = "true";
+
+      const tokens = Array.from(root.querySelectorAll<HTMLElement>("[data-token]"));
+      let step = 0;
+      let timer: ReturnType<typeof setInterval> | null = null;
+
+      const advance = () => {
+        if (step >= tokens.length) {
+          if (timer) clearInterval(timer);
+          return;
+        }
+        tokens[step].toggleAttribute("data-active", true);
+        step += 1;
+      };
+
+      const observer = new IntersectionObserver(
+        (entries) => {
+          for (const entry of entries) {
+            if (entry.isIntersecting && !timer) {
+              timer = setInterval(advance, 220);
+              observer.disconnect();
+            }
+          }
+        },
+        { threshold: 0.4 },
+      );
+
+      observer.observe(root);
+    });
+  }
+
+  document.addEventListener("astro:page-load", initTokenVisualizers);
+</script>
