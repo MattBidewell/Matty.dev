@@ -1,0 +1,46 @@
+---
+title: "What the Hell is a Token?"
+status: live
+excerpt: "Tokens are the atoms of a language model's world. Here's what they actually are, and why the model never sees a single word."
+category: blog
+date: 2026-04-01
+---
+
+import TokenVisualizer from "../../components/interactive/TokenVisualizer.astro";
+
+Every time you type something into a language model, the very first thing
+that happens has nothing to do with meaning, grammar, or intent. Your text
+gets chopped into pieces — **tokens** — and everything downstream, every
+weight, every prediction, only ever operates on those pieces.
+
+A token is not a word. Sometimes it's smaller than one: `"tokenizing"` might
+split into `token`, `izing`. Sometimes it's a whole word. Sometimes it's just
+a piece of punctuation. The split comes from a vocabulary the model was
+trained with, built by statistically finding the chunks that show up often
+enough to deserve their own slot.
+
+Watch what happens when the sentence below gets tokenized:
+
+<TokenVisualizer text="the cat sat on the mat" />
+
+Here it's basically one token per word, because every one of those words is
+common enough to have its own entry in the vocabulary. Rarer or made-up
+words fracture into smaller sub-word pieces instead — which is why a model
+can still handle a word it's never seen before: it just assembles it out of
+pieces it *has* seen. Same tokenizer, same rules, just a word it hasn't
+memorized as a single unit:
+
+<TokenVisualizer text="the flibbertigibbet unbamboozled the pseudoarchaeologist" />
+
+`the` still gets its own single token, both times — it's common enough to
+earn that. The three words made up on the spot don't get that privilege:
+each one breaks into several pieces instead. That's the real GPT-4o
+tokenizer's actual output, not a hand-picked example.
+
+Once the text is tokens, each one gets mapped to a vector — a long list of
+numbers — and that's the only form the model ever actually reads. No
+letters, no words, just tokens and the vectors they point to.
+
+So the next time a model does something that feels a little too literal, or
+splits a number in a way that breaks the arithmetic, remember: it was never
+looking at your sentence. It was looking at *this*.
