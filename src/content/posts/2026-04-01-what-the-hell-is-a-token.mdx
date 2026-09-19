@@ -27,7 +27,15 @@ Here it's basically one token per word, because every one of those words is
 common enough to have its own entry in the vocabulary. Rarer or made-up
 words fracture into smaller sub-word pieces instead — which is why a model
 can still handle a word it's never seen before: it just assembles it out of
-pieces it *has* seen.
+pieces it *has* seen. Same tokenizer, same rules, just a word it hasn't
+memorized as a single unit:
+
+<TokenVisualizer text="the flibbertigibbet unbamboozled the pseudoarchaeologist" />
+
+`the` still gets its own single token, both times — it's common enough to
+earn that. The three words made up on the spot don't get that privilege:
+each one breaks into several pieces instead. That's the real GPT-4o
+tokenizer's actual output, not a hand-picked example.
 
 Once the text is tokens, each one gets mapped to a vector — a long list of
 numbers — and that's the only form the model ever actually reads. No

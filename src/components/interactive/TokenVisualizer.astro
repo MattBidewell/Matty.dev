@@ -1,31 +1,40 @@
 ---
-// Splits a sentence into rough "tokens" and steps through them on scroll-into-view.
-// Reference widget for embedding interactive components in .mdx posts — no UI
-// framework required, just an Astro component with its own script/style.
+// Tokenizes text with the real GPT-4o (o200k_base) BPE encoding at build time
+// and steps through the result on scroll-into-view. No UI framework required
+// — just an Astro component with its own script/style, and the tokenizer
+// runs entirely server-side so nothing extra ships to the client.
 import Breakout from "./Breakout.astro";
+import { tokenize } from "../../lib/tokenizer";
 
 interface Props {
   text: string;
 }
 
 const { text } = Astro.props;
-
-// Crude whitespace/punctuation split, good enough for illustration purposes.
-const tokens = text.match(/\w+|[^\w\s]/g) ?? [text];
+const tokens = tokenize(text);
 ---
 
 <Breakout dark>
   <div class="token-visualizer" data-component="token-visualizer">
-    <p class="prompt">tokenizing: <span class="source">"{text}"</span></p>
+    <p class="prompt">
+      tokenizing: <span class="source">"{text}"</span>
+      <span class="count">{tokens.length} tokens</span>
+    </p>
     <div class="tokens">
       {
         tokens.map((token, i) => (
-          <span class="token" style={`--i:${i}`} data-token>
-            {token}
+          <span
+            class="token"
+            class:list={{ "token--glued": !token.isNewWord && i > 0 }}
+            style={`--i:${i}`}
+            data-token
+          >
+            {token.text}
           </span>
         ))
       }
     </div>
+    <p class="hint">a gap starts a new word — a tight token continues the one before it</p>
   </div>
 </Breakout>
 
@@ -44,13 +53,19 @@ const tokens = text.match(/\w+|[^\w\s]/g) ?? [text];
     color: #e4dde2;
   }
 
+  .count {
+    margin-left: 0.75rem;
+    color: #91c7ad;
+  }
+
   .tokens {
     display: flex;
     flex-wrap: wrap;
-    gap: 0.5rem;
+    gap: 0.35rem 0;
   }
 
   .token {
+    margin-left: 0.5rem;
     padding: 0.35rem 0.6rem;
     border: 1px solid #433a42;
     border-radius: 4px;
@@ -60,11 +75,26 @@ const tokens = text.match(/\w+|[^\w\s]/g) ?? [text];
     transition: opacity 0.3s ease, transform 0.3s ease, background 0.3s ease, border-color 0.3s ease;
   }
 
+  .token:first-child,
+  .token--glued {
+    margin-left: 0;
+  }
+
+  .token--glued {
+    border-left: none;
+  }
+
   .token[data-active] {
     opacity: 1;
     transform: translateY(0);
     background: #2d4a3c;
     border-color: #91c7ad;
+  }
+
+  .hint {
+    margin: 1.25rem 0 0;
+    font-size: 0.75rem;
+    color: #756c78;
   }
 </style>
 
