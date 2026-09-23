@@ -1,13 +1,18 @@
 ---
 import BaseLayout from "../../layouts/BaseLayout.astro";
-import BlogLinks from "../../components/home/blogLinks/BlogLinks.astro";
+import ListHeader from "../../components/posts/ListHeader.astro";
+import PostList from "../../components/posts/PostList.astro";
 import { getLivePosts } from "../../lib/posts";
 
 const posts = await getLivePosts("blog");
 ---
 
-<BaseLayout title="Blog">
-  <div class="container">
-    <BlogLinks posts={posts} hasLimit={false} title="Blog posts" sectionId="posts" />
-  </div>
+<BaseLayout title="Blog" kind="index">
+  <ListHeader
+    kind="Section"
+    title="Writing"
+    description="Technical notes on software, systems, and the tools in between."
+    count={posts.length}
+  />
+  <PostList posts={posts} />
 </BaseLayout>

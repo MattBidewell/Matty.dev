@@ -3,8 +3,9 @@ import type { GetStaticPaths } from "astro";
 import BaseLayout from "../../layouts/BaseLayout.astro";
 import PostBody from "../../components/blog/body/PostBody.astro";
 import PostFooter from "../../components/blog/footer/PostFooter.astro";
+import PostHeader from "../../components/blog/PostHeader.astro";
 import styles from "../../components/blog/Project.module.css";
-import { getLivePosts, rawSlug, formatDate } from "../../lib/posts";
+import { getLivePosts, rawSlug, readingStats } from "../../lib/posts";
 
 export const getStaticPaths: GetStaticPaths = async () => {
   const projects = await getLivePosts("project");
@@ -15,7 +16,8 @@ export const getStaticPaths: GetStaticPaths = async () => {
 };
 
 const { project } = Astro.props;
-const { Content } = await project.render();
+const { Content, headings } = await project.render();
+const stats = readingStats(project);
 const techStack = project.data.tech_stack ?? [];
 ---
 
@@ -23,53 +25,43 @@ const techStack = project.data.tech_stack ?? [];
   title={project.data.title}
   description={project.data.excerpt ?? ""}
   ogType="article"
+  kind="post"
+  toc={headings}
+  stats={stats}
 >
   <article class={styles.project}>
-    <header class={styles.header}>
-      <a class={styles.back} href="/projects">Projects</a>
-      <h1 class={styles.title}>{project.data.title}</h1>
-      <time class={styles.date} datetime={project.data.date.toISOString()}>
-        {formatDate(project.data.date)}
-      </time>
-
-      <div class={styles.meta}>
-        {
-          techStack.length > 0 && (
-            <div class={styles.techStack}>
-              {techStack.map((tech) => (
-                <span class={styles.techTag}>{tech}</span>
-              ))}
-            </div>
-          )
-        }
-        <div class={styles.links}>
-          {
-            project.data.github_url && (
-              <a
-                href={project.data.github_url}
-                target="_blank"
-                rel="noopener noreferrer"
-                class={styles.link}
-              >
-                GitHub
-              </a>
-            )
-          }
-          {
-            project.data.demo_url && (
-              <a
-                href={project.data.demo_url}
-                target="_blank"
-                rel="noopener noreferrer"
-                class={styles.link}
-              >
-                Live Demo
-              </a>
-            )
-          }
-        </div>
-      </div>
-    </header>
+    <PostHeader
+      category="project"
+      title={project.data.title}
+      excerpt={project.data.excerpt}
+      stats={stats}
+    >
+      {
+        (techStack.length > 0 || project.data.github_url || project.data.demo_url) && (
+          <dl class={styles.meta}>
+            {techStack.length > 0 && (
+              <div>
+                <dt>stack</dt>
+                <dd>{techStack.join(", ").toLowerCase()}</dd>
+              </div>
+            )}
+            {(project.data.github_url || project.data.demo_url) && (
+              <div>
+                <dt>links</dt>
+                <dd class={styles.links}>
+                  {project.data.github_url && (
+                    <a href={project.data.github_url} target="_blank" rel="noopener noreferrer">GitHub</a>
+                  )}
+                  {project.data.demo_url && (
+                    <a href={project.data.demo_url} target="_blank" rel="noopener noreferrer">Live demo</a>
+                  )}
+                </dd>
+              </div>
+            )}
+          </dl>
+        )
+      }
+    </PostHeader>
 
     <PostBody>
       <Content />

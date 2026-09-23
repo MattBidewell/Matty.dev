@@ -1,0 +1,75 @@
+.widgets {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+  min-width: 0;
+}
+.title {
+  margin: 0 0 0.75rem;
+  padding-bottom: 0.375rem;
+  border-bottom: 1px solid var(--border-color);
+  color: var(--text-muted);
+  font: 0.8125rem/1.5 var(--font-mono);
+  letter-spacing: 0.04em;
+}
+.title::before {
+  content: "# ";
+  color: var(--accent-primary);
+}
+.body {
+  margin: 0;
+  color: var(--text-secondary);
+  font-size: 0.9375rem;
+  line-height: 1.6;
+}
+.counts,
+.tree {
+  display: flex;
+  flex-direction: column;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+.counts li,
+.tree li {
+  margin: 0;
+}
+.counts a {
+  display: flex;
+  justify-content: space-between;
+  padding: 0.125rem 0;
+  color: var(--text-secondary);
+  font: 0.875rem/1.6 var(--font-mono);
+  text-decoration: none;
+  text-transform: lowercase;
+}
+.counts a:hover,
+.tree a:hover {
+  color: var(--accent-primary);
+}
+.count {
+  color: var(--text-muted);
+}
+.tree a {
+  display: block;
+  overflow: hidden;
+  color: var(--text-secondary);
+  font: 0.8125rem/1.6 var(--font-mono);
+  text-decoration: none;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+.branch {
+  color: var(--text-muted);
+  white-space: pre;
+}
+/* The article is short enough on a phone that a tree above or below it only adds scroll. */
+@media (max-width: 900px) {
+  .toc {
+    display: none;
+  }
+  .widgets {
+    padding-top: 2rem;
+    border-top: 1px solid var(--border-color);
+  }
+}

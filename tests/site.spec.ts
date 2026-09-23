@@ -30,7 +30,8 @@ test("content links use reading typography without decorative arrows", async ({
     "/bookshelf",
   ]) {
     await page.goto(route);
-    const links = await page.locator("main a").evaluateAll((elements) =>
+    // Prose links read in the body face; header chrome (category, project links) is monospace.
+    const links = await page.locator("main a:not(header a)").evaluateAll((elements) =>
       elements.map((element) => ({
         family: getComputedStyle(element).fontFamily,
         decoration: getComputedStyle(element, "::after").content,
@@ -114,16 +115,17 @@ test("home introduces the publication and surfaces real writing", async ({
   ).toBeVisible();
   await expect(page.locator("main h1")).toHaveCount(1);
   await expect(page.locator("main h1")).toHaveText("Matt Bidewell");
-  await expect(page.locator("main ul p")).toHaveCount(0);
   const note = page
     .getByRole("region", { name: "Notes from the notebook" })
     .getByRole("listitem")
     .first();
+  await expect(note.getByText("A collection of thoughts from the start of the year")).toBeVisible();
+  await expect(note).toContainText("min read");
   const dateBox = await note.locator("time").boundingBox();
   const titleBox = await note.getByRole("heading").boundingBox();
   expect(dateBox).not.toBeNull();
   expect(titleBox).not.toBeNull();
-  expect(dateBox!.x + dateBox!.width).toBeLessThan(titleBox!.x);
+  expect(dateBox!.y).toBeGreaterThan(titleBox!.y + titleBox!.height);
   await expect(
     page.getByRole("heading", { name: "One Typo Away From Being Owned" }),
   ).toBeVisible();

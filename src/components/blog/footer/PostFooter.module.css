@@ -13,7 +13,7 @@
 .post-footer {
   padding-top: 2rem;
   margin-top: 3.5rem;
-  border-top: 1px solid var(--border-color);
+  border-top: 2px solid var(--text-heading);
   text-align: left;
 }
 
@@ -26,17 +26,22 @@
 }
 
 .share-label {
-  color: var(--text-secondary);
+  color: var(--text-muted);
+  font: 0.875rem/1.6 var(--font-mono);
+}
+
+.share-label::before {
+  content: "# ";
+  color: var(--accent-primary);
 }
 
 .separator {
-  color: var(--text-secondary);
+  color: var(--border-color);
 }
 
 .post-footer p {
   color: var(--text-secondary);
-  font-family: var(--font-body);
-  font-size: 1.125rem;
-  line-height: 1.5;
+  font-size: 1rem;
+  line-height: 1.6;
   margin: 1rem 0 0;
 }

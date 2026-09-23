@@ -1,7 +1,7 @@
 .nav ul {
   display: flex;
-  align-items: center;
-  gap: 1.5rem;
+  flex-direction: column;
+  gap: 0.125rem;
   list-style: none;
   margin: 0;
   padding: 0;
@@ -11,40 +11,29 @@
 }
 .link {
   display: inline-block;
-  padding: 0.75rem 0;
-  font: 0.75rem/1.5 var(--font-mono);
+  padding: 0.25rem 0;
+  font: 0.9375rem/1.5 var(--font-mono);
   color: var(--text-secondary);
   text-decoration: none;
+  text-transform: lowercase;
+}
+/* The ./ prefix is the idle affordance; the current page gets a prompt. */
+.prefix::before {
+  content: "./";
+  color: var(--accent-primary);
 }
 .link:hover,
 .active {
   color: var(--accent-primary);
-  text-decoration: underline;
-  text-underline-offset: 0.5rem;
 }
-.themeToggle {
-  display: none;
-  place-items: center;
-  width: 44px;
-  height: 44px;
-  padding: 0;
-  border: 1px solid var(--border-soft);
-  color: var(--text-primary);
-  background: transparent;
-  cursor: pointer;
+.active {
+  font-weight: 700;
 }
-:global(html[data-theme]) .themeToggle {
-  display: grid;
-}
-.themeToggle:hover {
-  background: var(--bg-surface);
+.active .prefix::before {
+  content: "❯ ";
 }
 @media (max-width: 900px) {
-  .nav ul {
-    flex-wrap: wrap;
-    gap: 0.25rem 1.5rem;
-  }
   .link {
-    padding: 0.75rem 0;
+    padding: 0.5rem 0;
   }
 }

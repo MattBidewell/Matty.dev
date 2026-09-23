@@ -1,0 +1,44 @@
+---
+import styles from "./PostList.module.css";
+import {
+  categoryLabels,
+  categoryOf,
+  formatDate,
+  linkSlugFor,
+  readingStats,
+  type PostEntry,
+} from "../../lib/posts";
+
+interface Props {
+  posts: PostEntry[];
+  headingLevel?: 2 | 3;
+  showCategory?: boolean;
+}
+
+const { posts, headingLevel = 2, showCategory = false } = Astro.props;
+const Heading = `h${headingLevel}` as const;
+---
+
+<ul class={styles.list} role="list">
+  {
+    posts.map((post) => {
+      const stack = post.data.tech_stack ?? [];
+      return (
+        <li class={styles.item}>
+          <article>
+            {showCategory && <p class="eyebrow">{categoryLabels[categoryOf(post)]}</p>}
+            <Heading class={styles.title}>
+              <a href={linkSlugFor(post)}>{post.data.title}</a>
+            </Heading>
+            {post.data.excerpt && <p class={styles.summary}>{post.data.excerpt}</p>}
+            <p class="meta">
+              <time datetime={post.data.date.toISOString()}>{formatDate(post.data.date)}</time>
+              <span>{readingStats(post).minutes} min read</span>
+            </p>
+            {stack.length > 0 && <p class:list={["meta", styles.stack]}><span>stack: {stack.join(", ").toLowerCase()}</span></p>}
+          </article>
+        </li>
+      );
+    })
+  }
+</ul>

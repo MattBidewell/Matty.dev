@@ -1,6 +1,7 @@
 ---
 import BaseLayout from "../layouts/BaseLayout.astro";
 import Book from "../components/book/Book.astro";
+import ListHeader from "../components/posts/ListHeader.astro";
 import { books, type IBook } from "../data/books";
 import styles from "../components/book/books.module.css";
 
@@ -18,11 +19,15 @@ function groupBooksByYear(items: IBook[]): Map<number, IBook[]> {
 const yearGroups = Array.from(groupBooksByYear(books).entries());
 ---
 
-<BaseLayout title="Bookshelf" wide>
+<BaseLayout title="Bookshelf">
   <div class={styles.container}>
-    <header class={styles.header}>
-      <h1 class={styles.title}>Bookshelf</h1>
-    </header>
+    <ListHeader
+      kind="Page"
+      title="Bookshelf"
+      description="What I've been reading, newest first."
+      count={books.length}
+      noun="book"
+    />
 
     <div class={styles["year-list"]}>
       {

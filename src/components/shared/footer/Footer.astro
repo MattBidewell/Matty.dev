@@ -1,10 +1,31 @@
 ---
 import styles from './Footer.module.css';
 import Analytics from '../meta/Analytics.astro';
+import { formatDate, type ReadingStats } from '../../../lib/posts';
+
+export type PageKind = 'home' | 'index' | 'post' | 'page';
+
+interface Props {
+  kind?: PageKind;
+  stats?: ReadingStats;
+}
+
+const { kind = 'page', stats } = Astro.props;
 const year = new Date().getFullYear();
 ---
 <footer class={styles.footer}>
-  <p class={styles.copyright}>&copy; {year} Matt Bidewell</p>
+  <p class={styles.status}>
+    <span class={styles.mode}>-- {kind.toUpperCase()} --</span>
+    <span>matty.dev</span>
+    {stats && (
+      <>
+        <span>{formatDate(stats.date)}</span>
+        <span>{stats.words} words</span>
+        <span>{stats.minutes} min</span>
+      </>
+    )}
+    <span>&copy; {year} Matt Bidewell</span>
+  </p>
   <ul class={styles.links} role="list">
     <li><a href="/rss.xml">RSS</a></li>
     <li><a target="_blank" rel="noopener noreferrer" href="https://github.com/MattBidewell">GitHub</a></li>

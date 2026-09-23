@@ -1,19 +1,18 @@
 ---
 import BaseLayout from "../../layouts/BaseLayout.astro";
-import BlogLinks from "../../components/home/blogLinks/BlogLinks.astro";
+import ListHeader from "../../components/posts/ListHeader.astro";
+import PostList from "../../components/posts/PostList.astro";
 import { getLivePosts } from "../../lib/posts";
 
 const mumblings = await getLivePosts("mumbling");
 ---
 
-<BaseLayout title="Mumblings">
-  <div class="container">
-    <BlogLinks
-      posts={mumblings}
-      hasLimit={false}
-      title="Mumblings"
-      sectionId="mumblings"
-      intro="Personal notes, life updates, and thoughts along the way."
-    />
-  </div>
+<BaseLayout title="Mumblings" kind="index">
+  <ListHeader
+    kind="Section"
+    title="Mumblings"
+    description="Personal notes, life updates, and thoughts along the way."
+    count={mumblings.length}
+  />
+  <PostList posts={mumblings} />
 </BaseLayout>

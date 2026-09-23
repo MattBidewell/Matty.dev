@@ -1,0 +1,24 @@
+---
+import styles from "./Post.module.css";
+import { categoryHrefs, categoryLabels, formatDate, type Category, type ReadingStats } from "../../lib/posts";
+
+interface Props {
+  category: Category;
+  title: string;
+  excerpt?: string;
+  stats: ReadingStats;
+}
+
+const { category, title, excerpt, stats } = Astro.props;
+---
+
+<header class={styles.header}>
+  <p class="eyebrow"><a class={styles.category} href={categoryHrefs[category]}>{categoryLabels[category]}</a></p>
+  <h1 class={styles.title}>{title}</h1>
+  {excerpt && <p class={styles.summary}>{excerpt}</p>}
+  <p class="meta">
+    <time datetime={stats.date.toISOString()}>{formatDate(stats.date)}</time>
+    <span>{stats.minutes} min read</span>
+  </p>
+  <slot />
+</header>

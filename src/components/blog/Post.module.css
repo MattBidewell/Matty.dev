@@ -5,29 +5,29 @@
 
 .header {
   margin-bottom: 2.5rem;
-  padding-bottom: 2rem;
-  border-bottom: 1px solid var(--border-color);
+  padding-bottom: 1.5rem;
+  border-bottom: 2px solid var(--text-heading);
 }
 
-.back {
-  color: var(--accent-primary);
+.category {
+  color: inherit;
+  text-decoration: none;
+}
+
+.category:hover {
+  text-decoration: underline;
 }
 
 .title {
-  margin: 1.5rem 0;
-  text-align: left;
-  color: var(--text-heading);
-  font-family: var(--font-display);
-  font-size: clamp(2.5rem, 6vw, 4rem);
-  font-weight: 400;
-  line-height: 1.05;
-  letter-spacing: -0.04em;
+  margin: 0 0 1rem;
+  font-size: clamp(1.625rem, 4.5vw, 2.4rem);
+  line-height: 1.15;
   overflow-wrap: anywhere;
 }
 
-.date {
-  display: block;
-  color: var(--text-muted);
-  font-family: var(--font-mono);
-  font-size: 0.75rem;
+.summary {
+  max-width: 38rem;
+  margin: 0 0 1rem;
+  color: var(--text-secondary);
+  font-size: 1.125rem;
 }
