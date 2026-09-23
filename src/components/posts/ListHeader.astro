@@ -1,0 +1,36 @@
+---
+interface Props {
+  kind: string;
+  title: string;
+  description?: string;
+  count?: number;
+  noun?: string;
+}
+
+const { kind, title, description, count, noun = "post" } = Astro.props;
+---
+
+<header class="list-header">
+  <p class="eyebrow">{kind}</p>
+  <h1>{title}</h1>
+  {description && <p class="description">{description}</p>}
+  {count !== undefined && <p class="meta"><span>{count} {count === 1 ? noun : `${noun}s`}</span></p>}
+  <slot />
+</header>
+
+<style>
+  .list-header {
+    margin-bottom: 2.5rem;
+    padding-bottom: 1.5rem;
+    border-bottom: 2px solid var(--text-heading);
+  }
+  h1 {
+    margin: 0 0 0.75rem;
+  }
+  .description {
+    max-width: 38rem;
+    margin: 0 0 0.75rem;
+    color: var(--text-secondary);
+    font-size: 1.125rem;
+  }
+</style>

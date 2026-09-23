@@ -28,11 +28,11 @@ matty.dev is a personal publication by a practicing engineer, not a resume-first
 portfolio. The homepage keeps a short introduction followed by notebook entries
 and projects; the bookshelf and resume support that story.
 
-- Self-hosted Newsreader for editorial headlines and reading; iA Writer Mono for navigation, dates, and small labels.
-- Content links inherit the reading typography; no decorative arrows are appended to links.
-- Eucalyptus green and pale green for the identity, with muted sage-tinted off-white reading surfaces and charcoal dark mode.
-- Constructed pixel shapes with occasional dithering, sharp edges, and no terminal-themed decoration.
-- A compact masthead; the homepage and long-form content share a centered 720px reading column.
+- A sticky left sidebar (brand, `./` navigation, icon links, `# whoami` / `# sections` widgets, and an ASCII-tree `# contents` on articles) beside a single reading column. On phones the sidebar collapses into a compact header with a `menu [+]` toggle and the widgets drop below the content.
+- Self-hosted JetBrains Mono for headings, navigation, and metadata; IBM Plex Sans for reading. Prose links inherit the reading typography; no decorative arrows are appended to links.
+- Terminal-flavoured, text-only decoration: `§` section marks, `─` list bullets, backtick-wrapped inline code, and a vim-style modeline footer (`-- POST --` · date · words · read time).
+- Icons are a small hand-picked set of Tabler icons (MIT), inlined in `src/components/shared/Icon.astro`.
+- Eucalyptus green and pale green for the identity, with muted sage-tinted off-white reading surfaces and charcoal dark mode. No cards, shadows, or rounded corners: hairline dividers and type hierarchy.
 - The theme follows the system until a reader chooses light or dark. That choice survives navigation and reloads; navigation and reading also work without JavaScript.
 
 Palette and typography tokens live in `src/styles/globals.css`. The header's ASCII
@@ -43,6 +43,6 @@ sharing images in `src/lib/og-template.ts`. A standalone video/brand kit is
 deliberately deferred until the website direction has been reviewed visually.
 
 The homepage notebook combines the five latest live blog posts and Mumblings
-in date order, followed by the three latest live projects. There are no featured
-panels or promotional banners on the homepage.
+in date order, followed by the three latest live projects, each shown with its
+excerpt and reading time. There are no featured panels or promotional banners.
 Existing post URLs, publication filtering, RSS, and Markdown content are retained.

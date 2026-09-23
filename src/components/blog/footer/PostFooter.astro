@@ -16,7 +16,7 @@ const encodedTitle = shareTitle ? encodeURIComponent(shareTitle) : "";
   {
     shareUrl && shareTitle && (
       <div class={styles["share-links"]}>
-        <span class={styles["share-label"]}>Share</span>
+        <span class={styles["share-label"]}>share</span>
         <a
           href={`https://twitter.com/intent/tweet?url=${encodedUrl}&text=${encodedTitle}`}
           target="_blank"

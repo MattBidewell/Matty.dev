@@ -1,0 +1,81 @@
+---
+import type { MarkdownHeading } from "astro";
+import styles from "./Widgets.module.css";
+import { categoryHrefs, categoryLabels, categoryOf, getLivePosts, type Category } from "../../../lib/posts";
+
+interface Props {
+  showSections?: boolean;
+  toc?: MarkdownHeading[];
+}
+
+const { showSections = false, toc = [] } = Astro.props;
+
+let sections: { href: string; label: string; count: number }[] = [];
+if (showSections) {
+  const posts = await getLivePosts();
+  sections = (["blog", "mumbling", "project"] as Category[]).map((category) => ({
+    href: categoryHrefs[category],
+    label: categoryLabels[category],
+    count: posts.filter((post) => categoryOf(post) === category).length,
+  }));
+}
+
+// Flatten h2/h3 into an ASCII tree. Headings demoted from h1 sit at the top level.
+const items = toc
+  .filter((heading) => heading.depth <= 3)
+  .map((heading) => ({ ...heading, level: heading.depth <= 2 ? 1 : 2 }));
+const tree = items.map((item, index) => {
+  const rest = items.slice(index + 1);
+  const nextSibling = rest.find((other) => other.level <= item.level);
+  const isLast = !nextSibling || nextSibling.level < item.level;
+  const parentIsLast = !rest.some((other) => other.level === 1);
+  const indent = item.level === 2 ? (parentIsLast ? "   " : "│  ") : "";
+  return { slug: item.slug, text: item.text, prefix: `${indent}${isLast ? "└─ " : "├─ "}` };
+});
+---
+
+<div class:list={["widgets", styles.widgets]}>
+  <section class={styles.widget} aria-labelledby="widget-whoami">
+    <p class={styles.title} id="widget-whoami">whoami</p>
+    <p class={styles.body}>
+      Matt Bidewell. Software engineer writing about software, systems, and the
+      bits in between. Sometimes just life.
+    </p>
+  </section>
+
+  {
+    sections.length > 0 && (
+      <section class={styles.widget} aria-labelledby="widget-sections">
+        <p class={styles.title} id="widget-sections">sections</p>
+        <ul class={styles.counts} role="list">
+          {sections.map((section) => (
+            <li>
+              <a href={section.href}>
+                <span>{section.label}</span>
+                <span class={styles.count}>{section.count}</span>
+              </a>
+            </li>
+          ))}
+        </ul>
+      </section>
+    )
+  }
+
+  {
+    tree.length > 0 && (
+      <nav class:list={[styles.widget, styles.toc]} aria-labelledby="widget-contents">
+        <p class={styles.title} id="widget-contents">contents</p>
+        <ul class={styles.tree} role="list">
+          {tree.map((entry) => (
+            <li>
+              <a href={`#${entry.slug}`} title={entry.text}>
+                <span class={styles.branch} aria-hidden="true">{entry.prefix}</span>
+                {entry.text}
+              </a>
+            </li>
+          ))}
+        </ul>
+      </nav>
+    )
+  }
+</div>

@@ -1,10 +1,12 @@
 :root {
   color-scheme: light dark;
-  --font-body: "Newsreader", Georgia, "Times New Roman", serif;
-  --font-display: var(--font-body);
-  --font-mono: "iA Writer Mono", ui-monospace, monospace;
-  --layout-shell-max: 1120px;
-  --layout-content-max: 720px;
+  --font-body: "IBM Plex Sans", ui-sans-serif, system-ui, -apple-system, "Segoe UI", sans-serif;
+  --font-mono: "JetBrains Mono", ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+  --font-display: var(--font-mono);
+  --layout-aside: 14rem;
+  --layout-gutter: 4rem;
+  --layout-content-max: 46rem;
+  --layout-shell-max: calc(var(--layout-aside) + var(--layout-gutter) + var(--layout-content-max));
   --layout-pad-x: 2rem;
 
   --brand-primary: #36705d;
@@ -25,8 +27,6 @@
   --selection-fg: #252126;
   --code-bg: var(--bg-surface);
   --code-text: var(--text-primary);
-  --code-inline-bg: var(--bg-surface);
-  --code-inline-border: var(--border-soft);
   --syntax-comment: var(--text-muted);
   --syntax-keyword: var(--accent-primary);
   --syntax-string: light-dark(#3f6653, #aacbb8);
@@ -71,8 +71,8 @@ body {
   margin: 0;
   color: var(--text-primary);
   font-family: var(--font-body);
-  font-size: 1.25rem;
-  line-height: 1.6;
+  font-size: 1.0625rem;
+  line-height: 1.7;
   -webkit-font-smoothing: antialiased;
   text-rendering: optimizeLegibility;
 }
@@ -85,22 +85,29 @@ button {
 }
 :focus-visible {
   outline: 2px solid var(--accent-primary);
-  outline-offset: 5px;
+  outline-offset: 3px;
 }
+
+/* ── shell: sidebar left, reading column right ─────────────────── */
 .site-shell {
   min-height: 100svh;
   display: flex;
   flex-direction: column;
 }
-main.page-content {
+.page {
+  flex: 1;
   width: min(calc(100% - var(--layout-pad-x) * 2), var(--layout-shell-max));
   margin: 0 auto;
-  padding: 3.5rem 0 5rem;
-  flex: 1;
+  padding: 1.25rem 0 3.5rem;
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+}
+main.page-content {
+  min-width: 0;
 }
 .route-content {
   max-width: var(--layout-content-max);
-  margin: 0 auto;
   min-width: 0;
   view-transition-name: route-content;
 }
@@ -111,6 +118,32 @@ main.page-content {
   width: 100%;
   min-width: 0;
 }
+@media (min-width: 901px) {
+  .page {
+    display: grid;
+    grid-template-columns: var(--layout-aside) minmax(0, 1fr);
+    grid-template-rows: auto 1fr;
+    column-gap: var(--layout-gutter);
+    row-gap: 2.5rem;
+    align-items: start;
+    padding: 3.5rem 0 5rem;
+  }
+  .page > .sidebar {
+    grid-column: 1;
+    grid-row: 1;
+  }
+  .page > main.page-content {
+    grid-column: 2;
+    grid-row: 1 / span 2;
+  }
+  .page > .widgets {
+    grid-column: 1;
+    grid-row: 2;
+    position: sticky;
+    top: 2rem;
+  }
+}
+
 .skip-link {
   position: absolute;
   left: 1rem;
@@ -131,6 +164,7 @@ svg {
   max-width: 100%;
 }
 
+/* ── typography: monospace for chrome and headings, sans for reading ── */
 h1,
 h2,
 h3,
@@ -139,21 +173,21 @@ h5,
 h6 {
   font-family: var(--font-display);
   color: var(--text-heading);
-  font-weight: 400;
-  line-height: 1.12;
-  letter-spacing: -0.035em;
+  font-weight: 700;
+  line-height: 1.25;
+  letter-spacing: -0.01em;
   text-wrap: balance;
 }
 h1 {
-  font-size: clamp(2.5rem, 5vw, 4rem);
-  margin: 0 0 1.5rem;
+  font-size: clamp(1.625rem, 4vw, 2.25rem);
+  margin: 0 0 1rem;
 }
 h2 {
-  font-size: 2rem;
+  font-size: 1.375rem;
   margin: 2.5rem 0 1rem;
 }
 h3 {
-  font-size: 1.5rem;
+  font-size: 1.125rem;
   margin: 2rem 0 0.75rem;
 }
 p {
@@ -166,23 +200,27 @@ strong {
 }
 a {
   color: var(--link-color);
+  text-decoration-line: underline;
   text-decoration-thickness: 1px;
-  text-underline-offset: 0.2em;
+  text-decoration-color: var(--border-color);
+  text-underline-offset: 0.25em;
 }
 a:hover {
   color: var(--link-hover-color);
+  text-decoration-color: currentColor;
 }
 
 pre {
   background: var(--code-bg);
-  border: 1px solid var(--border-soft);
-  padding: 1.5rem;
+  border-left: 3px solid var(--accent-primary);
+  padding: 1rem 1.25rem;
   margin: 1.75rem 0;
   overflow-x: auto;
+  scrollbar-width: thin;
 }
 pre code {
   display: block;
-  font: 0.8125rem/1.75 var(--font-mono);
+  font: 0.8125rem/1.65 var(--font-mono);
   color: var(--code-text);
   white-space: pre;
   word-break: normal;
@@ -190,11 +228,8 @@ pre code {
 p code,
 li code,
 td code {
-  font: 0.75em var(--font-mono);
-  background: var(--code-inline-bg);
-  border: 1px solid var(--code-inline-border);
-  padding: 0.1em 0.25em;
-  color: var(--code-text);
+  font: 0.875em var(--font-mono);
+  color: var(--accent-primary);
 }
 .astro-code,
 .astro-code span {
@@ -205,6 +240,7 @@ blockquote {
   margin: 2rem 0;
   padding: 0.25rem 0 0.25rem 1.5rem;
   color: var(--text-secondary);
+  font-style: italic;
 }
 blockquote p:last-child {
   margin-bottom: 0;
@@ -222,6 +258,7 @@ td {
 }
 th {
   color: var(--text-heading);
+  font: 700 0.8125rem var(--font-mono);
 }
 ul,
 ol {
@@ -232,11 +269,37 @@ li {
 }
 li::marker {
   color: var(--accent-primary);
+  font-family: var(--font-mono);
 }
 hr {
   border: 0;
   border-top: 1px solid var(--border-color);
   margin: 2.5rem 0;
+}
+
+/* Small monospace label used for section kinds, widget titles and tags. */
+.eyebrow {
+  margin: 0 0 0.5rem;
+  color: var(--accent-primary);
+  font: 0.75rem/1.5 var(--font-mono);
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+/* Dot-separated monospace metadata: date · 4 min read */
+.meta {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0 0.75rem;
+  margin: 0;
+  color: var(--text-muted);
+  font: 0.8125rem/1.6 var(--font-mono);
+}
+.meta > * + *::before {
+  content: "·";
+  margin-right: 0.75rem;
+  color: var(--border-color);
 }
 
 @media (prefers-reduced-motion: no-preference) {
@@ -247,7 +310,8 @@ hr {
   button {
     transition:
       color 140ms ease,
-      background-color 140ms ease;
+      background-color 140ms ease,
+      text-decoration-color 140ms ease;
   }
 }
 @media (prefers-reduced-motion: reduce) {
@@ -260,12 +324,9 @@ hr {
     --layout-pad-x: 1.25rem;
   }
   body {
-    font-size: 1.125rem;
-  }
-  main.page-content {
-    padding: 2rem 0 3.5rem;
+    font-size: 1rem;
   }
   pre {
-    padding: 1rem;
+    padding: 0.875rem 1rem;
   }
 }

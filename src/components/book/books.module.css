@@ -3,42 +3,29 @@
   min-width: 0;
 }
 
-.header {
-  max-width: 40rem;
-  margin-bottom: 3rem;
-}
-
-.title {
-  margin: 0 0 1.5rem;
-  color: var(--text-heading);
-  font-family: var(--font-display);
-  font-size: clamp(3rem, 8vw, 5rem);
-  font-weight: 400;
-  line-height: 1;
-  letter-spacing: -0.04em;
-}
-
 .year-list {
   display: grid;
   gap: 3rem;
 }
 
-.year-section {
-  border-top: 2px solid var(--text-heading);
+.year-heading {
+  margin: 0 0 1.5rem;
+  padding-bottom: 0.375rem;
+  border-bottom: 1px solid var(--border-color);
+  color: var(--text-muted);
+  font-size: 0.8125rem;
+  font-weight: 400;
+  letter-spacing: 0.04em;
 }
 
-.year-heading {
-  margin: 1rem 0 1.5rem;
+.year-heading::before {
+  content: "# ";
   color: var(--accent-primary);
-  font-family: var(--font-mono);
-  font-size: 0.85rem;
-  font-weight: 400;
-  letter-spacing: 0;
 }
 
 .book-shelf {
   display: grid;
-  grid-template-columns: repeat(4, minmax(0, 1fr));
+  grid-template-columns: repeat(auto-fill, minmax(10rem, 1fr));
   gap: 2.5rem 1.5rem;
 }
 
@@ -99,11 +86,8 @@
 .book-title {
   margin: 0;
   color: var(--text-heading);
-  font-family: var(--font-display);
-  font-size: 1.5rem;
-  font-weight: 400;
-  line-height: 1.15;
-  letter-spacing: -0.025em;
+  font-size: 1rem;
+  line-height: 1.35;
   overflow-wrap: anywhere;
 }
 
@@ -114,10 +98,8 @@
 .book-subtitle {
   margin: 0;
   color: var(--text-secondary);
-  font-family: var(--font-body);
-  font-size: 1rem;
-  line-height: 1.4;
-  font-style: italic;
+  font-size: 0.875rem;
+  line-height: 1.5;
 }
 
 .book-meta {
@@ -148,12 +130,6 @@
   font-size: 0.7rem;
 }
 
-@media (max-width: 900px) {
-  .book-shelf {
-    grid-template-columns: repeat(3, minmax(0, 1fr));
-  }
-}
-
 @media (max-width: 640px) {
   .book-shelf {
     grid-template-columns: repeat(2, minmax(0, 1fr));
@@ -164,9 +140,6 @@
     height: 12rem;
   }
 
-  .book-title {
-    font-size: 1.25rem;
-  }
 }
 
 @media (max-width: 380px) {

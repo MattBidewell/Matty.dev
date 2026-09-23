@@ -1,13 +1,19 @@
 ---
 import BaseLayout from "../../layouts/BaseLayout.astro";
-import ProjectLinks from "../../components/home/projectLinks/ProjectLinks.astro";
+import ListHeader from "../../components/posts/ListHeader.astro";
+import PostList from "../../components/posts/PostList.astro";
 import { getLivePosts } from "../../lib/posts";
 
 const projects = await getLivePosts("project");
 ---
 
-<BaseLayout title="Projects">
-  <div class="container">
-    <ProjectLinks projects={projects} hasLimit={false} />
-  </div>
+<BaseLayout title="Projects" kind="index">
+  <ListHeader
+    kind="Section"
+    title="Projects"
+    description="Things I've been building, and what I learned building them."
+    count={projects.length}
+    noun="project"
+  />
+  <PostList posts={projects} />
 </BaseLayout>

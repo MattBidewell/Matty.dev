@@ -1,6 +1,7 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
-import { categoryOf, formatDate, getLivePosts, linkSlugFor } from '../lib/posts';
+import PostList from '../components/posts/PostList.astro';
+import { categoryOf, getLivePosts } from '../lib/posts';
 import styles from './home.module.css';
 
 const posts = await getLivePosts();
@@ -8,7 +9,7 @@ const recent = posts.filter(post => categoryOf(post) !== 'project').slice(0, 5);
 const projects = posts.filter(post => categoryOf(post) === 'project').slice(0, 3);
 ---
 
-<BaseLayout>
+<BaseLayout kind="home">
   <section class={styles.intro} aria-labelledby="intro-title">
     <h1 id="intro-title">Matt Bidewell</h1>
     <p>I&apos;m Matt. I build software and write about what I learn along the way. Sometimes technical. Sometimes just life.</p>
@@ -18,14 +19,7 @@ const projects = posts.filter(post => categoryOf(post) === 'project').slice(0, 3
   {recent.length > 0 && (
     <section class={styles.section} aria-labelledby="notes-title">
       <h2 id="notes-title">Notes from the notebook</h2>
-      <ul class={styles.entries} role="list">
-        {recent.map(post => (
-          <li>
-            <time datetime={post.data.date.toISOString()}>{formatDate(post.data.date)}</time>
-            <h3><a href={linkSlugFor(post)}>{post.data.title}</a></h3>
-          </li>
-        ))}
-      </ul>
+      <PostList posts={recent} headingLevel={3} showCategory />
       <p class={styles.archiveLinks}>
         <a href="/blog">All writing</a>
         <a href="/mumblings">All Mumblings</a>
@@ -36,13 +30,7 @@ const projects = posts.filter(post => categoryOf(post) === 'project').slice(0, 3
   {projects.length > 0 && (
     <section class={styles.section} aria-labelledby="projects-title">
       <h2 id="projects-title">Things I&apos;ve been building</h2>
-      <ul class={styles.entries} role="list">
-        {projects.map(project => (
-          <li>
-            <h3><a href={linkSlugFor(project)}>{project.data.title}</a></h3>
-          </li>
-        ))}
-      </ul>
+      <PostList posts={projects} headingLevel={3} />
       <p class={styles.archiveLinks}><a href="/projects">All projects</a></p>
     </section>
   )}

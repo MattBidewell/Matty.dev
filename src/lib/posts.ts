@@ -40,3 +40,26 @@ export async function getLivePosts(category?: Category): Promise<PostEntry[]> {
 export function formatDate(date: Date): string {
   return date.toISOString().split("T")[0];
 }
+
+export const categoryLabels: Record<Category, string> = {
+  blog: "Writing",
+  mumbling: "Mumblings",
+  project: "Projects",
+};
+
+export const categoryHrefs: Record<Category, string> = {
+  blog: "/blog",
+  mumbling: "/mumblings",
+  project: "/projects",
+};
+
+export interface ReadingStats {
+  date: Date;
+  words: number;
+  minutes: number;
+}
+
+export function readingStats(entry: PostEntry): ReadingStats {
+  const words = entry.body.match(/\S+/g)?.length ?? 0;
+  return { date: entry.data.date, words, minutes: Math.max(1, Math.round(words / 220)) };
+}

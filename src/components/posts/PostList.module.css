@@ -1,0 +1,38 @@
+/* No cards, no shadows: hairline dividers and type hierarchy. */
+.list {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+.item {
+  margin: 0;
+  padding: 1.75rem 0;
+  border-bottom: 1px solid var(--border-color);
+}
+.item:first-child {
+  padding-top: 0;
+}
+.item:last-child {
+  border-bottom: 0;
+}
+.title {
+  margin: 0 0 0.625rem;
+  font-size: clamp(1.125rem, 2.6vw, 1.375rem);
+  line-height: 1.3;
+  overflow-wrap: anywhere;
+}
+.title a {
+  color: var(--text-heading);
+  text-decoration: none;
+}
+.title a:hover {
+  color: var(--accent-primary);
+  text-decoration: underline;
+}
+.summary {
+  margin: 0 0 0.625rem;
+  color: var(--text-secondary);
+}
+.stack {
+  margin-top: 0.125rem;
+}
