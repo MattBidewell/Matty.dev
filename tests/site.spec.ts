@@ -6,7 +6,7 @@ test("content links use reading typography without decorative arrows", async ({
 }) => {
   await page.goto("/");
   const paragraph = page.getByText(
-    "I'm Matt. I build software and write about what I learn along the way. Sometimes technical. Sometimes just life.",
+    "I write about computer science, product craft, good books, and the human judgment that matters as AI changes how we build.",
     { exact: true },
   );
   const typography = await paragraph.evaluate((element) => ({
@@ -16,7 +16,6 @@ test("content links use reading typography without decorative arrows", async ({
   for (const name of [
     "A little more about me",
     "All writing",
-    "All Mumblings",
     "All projects",
   ]) {
     const link = page.getByRole("link", { name, exact: true });
@@ -41,38 +40,28 @@ test("content links use reading typography without decorative arrows", async ({
   }
 });
 
-test("ASCII logo animates once on interaction and respects reduced motion", async ({
+test("wordmark and navigation use distinct, readable type styles", async ({
   page,
 }) => {
-  await page.emulateMedia({ reducedMotion: "no-preference" });
   await page.goto("/");
   const brand = page.getByRole("link", { name: "matty.dev", exact: true });
-  const mark = brand.locator("[data-ascii-mark]");
-  const rows = mark.locator("span");
-  await expect(mark).toHaveAttribute("aria-hidden", "true");
-  await expect(rows).toHaveCount(7);
-  await expect(rows.first()).toHaveCSS("animation-name", "none");
-  await brand.hover();
-  await expect(rows.first()).not.toHaveCSS("animation-name", "none");
-  await expect(rows.first()).toHaveCSS("animation-iteration-count", "1");
-  await expect
-    .poll(() =>
-      mark.evaluate(
-        (element) =>
-          element
-            .getAnimations({ subtree: true })
-            .filter((animation) => animation.playState === "running").length,
-      ),
-    )
-    .toBe(0);
-  await page.mouse.move(0, 0);
-  await page.keyboard.press("Tab");
-  await brand.focus();
-  await expect(rows.first()).not.toHaveCSS("animation-name", "none");
-  await page.emulateMedia({ reducedMotion: "reduce" });
-  await expect(rows.first()).toHaveCSS("animation-name", "none");
-  await brand.hover();
-  await expect(rows.first()).toHaveCSS("animation-name", "none");
+  const dot = brand.locator("span span");
+  await expect(brand).toHaveText("matty.dev");
+  await expect(brand).toHaveAttribute("href", "/");
+  await expect(brand.locator("[data-ascii-mark]")).toHaveCount(0);
+  await expect(dot).toBeVisible();
+  const wordmarkFont = await brand.evaluate(
+    (element) => getComputedStyle(element).fontFamily,
+  );
+  const navigationFont = await page
+    .getByRole("navigation", { name: "Main" })
+    .getByRole("link", { name: "Writing" })
+    .evaluate((element) => getComputedStyle(element).fontFamily);
+  expect(wordmarkFont).toContain("Newsreader");
+  expect(navigationFont).not.toBe(wordmarkFont);
+  expect(await dot.evaluate((element) => getComputedStyle(element).color)).not.toBe(
+    await brand.evaluate((element) => getComputedStyle(element).color),
+  );
 });
 
 test("footer keeps a horizontal list of links without arrows or a signoff", async ({
@@ -114,7 +103,7 @@ test("home introduces the publication and surfaces real writing", async ({
   ).toBeVisible();
   await expect(page.locator("main h1")).toHaveCount(1);
   await expect(page.locator("main h1")).toHaveText("Matt Bidewell");
-  await expect(page.locator("main ul p")).toHaveCount(0);
+  await expect(page.locator("main ul p").first()).toBeVisible();
   const note = page
     .getByRole("region", { name: "Notes from the notebook" })
     .getByRole("listitem")
@@ -148,16 +137,16 @@ test("home introduces the publication and surfaces real writing", async ({
   );
 });
 
-test("home uses the same reading column as the supporting pages", async ({
+test("home gives its introduction a little more room than supporting pages", async ({
   page,
 }) => {
   await page.setViewportSize({ width: 1440, height: 1000 });
   await page.goto("/about");
   const about = await page.locator(".route-content").boundingBox();
   await page.goto("/");
-  const home = await page.locator(".route-content").boundingBox();
-  expect(home?.width).toBe(about?.width);
-  expect(home?.x).toBe(about?.x);
+  const home = await page.locator("[data-home-content]").boundingBox();
+  expect(home?.width).toBeGreaterThan(about?.width ?? 0);
+  expect(home?.width).toBeLessThanOrEqual(816);
 });
 
 test("theme follows the system and an explicit choice survives navigation and reload", async ({

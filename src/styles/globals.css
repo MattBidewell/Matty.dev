@@ -1,26 +1,26 @@
 :root {
   color-scheme: light dark;
-  --font-body: "Newsreader", Georgia, "Times New Roman", serif;
-  --font-display: var(--font-body);
+  --font-body: "Inter", ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  --font-display: "Newsreader", Georgia, "Times New Roman", serif;
   --font-mono: "iA Writer Mono", ui-monospace, monospace;
   --layout-shell-max: 1120px;
   --layout-content-max: 720px;
   --layout-pad-x: 2rem;
 
-  --brand-primary: #36705d;
-  --brand-soft: #d5e7dc;
-  --on-brand-soft: #254c3d;
-  --bg-color: light-dark(#e1e5dc, #1e1c20);
-  --bg-surface: light-dark(#d6ddce, #28252a);
-  --text-primary: light-dark(#332d33, #e4dde2);
-  --text-heading: light-dark(#252126, #f5f0f3);
-  --text-secondary: light-dark(#665c65, #b8abb4);
-  --text-muted: light-dark(#665c65, #ad9da8);
-  --accent-primary: light-dark(var(--brand-primary), #91c7ad);
+  --brand-primary: #a63e27;
+  --brand-soft: #f2d3c7;
+  --on-brand-soft: #642b1d;
+  --bg-color: light-dark(#f7f5ef, #181a18);
+  --bg-surface: light-dark(#eeece4, #242824);
+  --text-primary: light-dark(#343733, #e4e6df);
+  --text-heading: light-dark(#20231f, #f2f1e9);
+  --text-secondary: light-dark(#565c56, #b8beb7);
+  --text-muted: light-dark(#646b64, #a6ada5);
+  --accent-primary: light-dark(var(--brand-primary), #ef9a7e);
   --accent-secondary: var(--accent-primary);
-  --accent-hover: light-dark(#254c3d, var(--brand-soft));
-  --border-color: light-dark(#b2b9ac, #635661);
-  --border-soft: light-dark(#d0d6c9, #433a42);
+  --accent-hover: light-dark(#782e1f, var(--brand-soft));
+  --border-color: light-dark(#d2d0c6, #4a504b);
+  --border-soft: light-dark(#e5e2d8, #343b35);
   --selection-bg: var(--brand-soft);
   --selection-fg: #252126;
   --code-bg: var(--bg-surface);
@@ -29,7 +29,7 @@
   --code-inline-border: var(--border-soft);
   --syntax-comment: var(--text-muted);
   --syntax-keyword: var(--accent-primary);
-  --syntax-string: light-dark(#3f6653, #aacbb8);
+  --syntax-string: light-dark(#476349, #b7d4a8);
   --syntax-title: light-dark(#345a85, #a5c4ed);
   --syntax-number: light-dark(#884b72, #efb7d3);
   --syntax-punct: var(--text-primary);
@@ -71,8 +71,8 @@ body {
   margin: 0;
   color: var(--text-primary);
   font-family: var(--font-body);
-  font-size: 1.25rem;
-  line-height: 1.6;
+  font-size: 1.125rem;
+  line-height: 1.7;
   -webkit-font-smoothing: antialiased;
   text-rendering: optimizeLegibility;
 }
@@ -260,7 +260,7 @@ hr {
     --layout-pad-x: 1.25rem;
   }
   body {
-    font-size: 1.125rem;
+    font-size: 1.0625rem;
   }
   main.page-content {
     padding: 2rem 0 3.5rem;
