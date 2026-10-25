@@ -2,7 +2,7 @@
   position: relative;
   width: min(calc(100% - var(--layout-pad-x) * 2), var(--layout-shell-max));
   margin: 0 auto;
-  padding: 1.5rem 0;
+  padding: 1.25rem 0;
   display: flex;
   align-items: center;
   gap: 2rem;
@@ -11,11 +11,12 @@
 .brand {
   display: inline-flex;
   align-items: center;
-  gap: 0.75rem;
   color: var(--text-heading);
-  font-size: 2rem;
+  font-family: var(--font-display);
+  font-size: 1.625rem;
+  font-weight: 600;
   line-height: 1;
-  letter-spacing: -0.065em;
+  letter-spacing: -0.04em;
   text-decoration: none;
   white-space: nowrap;
 }
@@ -23,13 +24,13 @@
   color: var(--accent-primary);
 }
 .navigation {
-  margin-left: 0;
+  margin-left: auto;
 }
 .controls {
   display: flex;
   align-items: center;
   gap: 0.5rem;
-  margin-left: auto;
+  margin-left: 0;
 }
 .menuToggle {
   display: none;
@@ -41,7 +42,7 @@
     padding: 1rem 0;
   }
   .brand {
-    font-size: 1.75rem;
+    font-size: 1.5rem;
   }
   .controls {
     margin-left: auto;
@@ -63,7 +64,7 @@
     gap: 0.75rem;
     min-height: 44px;
     padding: 0 0.75rem;
-    font: 0.75rem var(--font-mono);
+    font: 500 0.875rem/1.5 var(--font-body);
     color: var(--text-primary);
     border: 1px solid var(--border-soft);
     background: transparent;
@@ -80,7 +81,6 @@
 }
 @media (max-width: 600px) {
   .brand {
-    gap: 0.5rem;
-    font-size: 1.5rem;
+    font-size: 1.375rem;
   }
 }
