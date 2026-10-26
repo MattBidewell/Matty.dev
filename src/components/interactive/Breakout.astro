@@ -1,0 +1,35 @@
+---
+// Full-bleed wrapper for interactive blog widgets that need to escape the
+// narrow reading column (and optionally the light/dark article palette).
+interface Props {
+  dark?: boolean;
+}
+
+const { dark = false } = Astro.props;
+---
+
+<div class="breakout" data-dark={dark ? "true" : "false"}>
+  <div class="breakout-inner">
+    <slot />
+  </div>
+</div>
+
+<style>
+  .breakout {
+    width: 100vw;
+    margin-inline: calc(50% - 50vw);
+    margin-block: 3rem;
+    padding-block: 2.5rem;
+  }
+
+  .breakout[data-dark="true"] {
+    background: #1a1820;
+    color: #e4dde2;
+  }
+
+  .breakout-inner {
+    max-width: var(--layout-content-max);
+    margin-inline: auto;
+    padding-inline: var(--layout-pad-x);
+  }
+</style>

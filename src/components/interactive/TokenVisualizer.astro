@@ -1,0 +1,137 @@
+---
+// Tokenizes text with the real GPT-4o (o200k_base) BPE encoding at build time
+// and steps through the result on scroll-into-view. No UI framework required
+// — just an Astro component with its own script/style, and the tokenizer
+// runs entirely server-side so nothing extra ships to the client.
+import Breakout from "./Breakout.astro";
+import { tokenize } from "../../lib/tokenizer";
+
+interface Props {
+  text: string;
+}
+
+const { text } = Astro.props;
+const tokens = tokenize(text);
+---
+
+<Breakout dark>
+  <div class="token-visualizer" data-component="token-visualizer">
+    <p class="prompt">
+      tokenizing: <span class="source">"{text}"</span>
+      <span class="count">{tokens.length} tokens</span>
+    </p>
+    <div class="tokens">
+      {
+        tokens.map((token, i) => (
+          <span
+            class="token"
+            class:list={{ "token--glued": !token.isNewWord && i > 0 }}
+            style={`--i:${i}`}
+            data-token
+          >
+            {token.text}
+          </span>
+        ))
+      }
+    </div>
+    <p class="hint">a gap starts a new word — a tight token continues the one before it</p>
+  </div>
+</Breakout>
+
+<style>
+  .token-visualizer {
+    font-family: var(--font-mono);
+  }
+
+  .prompt {
+    margin: 0 0 1.5rem;
+    font-size: 0.85rem;
+    color: #a99db0;
+  }
+
+  .source {
+    color: #e4dde2;
+  }
+
+  .count {
+    margin-left: 0.75rem;
+    color: #91c7ad;
+  }
+
+  .tokens {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.35rem 0;
+  }
+
+  .token {
+    margin-left: 0.5rem;
+    padding: 0.35rem 0.6rem;
+    border: 1px solid #433a42;
+    border-radius: 4px;
+    background: #241f28;
+    opacity: 0.25;
+    transform: translateY(4px);
+    transition: opacity 0.3s ease, transform 0.3s ease, background 0.3s ease, border-color 0.3s ease;
+  }
+
+  .token:first-child,
+  .token--glued {
+    margin-left: 0;
+  }
+
+  .token--glued {
+    border-left: none;
+  }
+
+  .token[data-active] {
+    opacity: 1;
+    transform: translateY(0);
+    background: #2d4a3c;
+    border-color: #91c7ad;
+  }
+
+  .hint {
+    margin: 1.25rem 0 0;
+    font-size: 0.75rem;
+    color: #756c78;
+  }
+</style>
+
+<script>
+  function initTokenVisualizers() {
+    document.querySelectorAll<HTMLElement>('[data-component="token-visualizer"]').forEach((root) => {
+      if (root.dataset.initialized) return;
+      root.dataset.initialized = "true";
+
+      const tokens = Array.from(root.querySelectorAll<HTMLElement>("[data-token]"));
+      let step = 0;
+      let timer: ReturnType<typeof setInterval> | null = null;
+
+      const advance = () => {
+        if (step >= tokens.length) {
+          if (timer) clearInterval(timer);
+          return;
+        }
+        tokens[step].toggleAttribute("data-active", true);
+        step += 1;
+      };
+
+      const observer = new IntersectionObserver(
+        (entries) => {
+          for (const entry of entries) {
+            if (entry.isIntersecting && !timer) {
+              timer = setInterval(advance, 220);
+              observer.disconnect();
+            }
+          }
+        },
+        { threshold: 0.4 },
+      );
+
+      observer.observe(root);
+    });
+  }
+
+  document.addEventListener("astro:page-load", initTokenVisualizers);
+</script>

@@ -15,12 +15,14 @@
   "dependencies": {
     "@astrojs/cloudflare": "^14.4.2",
     "@astrojs/markdown-remark": "^7.3.4",
+    "@astrojs/mdx": "^8.1.1",
     "@astrojs/rss": "^4.0.19",
     "@astrojs/sitemap": "^3.2.1",
     "@fontsource/ia-writer-mono": "^5.2.5",
     "@fontsource/newsreader": "^5.3.0",
     "@resvg/resvg-js": "^2.6.2",
     "astro": "^7.4.2",
+    "js-tiktoken": "^1.0.21",
     "satori": "^0.12.0"
   },
   "devDependencies": {
