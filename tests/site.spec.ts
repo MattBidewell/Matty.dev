@@ -6,7 +6,7 @@ test("content links use reading typography without decorative arrows", async ({
 }) => {
   await page.goto("/");
   const paragraph = page.getByText(
-    "I write about computer science, product craft, good books, and the human judgment that matters as AI changes how we build.",
+    "Software engineer, product builder, and writer.",
     { exact: true },
   );
   const typography = await paragraph.evaluate((element) => ({
@@ -14,13 +14,12 @@ test("content links use reading typography without decorative arrows", async ({
     size: getComputedStyle(element).fontSize,
   }));
   for (const name of [
-    "A little more about me",
-    "All writing",
-    "All projects",
+    "More projects",
+    "More posts",
+    "Résumé",
   ]) {
     const link = page.getByRole("link", { name, exact: true });
     await expect(link).toHaveCSS("font-family", typography.family);
-    await expect(link).toHaveCSS("font-size", typography.size);
   }
   for (const route of [
     "/about",
@@ -40,7 +39,7 @@ test("content links use reading typography without decorative arrows", async ({
   }
 });
 
-test("wordmark and navigation use distinct, readable type styles", async ({
+test("wordmark and navigation use the bundled Inter typeface", async ({
   page,
 }) => {
   await page.goto("/");
@@ -55,10 +54,26 @@ test("wordmark and navigation use distinct, readable type styles", async ({
   );
   const navigationFont = await page
     .getByRole("navigation", { name: "Main" })
-    .getByRole("link", { name: "Writing" })
+    .getByRole("link", { name: "Posts" })
     .evaluate((element) => getComputedStyle(element).fontFamily);
-  expect(wordmarkFont).toContain("Newsreader");
-  expect(navigationFont).not.toBe(wordmarkFont);
+  const navigationLinks = await page
+    .getByRole("navigation", { name: "Main" })
+    .getByRole("link")
+    .allTextContents()
+    .then((labels) => labels.map((label) => label.trim()));
+  expect(wordmarkFont).toContain("Inter Variable");
+  expect(navigationFont).toContain("Inter Variable");
+  expect(navigationLinks).toEqual([
+    "Posts",
+    "Projects",
+    "Bookshelf",
+    "About",
+  ]);
+  const interLoaded = await page.evaluate(async () => {
+    await document.fonts.ready;
+    return document.fonts.check('500 16px "Inter Variable"');
+  });
+  expect(interLoaded).toBe(true);
   expect(await dot.evaluate((element) => getComputedStyle(element).color)).not.toBe(
     await brand.evaluate((element) => getComputedStyle(element).color),
   );
@@ -74,7 +89,6 @@ test("footer keeps a horizontal list of links without arrows or a signoff", asyn
     "GitHub",
     "X",
     "LinkedIn",
-    "Resume",
   ]);
   await expect(footer).not.toContainText("Always a work in progress");
   const arrows = await footer
@@ -94,7 +108,7 @@ test("footer keeps a horizontal list of links without arrows or a signoff", asyn
   }
 });
 
-test("home introduces the publication and surfaces real writing", async ({
+test("home lists recent projects, posts, Mumblings, and the resume", async ({
   page,
 }) => {
   await page.goto("/");
@@ -103,29 +117,31 @@ test("home introduces the publication and surfaces real writing", async ({
   ).toBeVisible();
   await expect(page.locator("main h1")).toHaveCount(1);
   await expect(page.locator("main h1")).toHaveText("Matt Bidewell");
-  await expect(page.locator("main ul p").first()).toBeVisible();
-  const note = page
-    .getByRole("region", { name: "Notes from the notebook" })
-    .getByRole("listitem")
-    .first();
-  const dateBox = await note.locator("time").boundingBox();
-  const titleBox = await note.getByRole("heading").boundingBox();
-  expect(dateBox).not.toBeNull();
-  expect(titleBox).not.toBeNull();
-  expect(dateBox!.x + dateBox!.width).toBeLessThan(titleBox!.x);
-  await expect(
-    page.getByRole("heading", { name: "One Typo Away From Being Owned" }),
-  ).toBeVisible();
-  await expect(page.locator("main h2")).toHaveText([
-    "Notes from the notebook",
-    "Things I've been building",
-  ]);
-  await expect(
-    page.getByRole("link", { name: "Mumblings №11", exact: true }),
-  ).toBeVisible();
-  await expect(page.getByText("Selected reading", { exact: true })).toHaveCount(
-    0,
-  );
+  const projects = page.getByRole("region", { name: "Projects" });
+  const posts = page.getByRole("region", { name: "Posts" });
+  const mumblings = page.getByRole("region", { name: "Mumblings" });
+  await expect(projects.getByRole("listitem")).toHaveCount(3);
+  await expect(posts.getByRole("listitem")).toHaveCount(3);
+  await expect(mumblings.getByRole("listitem")).toHaveCount(3);
+  await expect(projects.getByRole("link", { name: "Trail Mapper" })).toBeVisible();
+  await expect(posts.getByRole("link", { name: "One Typo Away From Being Owned" })).toBeVisible();
+  await expect(mumblings.getByRole("link", { name: "Mumblings №11" })).toBeVisible();
+  await expect(page.getByRole("link", { name: "More projects" })).toHaveAttribute("href", "/projects");
+  await expect(page.getByRole("link", { name: "More posts" })).toHaveAttribute("href", "/blog");
+  await expect(page.getByRole("link", { name: "More mumblings" })).toHaveAttribute("href", "/mumblings");
+  await expect(page.getByRole("link", { name: "Résumé" })).toHaveAttribute("href", "/assets/resume/Matt-Bidewell-Resume.pdf");
+
+  for (const [section, label] of [
+    [projects, "More projects"],
+    [posts, "More posts"],
+    [mumblings, "More mumblings"],
+  ] as const) {
+    const lastEntry = await section.getByRole("listitem").last().boundingBox();
+    const more = await page.getByRole("link", { name: label }).boundingBox();
+    expect(lastEntry).not.toBeNull();
+    expect(more).not.toBeNull();
+    expect(more!.y).toBeGreaterThan(lastEntry!.y + lastEntry!.height - 1);
+  }
   await page
     .getByRole("link", { name: "One Typo Away From Being Owned", exact: true })
     .click();
@@ -137,16 +153,48 @@ test("home introduces the publication and surfaces real writing", async ({
   );
 });
 
-test("home gives its introduction a little more room than supporting pages", async ({
+test("Posts archive includes both posts and Mumblings in date order", async ({
+  page,
+}) => {
+  await page.goto("/blog");
+  await expect(page.locator("main h1")).toHaveText("Posts");
+  const entries = page.locator("main").getByRole("list").first();
+  await expect(
+    entries.getByRole("link", { name: "Mumblings №11", exact: true }),
+  ).toBeVisible();
+  await expect(
+    entries.getByRole("link", {
+      name: "One Typo Away From Being Owned",
+      exact: true,
+    }),
+  ).toBeVisible();
+  await expect(entries.getByRole("listitem").first()).toContainText(
+    "Mumblings №11",
+  );
+});
+
+test("header, page content, and footer share a consistent width", async ({
   page,
 }) => {
   await page.setViewportSize({ width: 1440, height: 1000 });
   await page.goto("/about");
-  const about = await page.locator(".route-content").boundingBox();
+  const main = await page.locator("main.page-content").boundingBox();
+  const header = await page.locator(".site-shell > header").boundingBox();
+  const footer = await page.locator(".site-shell > footer").boundingBox();
+  const content = await page.locator(".route-content").boundingBox();
+  expect(header?.width).toBe(main?.width);
+  expect(footer?.width).toBe(main?.width);
+  expect(content?.width).toBe(main?.width);
+
+  for (const route of ["/blog", "/projects", "/mumblings", "/bookshelf"]) {
+    await page.goto(route);
+    const routeContent = await page.locator(".route-content").boundingBox();
+    expect(routeContent?.width, route).toBe(main?.width);
+  }
+
   await page.goto("/");
   const home = await page.locator("[data-home-content]").boundingBox();
-  expect(home?.width).toBeGreaterThan(about?.width ?? 0);
-  expect(home?.width).toBeLessThanOrEqual(816);
+  expect(home?.width).toBe(main?.width);
 });
 
 test("theme follows the system and an explicit choice survives navigation and reload", async ({
@@ -185,16 +233,16 @@ test("mobile navigation is hidden when closed, supports Escape, and works after 
   await page.keyboard.press("Enter");
   await page.keyboard.press("Tab");
   await expect(
-    nav.getByRole("link", { name: "Writing", exact: true }),
+    nav.getByRole("link", { name: "Posts", exact: true }),
   ).toBeFocused();
   await page.keyboard.press("Escape");
   await menu.click();
-  await nav.getByRole("link", { name: "Mumblings", exact: true }).click();
-  await expect(page).toHaveURL(/\/mumblings/);
+  await nav.getByRole("link", { name: "Projects", exact: true }).click();
+  await expect(page).toHaveURL(/\/projects/);
   await expect(nav).toBeHidden();
   await menu.click();
   await expect(
-    nav.getByRole("link", { name: "Mumblings", exact: true }),
+    nav.getByRole("link", { name: "Projects", exact: true }),
   ).toHaveAttribute("aria-current", "page");
   const accessibility = await new AxeBuilder({ page })
     .withTags(["wcag2a", "wcag2aa", "wcag21aa"])
@@ -222,7 +270,7 @@ test("system theme updates remain usable when storage is unavailable", async ({
   await expect(page.locator("html")).toHaveAttribute("data-theme", "light");
   await page
     .getByRole("navigation", { name: "Main" })
-    .getByRole("link", { name: "Writing" })
+    .getByRole("link", { name: "Posts" })
     .click();
   await expect(page.locator("html")).toHaveAttribute("data-theme", "light");
 });
@@ -241,7 +289,7 @@ test("mobile reading and navigation work without JavaScript", async ({
   ).toBeHidden();
   await page
     .getByRole("navigation", { name: "Main" })
-    .getByRole("link", { name: "Writing" })
+    .getByRole("link", { name: "Posts" })
     .click();
   await expect(page).toHaveURL(/\/blog/);
   await expect(page.locator("main h1")).toBeVisible();
