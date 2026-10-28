@@ -11,8 +11,8 @@ const content = (await Astro.slots.render("default")).replace(/<(\/?)h1(?=[\s>])
     min-width: 0;
     color: var(--text-primary);
     font-family: var(--font-body);
-    font-size: 1.25rem;
-    line-height: 1.7;
+    font-size: 1.125rem;
+    line-height: 1.8;
     overflow-wrap: anywhere;
   }
 
@@ -23,23 +23,23 @@ const content = (await Astro.slots.render("default")).replace(/<(\/?)h1(?=[\s>])
   .post-body :global(h2),
   .post-body :global(h3),
   .post-body :global(h4) {
-    margin: 2.5rem 0 1rem;
+    margin: 2.25rem 0 0.875rem;
     font-family: var(--font-display);
-    font-weight: 400;
+    font-weight: 600;
     line-height: 1.2;
     letter-spacing: -0.025em;
   }
 
   .post-body :global(h2) {
-    font-size: 2rem;
+    font-size: 1.75rem;
   }
 
   .post-body :global(h3) {
-    font-size: 1.5rem;
+    font-size: 1.375rem;
   }
 
   .post-body :global(h4) {
-    font-size: 1.25rem;
+    font-size: 1.125rem;
   }
 
   .post-body :global(img),

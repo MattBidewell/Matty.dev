@@ -1,13 +1,13 @@
 ---
 import BaseLayout from "../../layouts/BaseLayout.astro";
 import BlogLinks from "../../components/home/blogLinks/BlogLinks.astro";
-import { getLivePosts } from "../../lib/posts";
+import { categoryOf, getLivePosts } from "../../lib/posts";
 
-const posts = await getLivePosts("blog");
+const posts = (await getLivePosts()).filter((post) => categoryOf(post) !== "project");
 ---
 
-<BaseLayout title="Blog">
+<BaseLayout title="Posts">
   <div class="container">
-    <BlogLinks posts={posts} hasLimit={false} title="Blog posts" sectionId="posts" />
+    <BlogLinks posts={posts} hasLimit={false} title="Posts" sectionId="posts" />
   </div>
 </BaseLayout>

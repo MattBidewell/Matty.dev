@@ -1,161 +1,86 @@
 .home {
-  width: min(100%, 51rem);
+  width: 100%;
   margin: 0 auto;
 }
 
 .intro {
-  padding: 1.25rem 0 0.5rem;
+  margin: 0 0 3.5rem;
 }
 
 .intro h1 {
-  margin: 0 0 1rem;
-  font-size: clamp(3.5rem, 8vw, 5.75rem);
-  line-height: 0.98;
-  letter-spacing: -0.055em;
-}
-
-.lead {
-  max-width: 43rem;
-  margin: 0 0 1rem;
-  color: var(--text-heading);
-  font-family: var(--font-display);
-  font-size: clamp(1.5rem, 3vw, 2rem);
-  line-height: 1.35;
+  margin: 0 0 0.5rem;
+  font-size: 1.5rem;
+  font-weight: 650;
+  line-height: 1.5;
   letter-spacing: -0.025em;
 }
 
-.context {
-  max-width: 43rem;
-  margin: 0 0 1rem;
+.description {
+  margin: 0;
   color: var(--text-secondary);
+  font-size: 1rem;
 }
 
 .section {
-  margin-top: 4.5rem;
+  margin-top: 2.75rem;
 }
 
 .sectionHeading {
-  display: flex;
-  align-items: baseline;
-  justify-content: space-between;
-  gap: 1rem;
   margin-bottom: 0.5rem;
 }
 
 .sectionHeading h2 {
   margin: 0;
-  font-size: 1.5rem;
-  letter-spacing: -0.03em;
+  color: var(--text-secondary);
+  font-size: 0.75rem;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
 }
 
-.entries {
-  list-style: none;
-  padding: 0;
-  margin: 0;
-}
-
-.entries li {
-  display: grid;
-  grid-template-columns: 7.5rem minmax(0, 1fr);
-  align-items: baseline;
-  gap: 0.25rem 1.5rem;
-  padding: 1.1rem 0;
-  margin: 0;
-  border-top: 1px solid var(--border-soft);
-}
-
-.entries h3 {
-  grid-column: 2;
-  grid-row: 1;
-  font-size: 1.25rem;
-  line-height: 1.35;
-  margin: 0;
-}
-
-.entries h3 a {
-  color: var(--text-heading);
+.more {
+  display: inline-block;
+  margin-top: 0.25rem;
+  color: var(--text-secondary);
+  font-size: 0.9375rem;
   text-decoration: none;
-  text-decoration-color: var(--accent-primary);
-  text-underline-offset: 0.2em;
 }
 
-.entries h3 a:hover {
+.more:hover {
   color: var(--accent-primary);
   text-decoration: underline;
 }
 
-.entries time {
-  grid-column: 1;
-  grid-row: 1 / span 2;
-  color: var(--text-muted);
-  font: 0.6875rem/1.5 var(--font-mono);
-  white-space: nowrap;
+.entries {
+  list-style: none;
+  margin: 0;
+  padding: 0;
 }
 
-.entries li > p {
-  grid-column: 2;
-  margin: 0.15rem 0 0;
-  color: var(--text-secondary);
-  font-size: 0.95rem;
-  line-height: 1.5;
+.entries li {
+  margin: 0;
+  padding: 0.45rem 0;
 }
 
-.projectEntries li {
-  display: block;
+.entries li > a {
+  color: var(--text-heading);
+  text-decoration: none;
 }
 
-.reading {
-  margin: 4rem 0 0;
+.entries li > a:hover {
+  color: var(--accent-primary);
+  text-decoration: underline;
+  text-underline-offset: 0.2em;
+}
+
+.resume {
+  margin: 3.5rem 0 0;
   padding-top: 1.25rem;
   border-top: 1px solid var(--border-soft);
-  color: var(--text-secondary);
-  font-size: 1rem;
 }
 
 @media (max-width: 600px) {
-  .intro {
-    padding-top: 0.5rem;
-  }
-
-  .intro h1 {
-    font-size: clamp(3rem, 14vw, 4rem);
-  }
-
   .section {
-    margin-top: 3.25rem;
-  }
-
-  .sectionHeading {
-    flex-direction: column;
-    align-items: flex-start;
-    gap: 0.25rem;
-  }
-
-  .sectionHeading h2 {
-    font-size: 1.25rem;
-  }
-
-  .entries li {
-    grid-template-columns: minmax(0, 1fr);
-    gap: 0.35rem;
-    padding: 1rem 0;
-  }
-
-  .entries time,
-  .entries h3,
-  .entries li > p {
-    grid-column: 1;
-  }
-
-  .entries time {
-    grid-row: 1;
-  }
-
-  .entries h3 {
-    grid-row: 2;
-  }
-
-  .entries li > p {
-    grid-row: 3;
+    margin-top: 2.25rem;
   }
 }

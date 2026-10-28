@@ -1,56 +1,68 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
-import { categoryOf, formatDate, getLivePosts, linkSlugFor } from '../lib/posts';
+import { getLivePosts, linkSlugFor } from '../lib/posts';
 import styles from './home.module.css';
 
-const posts = await getLivePosts();
-const recent = posts.filter(post => categoryOf(post) !== 'project').slice(0, 5);
-const projects = posts.filter(post => categoryOf(post) === 'project').slice(0, 3);
+const projects = (await getLivePosts('project')).slice(0, 3);
+const posts = (await getLivePosts('blog')).slice(0, 3);
+const mumblings = (await getLivePosts('mumbling')).slice(0, 3);
 ---
 
-<BaseLayout wide>
+<BaseLayout>
   <div class={styles.home} data-home-content>
     <section class={styles.intro} aria-labelledby="intro-title">
       <h1 id="intro-title">Matt Bidewell</h1>
-      <p class={styles.lead}>I build software for people, and write about what makes it matter.</p>
-      <p class={styles.context}>I write about computer science, product craft, good books, and the human judgment that matters as AI changes how we build.</p>
-      <a href="/about">A little more about me</a>
+      <p class={styles.description}>Software engineer, product builder, and writer.</p>
     </section>
-
-    {recent.length > 0 && (
-      <section class={styles.section} aria-labelledby="notes-title">
-        <div class={styles.sectionHeading}>
-          <h2 id="notes-title">Notes from the notebook</h2>
-          <a href="/blog">All writing</a>
-        </div>
-        <ul class={styles.entries} role="list">
-          {recent.map(post => (
-            <li>
-              <time datetime={post.data.date.toISOString()}>{formatDate(post.data.date)}</time>
-              <h3><a href={linkSlugFor(post)}>{post.data.title}</a></h3>
-              {post.data.excerpt && <p>{post.data.excerpt}</p>}
-            </li>
-          ))}
-        </ul>
-      </section>
-    )}
 
     {projects.length > 0 && (
       <section class={styles.section} aria-labelledby="projects-title">
         <div class={styles.sectionHeading}>
-          <h2 id="projects-title">Things I&apos;ve been building</h2>
-          <a href="/projects">All projects</a>
+          <h2 id="projects-title">Projects</h2>
         </div>
-        <ul class={`${styles.entries} ${styles.projectEntries}`} role="list">
+        <ul class={styles.entries} role="list">
           {projects.map(project => (
             <li>
-              <h3><a href={linkSlugFor(project)}>{project.data.title}</a></h3>
+              <a href={linkSlugFor(project)}>{project.data.title}</a>
             </li>
           ))}
         </ul>
+        <a class={styles.more} href="/projects">More projects</a>
       </section>
     )}
 
-    <p class={styles.reading}>Curious about what I&apos;m reading? <a href="/bookshelf">Visit the bookshelf</a>.</p>
+    {posts.length > 0 && (
+      <section class={styles.section} aria-labelledby="posts-title">
+        <div class={styles.sectionHeading}>
+          <h2 id="posts-title">Posts</h2>
+        </div>
+        <ul class={styles.entries} role="list">
+          {posts.map(post => (
+            <li>
+              <a href={linkSlugFor(post)}>{post.data.title}</a>
+            </li>
+          ))}
+        </ul>
+        <a class={styles.more} href="/blog">More posts</a>
+      </section>
+    )}
+
+    {mumblings.length > 0 && (
+      <section class={styles.section} aria-labelledby="mumblings-title">
+        <div class={styles.sectionHeading}>
+          <h2 id="mumblings-title">Mumblings</h2>
+        </div>
+        <ul class={styles.entries} role="list">
+          {mumblings.map(mumbling => (
+            <li>
+              <a href={linkSlugFor(mumbling)}>{mumbling.data.title}</a>
+            </li>
+          ))}
+        </ul>
+        <a class={styles.more} href="/mumblings">More mumblings</a>
+      </section>
+    )}
+
+    <p class={styles.resume}><a target="_blank" rel="noopener" href="/assets/resume/Matt-Bidewell-Resume.pdf">Résumé</a></p>
   </div>
 </BaseLayout>

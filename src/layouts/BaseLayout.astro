@@ -1,7 +1,5 @@
 ---
-import "@fontsource/newsreader/latin-400.css";
-import "@fontsource/newsreader/latin-400-italic.css";
-import "@fontsource/newsreader/latin-600.css";
+import "@fontsource-variable/inter/wght.css";
 import "@fontsource/ia-writer-mono/latin-400.css";
 import "../styles/globals.css";
 import { ClientRouter } from "astro:transitions";
@@ -15,7 +13,6 @@ interface Props {
   ogImage?: string;
   ogType?: "website" | "article";
   canonical?: string;
-  wide?: boolean;
 }
 
 const desc =
@@ -27,7 +24,6 @@ const {
   ogImage,
   ogType = "website",
   canonical,
-  wide = false,
 } = Astro.props;
 
 const fullTitle = title.toLowerCase() === "matty.dev" ? "matty.dev" : `${title} | matty.dev`;
@@ -108,7 +104,7 @@ const ogImageUrl = ogImage ?? new URL("/opengraph-image.png", Astro.site).toStri
     <a class="skip-link" href="#main-content">Skip to content</a>
     <div class="site-shell">
       <TopContent />
-      <main id="main-content" class:list={["page-content", { "page-content--wide": wide }]} tabindex="-1">
+      <main id="main-content" class="page-content" tabindex="-1">
         <div class="route-content">
           <slot />
         </div>
