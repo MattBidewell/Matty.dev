@@ -1,0 +1,145 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 1240" role="img" aria-labelledby="title description">
+  <title id="title">ScreenForge system flow</title>
+  <desc id="description">ScreenForge accepts a screenshot, sends it to Workers AI, stores the screenshot and generated page in R2, tracks jobs and share slugs in KV, and serves the page from an isolated Dynamic Worker with outbound networking disabled.</desc>
+  <defs>
+    <symbol id="workers-icon" viewBox="0 0 48 49">
+      <path d="m18.63 37.418-9.645-12.9 9.592-12.533-1.852-2.527L5.917 23.595l-.015 1.808 10.86 14.542z" />
+      <path d="M21.997 6.503h-3.712l13.387 18.3-13.072 17.7h3.735L35.4 24.81z" />
+      <path d="M29.175 6.503h-3.758l13.598 18.082-13.598 17.918h3.765l12.908-17.01v-1.808z" />
+    </symbol>
+    <symbol id="workers-ai-icon" viewBox="0 0 20 20">
+      <path d="M10.72 1.5H9.265v3.198l1.455.004zM7.36 3.347l1.516 1.517-1.032 1.025-1.513-1.513 1.03-1.029ZM4.485 6.28h3.202l-.005 1.455H4.485zm1.848 3.36 1.515-1.516 1.026 1.032-1.512 1.512-1.03-1.029Zm2.932 2.875V9.313l1.455.005v3.197zm3.36-1.845-1.517-1.517 1.032-1.026 1.514 1.514zM15.5 7.735h-3.202l.005-1.455H15.5zm-1.847-3.359-1.516 1.516-1.025-1.032 1.513-1.513 1.028 1.03ZM2 1.829v.82h-.822v1.315H2v.821h1.314v-.82h.821V2.65h-.821v-.821zm0 12.842v-1.5H.5v-1.314H2v-1.499h1.314v1.499h1.5v1.314h-1.5v1.5z" />
+    </symbol>
+    <symbol id="r2-icon" viewBox="0 0 40 40">
+      <path fill-rule="evenodd" d="M30.289 6.423c-2.43-.813-5.958-1.362-9.977-1.362-4.018 0-7.545.549-9.976 1.362-1.228.41-2.033.842-2.48 1.195q-.14.111-.204.18c.052.171.196.395.562.67.524.394 1.372.783 2.563 1.119 2.368.666 5.731 1.023 9.536 1.023s7.167-.357 9.535-1.023c1.191-.336 2.04-.725 2.563-1.119.366-.275.51-.499.562-.67a2 2 0 0 0-.204-.18c-.447-.353-1.252-.784-2.48-1.195m-20.24 5.624c-.885-.25-1.71-.552-2.424-.922v4.393c0 .196.097.514.625.941.535.433 1.391.869 2.576 1.252 2.36.764 5.71 1.222 9.486 1.222 3.778 0 7.128-.458 9.487-1.222 1.185-.383 2.041-.82 2.576-1.252.528-.427.625-.745.625-.94v-4.394c-.715.37-1.539.673-2.424.922-2.7.76-6.336 1.124-10.264 1.124s-7.564-.364-10.263-1.124m25.576 3.471V7.622c0-2.829-6.856-5.122-15.313-5.122C11.857 2.5 5 4.793 5 7.622v24.756c0 2.829 6.856 5.122 15.313 5.122 8.456 0 15.312-2.293 15.312-5.122zM33 19.134c-.7.393-1.505.726-2.375 1.008-2.708.877-6.358 1.352-10.313 1.352-3.954 0-7.604-.475-10.312-1.352-.87-.282-1.676-.615-2.375-1.008v4.28c0 .196.097.514.625.942.535.432 1.391.868 2.576 1.252 2.36.763 5.71 1.221 9.486 1.221 3.778 0 7.128-.458 9.487-1.221 1.185-.384 2.041-.82 2.576-1.252.528-.428.625-.746.625-.941v-4.28Zm-23 8.904c-.87-.281-1.676-.615-2.375-1.007v5.143c.044.048.116.117.231.208.447.353 1.252.785 2.48 1.195 2.43.813 5.958 1.362 9.976 1.362s7.546-.549 9.977-1.362c1.228-.41 2.033-.842 2.48-1.195a2 2 0 0 0 .231-.208v-5.143c-.7.392-1.505.726-2.375 1.007-2.708.877-6.358 1.352-10.313 1.352-3.954 0-7.604-.475-10.312-1.352m23.06 4.06-.01.016zm-25.495 0 .01.016zm3.997-15.726c.725 0 1.313-.573 1.313-1.28s-.588-1.281-1.313-1.281c-.724 0-1.312.573-1.312 1.28 0 .707.588 1.281 1.313 1.281Zm1.313 6.83c0 .706-.588 1.28-1.313 1.28-.724 0-1.312-.574-1.312-1.28 0-.708.588-1.281 1.313-1.281.724 0 1.312.573 1.312 1.28Zm-1.313 9.176c.725 0 1.313-.573 1.313-1.28s-.588-1.28-1.313-1.28c-.724 0-1.312.572-1.312 1.28 0 .707.588 1.28 1.313 1.28Z" clip-rule="evenodd" />
+    </symbol>
+    <symbol id="kv-icon" viewBox="0 0 64 64">
+      <path fill-rule="evenodd" d="m6 12 2-2h19l1.675.907 3.408 5.225H56l2 2V52l-2 2H8l-2-2zm4 2v36h44V20.132H31l-1.675-.908L25.917 14z" clip-rule="evenodd" />
+      <path d="M15 28h7v4h-7zm0 8h7v4h-7zm11-8h23v4H26zm0 8h23v4H26z" />
+    </symbol>
+    <symbol id="browser-icon" viewBox="0 0 40 40">
+      <rect x="4" y="7" width="32" height="26" rx="3" fill="none" stroke="currentColor" stroke-width="2.5" />
+      <path d="M4 14h32M10 10.5h.1M14 10.5h.1M18 10.5h.1" fill="none" stroke="currentColor" stroke-linecap="round" stroke-width="2.5" />
+    </symbol>
+    <symbol id="cloudflare-mark" viewBox="0 0 66 30">
+      <path d="M53.1202 13.125c6.9965 0 12.6682 5.7084 12.6682 12.75 0 1.2552-.1802 2.4683-.5159 3.614-.0897.3077-.3753.511-.6945.511H46.953c-.2613 0-.4415-.2638-.3478-.5094l.3369-.8829c1.0769-2.8327 4.1467-5.1533 6.9873-5.2892l5.3844-.2775c.2877-.0148.5135-.2541.5135-.5439 0-.2884-.2235-.5269-.5094-.5438l-5.0563-.2993c-2.7182-.1392-4.046-2.5591-3.3154-5.0811l.8414-2.9024c.0856-.2952.3416-.5105.6466-.5267.2271-.0124.456-.0198.685-.0198Z" fill="#FF9910" />
+      <path d="M35.6085 0c7.2957 0 13.4242 5.0249 15.1576 11.8235.0724.2855.0497.5868-.0544.8623l-1.3881 3.6787c-1.0761 2.8327-3.8417 5.289-6.9705 5.289H18.249c-.2913.0035-.5251.2411-.5251.5347 0 .2929.2337.5314.5244.5353l23.7646.3159c2.7247 0 4.046 2.559 3.3156 5.081l-.3068 1.0611c-.0927.3206-.3849.5406-.7157.5406H.9636c-.3708 0-.6881-.2744-.7178-.6462A10 10 0 0 1 .212 28.5c0-5.4763 4.1656-9.9726 9.4819-10.4564A6.5 6.5 0 0 1 9.526 16.5c0-3.934 3.1701-7.125 7.0801-7.125 1.556 0 2.994.5059 4.163 1.3619C22.8496 4.4963 28.7073 0 35.6085 0Z" fill="#FF5F08" />
+    </symbol>
+    <marker id="arrow" markerWidth="10" markerHeight="10" refX="8" refY="5" orient="auto">
+      <path d="M0 0L10 5L0 10Z" fill="#565c56" />
+    </marker>
+    <style>
+      text { font-family: Inter, ui-sans-serif, system-ui, sans-serif; fill: #20231f; }
+      .title { font-size: 30px; font-weight: 700; }
+      .section { font-size: 22px; font-weight: 700; }
+      .label { font-size: 18px; font-weight: 650; }
+      .detail { font-size: 14px; fill: #565c56; }
+      .note-text { font-size: 14px; fill: #565c56; }
+      .panel { fill: #f2f0e8; stroke: #d2d0c6; stroke-width: 2; }
+      .node { fill: #fffdf7; stroke: #aeb2a8; stroke-width: 2; }
+      .app-node { fill: #f2d3c7; stroke: #a63e27; stroke-width: 2; }
+      .note { fill: #fffdf7; stroke: #d2d0c6; stroke-width: 1.5; }
+      .service-icon { fill: #f48120; }
+      .user-icon { color: #565c56; }
+      .flow { fill: none; stroke: #565c56; stroke-width: 2.5; marker-end: url(#arrow); }
+    </style>
+  </defs>
+
+  <rect x="1" y="1" width="898" height="1238" rx="8" fill="#f7f5ef" stroke="#d2d0c6" stroke-width="2" />
+  <text class="title" x="30" y="48">ScreenForge system flow</text>
+  <text class="detail" x="30" y="76">Screenshot in, shareable generated page out</text>
+  <use href="#cloudflare-mark" x="820" y="24" width="48" height="22" />
+
+  <rect class="panel" x="20" y="100" width="860" height="600" rx="8" />
+  <text class="section" x="45" y="140">1. Generate and publish</text>
+
+  <rect class="node" x="50" y="165" width="180" height="120" rx="6" />
+  <use href="#browser-icon" class="user-icon" x="120" y="174" width="40" height="40" />
+  <text class="label" x="140" y="231" text-anchor="middle">Uploader</text>
+  <text class="detail" x="140" y="256" text-anchor="middle">Screenshot</text>
+
+  <rect class="app-node" x="340" y="165" width="220" height="120" rx="6" />
+  <use href="#workers-icon" class="service-icon" x="430" y="174" width="40" height="41" />
+  <text class="label" x="450" y="231" text-anchor="middle">ScreenForge Worker</text>
+  <text class="detail" x="450" y="256" text-anchor="middle">Upload · validate · publish</text>
+
+  <rect class="node" x="670" y="165" width="180" height="120" rx="6" />
+  <use href="#workers-ai-icon" class="service-icon" x="740" y="174" width="40" height="40" />
+  <text class="label" x="760" y="231" text-anchor="middle">Workers AI</text>
+  <text class="detail" x="760" y="256" text-anchor="middle">Structured site code</text>
+
+  <path class="flow" d="M230 225H330" />
+  <path class="flow" d="M560 207H660" />
+  <path class="flow" d="M670 241H570" />
+
+  <path class="flow" d="M450 285V320" />
+  <path class="flow" d="M450 320H290V350" />
+  <path class="flow" d="M450 320H610V350" />
+
+  <rect class="node" x="160" y="360" width="260" height="120" rx="6" />
+  <use href="#r2-icon" class="service-icon" x="178" y="395" width="46" height="46" />
+  <text class="label" x="238" y="397">Cloudflare R2</text>
+  <text class="detail" x="238" y="422">Uploads + snapshots</text>
+  <text class="detail" x="238" y="446">Generated page bundle</text>
+
+  <rect class="node" x="480" y="360" width="260" height="120" rx="6" />
+  <use href="#kv-icon" class="service-icon" x="498" y="395" width="46" height="46" />
+  <text class="label" x="558" y="397">Cloudflare KV</text>
+  <text class="detail" x="558" y="422">Jobs + slug index</text>
+  <text class="detail" x="558" y="446">Published site metadata</text>
+
+  <path class="flow" d="M290 480V525" />
+  <rect class="node" x="160" y="535" width="260" height="100" rx="6" />
+  <use href="#workers-icon" class="service-icon" x="180" y="564" width="42" height="43" />
+  <text class="label" x="238" y="577">Worker Loader</text>
+  <text class="detail" x="238" y="601">Loads the saved page</text>
+
+  <path class="flow" d="M420 585H470" />
+  <rect class="app-node" x="480" y="535" width="260" height="100" rx="6" />
+  <use href="#workers-icon" class="service-icon" x="500" y="564" width="42" height="43" />
+  <text class="label" x="558" y="577">Dynamic Worker</text>
+  <text class="detail" x="558" y="601">No outbound access</text>
+
+  <rect class="note" x="270" y="652" width="360" height="32" rx="4" />
+  <text class="note-text" x="450" y="673" text-anchor="middle">Share URL returned to uploader</text>
+
+  <rect class="panel" x="20" y="720" width="860" height="500" rx="8" />
+  <text class="section" x="45" y="760">2. Serve a shared page</text>
+
+  <rect class="node" x="50" y="800" width="180" height="110" rx="6" />
+  <use href="#browser-icon" class="user-icon" x="120" y="808" width="40" height="40" />
+  <text class="label" x="140" y="866" text-anchor="middle">Visitor</text>
+  <text class="detail" x="140" y="890" text-anchor="middle">Opens share URL</text>
+
+  <rect class="app-node" x="340" y="800" width="220" height="110" rx="6" />
+  <use href="#workers-icon" class="service-icon" x="430" y="807" width="40" height="41" />
+  <text class="label" x="450" y="866" text-anchor="middle">ScreenForge Worker</text>
+  <text class="detail" x="450" y="890" text-anchor="middle">Resolves slug · loads page</text>
+
+  <path class="flow" d="M230 855H330" />
+  <path class="flow" d="M560 825H660" />
+  <path class="flow" d="M560 885C610 885 620 945 660 945" />
+
+  <rect class="node" x="670" y="785" width="180" height="90" rx="6" />
+  <use href="#kv-icon" class="service-icon" x="682" y="808" width="40" height="40" />
+  <text class="label" x="732" y="829">KV</text>
+  <text class="detail" x="732" y="852">Slug lookup</text>
+
+  <rect class="node" x="670" y="900" width="180" height="90" rx="6" />
+  <use href="#r2-icon" class="service-icon" x="682" y="923" width="40" height="40" />
+  <text class="label" x="732" y="944">R2</text>
+  <text class="detail" x="732" y="967">Page snapshot</text>
+
+  <path class="flow" d="M450 910V1010" />
+  <rect class="node" x="340" y="1020" width="220" height="90" rx="6" />
+  <use href="#workers-icon" class="service-icon" x="354" y="1044" width="40" height="41" />
+  <text class="label" x="408" y="1057">Worker Loader</text>
+  <text class="detail" x="408" y="1080">Loads snapshot bundle</text>
+
+  <path class="flow" d="M560 1065H660" />
+  <rect class="app-node" x="670" y="1010" width="180" height="120" rx="6" />
+  <use href="#workers-icon" class="service-icon" x="740" y="1018" width="40" height="41" />
+  <text class="label" x="760" y="1077" text-anchor="middle">Dynamic Worker</text>
+  <text class="detail" x="760" y="1101" text-anchor="middle">Returns page</text>
+  <text class="detail" x="760" y="1120" text-anchor="middle">No outbound network</text>
+</svg>
