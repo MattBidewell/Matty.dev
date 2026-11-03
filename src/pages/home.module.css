@@ -32,7 +32,7 @@
 .sectionHeading h2 {
   margin: 0;
   color: var(--text-secondary);
-  font-size: 1.25rem;
+  font-size: 1rem;
   font-weight: 600;
   letter-spacing: 0.08em;
   text-transform: uppercase;
@@ -64,6 +64,7 @@
 
 .entries li > a {
   color: var(--text-heading);
+  font-size: 0.85rem;
   text-decoration: none;
 }
 
