@@ -83,7 +83,7 @@ test("wordmark and navigation use the bundled Inter typeface", async ({
   );
 });
 
-test("About page offers direct email contact", async ({ page }) => {
+test("About page combines contact and social links", async ({ page }) => {
   await page.goto("/about");
   await expect(page.getByRole("region", { name: "Work" })).toContainText(
     "Senior Member of Technical Staff",
@@ -92,6 +92,18 @@ test("About page offers direct email contact", async ({ page }) => {
   await expect(
     contact.getByRole("link", { name: "matt@matty.dev", exact: true }),
   ).toHaveAttribute("href", "mailto:matt@matty.dev");
+  await expect(
+    contact.getByRole("link", { name: "X (formerly Twitter)" }),
+  ).toHaveAttribute("href", "https://x.com/MattBidewell");
+  await expect(contact.getByRole("link", { name: "GitHub" })).toHaveAttribute(
+    "href",
+    "https://www.github.com/mattbidewell",
+  );
+  await expect(contact.getByRole("link", { name: "LinkedIn" })).toHaveAttribute(
+    "href",
+    "https://www.linkedin.com/in/matt-bidewell-a4578790/",
+  );
+  await expect(page.getByRole("region", { name: "Elsewhere" })).toHaveCount(0);
 });
 
 test("footer keeps a horizontal list of links without arrows or a signoff", async ({
