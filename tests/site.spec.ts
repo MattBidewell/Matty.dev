@@ -83,6 +83,14 @@ test("wordmark and navigation use the bundled Inter typeface", async ({
   );
 });
 
+test("About page offers direct email contact", async ({ page }) => {
+  await page.goto("/about");
+  const contact = page.getByRole("region", { name: "Contact" });
+  await expect(
+    contact.getByRole("link", { name: "matt@matty.dev", exact: true }),
+  ).toHaveAttribute("href", "mailto:matt@matty.dev");
+});
+
 test("footer keeps a horizontal list of links without arrows or a signoff", async ({
   page,
 }) => {
