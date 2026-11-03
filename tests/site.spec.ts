@@ -83,17 +83,45 @@ test("wordmark and navigation use the bundled Inter typeface", async ({
   );
 });
 
+test("About page combines contact and social links", async ({ page }) => {
+  await page.goto("/about");
+  await expect(page.getByRole("region", { name: "Work" })).toContainText(
+    "Senior Member of Technical Staff",
+  );
+  const contact = page.getByRole("region", { name: "Contact" });
+  await expect(
+    contact.getByRole("link", { name: "matt@matty.dev", exact: true }),
+  ).toHaveAttribute("href", "mailto:matt@matty.dev");
+  await expect(
+    contact.getByRole("link", { name: "X (formerly Twitter)" }),
+  ).toHaveAttribute("href", "https://x.com/MattBidewell");
+  await expect(contact.getByRole("link", { name: "GitHub" })).toHaveAttribute(
+    "href",
+    "https://www.github.com/mattbidewell",
+  );
+  await expect(contact.getByRole("link", { name: "LinkedIn" })).toHaveAttribute(
+    "href",
+    "https://www.linkedin.com/in/matt-bidewell-a4578790/",
+  );
+  await expect(page.getByRole("region", { name: "Elsewhere" })).toHaveCount(0);
+});
+
 test("footer keeps a horizontal list of links without arrows or a signoff", async ({
   page,
 }) => {
   await page.goto("/");
   const footer = page.getByRole("contentinfo");
   await expect(footer.getByRole("listitem")).toHaveText([
+    "matt@matty.dev",
     "RSS",
     "GitHub",
     "X",
     "LinkedIn",
   ]);
+  await expect(footer.getByRole("link", { name: "matt@matty.dev" })).toHaveAttribute(
+    "href",
+    "mailto:matt@matty.dev",
+  );
   await expect(footer).not.toContainText("Always a work in progress");
   const arrows = await footer
     .locator('a[target="_blank"]')
