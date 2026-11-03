@@ -85,6 +85,9 @@ test("wordmark and navigation use the bundled Inter typeface", async ({
 
 test("About page offers direct email contact", async ({ page }) => {
   await page.goto("/about");
+  await expect(page.getByRole("region", { name: "Work" })).toContainText(
+    "Senior Member of Technical Staff",
+  );
   const contact = page.getByRole("region", { name: "Contact" });
   await expect(
     contact.getByRole("link", { name: "matt@matty.dev", exact: true }),
