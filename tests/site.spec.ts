@@ -5,9 +5,13 @@ test("content links use reading typography without decorative arrows", async ({
   page,
 }) => {
   await page.goto("/");
-  const paragraph = page.getByText(
+  const paragraph = page
+    .locator("[data-home-content] section")
+    .first()
+    .locator("p")
+    .first();
+  await expect(paragraph).toContainText(
     "Software engineer, product builder, and writer.",
-    { exact: true },
   );
   const typography = await paragraph.evaluate((element) => ({
     family: getComputedStyle(element).fontFamily,
@@ -16,7 +20,7 @@ test("content links use reading typography without decorative arrows", async ({
   for (const name of [
     "More projects",
     "More posts",
-    "Résumé",
+    "View my résumé",
   ]) {
     const link = page.getByRole("link", { name, exact: true });
     await expect(link).toHaveCSS("font-family", typography.family);
@@ -129,7 +133,13 @@ test("home lists recent projects, posts, Mumblings, and the resume", async ({
   await expect(page.getByRole("link", { name: "More projects" })).toHaveAttribute("href", "/projects");
   await expect(page.getByRole("link", { name: "More posts" })).toHaveAttribute("href", "/blog");
   await expect(page.getByRole("link", { name: "More mumblings" })).toHaveAttribute("href", "/mumblings");
-  await expect(page.getByRole("link", { name: "Résumé" })).toHaveAttribute("href", "/assets/resume/Matt-Bidewell-Resume.pdf");
+  const intro = page.locator("[data-home-content] section").first();
+  const resumeLink = intro.getByRole("link", { name: "View my résumé", exact: true });
+  await expect(resumeLink).toHaveAttribute("href", "/assets/resume/Matt-Bidewell-Resume.pdf");
+  await expect(resumeLink).toHaveCSS(
+    "font-size",
+    await intro.locator("p").first().evaluate((element) => getComputedStyle(element).fontSize),
+  );
 
   for (const [section, label] of [
     [projects, "More projects"],

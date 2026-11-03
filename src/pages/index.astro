@@ -12,7 +12,13 @@ const mumblings = (await getLivePosts('mumbling')).slice(0, 3);
   <div class={styles.home} data-home-content>
     <section class={styles.intro} aria-labelledby="intro-title">
       <h1 id="intro-title">Matt Bidewell</h1>
-      <p class={styles.description}>Software engineer, product builder, and writer.</p>
+      <p class={styles.description}>
+        Software engineer, product builder, and writer. <a
+          target="_blank"
+          rel="noopener"
+          href="/assets/resume/Matt-Bidewell-Resume.pdf"
+        >View my résumé</a>.
+      </p>
     </section>
 
     {projects.length > 0 && (
@@ -62,7 +68,5 @@ const mumblings = (await getLivePosts('mumbling')).slice(0, 3);
         <a class={styles.more} href="/mumblings">More mumblings</a>
       </section>
     )}
-
-    <p class={styles.resume}><a target="_blank" rel="noopener" href="/assets/resume/Matt-Bidewell-Resume.pdf">Résumé</a></p>
   </div>
 </BaseLayout>
