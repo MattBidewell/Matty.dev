@@ -59,7 +59,7 @@
 
 .entries li {
   margin: 0;
-  padding: 0.45rem 0;
+  padding: 0.45rem 0 0.45rem 10px;
 }
 
 .entries li > a {
