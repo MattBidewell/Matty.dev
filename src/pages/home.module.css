@@ -73,10 +73,6 @@
   text-underline-offset: 0.2em;
 }
 
-.resume {
-  margin: 0.75rem 0 0;
-}
-
 @media (max-width: 600px) {
   .section {
     margin-top: 2.25rem;
