@@ -89,11 +89,16 @@ test("footer keeps a horizontal list of links without arrows or a signoff", asyn
   await page.goto("/");
   const footer = page.getByRole("contentinfo");
   await expect(footer.getByRole("listitem")).toHaveText([
+    "matt@matty.dev",
     "RSS",
     "GitHub",
     "X",
     "LinkedIn",
   ]);
+  await expect(footer.getByRole("link", { name: "matt@matty.dev" })).toHaveAttribute(
+    "href",
+    "mailto:matt@matty.dev",
+  );
   await expect(footer).not.toContainText("Always a work in progress");
   const arrows = await footer
     .locator('a[target="_blank"]')
