@@ -6,7 +6,7 @@ export const prerender = true;
 export const GET: APIRoute = async () => {
   const png = await renderOgPng({
     title: "Notes on building software.",
-    excerpt: "A personal publication by Matt Bidewell",
+    excerpt: "Matt Bidewell",
     date: "",
     category: "website",
   });

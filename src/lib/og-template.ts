@@ -14,7 +14,7 @@ function buildTree(post: OgInput) {
   const category = {
     blog: "Blog",
     mumbling: "Mumblings",
-    website: "Software engineering",
+    website: "",
   }[post.category];
 
   return {
