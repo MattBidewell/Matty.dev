@@ -10,7 +10,7 @@ interface OgInput {
 
 function buildTree(post: OgInput) {
   const titleSize =
-    post.title.length > 95 ? 52 : post.title.length > 55 ? 64 : 76;
+    post.title.length > 95 ? 56 : post.title.length > 55 ? 68 : 80;
   const category = {
     blog: "Blog",
     mumbling: "Mumblings",
@@ -22,11 +22,13 @@ function buildTree(post: OgInput) {
     props: {
       style: {
         display: "flex",
+        flexDirection: "column",
         width: "1200px",
         height: "630px",
-        backgroundColor: "#e1e5dc",
-        color: "#252126",
-        fontFamily: "Newsreader",
+        padding: "56px 64px",
+        backgroundColor: "#f7f5ef",
+        color: "#20231f",
+        fontFamily: "Inter",
         fontWeight: 400,
       },
       children: [
@@ -35,10 +37,8 @@ function buildTree(post: OgInput) {
           props: {
             style: {
               display: "flex",
-              flexDirection: "column",
-              width: "780px",
-              height: "100%",
-              padding: "52px 64px",
+              alignItems: "center",
+              justifyContent: "space-between",
               flexShrink: 0,
             },
             children: [
@@ -46,55 +46,20 @@ function buildTree(post: OgInput) {
                 type: "div",
                 props: {
                   style: {
-                    color: "#36705d",
-                    fontSize: 40,
-                    letterSpacing: "-1.5px",
-                    flexShrink: 0,
-                  },
-                  children: "matty.dev",
-                },
-              },
-              {
-                type: "div",
-                props: {
-                  style: {
                     display: "flex",
-                    flexDirection: "column",
-                    justifyContent: "center",
-                    flexGrow: 1,
-                    minHeight: 0,
-                    padding: "28px 0",
+                    fontSize: 32,
+                    letterSpacing: "-1px",
                   },
                   children: [
+                    "matty",
                     {
-                      type: "div",
+                      type: "span",
                       props: {
-                        style: {
-                          fontFamily: "iA Writer Mono",
-                          fontSize: 16,
-                          letterSpacing: "1.5px",
-                          textTransform: "uppercase",
-                          color: "#36705d",
-                          marginBottom: "24px",
-                          flexShrink: 0,
-                        },
-                        children: category,
+                        style: { color: "#a63e27" },
+                        children: ".",
                       },
                     },
-                    {
-                      type: "div",
-                      props: {
-                        style: {
-                          fontSize: titleSize,
-                          lineHeight: 1.04,
-                          letterSpacing: "-1.5px",
-                          lineClamp: 4,
-                          overflow: "hidden",
-                          textOverflow: "ellipsis",
-                        },
-                        children: post.title,
-                      },
-                    },
+                    "dev",
                   ],
                 },
               },
@@ -103,14 +68,10 @@ function buildTree(post: OgInput) {
                 props: {
                   style: {
                     fontFamily: "iA Writer Mono",
-                    fontSize: 16,
-                    lineHeight: 1.5,
-                    borderTop: "1px solid #252126",
-                    paddingTop: "20px",
-                    flexShrink: 0,
+                    fontSize: 18,
+                    color: "#a63e27",
                   },
-                  children:
-                    post.category === "website" ? post.excerpt : post.date,
+                  children: category,
                 },
               },
             ],
@@ -121,29 +82,41 @@ function buildTree(post: OgInput) {
           props: {
             style: {
               display: "flex",
-              width: "420px",
-              height: "100%",
-              backgroundColor: "#d5e7dc",
-              borderBottom: "16px solid #36705d",
+              flexDirection: "column",
               justifyContent: "center",
-              alignItems: "center",
-              flexShrink: 0,
+              flexGrow: 1,
+              minHeight: 0,
+              padding: "32px 0",
             },
             children: {
-              type: "svg",
+              type: "div",
               props: {
-                width: 352,
-                height: 224,
-                viewBox: "0 0 11 7",
-                children: {
-                  type: "path",
-                  props: {
-                    fill: "#36705d",
-                    d: "M0 7V1H2V0H4V1H5V2H6V1H7V0H9V1H11V7H8V3H7V4H6V7H4V4H3V3H2V7Z",
-                  },
+                style: {
+                  fontSize: titleSize,
+                  lineHeight: 1.12,
+                  letterSpacing: "-2px",
+                  lineClamp: 4,
+                  overflow: "hidden",
+                  textOverflow: "ellipsis",
                 },
+                children: post.title,
               },
             },
+          },
+        },
+        {
+          type: "div",
+          props: {
+            style: {
+              fontFamily: "iA Writer Mono",
+              fontSize: 18,
+              lineHeight: 1.5,
+              color: "#646b64",
+              borderTop: "1px solid #d2d0c6",
+              paddingTop: "24px",
+              flexShrink: 0,
+            },
+            children: post.category === "website" ? post.excerpt : post.date,
           },
         },
       ],
@@ -157,7 +130,7 @@ function loadFonts(): Promise<Buffer[]> {
     readFile(
       join(
         process.cwd(),
-        "node_modules/@fontsource/newsreader/files/newsreader-latin-400-normal.woff",
+        "node_modules/@fontsource/inter/files/inter-latin-400-normal.woff",
       ),
     ),
     readFile(
@@ -177,15 +150,15 @@ export async function renderOgPng(
     import("@resvg/resvg-js"),
   ]);
 
-  const [newsreader, mono] = await loadFonts();
+  const [inter, mono] = await loadFonts();
   const tree = buildTree(post);
   const svg = await satori(tree as never, {
     width: 1200,
     height: 630,
     fonts: [
       {
-        name: "Newsreader",
-        data: newsreader,
+        name: "Inter",
+        data: inter,
         weight: 400,
         style: "normal",
       },
