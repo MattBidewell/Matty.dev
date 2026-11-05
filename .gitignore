@@ -10,6 +10,9 @@
 /dist/
 /.astro/
 
+# Book covers are hosted in R2, not bundled with the site.
+/public/assets/images/books/
+
 # misc
 .DS_Store
 
