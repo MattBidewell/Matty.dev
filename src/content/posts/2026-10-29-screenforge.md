@@ -17,6 +17,16 @@ tech_stack:
 
 ScreenForge is an exploratory application that turns an uploaded website screenshot into a generated, shareable single-page website. I built it as an experiment in taking a visual reference through AI generation and all the way to an isolated, published page.
 
+## Demo
+
+<figure>
+  <video controls playsinline preload="none" width="1920" height="1362" poster="https://media.matty.dev/projects/screenforge/demo-v1.jpg" aria-label="ScreenForge demo" aria-describedby="screenforge-demo-caption">
+    <source src="https://media.matty.dev/projects/screenforge/demo-v1.mp4" type="video/mp4" />
+    <a href="https://media.matty.dev/projects/screenforge/demo-v1.mp4">Watch the ScreenForge demo</a>.
+  </video>
+  <figcaption id="screenforge-demo-caption">A 37-second, silent walkthrough of ScreenForge: upload a screenshot, generate a website, and open the published result.</figcaption>
+</figure>
+
 ## How It Works
 
 Upload a screenshot and ScreenForge sends it to Cloudflare Workers AI, which returns a structured result containing HTML, CSS, and JavaScript. The app validates that result, assembles it into a page, and stores the generated snapshot in Cloudflare R2. Upload and job details, along with the published site index, are tracked in Cloudflare KV.
