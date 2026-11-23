@@ -107,4 +107,10 @@ const content = (await Astro.slots.render("default")).replace(/<(\/?)h1(?=[\s>])
     border: 0;
     border-top: 1px solid var(--border-color);
   }
+
+  /* Interactive widgets (see src/components/interactive/) render their own
+     full-bleed section via <Breakout> and shouldn't inherit article spacing. */
+  .post-body :global(.breakout) {
+    margin-block: 3rem;
+  }
 </style>
