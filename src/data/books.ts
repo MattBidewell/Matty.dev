@@ -11,6 +11,14 @@ export interface IBook {
 
 export const books: IBook[] = [
   {
+    title: "Red Rising",
+    subtitle: "Red Rising Saga Book 1",
+    image: "red_rising.webp",
+    url: "https://www.amazon.co.uk/Red-Rising-1-ebook/dp/B00GIUG3ES",
+    rating: 5,
+    date: new Date("2026-11-25"),
+  },
+  {
     title: "A Parade of Horribles",
     subtitle: "Dungeon Crawler Carl Book 8",
     image: "dungeon_crawler_carl_8.webp",
