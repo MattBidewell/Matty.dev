@@ -16,7 +16,7 @@ export const books: IBook[] = [
     image: "red_rising.webp",
     url: "https://www.amazon.co.uk/Red-Rising-1-ebook/dp/B00GIUG3ES",
     rating: 5,
-    date: new Date("2026-11-25"),
+    date: new Date("2026-11-23"),
   },
   {
     title: "A Parade of Horribles",
